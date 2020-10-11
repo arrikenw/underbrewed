@@ -1,89 +1,76 @@
-﻿Shader "Custom/FireShader"
+﻿// Textures by Evgeny Starostin - https://80.lv/articles/breakdown-magic-fire-effect-in-unity/
+
+Shader "Custom/FireShader"
 {
     Properties
     {
-        _MainTex("Texture", 2D) = "white" {}
-        _MaskTex("DissolveTexture", 2D) = "white" {}
-        _Fade("Fade", Range(0,1)) = 0.2
-        _Speed("Speed", Range(-10,10)) = 1
+        _MainTex ("Texture", 2D) = "white" {}
+        _MaskTex("Texture", 2D) = "white" {}
 
     }
-        SubShader
-        {
-            Tags {"Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Opaque"}
-            LOD 100
-            //Blend SrcAlpha One
-                Blend SrcAlpha OneMinusSrcAlpha
-            //Blend One OneMinusSrcAlpha
-
+    SubShader
+    {
+        
+        Tags {"Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Opaque"}
+        
+        Blend SrcAlpha OneMinusSrcAlpha
+        
         ZWrite Off
+            
+        Pass
+        {
+            CGPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
 
-            Pass
+            #include "UnityCG.cginc"
+
+            float4 _MainTex_ST;
+            //float4 _MaskTex_ST;
+
+            uniform sampler2D _MainTex;
+            uniform sampler2D _MaskTex;
+
+            uniform float _BlendFct = 0.2;
+
+            struct vertIn
             {
-                CGPROGRAM
-                #pragma vertex vert
-                #pragma fragment frag
-                // make fog work
-                #pragma multi_compile_fog
+                float4 vertex : POSITION;
+                float4 color : COLOR;
+                float3 uv : TEXCOORD0;
+            };
 
-                #include "UnityCG.cginc"
-
-
-                struct appdata
-                {
-                    float4 vertex : POSITION;
-                    float3 uv : TEXCOORD0;
-                    float3 uv2 : TEXCOORD1;
-                    fixed4 color : COLOR;
-                };
-
-                struct v2f
-                {
-                    float3 uv : TEXCOORD0;
-                    float3 uv2 : TEXCOORD1;
-                    UNITY_FOG_COORDS(1)
-                    float4 vertex : SV_POSITION;
-                    fixed4 color : COLOR;
-                };
-
-                sampler2D _MainTex,
-                          _MaskTex
-                          ;
-
-                float4 _MainTex_ST;
-                float4 _MaskTex_ST;
-                fixed _Fade;
-                fixed _Speed;
-                fixed _Intensity;
-
-                v2f vert(appdata v)
-                {
-                    v2f o;
-                    o.vertex = UnityObjectToClipPos(v.vertex);
-                    o.uv.xy = TRANSFORM_TEX(v.uv, _MainTex);
-                    o.uv2.xy = TRANSFORM_TEX(v.uv, _MaskTex);
-                    o.color = v.color;
-                    o.uv.z = v.uv.z;
-                    UNITY_TRANSFER_FOG(o,o.vertex);
-                    return o;
-                }
+            struct vertOut
+            {
+                float4 vertex : SV_POSITION;
+                float4 color : COLOR;
+                float3 uv : TEXCOORD0;
+            };
 
 
+            // Implenentation of vertex shader
+            vertOut vert (vertIn v)
+            {
+                vertOut o;
+                o.vertex = UnityObjectToClipPos(v.vertex);
+				o.color = v.color;
+        		o.uv = v.uv;
+                UNITY_TRANSFER_FOG(o, o.vertex);
+                return o;
+            }
 
-                fixed4 frag(v2f i) : SV_Target
-                {
-                    float particleAgePercent = i.uv.z * _Speed;
-                // sample the texture
-                fixed4 dTex = tex2D(_MaskTex, i.uv2).r;
-                fixed4 col = tex2D(_MainTex, i.uv);
 
-                half dissolve = smoothstep(particleAgePercent * 1 - _Fade, particleAgePercent * 1 + _Fade, dTex);
+            // Implementation of fragment shaders
+            fixed4 frag (vertOut v) : SV_Target
+            { 
+                fixed4 col = tex2D(_MainTex, v.uv);
+                fixed4 dissolve = smoothstep(col * _BlendFct, v.color * (1.0f - _BlendFct), 100);
 
-                col *= dissolve * i.color;
-                // UNITY_APPLY_FOG(i.fogCoord, col);
-                 return col;
-             }
-             ENDCG
-         }
+                col *= dissolve * v.color;
+
+                return col;
+            }
+            ENDCG
         }
+    }
 }
