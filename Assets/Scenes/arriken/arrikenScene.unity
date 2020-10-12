@@ -621,8 +621,8 @@ GameObject:
   - component: {fileID: 1175490581}
   - component: {fileID: 1175490580}
   - component: {fileID: 1175490579}
-  - component: {fileID: 1175490584}
   - component: {fileID: 1175490583}
+  - component: {fileID: 1175490584}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -730,12 +730,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1175490578}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f32e8dc91d86bd84896c1a224dfb98ec, type: 3}
+  m_Script: {fileID: 11500000, guid: e771f34913a9bf34394ae8c2de0ad979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PickUpCollider: {fileID: 1623192178}
-  RigidBody: {fileID: 0}
-  speed: 5.6
+  currentState: 6
 --- !u!1 &1415028793
 GameObject:
   m_ObjectHideFlags: 0
