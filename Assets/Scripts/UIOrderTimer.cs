@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Timer : MonoBehaviour
+public class UIOrderTimer : MonoBehaviour
 {
     public Slider slider;
-    public float maxTime; // time allowed for task
+    public float maxTime = 45.0f; // time allowed for task
 
-    public Color startColor;
-    public Color midColor;
-    public Color finColor;
+    public Color lowColor = Color.red;
+    public Color midColor = Color.yellow;
+    public Color highColor = Color.green;
 
     Gradient gradient;
     GradientColorKey[] colorKey;
@@ -25,12 +25,12 @@ public class Timer : MonoBehaviour
         gradient = new Gradient();
 
         colorKey = new GradientColorKey[3];
-        colorKey[0].color  = startColor;
+        colorKey[0].color  = lowColor;
         colorKey[0].time = 0.0f;
         colorKey[1].color = midColor;
         colorKey[1].time = 0.5f;
-        colorKey[1].color = finColor;
-        colorKey[1].time = 1.0f;
+        colorKey[2].color = highColor;
+        colorKey[2].time = 1.0f;
 
 
         alphaKey = new GradientAlphaKey[3];
@@ -44,7 +44,7 @@ public class Timer : MonoBehaviour
         gradient.SetKeys(colorKey, alphaKey);
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         elapsedTime += Time.deltaTime;
@@ -55,9 +55,5 @@ public class Timer : MonoBehaviour
 
         slider.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = gradient.Evaluate(fillValue);
     }
-
-    // change value based on progress points 
-
-    // change colour based on value
 
 }

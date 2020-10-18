@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Workspace/IrisUI/testMainMenu.unity
+    path: Assets/Scenes/Workspace/IrisUI/UIMainMenu.unity
     guid: 4e911a8400ba20e4cbed64d655f98e44
   - enabled: 1
-    path: Assets/Scenes/Workspace/IrisUI/testTutorial.unity
+    path: Assets/Scenes/Workspace/IrisUI/UITutorial.unity
     guid: 6f40744d52c130e42b649d0c54851fad
   - enabled: 1
-    path: Assets/Scenes/Workspace/IrisUI/testLevel1.unity
+    path: Assets/Scenes/Workspace/IrisUI/UILevel1.unity
     guid: 9b87955c14484214f9235a0c70128423
   m_configObjects: {}
