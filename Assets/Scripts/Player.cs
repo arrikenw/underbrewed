@@ -21,24 +21,30 @@ public enum item
     Wand
 }
 
-public class character : MonoBehaviour
+public class Player : MonoBehaviour
 {
+    [SerializeField] public float speed = 0.075f;
     public state currentState = state.Idle;
-    float maxSpeed = 0.04f;
-    float speedDecay = 0.98f;
+    // float maxSpeed = 0.04f;
+    // float speedDecay = 0.98f;
     Vector3 speedVector = new Vector3(0, 0, 0);
 
     int framesUntilComplete = 0;
 
+    public Rigidbody rb;
+
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
+    }
 
+    void FixedUpdate() {
+        positionUpdates();
     }
 
     void Update()
     {
-        positionUpdates();
         actionUpdates();
     }
 
@@ -131,45 +137,58 @@ public class character : MonoBehaviour
 
     void positionUpdates()
     {
-        //TODO MAYBE REWRITE TO USE ACCEL, VELOCITY ETC.
-        //GetKey rather than GetKeyDown to ensure that holding does more than a tap
-        Vector3 updateSpeedVector = new Vector3(0, 0, 0);
+        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxis("Vertical");
 
-        if (currentState != state.Stunned)
-        {
-            if (Input.GetKey("d"))
-            {
-                updateSpeedVector = updateSpeedVector + new Vector3(1, 0, 0);
-            }
-            if (Input.GetKey("s"))
-            {
-                updateSpeedVector = updateSpeedVector + new Vector3(0, 0, -1);
-            }
-            if (Input.GetKey("a"))
-            {
-                updateSpeedVector = updateSpeedVector + new Vector3(-1, 0, 0);
-            }
-            if (Input.GetKey("w"))
-            {
-                updateSpeedVector = updateSpeedVector + new Vector3(0, 0, 1);
-            }
+        Vector3 tempVect = (new Vector3(h, 0.0f, v)).normalized;
+        // print(tempVect);
+        //tempVect = tempVect.normalized * maxSpeed * Time.deltaTime;
+        rb.MovePosition(rb.position + tempVect * speed);
+        if (tempVect != new Vector3(0.0f, 0.0f, 0.0f)) {
+            rb.MoveRotation(Quaternion.LookRotation(tempVect));
         }
 
-        //normalize so that the character has the same speed on diagonals
-        updateSpeedVector.Normalize();
-        updateSpeedVector = updateSpeedVector / 30;
 
-        speedVector = speedVector * speedDecay + updateSpeedVector;
 
-        if (speedVector.magnitude > maxSpeed)
-        {
-            speedVector.Normalize();
-            speedVector = speedVector * maxSpeed;
-        }
+        // //TODO MAYBE REWRITE TO USE ACCEL, VELOCITY ETC.
+        // //GetKey rather than GetKeyDown to ensure that holding does more than a tap
+        // Vector3 updateSpeedVector = new Vector3(0, 0, 0);
 
-        //print("magnitude " + speedVector.magnitude);
-        transform.Translate(speedVector, Space.World);
-        //second vector is to orient the hat so that it faces upwards
-        transform.rotation = Quaternion.LookRotation(speedVector + new Vector3(0, 0, 0));
+        // if (currentState != state.Stunned)
+        // {
+        //     if (Input.GetKey("d"))
+        //     {
+        //         updateSpeedVector = updateSpeedVector + new Vector3(1, 0, 0);
+        //     }
+        //     if (Input.GetKey("s"))
+        //     {
+        //         updateSpeedVector = updateSpeedVector + new Vector3(0, 0, -1);
+        //     }
+        //     if (Input.GetKey("a"))
+        //     {
+        //         updateSpeedVector = updateSpeedVector + new Vector3(-1, 0, 0);
+        //     }
+        //     if (Input.GetKey("w"))
+        //     {
+        //         updateSpeedVector = updateSpeedVector + new Vector3(0, 0, 1);
+        //     }
+        // }
+
+        // //normalize so that the character has the same speed on diagonals
+        // updateSpeedVector.Normalize();
+        // updateSpeedVector = updateSpeedVector / 30;
+
+        // speedVector = speedVector * speedDecay + updateSpeedVector;
+
+        // if (speedVector.magnitude > maxSpeed)
+        // {
+        //     speedVector.Normalize();
+        //     speedVector = speedVector * maxSpeed;
+        // }
+
+        // //print("magnitude " + speedVector.magnitude);
+        // transform.Translate(speedVector, Space.World);
+        // //second vector is to orient the hat so that it faces upwards
+        // transform.rotation = Quaternion.LookRotation(speedVector + new Vector3(0, 0, 0));
     }
 }
