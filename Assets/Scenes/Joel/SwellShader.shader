@@ -40,7 +40,7 @@ Shader "Unlit/SwellShader"
 		v2f o;
 
 		//swelling effect, pulsates over time
-		float upperbound = 1*0.01;
+		float upperbound = 1*0.1;
 		float swell = abs(sin(_Time.z))*upperbound;
 		v.vertex.xyz = v.vertex.xyz + (v.normal.xyz * swell);
 
@@ -72,7 +72,7 @@ Shader "Unlit/SwellShader"
 		//gain a hue as it swells
 		//original colour is weighted more than swell colour
 		fixed4 swellCol = green*abs(sin(_Time.z));
-		fixed4 finalCol = 0.8*textureCol + 0.2*swellCol;
+		fixed4 finalCol = 0.6*textureCol + 0.4*swellCol;
 		return finalCol;
 	}
 		ENDCG
