@@ -10,7 +10,6 @@ public class Interactable : MonoBehaviour {
 
     protected virtual void Start() {
         highlighter = Resources.Load<Material>("Highlighter");
-        print(highlighter);
         original = GetComponent<Renderer>().material; 
     }
 

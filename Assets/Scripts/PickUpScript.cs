@@ -47,6 +47,8 @@ public class PickUpScript : MonoBehaviour
             }
         }
 
+        // NOTE: Commented out because current functionality can be achieved by just dropping the item on
+        //       But if we need an actual interact button then that can be coded
         // //interact
         // if (Input.GetKeyDown(KeyCode.E))
         // {
