@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIOrderTimer : MonoBehaviour
+public class UIRecipeTimer : MonoBehaviour
 {
     public Slider timer;
     public float maxTime = 45.0f; // time allowed for task
@@ -20,7 +20,9 @@ public class UIOrderTimer : MonoBehaviour
 
     private float fillValue;
 
-    private bool timerEnabled = false;
+    public bool timerEnabled = false;
+
+    public bool flashing;
 
     void Start()
     {
@@ -59,12 +61,14 @@ public class UIOrderTimer : MonoBehaviour
 
         timer.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = gradient.Evaluate(fillValue);
 
-
         if (fillValue < 0)
         {
             fillValue = 0;
             timerEnabled = false;
         }
     }
+
+
+
 
 }
