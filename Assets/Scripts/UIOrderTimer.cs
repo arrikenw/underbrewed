@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UIOrderTimer : MonoBehaviour
 {
-    public Slider slider;
+    public Slider timer;
     public float maxTime = 45.0f; // time allowed for task
 
     public Color lowColor = Color.red;
@@ -19,6 +19,8 @@ public class UIOrderTimer : MonoBehaviour
     private float elapsedTime = 0.0f; // time passed since timer started
 
     private float fillValue;
+
+    private bool timerEnabled = false;
 
     void Start()
     {
@@ -42,6 +44,8 @@ public class UIOrderTimer : MonoBehaviour
         alphaKey[2].time = 1.0f;
 
         gradient.SetKeys(colorKey, alphaKey);
+
+        timerEnabled = true;
     }
 
 
@@ -51,9 +55,16 @@ public class UIOrderTimer : MonoBehaviour
 
         fillValue = ((maxTime - elapsedTime) / maxTime);
 
-        slider.value = fillValue;
+        timer.value = fillValue;
 
-        slider.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = gradient.Evaluate(fillValue);
+        timer.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = gradient.Evaluate(fillValue);
+
+
+        if (fillValue < 0)
+        {
+            fillValue = 0;
+            timerEnabled = false;
+        }
     }
 
 }
