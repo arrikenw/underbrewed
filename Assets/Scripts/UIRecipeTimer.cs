@@ -18,11 +18,19 @@ public class UIRecipeTimer : MonoBehaviour
 
     private float elapsedTime = 0.0f; // time passed since timer started
 
-    private float fillValue;
+    public float fillValue;
 
     public bool timerEnabled = false;
 
     public bool flashing;
+
+    public GameObject recipe;
+
+    public Color warningColor;
+
+    public float waitingTime;
+
+    private bool isFlashing;
 
     void Start()
     {
@@ -48,6 +56,16 @@ public class UIRecipeTimer : MonoBehaviour
         gradient.SetKeys(colorKey, alphaKey);
 
         timerEnabled = true;
+
+        recipe = transform.parent.gameObject;
+
+        isFlashing = false;
+
+        if (flashing == true)
+        {
+            StartCoroutine(FlashingOverlay(recipe, warningColor, waitingTime));
+            isFlashing = true;
+        }
     }
 
 
@@ -61,6 +79,13 @@ public class UIRecipeTimer : MonoBehaviour
 
         timer.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = gradient.Evaluate(fillValue);
 
+
+        if (fillValue < 0.25 && isFlashing == false)
+        {
+            StartCoroutine(FlashingOverlay(recipe, warningColor, waitingTime));
+            isFlashing = true;
+        }
+
         if (fillValue < 0)
         {
             fillValue = 0;
@@ -68,7 +93,18 @@ public class UIRecipeTimer : MonoBehaviour
         }
     }
 
+    IEnumerator FlashingOverlay(GameObject recipe, Color color, float waitingTime)
+    {
+        while (true)
+        {
+            recipe.gameObject.transform.Find("UIOverlay").GetComponent<RawImage>().color = color;
 
+            yield return new WaitForSeconds(waitingTime);
 
+            recipe.gameObject.transform.Find("UIOverlay").GetComponent<RawImage>().color = new Color(0, 0, 0, 0);
+
+            yield return new WaitForSeconds(waitingTime);
+        }
+    }
 
 }

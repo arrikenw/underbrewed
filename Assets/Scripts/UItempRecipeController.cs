@@ -15,38 +15,33 @@ public class UItempRecipeController : MonoBehaviour
 
     private Color currentColor;
 
-    //CanvasRenderer thisRenderer;
-
+    //public GameObject overlay;
 
     void Start()
     {
+        //recipe = gameObject;
+
         timerScript = timer.GetComponent<UIRecipeTimer>();
-        backgroundColor = recipe.GetComponent<Image>().color;
-        //currentColor = backgroundColor;
+
     }
     
     void Update()
     {
 
-        if (timerScript.flashing == true)
+        // simulate if order was completed in time
+        if (Input.GetKeyUp("space"))
         {
-            Debug.Log("flashing on");
-
-            if (recipe.GetComponent<Image>().color == Color.red)
-            {
-                recipe.GetComponent<Image>().color = backgroundColor;
-            }
-            else
-            {
-                recipe.GetComponent<Image>().color = Color.red;
-            }
+            //TO DO: flash background green
+            timerScript.timerEnabled = false;
         }
 
         if (timerScript.timerEnabled == false)
         {
-            //Destroy(this.gameObject);
-            Debug.Log("End timer");
+            Destroy(this.gameObject);
         }
         
     }
+
 }
+
+
