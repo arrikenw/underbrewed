@@ -99,7 +99,7 @@ public class PickUpScript : MonoBehaviour
             print("Throwing");
             heldItem.GetComponent<Rigidbody>().useGravity = true;
             print(transform.forward);
-            heldItem.GetComponent<Rigidbody>().AddForce(transform.forward * throwMagnitude, ForceMode.Impulse);
+            heldItem.GetComponent<Rigidbody>().AddForce(transform.forward.normalized * throwMagnitude, ForceMode.Impulse);
             heldItem.GetComponent<Item>().OnDrop();
 
             heldItem = null;
