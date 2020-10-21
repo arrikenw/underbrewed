@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Renderer))]
 public class Interactable : MonoBehaviour {
     
     protected Material highlighter;
