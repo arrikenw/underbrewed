@@ -44,12 +44,11 @@ public class Station : Interactable
         storedItem = null;
     }
 
-    public GameObject TryPickup() {
-        if (canPickup) {
-            // GameObject tempItem = storedItem;
-            // OnPickup();
-            // return tempItem;
-            return storedItem;
+    public virtual GameObject TryPickup() {
+        if (storedItem != null && canPickup) {
+            GameObject tempItem = storedItem;
+            OnPickup();
+            return tempItem;
         } else {
             return null;
         }

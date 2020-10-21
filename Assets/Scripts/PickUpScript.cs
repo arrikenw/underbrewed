@@ -43,7 +43,7 @@ public class PickUpScript : MonoBehaviour
                 if (heldItem != null) {
                     heldItem.GetComponent<Rigidbody>().useGravity = false;
 
-                    interactable.GetComponent<Station>().OnPickup();
+                    // interactable.GetComponent<Station>().OnPickup();
                 }
             }
         }

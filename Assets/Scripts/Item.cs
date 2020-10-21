@@ -29,6 +29,10 @@ public class Item : Interactable
         held = false;
     }
 
+    public void OnDispense() {
+        held = true;
+    }
+
     public bool IsHeld() {
         return held;
     }
