@@ -18,6 +18,7 @@ public class PickUpScript : MonoBehaviour
     void FixedUpdate()
     {   
         Throw();
+        Interact();
         Pickup();
     }
 
@@ -105,6 +106,13 @@ public class PickUpScript : MonoBehaviour
             heldItem = null;
         }
     }
+
+    private void Interact() {
+        if (Input.GetKeyDown(KeyCode.Comma) && interactable != null) {
+            print("Interacting");
+            interactable.GetComponent<Interactable>().Interact(heldItem);
+        }
+     }
 
     private void OnTriggerStay(Collider other)
     {
