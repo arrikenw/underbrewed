@@ -30,13 +30,13 @@ public class Station : Interactable
         }
     }
 
-    void OnTriggerExit(Collider other) {
-        if (storedItem != null && GameObject.ReferenceEquals(storedItem, other.gameObject)) {        
-            print("Stored item moved from Station");
-            storedItem.GetComponent<Rigidbody>().isKinematic = false;
-            storedItem = null;
-        }
-    }
+    // void OnTriggerExit(Collider other) {
+    //     if (storedItem != null && GameObject.ReferenceEquals(storedItem, other.gameObject)) {        
+    //         print("Stored item moved from Station");
+    //         storedItem.GetComponent<Rigidbody>().isKinematic = false;
+    //         storedItem = null;
+    //     }
+    // }
 
     public void OnPickup() {
         storedItem.GetComponent<Rigidbody>().isKinematic = false;
