@@ -4,87 +4,127 @@ using UnityEngine;
 
 public class PickUpScript : MonoBehaviour 
 {
-    private GameObject PickedUp = null;
-    private bool IsPickedUp = false;
-
-    private GameObject interactableTarget = null;
-    private Interactable interactable = null;
+    [SerializeField] private int throwMagnitude = 10;
+    private GameObject interactable = null;
+    private GameObject heldItem = null;
 
     // Start is called before the first frame update
     void Start()
     {
-        print("1112222221#");
+
     }
 
     // Update is called once per frame
-    void LateUpdate()
-    {
-        //interact
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            print("E");
-            if (interactableTarget != null)
-            {
-                if (IsPickedUp == false)
-                {
-                    print("tried to interact but had empty hands");
-                }
-                else
-                {
-                    print("trying to interact");
-                    print(interactable);
-                    interactable.interact(PickedUp);
-                    //remove from hands
-                    PickedUp = null;
-                    IsPickedUp = false;
+    void FixedUpdate()
+    {   
+        Throw();
+        Pickup();
+    }
+
+    private void Pickup() {
+
+        // Picking Up
+        if (Input.GetKeyDown(KeyCode.M) && heldItem == null && interactable != null) {
+            
+            // Pickup item directly
+            if (interactable.GetComponent<Item>() != null) {
+                heldItem = interactable;
+                heldItem.GetComponent<Rigidbody>().useGravity = false;
+
+                heldItem.GetComponent<Item>().OnPickup();
+                interactable = null;
+            } 
+
+            // Pickup item from station
+            else if (interactable.GetComponent<Station>() != null) {
+                heldItem = interactable.GetComponent<Station>().TryPickup();
+
+                if (heldItem != null) {
+                    heldItem.GetComponent<Rigidbody>().useGravity = false;
+
+                    interactable.GetComponent<Station>().OnPickup();
                 }
             }
         }
 
-        //pickup
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            IsPickedUp = true;
+        // NOTE: Commented out because current functionality can be achieved by just dropping the item on
+        //       But if we need an actual interact button then that can be coded
+        // //interact
+        // if (Input.GetKeyDown(KeyCode.E))
+        // {
+        //     print("E");
+        //     if (interactableTarget != null)
+        //     {
+        //         if (IsPickedUp == false)
+        //         {
+        //             print("tried to interact but had empty hands");
+        //         }
+        //         else
+        //         {
+        //             print("trying to interact");
+        //             print(interactable);
+        //             interactable.interact(PickedUp);
+        //             //remove from hands
+        //             PickedUp = null;
+        //             IsPickedUp = false;
+        //         }
+        //     }
+        // }
+
+        // Dropping
+        if (Input.GetKeyUp(KeyCode.M) && heldItem != null) {
+            print("Dropping");
+            heldItem.GetComponent<Rigidbody>().useGravity = true;
+            heldItem.GetComponent<Item>().OnDrop();
+            heldItem = null;
         }
-        if (Input.GetKeyUp(KeyCode.M))
-        {
-            IsPickedUp = false;
-        }
-        if (PickedUp != null && IsPickedUp == true)
-        {
-            PickedUp.transform.position = transform.position;
+
+        // Moving
+        if (heldItem != null) {
+            heldItem.GetComponent<Rigidbody>().velocity = new Vector3(0f,0f,0f); 
+            heldItem.GetComponent<Rigidbody>().angularVelocity = new Vector3(0f,0f,0f);
+            heldItem.transform.rotation = Quaternion.Euler(new Vector3(0f,0f,0f));
+
+
+            // For isKinematic = true...
+            // heldItem.transform.position = transform.position + new Vector3(0f, 0.25f, 0f);
+
+            // For useGravity = false...
+            heldItem.GetComponent<Rigidbody>().MovePosition(transform.position + new Vector3(0f, 0.5f, 0f));
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.name != "Plane")
-        {
-            print("we are in collision area");
+    private void Throw() {
+        if (Input.GetKeyDown(KeyCode.Period) && heldItem != null) {
+            print("Throwing");
+            heldItem.GetComponent<Rigidbody>().useGravity = true;
+            print(transform.forward);
+            heldItem.GetComponent<Rigidbody>().AddForce(transform.forward * throwMagnitude, ForceMode.Impulse);
+            heldItem.GetComponent<Item>().OnDrop();
+
+            heldItem = null;
         }
-  
-        if (other.gameObject.name != "Plane" && PickedUp == null)
-        {
-            PickedUp = other.gameObject;
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (GameObject.ReferenceEquals(heldItem, other.gameObject)) {
+            return;
         }
 
-        if (other.gameObject.name == "Bench"){
-            interactableTarget = other.gameObject;
-            interactable = interactableTarget.GetComponent(typeof(Interactable)) as Interactable;
+        if (interactable == null && other.gameObject.GetComponent<Interactable>() != null) {
+            print("Contacted interactable");
+            interactable = other.gameObject;
+            interactable.GetComponent<Interactable>().OnContact();
         }
     }
 
     private void OnTriggerExit(Collider other) 
     {
-        print("we left the collision area");
-        if (PickedUp == other.gameObject)
-        {
-            PickedUp = null;
-        }
-
-        //idk if == works here
-        if (interactableTarget == other.gameObject){
-            interactableTarget = null;
+        if (interactable != null && GameObject.ReferenceEquals(interactable, other.gameObject)) {        
+            print("Left interactable");
+            interactable.GetComponent<Interactable>().OnLeave();
+            interactable = null;
         }
     }
 }
