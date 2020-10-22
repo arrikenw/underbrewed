@@ -7031,6 +7031,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwMagnitude: 10
+  animator: {fileID: 771001324}
 --- !u!65 &721818819
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7124,6 +7125,31 @@ Transform:
   m_Father: {fileID: 728270237}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &771001323 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5f23aae241d3ff64791935e0e0c42f00,
+    type: 3}
+  m_PrefabInstance: {fileID: 1512587536}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &771001324
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771001323}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6d969db5c84bf6545881eda994d2bb9c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &787329753
 GameObject:
   m_ObjectHideFlags: 0
@@ -7331,6 +7357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24348bc3b5699d24a821347c9b578a1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   potionColour: {r: 0, g: 0, b: 0, a: 0}
 --- !u!54 &826261804
 Rigidbody:
@@ -7626,6 +7653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50674572d86c3c469f908a13013c305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   mixColour: {r: 0.27058825, g: 0.8980392, b: 0.18039216, a: 1}
 --- !u!1001 &870131390
 PrefabInstance:
