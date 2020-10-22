@@ -1,12 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using UnityEngine.UI;
+
+
+
+
 
 public class Station : Interactable
 {
-
+    // storage logic
     protected GameObject storedItem;
     protected bool canPickup = true;
+
 
     // Start is called before the first frame update
     protected override void Start()
@@ -14,11 +21,12 @@ public class Station : Interactable
         base.Start();
     }
 
-    // // Update is called once per frame
-    // void Update()
-    // {
-        
-    // }
+    /* // Update is called once per frame
+     public void Update()
+     {
+
+     }
+     */
 
     void OnTriggerStay(Collider other) {
         if (storedItem == null && other.gameObject.GetComponent<Item>() != null && !other.gameObject.GetComponent<Item>().IsHeld()) {
@@ -30,13 +38,13 @@ public class Station : Interactable
         }
     }
 
-    void OnTriggerExit(Collider other) {
-        if (storedItem != null && GameObject.ReferenceEquals(storedItem, other.gameObject)) {        
-            print("Stored item moved from Station");
-            storedItem.GetComponent<Rigidbody>().isKinematic = false;
-            storedItem = null;
-        }
-    }
+    // void OnTriggerExit(Collider other) {
+    //     if (storedItem != null && GameObject.ReferenceEquals(storedItem, other.gameObject)) {        
+    //         print("Stored item moved from Station");
+    //         storedItem.GetComponent<Rigidbody>().isKinematic = false;
+    //         storedItem = null;
+    //     }
+    // }
 
     public void OnPickup() {
         storedItem.GetComponent<Rigidbody>().isKinematic = false;
@@ -44,12 +52,11 @@ public class Station : Interactable
         storedItem = null;
     }
 
-    public GameObject TryPickup() {
-        if (canPickup) {
-            // GameObject tempItem = storedItem;
-            // OnPickup();
-            // return tempItem;
-            return storedItem;
+    public virtual GameObject TryPickup() {
+        if (storedItem != null && canPickup) {
+            GameObject tempItem = storedItem;
+            OnPickup();
+            return tempItem;
         } else {
             return null;
         }

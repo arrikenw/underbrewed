@@ -7,7 +7,7 @@ public class PickUpScript : MonoBehaviour
     [SerializeField] private int throwMagnitude = 10;
     private GameObject interactable = null;
     private GameObject heldItem = null;
-
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +18,7 @@ public class PickUpScript : MonoBehaviour
     void FixedUpdate()
     {   
         Throw();
+        Interact();
         Pickup();
     }
 
@@ -25,7 +26,7 @@ public class PickUpScript : MonoBehaviour
 
         // Picking Up
         if (Input.GetKeyDown(KeyCode.M) && heldItem == null && interactable != null) {
-            
+            animator.Play("PickUp");
             // Pickup item directly
             if (interactable.GetComponent<Item>() != null) {
                 heldItem = interactable;
@@ -42,7 +43,7 @@ public class PickUpScript : MonoBehaviour
                 if (heldItem != null) {
                     heldItem.GetComponent<Rigidbody>().useGravity = false;
 
-                    interactable.GetComponent<Station>().OnPickup();
+                    // interactable.GetComponent<Station>().OnPickup();
                 }
             }
         }
@@ -73,6 +74,7 @@ public class PickUpScript : MonoBehaviour
 
         // Dropping
         if (Input.GetKeyUp(KeyCode.M) && heldItem != null) {
+            animator.Play("PutDown");
             print("Dropping");
             heldItem.GetComponent<Rigidbody>().useGravity = true;
             heldItem.GetComponent<Item>().OnDrop();
@@ -96,15 +98,23 @@ public class PickUpScript : MonoBehaviour
 
     private void Throw() {
         if (Input.GetKeyDown(KeyCode.Period) && heldItem != null) {
+            animator.Play("PutDown");
             print("Throwing");
             heldItem.GetComponent<Rigidbody>().useGravity = true;
             print(transform.forward);
-            heldItem.GetComponent<Rigidbody>().AddForce(transform.forward * throwMagnitude, ForceMode.Impulse);
+            heldItem.GetComponent<Rigidbody>().AddForce(transform.forward.normalized * throwMagnitude, ForceMode.Impulse);
             heldItem.GetComponent<Item>().OnDrop();
 
             heldItem = null;
         }
     }
+
+    private void Interact() {
+        if (Input.GetKeyDown(KeyCode.Comma) && interactable != null) {
+            print("Interacting");
+            interactable.GetComponent<Interactable>().Interact(heldItem);
+        }
+     }
 
     private void OnTriggerStay(Collider other)
     {

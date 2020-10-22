@@ -40,15 +40,15 @@ public class Player : MonoBehaviour
     }
 
     void FixedUpdate() {
-        positionUpdates();
+        PositionUpdates();
     }
 
     void Update()
     {
-        actionUpdates();
+        ActionUpdates();
     }
 
-    void actionUpdates()
+    void ActionUpdates()
     {
 
         //finish action and return to idle, or reduce number of frames left in action
@@ -135,18 +135,22 @@ public class Player : MonoBehaviour
 
     }
 
-    void positionUpdates()
+    void PositionUpdates()
     {
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
 
-        Vector3 tempVect = (new Vector3(h, 0.0f, v)).normalized;
-        // print(tempVect);
-        //tempVect = tempVect.normalized * maxSpeed * Time.deltaTime;
-        rb.MovePosition(rb.position + tempVect * speed);
-        if (tempVect != new Vector3(0.0f, 0.0f, 0.0f)) {
-            rb.MoveRotation(Quaternion.LookRotation(tempVect));
+        Vector3 direction = (new Vector3(h, 0.0f, v)).normalized;
+
+        rb.MovePosition(rb.position + direction * speed);
+        rb.velocity = new Vector3(0f,0f,0f); 
+        rb.angularVelocity = new Vector3(0f,0f,0f);
+        if (direction == new Vector3(0.0f, 0.0f, 0.0f)) {
+            rb.MoveRotation(Quaternion.LookRotation(transform.forward));
+        } else {
+            rb.MoveRotation(Quaternion.LookRotation(direction));
         }
+
 
 
 

@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Collider))]
 public class Item : Interactable
 {
-    // Start is called before the first frame update
 
+    // keep track of ingredient 
+    public Processor.IngredientType type;
+
+    // Start is called before the first frame update
     private bool held = false;
     protected override void Start()
     {
@@ -25,6 +30,10 @@ public class Item : Interactable
 
     public void OnDrop() {
         held = false;
+    }
+
+    public void OnDispense() {
+        held = true;
     }
 
     public bool IsHeld() {
