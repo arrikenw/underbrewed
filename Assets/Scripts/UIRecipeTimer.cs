@@ -93,11 +93,11 @@ public class UIRecipeTimer : MonoBehaviour
         }
     }
 
-    IEnumerator FlashingOverlay(GameObject recipe, Color color, float waitingTime)
+    IEnumerator FlashingOverlay(GameObject recipe, Color warningColor, float waitingTime)
     {
         while (true)
         {
-            recipe.gameObject.transform.Find("UIOverlay").GetComponent<RawImage>().color = color;
+            recipe.gameObject.transform.Find("UIOverlay").GetComponent<RawImage>().color = warningColor;
 
             yield return new WaitForSeconds(waitingTime);
 
