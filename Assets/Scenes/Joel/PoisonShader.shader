@@ -35,14 +35,12 @@ Shader "Unlit/PoisonShader"
 	float4 _MainTex_ST;
 	float4 _MainTex_TexelSize;
 
+
 	v2f vert(appdata v)
 	{
 		v2f o;
-
 		o.color = v.color;
-
-		
-		v.vertex = v.vertex + cos(float4(_Time.z, _Time.z, _Time.z, 1.0f)); //float4(0.025*sin(v.vertex.x + _Time.z) + 0.975*v.vertex.x, 0.025*sin(v.vertex.y + _Time.z) + 0.975*v.vertex.y, v.vertex.z, 1);
+		v.vertex = float4(0.05*sin(v.vertex.x + 2*sin(_Time.z)) + v.vertex.x, 0.05*sin(v.vertex.y + 3*cos(_Time.z)) + v.vertex.y, v.vertex.z, 1);
 		
 		//default transformations
 		o.vertex = UnityObjectToClipPos(v.vertex);
@@ -63,7 +61,7 @@ Shader "Unlit/PoisonShader"
 		//gain a hue as it swells
 		//original colour is weighted more than swell colour
 		fixed4 redCol = red*abs(sin(_Time.z));
-		fixed4 finalCol = 0.2*textureCol + 0.4*redCol + 0.4*red;
+		fixed4 finalCol = 0.2*textureCol + 0.2*redCol + 0.6*red;
 		return finalCol;
 	}
 		ENDCG
