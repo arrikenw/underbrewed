@@ -9,7 +9,7 @@ public class UItempRecipeController : MonoBehaviour
 
     public GameObject timer;
 
-    private UIRecipeTimer timerScript;
+    public UIRecipeTimer timerScript;
 
     private Color backgroundColor;
 
