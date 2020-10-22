@@ -1,12 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using UnityEngine.UI;
+
+
+
+
 
 public class Station : Interactable
 {
-
+    // storage logic
     protected GameObject storedItem;
     protected bool canPickup = true;
+
 
     // Start is called before the first frame update
     protected override void Start()
@@ -14,11 +21,12 @@ public class Station : Interactable
         base.Start();
     }
 
-    // // Update is called once per frame
-    // void Update()
-    // {
-        
-    // }
+    /* // Update is called once per frame
+     public void Update()
+     {
+
+     }
+     */
 
     void OnTriggerStay(Collider other) {
         if (storedItem == null && other.gameObject.GetComponent<Item>() != null && !other.gameObject.GetComponent<Item>().IsHeld()) {
