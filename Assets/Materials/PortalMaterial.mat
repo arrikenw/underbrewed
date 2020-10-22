@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BubbleMaterial
-  m_Shader: {fileID: 4800000, guid: 93d1f711d6f953b40bc77ea2e1a82ed5, type: 3}
+  m_Name: PortalMaterial
+  m_Shader: {fileID: 4800000, guid: 6afe00fc3df06f7409300cd6bb6f46c0, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -85,6 +85,6 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _CenterShadow: {r: 0.09011214, g: 0.65123, b: 0.7075472, a: 1}
-    - _Color: {r: 0.4705882, g: 0.5381656, b: 1, a: 1}
+    - _Color: {r: 0.57448447, g: 0.4705882, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Pivot: {r: 0.5, g: 0.5, b: 1, a: 1}
