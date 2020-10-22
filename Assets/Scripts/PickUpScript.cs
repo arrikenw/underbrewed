@@ -7,7 +7,7 @@ public class PickUpScript : MonoBehaviour
     [SerializeField] private int throwMagnitude = 10;
     private GameObject interactable = null;
     private GameObject heldItem = null;
-
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +25,7 @@ public class PickUpScript : MonoBehaviour
 
         // Picking Up
         if (Input.GetKeyDown(KeyCode.M) && heldItem == null && interactable != null) {
-            
+            animator.Play("PickUp");
             // Pickup item directly
             if (interactable.GetComponent<Item>() != null) {
                 heldItem = interactable;
@@ -73,6 +73,7 @@ public class PickUpScript : MonoBehaviour
 
         // Dropping
         if (Input.GetKeyUp(KeyCode.M) && heldItem != null) {
+            animator.Play("PutDown");
             print("Dropping");
             heldItem.GetComponent<Rigidbody>().useGravity = true;
             heldItem.GetComponent<Item>().OnDrop();
@@ -96,6 +97,7 @@ public class PickUpScript : MonoBehaviour
 
     private void Throw() {
         if (Input.GetKeyDown(KeyCode.Period) && heldItem != null) {
+            animator.Play("PutDown");
             print("Throwing");
             heldItem.GetComponent<Rigidbody>().useGravity = true;
             print(transform.forward);
