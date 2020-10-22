@@ -83,6 +83,8 @@ public class Processor : Station
             {
                 //check new item type
                 IngredientType currentIngredient = base.storedItem.GetComponent<Item>().type;
+
+                //todo, don't cook if item is a finished product
                 isCooking = true;
                 base.canPickup = false;
                 locked = true;
@@ -121,6 +123,9 @@ public class Processor : Station
 
                     //change the stored item to the newly created object
                     base.storedItem = processedOutput;
+
+                    //set kinematic to ensure item stays locked in place like the input ingredient
+                    storedItem.GetComponent<Rigidbody>().isKinematic = true;
 
                     /*
                     //destroy progress bar
