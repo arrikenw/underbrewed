@@ -7148,6 +7148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwMagnitude: 10
+  animator: {fileID: 0}
 --- !u!65 &721818819
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9539,6 +9540,7 @@ MonoBehaviour:
     type: 3}
   charredFlowerPrefab: {fileID: 4010277015074043715, guid: e2b053d3878e78046a9073777998f69d,
     type: 3}
+  psys: {fileID: 7408081723834861634, guid: bac9bb0729c3b43408ca763151bd02c0, type: 3}
 --- !u!4 &1343799954
 Transform:
   m_ObjectHideFlags: 0
@@ -11526,6 +11528,8 @@ MonoBehaviour:
   idleMat: {fileID: 0}
   cookMat: {fileID: 0}
   station: 3
+  cookEffectsPrefab: {fileID: 6579814921043404322, guid: efbaa000c1234d0409f25479379a3a01,
+    type: 3}
 --- !u!65 &1842690614
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17255,12 +17259,12 @@ PrefabInstance:
     - target: {fileID: 4073269627024810972, guid: 467793fcd4d086844a69eaf147b281c0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.6414783
+      value: -0.34
       objectReference: {fileID: 0}
     - target: {fileID: 4073269627024810972, guid: 467793fcd4d086844a69eaf147b281c0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.46231663
+      value: 2.13
       objectReference: {fileID: 0}
     - target: {fileID: 4073269627024810972, guid: 467793fcd4d086844a69eaf147b281c0,
         type: 3}
