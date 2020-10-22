@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIOrderTimer : MonoBehaviour
+public class UIRecipeTimer : MonoBehaviour
 {
     public Slider timer;
     public float maxTime = 45.0f; // time allowed for task
@@ -18,9 +18,19 @@ public class UIOrderTimer : MonoBehaviour
 
     private float elapsedTime = 0.0f; // time passed since timer started
 
-    private float fillValue;
+    public float fillValue;
 
-    private bool timerEnabled = false;
+    public bool timerEnabled = false;
+
+    public bool flashing;
+
+    public GameObject recipe;
+
+    public Color warningColor;
+
+    public float waitingTime;
+
+    private bool isFlashing;
 
     void Start()
     {
@@ -46,6 +56,16 @@ public class UIOrderTimer : MonoBehaviour
         gradient.SetKeys(colorKey, alphaKey);
 
         timerEnabled = true;
+
+        recipe = transform.parent.gameObject;
+
+        isFlashing = false;
+
+        if (flashing == true)
+        {
+            StartCoroutine(FlashingOverlay(recipe, warningColor, waitingTime));
+            isFlashing = true;
+        }
     }
 
 
@@ -60,10 +80,30 @@ public class UIOrderTimer : MonoBehaviour
         timer.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = gradient.Evaluate(fillValue);
 
 
+        if (fillValue < 0.25 && isFlashing == false)
+        {
+            StartCoroutine(FlashingOverlay(recipe, warningColor, waitingTime));
+            isFlashing = true;
+        }
+
         if (fillValue < 0)
         {
             fillValue = 0;
             timerEnabled = false;
+        }
+    }
+
+    IEnumerator FlashingOverlay(GameObject recipe, Color color, float waitingTime)
+    {
+        while (true)
+        {
+            recipe.gameObject.transform.Find("UIOverlay").GetComponent<RawImage>().color = color;
+
+            yield return new WaitForSeconds(waitingTime);
+
+            recipe.gameObject.transform.Find("UIOverlay").GetComponent<RawImage>().color = new Color(0, 0, 0, 0);
+
+            yield return new WaitForSeconds(waitingTime);
         }
     }
 
