@@ -11,8 +11,10 @@ public class PrefabScript : MonoBehaviour
     public GameObject flowerPrefab;
     public GameObject charredFlowerPrefab;
 
+    //particle system prefab
+    public ParticleSystem psys;
+
     //lookup tables for cooking time
-    //TODO rewrite to work based on class? idk 
     public readonly Dictionary<Tuple<Processor.StationType, Processor.IngredientType>, int> cooktimeMap
             = new Dictionary<Tuple<Processor.StationType, Processor.IngredientType>, int>();
 
@@ -22,13 +24,11 @@ public class PrefabScript : MonoBehaviour
 
     public int getFromCooktimeMap(Tuple<Processor.StationType, Processor.IngredientType> conditions)
     {
-        print("REACHED FUNC");
         return cooktimeMap[conditions];
     }
 
     public GameObject getFromIngredientMap(Tuple<Processor.StationType, Processor.IngredientType> conditions)
     {
-        print("REACHED FUNC2");
         return ingredientMap[conditions];
     }
 
@@ -38,7 +38,8 @@ public class PrefabScript : MonoBehaviour
         cooktimeMap.Add(new Tuple<Processor.StationType, Processor.IngredientType>(Processor.StationType.Cauldron, Processor.IngredientType.Bone), 1000);
         cooktimeMap.Add(new Tuple<Processor.StationType, Processor.IngredientType>(Processor.StationType.Cauldron, Processor.IngredientType.Flower), 15); //etc.
 
-        cooktimeMap.Add(new Tuple<Processor.StationType, Processor.IngredientType>(Processor.StationType.Grill, Processor.IngredientType.Bone), 650);
+        //650
+        cooktimeMap.Add(new Tuple<Processor.StationType, Processor.IngredientType>(Processor.StationType.Grill, Processor.IngredientType.Bone), 2000);
 
         //outputs
         ingredientMap.Add(new Tuple<Processor.StationType, Processor.IngredientType>(Processor.StationType.Cauldron, Processor.IngredientType.Bone), meltedBonePrefab);

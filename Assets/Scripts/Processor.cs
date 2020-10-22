@@ -41,13 +41,16 @@ public class Processor : Station
     private bool isCooking = false;
     private IngredientType currentIngredient;
 
+    // particle effects
+    private ParticleSystem psys;
+
     //stationType
     [SerializeField]
     public StationType station;
-    public void setStationType(StationType stationType)
-    {
-        station = stationType;
-    }
+
+    [SerializeField]
+    public GameObject cookEffectsPrefab;
+    private GameObject cookEffects;
 
     // prefabs
     private PrefabScript prefabManager;
@@ -58,7 +61,8 @@ public class Processor : Station
     {
         base.Start();
         prefabManager = GameObject.FindGameObjectWithTag("PrefabManagerTag").GetComponent<PrefabScript>();
-        print(prefabManager);
+        psys = Instantiate(prefabManager.psys, transform.position, transform.rotation);
+        psys.Stop();
         r = GetComponent<Renderer>();
         if (idleMat)
         {
@@ -84,7 +88,12 @@ public class Processor : Station
                 //check new item type
                 IngredientType currentIngredient = base.storedItem.GetComponent<Item>().type;
 
-                //todo, don't cook if item is a finished product
+                //skip if the type is not a base ingredient
+                if (currentIngredient != IngredientType.Bone && currentIngredient != IngredientType.Flower)
+                {
+                    return;
+                }
+
                 isCooking = true;
                 base.canPickup = false;
                 locked = true;
@@ -95,6 +104,14 @@ public class Processor : Station
                     r.material = cookMat;
                 }
 
+                //activate cooking particle system
+                //should actually be turning off and on, but our fire is an object so i can't switch on and off
+                if (cookEffectsPrefab)
+                {
+                    cookEffects = Instantiate(cookEffectsPrefab, transform.position, transform.rotation);
+                    cookEffects.transform.parent = transform;
+                }
+
                 // set cooking time
                 totalCooktime = prefabManager.getFromCooktimeMap(new Tuple<StationType, IngredientType>(station, currentIngredient)); //todo replace with ingredient type of stored object rather than just using bone
                 timeUntilComplete = totalCooktime;
@@ -103,6 +120,17 @@ public class Processor : Station
             {
                 timeUntilComplete -= 1;
                 //bar.value = ((float)timeUntilComplete) / totalCooktime;
+                if (timeUntilComplete == 300)
+                {
+                    psys.Play();
+                }
+                if (timeUntilComplete == 100)
+                {
+                    if (cookEffects)
+                    {
+                        Destroy(cookEffects);
+                    }
+                }
                 if (timeUntilComplete <= 0)
                 {
                     isCooking = false;
@@ -124,8 +152,14 @@ public class Processor : Station
                     //change the stored item to the newly created object
                     base.storedItem = processedOutput;
 
+                    //stop emmitting particles from the particle systems
+                    psys.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+                    
+                    
+
                     //set kinematic to ensure item stays locked in place like the input ingredient
                     storedItem.GetComponent<Rigidbody>().isKinematic = true;
+
 
                     /*
                     //destroy progress bar
