@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 714230605c23d724d9a14bc1680444a3
+guid: 1200a53844fcaee488ba7145045f6d4f
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
@@ -7,13 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: eye_brown
-    second: {fileID: 2100000, guid: 29eab88a688e2e04f9a16d5bd98cef01, type: 2}
+      name: SphereMat
+    second: {fileID: 2100000, guid: a5534978205b89b4389db6678f0e31b0, type: 2}
   materials:
     materialImportMode: 1
-    materialName: 1
-    materialSearch: 0
-    materialLocation: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
