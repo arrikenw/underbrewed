@@ -38,13 +38,13 @@ public class Station : Interactable
         }
     }
 
-    void OnTriggerExit(Collider other) {
-        if (storedItem != null && GameObject.ReferenceEquals(storedItem, other.gameObject)) {        
-            print("Stored item moved from Station");
-            storedItem.GetComponent<Rigidbody>().isKinematic = false;
-            storedItem = null;
-        }
-    }
+    // void OnTriggerExit(Collider other) {
+    //     if (storedItem != null && GameObject.ReferenceEquals(storedItem, other.gameObject)) {        
+    //         print("Stored item moved from Station");
+    //         storedItem.GetComponent<Rigidbody>().isKinematic = false;
+    //         storedItem = null;
+    //     }
+    // }
 
     public void OnPickup() {
         storedItem.GetComponent<Rigidbody>().isKinematic = false;
@@ -52,12 +52,11 @@ public class Station : Interactable
         storedItem = null;
     }
 
-    public GameObject TryPickup() {
-        if (canPickup) {
-            // GameObject tempItem = storedItem;
-            // OnPickup();
-            // return tempItem;
-            return storedItem;
+    public virtual GameObject TryPickup() {
+        if (storedItem != null && canPickup) {
+            GameObject tempItem = storedItem;
+            OnPickup();
+            return tempItem;
         } else {
             return null;
         }

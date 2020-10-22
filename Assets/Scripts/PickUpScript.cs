@@ -18,6 +18,7 @@ public class PickUpScript : MonoBehaviour
     void FixedUpdate()
     {   
         Throw();
+        Interact();
         Pickup();
     }
 
@@ -42,7 +43,7 @@ public class PickUpScript : MonoBehaviour
                 if (heldItem != null) {
                     heldItem.GetComponent<Rigidbody>().useGravity = false;
 
-                    interactable.GetComponent<Station>().OnPickup();
+                    // interactable.GetComponent<Station>().OnPickup();
                 }
             }
         }
@@ -101,12 +102,19 @@ public class PickUpScript : MonoBehaviour
             print("Throwing");
             heldItem.GetComponent<Rigidbody>().useGravity = true;
             print(transform.forward);
-            heldItem.GetComponent<Rigidbody>().AddForce(transform.forward * throwMagnitude, ForceMode.Impulse);
+            heldItem.GetComponent<Rigidbody>().AddForce(transform.forward.normalized * throwMagnitude, ForceMode.Impulse);
             heldItem.GetComponent<Item>().OnDrop();
 
             heldItem = null;
         }
     }
+
+    private void Interact() {
+        if (Input.GetKeyDown(KeyCode.Comma) && interactable != null) {
+            print("Interacting");
+            interactable.GetComponent<Interactable>().Interact(heldItem);
+        }
+     }
 
     private void OnTriggerStay(Collider other)
     {

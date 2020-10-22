@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Collider))]
 public class Item : Interactable
 {
 
@@ -28,6 +30,10 @@ public class Item : Interactable
 
     public void OnDrop() {
         held = false;
+    }
+
+    public void OnDispense() {
+        held = true;
     }
 
     public bool IsHeld() {
