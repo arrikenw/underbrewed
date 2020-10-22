@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7378391329866404585}
   - component: {fileID: 7326994230315832544}
   - component: {fileID: 6533211871870638705}
-  - component: {fileID: 5889311929051918332}
+  - component: {fileID: 3449548494723915528}
   m_Layer: 0
   m_Name: skull_08
   m_TagString: Untagged
@@ -127,7 +127,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5889311929051918332
+--- !u!114 &3449548494723915528
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,7 +136,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7378391329860651817}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efe3e8e38199f53468b11568c72f582b, type: 3}
+  m_Script: {fileID: 11500000, guid: f50674572d86c3c469f908a13013c305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
+  mixColour: {r: 0.8018868, g: 0.03404235, b: 0.4215293, a: 1}
