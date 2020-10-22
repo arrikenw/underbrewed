@@ -39,6 +39,7 @@ public class Processor : Station
     // cooking logic
     private int timeUntilComplete = 0;
     private bool isCooking = false;
+    private IngredientType currentIngredient;
 
     //stationType
     [SerializeField]
@@ -80,7 +81,8 @@ public class Processor : Station
         {
             if (!isCooking)
             {
-                print("HELLO");
+                //check new item type
+                IngredientType currentIngredient = base.storedItem.GetComponent<Item>().type;
                 isCooking = true;
                 base.canPickup = false;
                 locked = true;
@@ -91,25 +93,13 @@ public class Processor : Station
                     r.material = cookMat;
                 }
 
-
                 // set cooking time
-                print("STATION:");
-                print(station);
-                print("PREFAB: ");
-                print(prefabManager);
-                totalCooktime = prefabManager.getFromCooktimeMap(new Tuple<StationType, IngredientType>(station, IngredientType.Bone)); //todo replace with ingredient type of stored object rather than just using bone
-
-                print("HELLO2");
-                print("TOTAL COOKTIME: " + totalCooktime);
-
-                print("END STATION");
+                totalCooktime = prefabManager.getFromCooktimeMap(new Tuple<StationType, IngredientType>(station, currentIngredient)); //todo replace with ingredient type of stored object rather than just using bone
                 timeUntilComplete = totalCooktime;
             }
             else
             {
                 timeUntilComplete -= 1;
-                print(timeUntilComplete);
-                //print(bar.value);
                 //bar.value = ((float)timeUntilComplete) / totalCooktime;
                 if (timeUntilComplete <= 0)
                 {
@@ -122,9 +112,8 @@ public class Processor : Station
 
 
                     //todo add sound effect or something on completion
-
                     //create new object
-                    GameObject processedOutput = Instantiate(prefabManager.getFromIngredientMap(new Tuple<StationType, IngredientType>(station, IngredientType.Bone)), base.storedItem.transform.position, base.storedItem.transform.rotation);
+                    GameObject processedOutput = Instantiate(prefabManager.getFromIngredientMap(new Tuple<StationType, IngredientType>(station, currentIngredient)), base.storedItem.transform.position, base.storedItem.transform.rotation);
 
                     //destroy object being processed
                     Destroy(base.storedItem);
@@ -133,11 +122,13 @@ public class Processor : Station
                     //change the stored item to the newly created object
                     base.storedItem = processedOutput;
 
+                    /*
                     //destroy progress bar
                     Destroy(progressCanvas);
                     progressCanvas = null;
                     progressBar = null;
                     bar = null;
+                    */
                 }
             }
         }
