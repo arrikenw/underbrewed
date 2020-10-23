@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIRecipeTimer : MonoBehaviour
 {
     public Slider timer;
+
     public float maxTime = 45.0f; // time allowed for task
 
     public Color lowColor = Color.red;
@@ -24,11 +25,11 @@ public class UIRecipeTimer : MonoBehaviour
 
     public bool flashing;
 
-    public GameObject recipe;
+    private GameObject recipe;
 
     public Color warningColor;
 
-    public float waitingTime;
+    public float flashDelay = 0.8f; // lower -> faster 
 
     private bool isFlashing;
 
@@ -63,7 +64,7 @@ public class UIRecipeTimer : MonoBehaviour
 
         if (flashing == true)
         {
-            StartCoroutine(FlashingOverlay(recipe, warningColor, waitingTime));
+            StartCoroutine(FlashingOverlay(recipe, warningColor, flashDelay));
             isFlashing = true;
         }
     }
@@ -82,7 +83,7 @@ public class UIRecipeTimer : MonoBehaviour
 
         if (fillValue < 0.25 && isFlashing == false)
         {
-            StartCoroutine(FlashingOverlay(recipe, warningColor, waitingTime));
+            StartCoroutine(FlashingOverlay(recipe, warningColor, flashDelay));
             isFlashing = true;
         }
 
@@ -93,17 +94,17 @@ public class UIRecipeTimer : MonoBehaviour
         }
     }
 
-    IEnumerator FlashingOverlay(GameObject recipe, Color color, float waitingTime)
+    IEnumerator FlashingOverlay(GameObject recipe, Color warningColor, float flashDelay)
     {
         while (true)
         {
-            recipe.gameObject.transform.Find("UIOverlay").GetComponent<RawImage>().color = color;
+            recipe.gameObject.transform.Find("UIOverlay").GetComponent<RawImage>().color = warningColor;
 
-            yield return new WaitForSeconds(waitingTime);
+            yield return new WaitForSeconds(flashDelay);
 
             recipe.gameObject.transform.Find("UIOverlay").GetComponent<RawImage>().color = new Color(0, 0, 0, 0);
 
-            yield return new WaitForSeconds(waitingTime);
+            yield return new WaitForSeconds(flashDelay);
         }
     }
 
