@@ -85,6 +85,6 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _CenterShadow: {r: 0.09011214, g: 0.65123, b: 0.7075472, a: 1}
-    - _Color: {r: 0.4705882, g: 0.5381656, b: 1, a: 1}
+    - _Color: {r: 1, g: 0.4705882, b: 0.7880936, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Pivot: {r: 0.5, g: 0.5, b: 1, a: 1}
