@@ -56,15 +56,18 @@ public class tempRecipeQueue : MonoBehaviour
                 InsertRecipe(n, recipe1);
                 break;
             case 1:
-                InsertRecipe(n, recipe1);
+                InsertRecipe(n, recipe2);
                 break;
             case 2:
-                InsertRecipe(n, recipe2);
+                InsertRecipe(n, recipe3);
                 break;
             case 3:
                 InsertRecipe(n, recipe2);
                 break;
             case 4:
+                InsertRecipe(n, recipe1);
+                break;
+            case 5:
                 InsertRecipe(n, recipe3);
                 break;
         }
@@ -79,16 +82,19 @@ public class tempRecipeQueue : MonoBehaviour
                 InsertRecipe(n, redRecipe1);
                 break;
             case 1:
-                InsertRecipe(n, redRecipe1);
+                InsertRecipe(n, redRecipe2);
                 break;
             case 2:
-                InsertRecipe(n, redRecipe2);
+                InsertRecipe(n, redRecipe1);
                 break;
             case 3:
-                InsertRecipe(n, redRecipe2);
+                InsertRecipe(n, redRecipe3);
                 break;
             case 4:
-                InsertRecipe(n, redRecipe3);
+                InsertRecipe(n, redRecipe2);
+                break;
+            case 5:
+                InsertRecipe(n, redRecipe1);
                 break;
         }
     }
