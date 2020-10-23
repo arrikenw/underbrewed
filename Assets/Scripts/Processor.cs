@@ -12,7 +12,9 @@ public class Processor : Station
         Bone,
         Flower,
         MeltedBone,
-        CharredFlower //etc.
+        CharredFlower,
+        Cheese,
+        Eyeball//etc.
     }
 
     public enum StationType
@@ -83,14 +85,16 @@ public class Processor : Station
     {
         if (base.storedItem)
         {
+            //check new item type
+            IngredientType currentIngredient = base.storedItem.GetComponent<Ingredient>().type;
+
             if (!isCooking)
             {
-                //check new item type
-                IngredientType currentIngredient = base.storedItem.GetComponent<Item>().type;
 
                 //skip if the type is not a base ingredient
                 if (currentIngredient != IngredientType.Bone && currentIngredient != IngredientType.Flower)
                 {
+                    print("returning");
                     return;
                 }
 
@@ -120,7 +124,7 @@ public class Processor : Station
             {
                 timeUntilComplete -= 1;
                 //bar.value = ((float)timeUntilComplete) / totalCooktime;
-                if (timeUntilComplete == 300)
+                if (timeUntilComplete == 350)
                 {
                     psys.Play();
                 }
@@ -131,17 +135,10 @@ public class Processor : Station
                         Destroy(cookEffects);
                     }
                 }
-                if (timeUntilComplete <= 0)
+
+                //convert slightly earlier than can be picked up to ensure transition is smoothly covered by particles
+                if (timeUntilComplete == 100)
                 {
-                    isCooking = false;
-                    base.canPickup = true;
-                    if (r && idleMat)
-                    {
-                        r.material = idleMat;
-                    }
-
-
-                    //todo add sound effect or something on completion
                     //create new object
                     GameObject processedOutput = Instantiate(prefabManager.getFromIngredientMap(new Tuple<StationType, IngredientType>(station, currentIngredient)), base.storedItem.transform.position, base.storedItem.transform.rotation);
 
@@ -152,13 +149,22 @@ public class Processor : Station
                     //change the stored item to the newly created object
                     base.storedItem = processedOutput;
 
-                    //stop emmitting particles from the particle systems
-                    psys.Stop(true, ParticleSystemStopBehavior.StopEmitting);
-                    
-                    
-
                     //set kinematic to ensure item stays locked in place like the input ingredient
                     storedItem.GetComponent<Rigidbody>().isKinematic = true;
+                }
+
+                if (timeUntilComplete <= 0)
+                {
+                    //todo add sound effect or something on completion
+                    isCooking = false;
+                    base.canPickup = true;
+                    if (r && idleMat)
+                    {
+                        r.material = idleMat;
+                    }
+
+                    //stop emmitting particles from the particle systems
+                    psys.Stop(true, ParticleSystemStopBehavior.StopEmitting);
 
 
                     /*
