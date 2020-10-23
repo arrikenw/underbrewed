@@ -6,33 +6,37 @@ using UnityEngine;
 public class Potion : Item
 {
     [SerializeField] Color potionColour;
-    // void Awake() {
-    //     Vector3 actualPosition = transform.position;
-    //     // Vector3 actualScale = transform.localScale;
-    //     // transform.localScale = Vector3.one;
-    //     transform.position = Vector3.zero;
+    private GameObject potionLiquid;
+    public Material opaque;
+    void Awake() {
+        //     Vector3 actualPosition = transform.position;
+        //     // Vector3 actualScale = transform.localScale;
+        //     // transform.localScale = Vector3.one;
+        //     transform.position = Vector3.zero;
 
-    //     MeshFilter[] meshFilters = GetComponentsInChildren<MeshFilter>();
-    //     CombineInstance[] combine = new CombineInstance[meshFilters.Length];
+        //     MeshFilter[] meshFilters = GetComponentsInChildren<MeshFilter>();
+        //     CombineInstance[] combine = new CombineInstance[meshFilters.Length];
 
-    //     int i = 0;
-    //     while (i < meshFilters.Length)
-    //     {
-    //         combine[i].mesh = meshFilters[i].sharedMesh;
-    //         combine[i].transform = meshFilters[i].transform.localToWorldMatrix;
-    //         // meshFilters[i].gameObject.SetActive(false);
+        //     int i = 0;
+        //     while (i < meshFilters.Length)
+        //     {
+        //         combine[i].mesh = meshFilters[i].sharedMesh;
+        //         combine[i].transform = meshFilters[i].transform.localToWorldMatrix;
+        //         // meshFilters[i].gameObject.SetActive(false);
 
-    //         i++;
-    //     }
+        //         i++;
+        //     }
 
-    //     GetComponent<MeshFilter>().mesh = new Mesh();
-    //     GetComponent<MeshFilter>().mesh.CombineMeshes(combine);
-    //     GetComponent<MeshCollider>().sharedMesh = GetComponent<MeshFilter>().sharedMesh;
+        //     GetComponent<MeshFilter>().mesh = new Mesh();
+        //     GetComponent<MeshFilter>().mesh.CombineMeshes(combine);
+        //     GetComponent<MeshCollider>().sharedMesh = GetComponent<MeshFilter>().sharedMesh;
 
-    //     // transform.localScale = actualScale;
-    //     transform.position = actualPosition;
-    //     transform.gameObject.SetActive(true);
-    // }
+        //     // transform.localScale = actualScale;
+        //     transform.position = actualPosition;
+        //     transform.gameObject.SetActive(true);
+        potionLiquid = transform.GetChild(0).GetChild(1).gameObject;
+    }
+
     protected override void Start()
     {
         base.Start();
@@ -48,6 +52,10 @@ public class Potion : Item
         potionColour = colour;
 
         // TEMP
-        base.actual.SetColor("_Color", potionColour);
+        // base.actual.SetColor("_Color", potionColour);
+        print("set potion color");
+        potionLiquid.GetComponent<Renderer>().material = opaque;
+        // potionLiquid.GetComponent<Renderer>().material.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Opaque;
+        potionLiquid.GetComponent<Renderer>().material.SetColor("_Color", potionColour);
     }
 }

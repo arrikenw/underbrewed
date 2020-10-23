@@ -14,7 +14,8 @@ public class Processor : Station
         MeltedBone,
         CharredFlower,
         Cheese,
-        Eyeball//etc.
+        Eyeball,
+        Potion//etc.
     }
 
     public enum StationType

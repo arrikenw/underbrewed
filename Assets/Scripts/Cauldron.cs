@@ -62,8 +62,15 @@ public class Cauldron : Station
     public override void Interact(GameObject other) {
         print("Interacting with cauldron");
 
+        if (other.GetComponent<Potion>() != null)
+        {
+            print("it is a potion");
+        }
         // Case: Potion
-        if (!mixColour.Equals(baseColour) && other.GetComponent<Potion>() != null) {
+        if (other.GetComponent<Potion>() != null) {
+            // !mixColour.Equals(baseColour) &&
+            print("interacting with a potion");
+            
             other.GetComponent<Potion>().SetPotionColor(mixColour);
             mixColour = baseColour;
             UpdateColours();
