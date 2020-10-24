@@ -16,13 +16,13 @@ public class Interactable : MonoBehaviour {
 
     public void OnContact() {
         if (!locked) {
-            // GetComponent<Renderer>().material = highlighter;
+            GetComponent<Renderer>().material = highlighter;
         }
     }
 
     public void OnLeave() {
         if (!locked) {
-            // GetComponent<Renderer>().material = actual;
+            GetComponent<Renderer>().material = actual;
         }
     }
 
