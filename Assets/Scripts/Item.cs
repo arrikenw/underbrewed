@@ -30,6 +30,7 @@ public class Item : Interactable
 
     public void OnDrop() {
         held = false;
+        base.Unlock();
     }
 
     public void OnDispense() {
