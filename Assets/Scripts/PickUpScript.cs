@@ -17,12 +17,12 @@ public class PickUpScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {   
-        Throw();
-        Interact();
-        Pickup();
+        UpdateThrow();
+        UpdateInteract();
+        UpdatePickup();
     }
 
-    private void Pickup() {
+    private void UpdatePickup() {
 
         // Picking Up
         if (Input.GetKeyDown(KeyCode.M) && heldItem == null && interactableObject != null) {
@@ -42,35 +42,9 @@ public class PickUpScript : MonoBehaviour
 
                 if (heldItem != null) {
                     heldItem.GetComponent<Rigidbody>().useGravity = false;
-
-                    // interactable.GetComponent<Station>().OnPickup();
                 }
             }
         }
-
-        // NOTE: Commented out because current functionality can be achieved by just dropping the item on
-        //       But if we need an actual interact button then that can be coded
-        // //interact
-        // if (Input.GetKeyDown(KeyCode.E))
-        // {
-        //     print("E");
-        //     if (interactableTarget != null)
-        //     {
-        //         if (IsPickedUp == false)
-        //         {
-        //             print("tried to interact but had empty hands");
-        //         }
-        //         else
-        //         {
-        //             print("trying to interact");
-        //             print(interactable);
-        //             interactable.interact(PickedUp);
-        //             //remove from hands
-        //             PickedUp = null;
-        //             IsPickedUp = false;
-        //         }
-        //     }
-        // }
 
         // Dropping
         if (Input.GetKeyUp(KeyCode.M) && heldItem != null) {
@@ -83,10 +57,16 @@ public class PickUpScript : MonoBehaviour
 
         // Moving
         if (heldItem != null) {
+
+            // Reset Velocities
             heldItem.GetComponent<Rigidbody>().velocity = new Vector3(0f,0f,0f); 
             heldItem.GetComponent<Rigidbody>().angularVelocity = new Vector3(0f,0f,0f);
-            heldItem.transform.rotation = Quaternion.Euler(new Vector3(0f,0f,0f));
 
+            // Set Rotation via Transform
+            heldItem.transform.rotation = Quaternion.LookRotation(transform.forward);
+
+
+            // Set Position via Rigidbody
 
             // For isKinematic = true...
             // heldItem.transform.position = transform.position + new Vector3(0f, 0.25f, 0f);
@@ -96,12 +76,11 @@ public class PickUpScript : MonoBehaviour
         }
     }
 
-    private void Throw() {
+    private void UpdateThrow() {
         if (Input.GetKeyDown(KeyCode.Period) && heldItem != null) {
             animator.Play("PutDown");
             print("Throwing");
             heldItem.GetComponent<Rigidbody>().useGravity = true;
-            print(transform.forward);
             heldItem.GetComponent<Rigidbody>().AddForce(transform.forward.normalized * throwMagnitude, ForceMode.Impulse);
             heldItem.GetComponent<Item>().OnDrop();
 
@@ -109,7 +88,7 @@ public class PickUpScript : MonoBehaviour
         }
     }
 
-    private void Interact() {
+    private void UpdateInteract() {
         if (Input.GetKeyDown(KeyCode.Comma) && interactableObject != null) {
             print("Interacting");
             interactableObject.GetComponent<Interactable>().Interact(heldItem);
