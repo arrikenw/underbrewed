@@ -25,6 +25,7 @@ public class Item : Interactable
 
     public void OnPickup() {
         held = true;
+        base.Unlock();
         base.OnLeave();
     }
 
@@ -35,6 +36,10 @@ public class Item : Interactable
 
     public void OnDispense() {
         held = true;
+    }
+
+    public void OnStore() {
+        base.Lock();
     }
 
     public bool IsHeld() {
