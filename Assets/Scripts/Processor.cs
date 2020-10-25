@@ -84,7 +84,7 @@ public class Processor : Station
 
     void Cook()
     {
-        if (base.storedItem)
+        if (base.storedItem && base.storedItem.GetComponent<Ingredient>() != null)
         {
             //check new item type
             IngredientType currentIngredient = base.storedItem.GetComponent<Ingredient>().type;
