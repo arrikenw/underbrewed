@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ingredient : Item
 {
-    [SerializeField] private Color mixColour; 
+    [SerializeField] private Color mixColour = new Color(); 
     // Start is called before the first frame update
     protected override void Start()
     {
