@@ -32,8 +32,17 @@ public class Station : Interactable
         if (storedItem == null && other.gameObject.GetComponent<Item>() != null && !other.gameObject.GetComponent<Item>().IsHeld()) {
             print("Storing item in Station");
             storedItem = other.gameObject;
+
+            // Set kinematic to true
             storedItem.GetComponent<Rigidbody>().isKinematic = true;
+
+            // Set new position of the stored item
             storedItem.transform.position = transform.position + new Vector3(0f, 0.5f, 0f);
+
+            // Set item is locked and cannot be directly interacted with
+            storedItem.GetComponent<Interactable>().Lock();
+            
+            // Set item can be picked up via the station
             canPickup = true;
         }
     }
@@ -47,6 +56,7 @@ public class Station : Interactable
     // }
 
     public void OnPickup() {
+        print("Picking up from Station");
         storedItem.GetComponent<Rigidbody>().isKinematic = false;
         storedItem.GetComponent<Item>().OnPickup();
         storedItem = null;

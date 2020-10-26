@@ -5,7 +5,7 @@ using UnityEngine;
 public class PickUpScript : MonoBehaviour 
 {
     [SerializeField] private int throwMagnitude = 10;
-    private GameObject interactable = null;
+    private GameObject interactableObject = null;
     private GameObject heldItem = null;
     public Animator animator;
     // Start is called before the first frame update
@@ -25,20 +25,20 @@ public class PickUpScript : MonoBehaviour
     private void Pickup() {
 
         // Picking Up
-        if (Input.GetKeyDown(KeyCode.M) && heldItem == null && interactable != null) {
+        if (Input.GetKeyDown(KeyCode.M) && heldItem == null && interactableObject != null) {
             animator.Play("PickUp");
             // Pickup item directly
-            if (interactable.GetComponent<Item>() != null) {
-                heldItem = interactable;
+            if (interactableObject.GetComponent<Item>() != null) {
+                heldItem = interactableObject;
                 heldItem.GetComponent<Rigidbody>().useGravity = false;
 
                 heldItem.GetComponent<Item>().OnPickup();
-                interactable = null;
+                interactableObject = null;
             } 
 
             // Pickup item from station
-            else if (interactable.GetComponent<Station>() != null) {
-                heldItem = interactable.GetComponent<Station>().TryPickup();
+            else if (interactableObject.GetComponent<Station>() != null) {
+                heldItem = interactableObject.GetComponent<Station>().TryPickup();
 
                 if (heldItem != null) {
                     heldItem.GetComponent<Rigidbody>().useGravity = false;
@@ -111,9 +111,9 @@ public class PickUpScript : MonoBehaviour
     }
 
     private void Interact() {
-        if (Input.GetKeyDown(KeyCode.Comma) && interactable != null) {
+        if (Input.GetKeyDown(KeyCode.Comma) && interactableObject != null) {
             print("Interacting");
-            interactable.GetComponent<Interactable>().Interact(heldItem);
+            interactableObject.GetComponent<Interactable>().Interact(heldItem);
         }
      }
 
@@ -122,20 +122,22 @@ public class PickUpScript : MonoBehaviour
         if (GameObject.ReferenceEquals(heldItem, other.gameObject)) {
             return;
         }
+        
+        Interactable interactable = other.gameObject.GetComponent<Interactable>();
 
-        if (interactable == null && other.gameObject.GetComponent<Interactable>() != null) {
+        if (interactableObject == null && interactable != null && !interactable.IsLocked()) {
             print("Contacted interactable");
-            interactable = other.gameObject;
-            interactable.GetComponent<Interactable>().OnContact();
+            interactableObject = other.gameObject;
+            interactableObject.GetComponent<Interactable>().OnContact();
         }
     }
 
     private void OnTriggerExit(Collider other) 
     {
-        if (interactable != null && GameObject.ReferenceEquals(interactable, other.gameObject)) {        
+        if (interactableObject != null && GameObject.ReferenceEquals(interactableObject, other.gameObject)) {        
             print("Left interactable");
-            interactable.GetComponent<Interactable>().OnLeave();
-            interactable = null;
+            interactableObject.GetComponent<Interactable>().OnLeave();
+            interactableObject = null;
         }
     }
 }

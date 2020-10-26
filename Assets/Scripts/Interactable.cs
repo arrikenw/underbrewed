@@ -27,4 +27,16 @@ public class Interactable : MonoBehaviour {
     }
 
     public virtual void Interact(GameObject other) {}
+
+    public bool IsLocked() {
+        return locked;
+    }
+
+    public void Lock() {
+        locked = true;
+    }
+
+    public void Unlock() {
+        locked = false;
+    }
 } 
