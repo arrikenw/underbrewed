@@ -11,6 +11,7 @@ public class CameraAutoMove : MonoBehaviour
     public float forward = 0.0f;
     public float right = 0.0f;
     public float up = 0.0f;
+    public bool disabled = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +21,14 @@ public class CameraAutoMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += ((transform.forward * forward) + (transform.right * right) + (transform.up * up)) * speed * Time.deltaTime;
-        transform.position += new Vector3(x, y, z) * speed * Time.deltaTime;
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            disabled = !disabled;
+        }
+        if (!disabled)
+        {
+            transform.position += ((transform.forward * forward) + (transform.right * right) + (transform.up * up)) * speed * Time.deltaTime;
+            transform.position += new Vector3(x, y, z) * speed * Time.deltaTime;
+        }
     }
 }
