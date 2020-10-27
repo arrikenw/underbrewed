@@ -20,14 +20,14 @@ public class UIGameTimer : MonoBehaviour
 
     void Update()
     {
-        if (timeRemaining > 0)
+        if (timeRemaining > -1)
         {
             timeRemaining -= Time.deltaTime;
         }
         else
         {
             //End of game timer. End game, etc. 
-            timeRemaining = 0;
+            timeRemaining = -1;
             //timerEnabled = false;
         }
 
