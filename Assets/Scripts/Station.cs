@@ -29,14 +29,26 @@ public class Station : Interactable
      */
 
     void OnTriggerStay(Collider other) {
-        if (storedItem == null && other.gameObject.GetComponent<Item>() != null && !other.gameObject.GetComponent<Item>().IsHeld()) {
+        Item itemComponent = other.gameObject.GetComponent<Item>();
+        if (storedItem == null && itemComponent != null && !itemComponent.IsHeld() && !itemComponent.IsLocked()) {
             print("Storing item in Station");
             storedItem = other.gameObject;
+
+            // Set kinematic to true
             storedItem.GetComponent<Rigidbody>().isKinematic = true;
+
+            // Set new position of the stored item
             storedItem.transform.position = transform.position + new Vector3(0f, 0.5f, 0f);
+
+            // Set item is locked and cannot be directly interacted with
+            storedItem.GetComponent<Item>().OnStore();
+            
+            // Set item can be picked up via the station
             canPickup = true;
         }
     }
+
+    // Commented below out because Items shouldn't be leaving on their own anyway
 
     // void OnTriggerExit(Collider other) {
     //     if (storedItem != null && GameObject.ReferenceEquals(storedItem, other.gameObject)) {        
@@ -46,16 +58,16 @@ public class Station : Interactable
     //     }
     // }
 
-    public void OnPickup() {
-        storedItem.GetComponent<Rigidbody>().isKinematic = false;
-        storedItem.GetComponent<Item>().OnPickup();
-        storedItem = null;
-    }
-
     public virtual GameObject TryPickup() {
         if (storedItem != null && canPickup) {
+            print("Picking up from Station");
+            
             GameObject tempItem = storedItem;
-            OnPickup();
+            storedItem = null;
+
+            tempItem.GetComponent<Rigidbody>().isKinematic = false;
+            tempItem.GetComponent<Item>().OnPickup();
+
             return tempItem;
         } else {
             return null;

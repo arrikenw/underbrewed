@@ -12,14 +12,14 @@ public class PrefabScript : MonoBehaviour
     public GameObject charredFlowerPrefab;
     public GameObject cookedFrogPrefab;
 
-    //particle system prefab
+    // particle system prefab
     public ParticleSystem psys;
 
-    //lookup tables for cooking time
+    // lookup tables for cooking times
     public readonly Dictionary<Tuple<Processor.StationType, Processor.IngredientType>, int> cooktimeMap
             = new Dictionary<Tuple<Processor.StationType, Processor.IngredientType>, int>();
 
-    //lookup tables for output ingredients
+    // lookup tables for output ingredients
     public readonly Dictionary<Tuple<Processor.StationType, Processor.IngredientType>, GameObject> ingredientMap
             = new Dictionary<Tuple<Processor.StationType, Processor.IngredientType>, GameObject>();
 
@@ -35,12 +35,21 @@ public class PrefabScript : MonoBehaviour
 
     void Start()
     {
-        //times
+        // Times
+        // e.g.
+        // cooktimeMap.Add(new Tuple<Processor.StationType, Processor.IngredientType>(Processor.StationType.Cauldron, Processor.IngredientType.Bone), 1000);
+        // cooktimeMap.Add(new Tuple<Processor.StationType, Processor.IngredientType>(Processor.StationType.Cauldron, Processor.IngredientType.Flower), 15); //etc.
+
+        // 650
         cooktimeMap.Add(new Tuple<Processor.StationType, Processor.IngredientType>(Processor.StationType.Grill, Processor.IngredientType.Bone), 600);
         cooktimeMap.Add(new Tuple<Processor.StationType, Processor.IngredientType>(Processor.StationType.Grill, Processor.IngredientType.Flower), 600);
         cooktimeMap.Add(new Tuple<Processor.StationType, Processor.IngredientType>(Processor.StationType.Grill, Processor.IngredientType.Frog), 600);
 
-        //outputs
+        // Outputs
+        // e.g.
+        // ingredientMap.Add(new Tuple<Processor.StationType, Processor.IngredientType>(Processor.StationType.Cauldron, Processor.IngredientType.Bone), meltedBonePrefab);
+        // ingredientMap.Add(new Tuple<Processor.StationType, Processor.IngredientType>(Processor.StationType.Cauldron, Processor.IngredientType.Flower), charredFlowerPrefab); //etc.
+
         ingredientMap.Add(new Tuple<Processor.StationType, Processor.IngredientType>(Processor.StationType.Grill, Processor.IngredientType.Bone), meltedBonePrefab);
         ingredientMap.Add(new Tuple<Processor.StationType, Processor.IngredientType>(Processor.StationType.Grill, Processor.IngredientType.Flower), charredFlowerPrefab);
         ingredientMap.Add(new Tuple<Processor.StationType, Processor.IngredientType>(Processor.StationType.Grill, Processor.IngredientType.Frog), cookedFrogPrefab);

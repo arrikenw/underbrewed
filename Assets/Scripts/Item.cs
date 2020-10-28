@@ -25,15 +25,21 @@ public class Item : Interactable
 
     public void OnPickup() {
         held = true;
+        base.Unlock();
         base.OnLeave();
     }
 
     public void OnDrop() {
         held = false;
+        base.Unlock();
     }
 
     public void OnDispense() {
         held = true;
+    }
+
+    public void OnStore() {
+        base.Lock();
     }
 
     public bool IsHeld() {

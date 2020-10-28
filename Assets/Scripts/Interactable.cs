@@ -14,17 +14,29 @@ public class Interactable : MonoBehaviour {
         actual = GetComponent<Renderer>().material; 
     }
 
-    public void OnContact() {
+    public virtual void OnContact() {
         if (!locked) {
             GetComponent<Renderer>().material = highlighter;
         }
     }
 
-    public void OnLeave() {
+    public virtual void OnLeave() {
         if (!locked) {
             GetComponent<Renderer>().material = actual;
         }
     }
 
     public virtual void Interact(GameObject other) {}
+
+    public bool IsLocked() {
+        return locked;
+    }
+
+    public void Lock() {
+        locked = true;
+    }
+
+    public void Unlock() {
+        locked = false;
+    }
 } 

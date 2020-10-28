@@ -12,14 +12,24 @@ public class Cauldron : Station
     [SerializeField] private Color mixColour; // Recording current colour is needed for future implementations
     private Color baseColour;
 
+    private LinkedList<Processor.IngredientType> ingredients = new LinkedList<Processor.IngredientType>();
+    [SerializeField] private GameObject recipeTree = null;
+
     protected override void Start()
     {
+        if (recipeTree == null) {
+            Debug.LogError("Assign a GameObject with recipeTree Script to Cauldron in the inspector before resuming");
+            UnityEditor.EditorApplication.isPlaying = false;
+        }
+
         base.Start();
+
+        // Get child objects
         cauldronLiquid = transform.GetChild(0).gameObject;
         bubbles = cauldronLiquid.transform.GetChild(0).gameObject;
         bubbleBurst = bubbles.transform.GetChild(0).gameObject;
 
-
+        // Get colour values
         baseColour = cauldronLiquid.GetComponent<Renderer>().material.color;
         mixColour = baseColour;
     }
@@ -33,7 +43,16 @@ public class Cauldron : Station
     private void Mix() {
         if (base.storedItem != null && base.storedItem.GetComponent<Ingredient>() != null) {
             // Retrieve new cauldron liquid colour from stored Item 
-            mixColour = base.storedItem.GetComponent<Ingredient>().GetColor();
+            // mixColour = base.storedItem.GetComponent<Ingredient>().GetColor();
+            ingredients.AddLast(base.storedItem.GetComponent<Item>().type);
+            mixColour = recipeTree.GetComponent<RecipeTree>().FindColor(ingredients);
+
+            // FAIL
+            if (mixColour.Equals(Color.clear)) {
+                mixColour = baseColour;
+                ingredients.Clear();
+                print("CAULDRON FAIL");
+            }
 
             // Destroy stored Item 
             Destroy(base.storedItem);
@@ -66,6 +85,7 @@ public class Cauldron : Station
         if (!mixColour.Equals(baseColour) && other.GetComponent<Potion>() != null) {
             other.GetComponent<Potion>().SetPotionColor(mixColour);
             mixColour = baseColour;
+            ingredients.Clear(); // just added
             UpdateColours();
         }
     }
