@@ -7,7 +7,9 @@ public class UIRecipeTimer : MonoBehaviour
 {
     public Slider timer;
 
-    public float maxTime = 45.0f; // time allowed for task
+    public ulong maxTime;
+
+    public ulong timeRemaining;
 
     public Color lowColor = Color.red;
     public Color midColor = Color.yellow;
@@ -17,24 +19,14 @@ public class UIRecipeTimer : MonoBehaviour
     GradientColorKey[] colorKey;
     GradientAlphaKey[] alphaKey;
 
-    private float elapsedTime = 0.0f; // time passed since timer started
+    public ulong fillValue;
 
-    public float fillValue;
-
-    public bool timerEnabled = false;
-
-    public bool flashing;
-
-    private GameObject recipe;
-
-    public Color warningColor;
-
-    public float flashDelay = 0.8f; // lower -> faster 
-
-    private bool isFlashing;
+    public bool timerLow = false;
 
     void Start()
     {
+        timer = this.gameObject;
+
         gradient = new Gradient();
 
         colorKey = new GradientColorKey[3];
@@ -56,56 +48,24 @@ public class UIRecipeTimer : MonoBehaviour
 
         gradient.SetKeys(colorKey, alphaKey);
 
-        timerEnabled = true;
+        timerLow = false;
 
-        recipe = transform.parent.gameObject;
-
-        isFlashing = false;
-
-        if (flashing == true)
-        {
-            StartCoroutine(FlashingOverlay(recipe, warningColor, flashDelay));
-            isFlashing = true;
-        }
     }
 
 
     void Update()
     {
-        elapsedTime += Time.deltaTime;
-
-        fillValue = ((maxTime - elapsedTime) / maxTime);
+        fillValue = (timeRemaining / maxTime);
 
         timer.value = fillValue;
 
         timer.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = gradient.Evaluate(fillValue);
 
-
-        if (fillValue < 0.25 && isFlashing == false)
+        if (fillValue < 0.25 && timerLow = false)
         {
-            StartCoroutine(FlashingOverlay(recipe, warningColor, flashDelay));
-            isFlashing = true;
+            timerLow = true ;
         }
 
-        if (fillValue < 0)
-        {
-            fillValue = 0;
-            timerEnabled = false;
-        }
-    }
-
-    IEnumerator FlashingOverlay(GameObject recipe, Color warningColor, float flashDelay)
-    {
-        while (true)
-        {
-            recipe.gameObject.transform.Find("UIOverlay").GetComponent<RawImage>().color = warningColor;
-
-            yield return new WaitForSeconds(flashDelay);
-
-            recipe.gameObject.transform.Find("UIOverlay").GetComponent<RawImage>().color = new Color(0, 0, 0, 0);
-
-            yield return new WaitForSeconds(flashDelay);
-        }
-    }
-
+    }    
+    
 }
