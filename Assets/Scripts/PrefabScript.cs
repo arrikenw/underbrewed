@@ -10,6 +10,7 @@ public class PrefabScript : MonoBehaviour
     public GameObject meltedBonePrefab;
     public GameObject flowerPrefab;
     public GameObject charredFlowerPrefab;
+    public GameObject cookedFrogPrefab;
 
     //particle system prefab
     public ParticleSystem psys;
@@ -35,19 +36,13 @@ public class PrefabScript : MonoBehaviour
     void Start()
     {
         //times
-        // cooktimeMap.Add(new Tuple<Processor.StationType, Processor.IngredientType>(Processor.StationType.Cauldron, Processor.IngredientType.Bone), 1000);
-        // cooktimeMap.Add(new Tuple<Processor.StationType, Processor.IngredientType>(Processor.StationType.Cauldron, Processor.IngredientType.Flower), 15); //etc.
-
-        //650
         cooktimeMap.Add(new Tuple<Processor.StationType, Processor.IngredientType>(Processor.StationType.Grill, Processor.IngredientType.Bone), 600);
         cooktimeMap.Add(new Tuple<Processor.StationType, Processor.IngredientType>(Processor.StationType.Grill, Processor.IngredientType.Flower), 600);
+        cooktimeMap.Add(new Tuple<Processor.StationType, Processor.IngredientType>(Processor.StationType.Grill, Processor.IngredientType.Frog), 600);
 
         //outputs
-        // ingredientMap.Add(new Tuple<Processor.StationType, Processor.IngredientType>(Processor.StationType.Cauldron, Processor.IngredientType.Bone), meltedBonePrefab);
-        // ingredientMap.Add(new Tuple<Processor.StationType, Processor.IngredientType>(Processor.StationType.Cauldron, Processor.IngredientType.Flower), charredFlowerPrefab); //etc.
-
         ingredientMap.Add(new Tuple<Processor.StationType, Processor.IngredientType>(Processor.StationType.Grill, Processor.IngredientType.Bone), meltedBonePrefab);
-
         ingredientMap.Add(new Tuple<Processor.StationType, Processor.IngredientType>(Processor.StationType.Grill, Processor.IngredientType.Flower), charredFlowerPrefab);
+        ingredientMap.Add(new Tuple<Processor.StationType, Processor.IngredientType>(Processor.StationType.Grill, Processor.IngredientType.Frog), cookedFrogPrefab);
     }
 }

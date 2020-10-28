@@ -5,7 +5,7 @@ using UnityEngine;
 // [RequireComponent(typeof(MeshFilter))]
 public class Potion : Item
 {
-    [SerializeField] Color potionColour;
+    [SerializeField] public Color potionColour;
     // void Awake() {
     //     Vector3 actualPosition = transform.position;
     //     // Vector3 actualScale = transform.localScale;
