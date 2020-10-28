@@ -16,7 +16,8 @@ public class Processor : Station
         Cheese,
         Eyeball,
         Frog,
-        CookedFrog//etc.
+        CookedFrog,
+        Null//etc.
     }
 
     public enum StationType

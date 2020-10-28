@@ -7,9 +7,11 @@ public class UIGameTimer : MonoBehaviour
 {
     void updateGameTimer(int newTime)
     {
-        float minutes = Mathf.FloorToInt(timeInSeconds / 60);
-        float seconds = Mathf.FloorToInt(timeInSeconds % 60);
+        //temp
+        float minutes = Mathf.FloorToInt(newTime / 60);
+        float seconds = Mathf.FloorToInt(newTime % 60);
 
-        newTime.text = string.Format("{0:0}:{1:00}", minutes, seconds);
+        //??
+        this.gameObject.GetComponent<Text>().text = string.Format("{0:0}:{1:00}", minutes, seconds);
     }
 }

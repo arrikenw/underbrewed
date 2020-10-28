@@ -6,7 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(MeshCollider))]
 public class Potion : Item
 {
-    [SerializeField] Color potionColour;
+    //set to public, ask simon later
+    [SerializeField] public Color potionColour;
     private GameObject potionLiquid;
     public Material opaqueLiquidMaterial;
     void Awake() {

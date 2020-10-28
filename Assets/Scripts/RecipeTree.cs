@@ -6,7 +6,7 @@ public class RecipeTree : MonoBehaviour
 {
     // Start is called before the first frame update
     private LinkedList<RecipeNode> children = new LinkedList<RecipeNode>();
-    private RecipeNode root = new RecipeNode(Processor.IngredientType.Potion, Color.clear);
+    private RecipeNode root = new RecipeNode(Processor.IngredientType.Null, Color.clear);
     void Start()
     {
         

@@ -7,11 +7,11 @@ public class RecipeManager : MonoBehaviour
 {
 
     //UI object
-    public GameObject UIObject;
+    public UIOrderQueueManager UIObject;
 
 
     //recipe generation config
-    public int totalLevelOrders;
+    public int totalLevelOrders; //must be > 0
     public Order[] orderPrefabs;
     public int minOrderGap;
     public int maxOrderGap;
@@ -60,14 +60,16 @@ public class RecipeManager : MonoBehaviour
         {
             Tuple<Order, GameObject, int> activeOrder = activeOrders[i];
 
-            //update item expiry timer
-            activeOrder.Item3 -= 1;
+
+            //build new tuple with updated expiry timer and insert into list
+            activeOrder = new Tuple<Order, GameObject, int>(activeOrder.Item1, activeOrder.Item2, activeOrder.Item3 - 1);
+            activeOrders[i] = activeOrder;
 
             //if item will expire
             if (activeOrder.Item3 <= 0)
             {
                 //delete UI element
-                deleteOrderUI(activeOrder.item2);
+                UIObject.deleteOrderUI(activeOrder.Item2);
                 
                 //apply effects for failing to complete order
                 print("oops, you failed to complete the order!");
@@ -78,7 +80,8 @@ public class RecipeManager : MonoBehaviour
             }
 
             //update UI with new time
-            activeOrder.Item2.updateOrderTimer(activeOrder.Item3);
+            //TODO, uncomment once individual gameobjects hold an updateOrderTimer script
+            //activeOrder.Item2.updateOrderTimer(activeOrder.Item3);
         }
     }
 
@@ -89,23 +92,24 @@ public class RecipeManager : MonoBehaviour
     private int generateLevelOrders()
     {
         int genTime = 0;
-        int firstOrderTime = -1;
+        int timeTofirstOrder = -1;
         for (int i = 0; i < totalLevelOrders; i++)
         {
             Order curRecipe = orderPrefabs[UnityEngine.Random.Range(0, orderPrefabs.Length)];
             genTime += UnityEngine.Random.Range(minOrderGap, maxOrderGap);
             //get the time to next order for the first order
-            if (firstOrderTime == -1)
+            if (timeTofirstOrder == -1)
             {
-                firstOrderTime = genTime;
+                timeTofirstOrder = genTime;
             }
 
             //get the allowed time for the order
             int orderPrepTime = curRecipe.optimalPrepTime + UnityEngine.Random.Range(minOrderPrepTime, maxOrderPrepTime);
 
-            Tuple<int, Order> orderEntry = new Tuple<int, Order>(genTime, curRecipe, orderPrepTime);
+            Tuple<int, Order, int> orderEntry = new Tuple<int, Order, int>(genTime, curRecipe, orderPrepTime);
             queuedOrders.Enqueue(orderEntry);
         }
+        return timeTofirstOrder;
     }
 
 
@@ -128,7 +132,7 @@ public class RecipeManager : MonoBehaviour
             while (queuedOrders.Count > 0)
             {
                 //check next order
-                Tuple<int, Order> potentialNewOrder = queuedOrders.Peek();
+                Tuple<int, Order, int> potentialNewOrder = queuedOrders.Peek();
 
                 //if we reach an order that can't be made yet, stop searching and update time to next order
                 if (potentialNewOrder.Item1 > curTime)
@@ -141,7 +145,7 @@ public class RecipeManager : MonoBehaviour
                     //if an order has arrived:
 
                     //remove order from queue
-                    Tuple<Order, GameObject, int> queuedOrder = queuedOrders.Dequeue();
+                    Tuple<int, Order, int> queuedOrder = queuedOrders.Dequeue();
                     Order newActiveOrder = queuedOrder.Item2;
                     int timeUntilOrderExpiry = queuedOrder.Item3;
                     
@@ -149,11 +153,12 @@ public class RecipeManager : MonoBehaviour
                     GameObject newActiveOrderUI = UIObject.addOrderUI(newActiveOrder);
 
                     //construct the new (active order, ui, expiry time) tuple and add to the active order list
-                    Tuple<Order, GameObject> newActiveOrderTuple = new Tuple<Order, GameObject>(newActiveOrder, newActiveOrderUI, timeUntilOrderExpiry); 
+                    Tuple<Order, GameObject, int> newActiveOrderTuple = new Tuple<Order, GameObject, int>(newActiveOrder, newActiveOrderUI, timeUntilOrderExpiry); 
                     activeOrders.Add(newActiveOrderTuple);
                 }
             }
         }
+
         //run lifecycle and ui updates for active orders
         updateActiveOrders();
 
