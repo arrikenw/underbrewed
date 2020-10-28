@@ -15,7 +15,9 @@ public class Processor : Station
         CharredFlower,
         Cheese,
         Eyeball,
-        Potion//etc.
+        Frog,
+        CookedFrog,
+        Null//etc.
     }
 
     public enum StationType
@@ -87,7 +89,7 @@ public class Processor : Station
             {
 
                 //skip if the type is not a base ingredient
-                if (currentIngredient != IngredientType.Bone && currentIngredient != IngredientType.Flower)
+                if (currentIngredient != IngredientType.Bone && currentIngredient != IngredientType.Flower && currentIngredient != IngredientType.Frog)
                 {
                     print("returning");
                     return;

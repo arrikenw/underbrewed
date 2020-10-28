@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIOrderController : MonoBehaviour
 {
-
     public int score; // point value of order
 
     public bool isFlashing = false;
@@ -12,14 +12,16 @@ public class UIOrderController : MonoBehaviour
     public bool timerLow = false;
 
 
-    public Color warningColor = color.Red;
+    public Color warningColor = Color.red;
 
     public float flashDelay = 0.8f; // lower -> faster 
+
+    private GameObject overlay;
 
     // Start is called before the first frame update
     void Start()
     {
-        GameObject overlay = this.GameObject().transform.Find("Overlay");
+        GameObject overlay = transform.Find("Overlay").gameObject;
     }
 
     // Update is called once per frame

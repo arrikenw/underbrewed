@@ -25,8 +25,6 @@ public class UIRecipeTimer : MonoBehaviour
 
     void Start()
     {
-        timer = this.gameObject;
-
         gradient = new Gradient();
 
         colorKey = new GradientColorKey[3];
@@ -61,7 +59,7 @@ public class UIRecipeTimer : MonoBehaviour
 
         timer.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = gradient.Evaluate(fillValue);
 
-        if (fillValue < 0.25 && timerLow = false)
+        if (fillValue < 0.25 && timerLow == false)
         {
             timerLow = true ;
         }

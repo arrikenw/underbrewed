@@ -7,7 +7,7 @@ public class UIGameScore : MonoBehaviour
 {
     public void updateGameScore(int newScore)
         {
-            scoreText.text = score.ToString();
+            this.gameObject.GetComponent<Text>().text = newScore.ToString();
         }
 }
 
