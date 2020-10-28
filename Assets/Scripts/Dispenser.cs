@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Dispenser : Station
 {
-    [SerializeField] private GameObject prefabItem;
+    [SerializeField] private GameObject prefabItem = null;
     // Start is called before the first frame update
     protected override void Start()
     {

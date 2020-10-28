@@ -20,8 +20,6 @@ public class Processor : Station
 
     public enum StationType
     {
-        Cauldron,
-        Bench,
         Chop,
         Grill //etc.
     }
@@ -48,8 +46,7 @@ public class Processor : Station
     private ParticleSystem psys;
 
     //stationType
-    [SerializeField]
-    public StationType station;
+    [SerializeField]public StationType station;
 
     [SerializeField]
     public GameObject cookEffectsPrefab;
@@ -76,15 +73,12 @@ public class Processor : Station
     // Update is called once per frame
     void Update()
     {
-        if (station != StationType.Bench)
-        {
-            Cook();
-        }
+        Cook();
     }
 
     void Cook()
     {
-        if (base.storedItem)
+        if (base.storedItem && base.storedItem.GetComponent<Ingredient>())
         {
             //check new item type
             IngredientType currentIngredient = base.storedItem.GetComponent<Ingredient>().type;

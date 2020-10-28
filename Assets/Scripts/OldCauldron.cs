@@ -9,8 +9,8 @@ public class OldCauldron : Station
 
     // shading
     Renderer r;
-    [SerializeField] private Material idleMat;
-    [SerializeField] private Material cookMat;
+    [SerializeField] private Material idleMat = null;
+    [SerializeField] private Material cookMat = null;
 
     // logic
     // TODO create a lookup table for the costs of each bench type with each item type
