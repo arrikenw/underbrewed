@@ -12,18 +12,24 @@ public class Cauldron : Station
     [SerializeField] private Color mixColour; // Recording current colour is needed for future implementations
     private Color baseColour;
 
-    [SerializeField] private GameObject recipeTree = null;
-
     private LinkedList<Processor.IngredientType> ingredients = new LinkedList<Processor.IngredientType>();
+    [SerializeField] private GameObject recipeTree = null;
 
     protected override void Start()
     {
+        if (recipeTree == null) {
+            Debug.LogError("Assign a GameObject with recipeTree Script to Cauldron in the inspector before resuming");
+            UnityEditor.EditorApplication.isPlaying = false;
+        }
+
         base.Start();
+
+        // Get child objects
         cauldronLiquid = transform.GetChild(0).gameObject;
         bubbles = cauldronLiquid.transform.GetChild(0).gameObject;
         bubbleBurst = bubbles.transform.GetChild(0).gameObject;
 
-
+        // Get colour values
         baseColour = cauldronLiquid.GetComponent<Renderer>().material.color;
         mixColour = baseColour;
     }
