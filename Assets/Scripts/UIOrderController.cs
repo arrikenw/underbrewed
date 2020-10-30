@@ -7,7 +7,6 @@ public class UIOrderController : MonoBehaviour
 {
     public int score; // value of order
 
-
     public Color warningColor = Color.red; 
 
     public float flashDelay = 0.8f; // time between flashes
@@ -16,16 +15,11 @@ public class UIOrderController : MonoBehaviour
 
     public bool timerLow = false; // check if timer is low
 
-    void Start()
-    {
-        //
-    }
-
     void Update()
     {
         if (timerLow == false && isFlashing == false)
         {
-            StartCoroutine(FlashingOverlay(warningColor, flashDelay));
+            StartCoroutine(flashing(warningColor, flashDelay));
         }
     }
 
@@ -36,15 +30,15 @@ public class UIOrderController : MonoBehaviour
 
     }
 
-    IEnumerator FlashingOverlay(Color warningColor, float flashDelay)
+    IEnumerator flashing(Color warningColor, float flashDelay)
     {
         while (true)
         {
-            gameObject.GetComponent<RawImage>().color = warningColor;
+            this.gameObject.GetComponent<Image>().color = warningColor;
 
             yield return new WaitForSeconds(flashDelay);
 
-            gameObject.GetComponent<RawImage>().color = new Color(0, 0, 0, 0);
+            this.gameObject.GetComponent<Image>().color = new Color(0, 0, 0, 0);
 
             yield return new WaitForSeconds(flashDelay);
         }

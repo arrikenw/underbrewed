@@ -8,24 +8,15 @@ public class UIOrderQueueManager : MonoBehaviour
 
     public GameObject orderTemplate;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    public float gutterSize;
+    public float velocity;
 
     public GameObject addOrderUI(Order order) 
     {
         // Create new instance of template
         GameObject newOrder = GameObject.Instantiate<GameObject>(orderTemplate);
         newOrder.transform.parent = this.transform;
+        newOrder.transform.localPosition = new Vector3(0, 0, 0);
 
 
         // Set timer
@@ -40,13 +31,11 @@ public class UIOrderQueueManager : MonoBehaviour
         // Set images for ingredients
         GameObject recipe = newOrder.transform.Find("Recipe").gameObject;
 
-        //WARNING 
         addIngredient(order.ingredients[0], recipe.transform.Find("Ingredient1").gameObject.GetComponent<Image>(), recipe.transform.Find("Method1").gameObject.GetComponent<Image>());
         // TO DO: repeat for additional ingredients
 
-        // TO DO: set position using update function
+        reorderQueue(this.gameObject);
 
-        // TO DO: best way to store score?
         newOrder.GetComponent<UIOrderController>().score = order.score;
 
         return newOrder;
@@ -57,7 +46,7 @@ public class UIOrderQueueManager : MonoBehaviour
     {
         Destroy(orderUI);
 
-        // TO DO: reset order queue
+        reorderQueue(this.gameObject);
     }
 
     public void addPotion(Image potionImage, Color targetColor)
@@ -86,4 +75,36 @@ public class UIOrderQueueManager : MonoBehaviour
         }
     }
 
+    public void reorderQueue(GameObject orderQueueUI)
+    {
+        int n = orderQueueUI.transform.childCount;
+
+        for (int i=0; i < n; i++)
+        {
+            GameObject orderUI = orderQueueUI.transform.GetChild(i).gameObject;
+
+            var rt = orderUI.GetComponent<RectTransform>();
+            float width = rt.rect.width;
+
+            Vector3 targetPosition = new Vector3(orderQueueUI.transform.position.x + ((width + this.gutterSize) * i), orderQueueUI.transform.position.y, orderQueueUI.transform.position.z); 
+
+            if (orderUI.transform.position != targetPosition)
+            {
+                StartCoroutine(animateQueue(orderUI, targetPosition));
+            }
+
+        }
+
+    }
+
+    IEnumerator animateQueue(GameObject orderUI, Vector3 targetPosition)
+    {
+        while (true)
+        {
+
+            orderUI.transform.position = Vector3.Lerp(orderUI.transform.position, targetPosition, Time.deltaTime * this.velocity);
+
+            yield return new WaitForSeconds(.1f);
+        }
+    }
 }
