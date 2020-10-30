@@ -8,11 +8,6 @@ public class UIOrderQueueManager : MonoBehaviour
 
     public GameObject orderTemplate;
 
-
-    // TO DO: find Order type... lol...
-    public Order order;
-    public GameObject orderUI;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -34,12 +29,12 @@ public class UIOrderQueueManager : MonoBehaviour
 
 
         // Set timer
-        GameObject timer = newOrder.transform.Find("RecipeTimer").gameObject;
-        timer.GetComponent<UIRecipeTimer>().maxTime = order.timeLeft;
-        timer.GetComponent<UIRecipeTimer>().timeRemaining = order.timeLeft;
+        GameObject timer = newOrder.transform.Find("OrderTimer").gameObject;
+        timer.GetComponent<UIOrderTimer>().maxTime = order.timeLeft;
+        timer.GetComponent<UIOrderTimer>().timeRemaining = order.timeLeft;
 
         // Set image for potion
-        Component potionImage = newOrder.transform.Find("Potion").GetComponent<Image>();
+        Image potionImage = newOrder.transform.Find("Potion").GetComponent<Image>();
         addPotion(potionImage, order.targetColour);
 
         // Set images for ingredients
@@ -65,12 +60,7 @@ public class UIOrderQueueManager : MonoBehaviour
         // TO DO: reset order queue
     }
 
-    public void updateOrderTimer(Order order)
-    {
-        // TO DO: link order to order UI object somehow ... should Order include a GameObject for the OrderUI? 
-    }
-
-    public void addPotion(Component potionImage, Color targetColor)
+    public void addPotion(Image potionImage, Color targetColor)
     {
         //change potion image depending on targetColor
         switch(targetColor)
@@ -83,7 +73,7 @@ public class UIOrderQueueManager : MonoBehaviour
         }
     }
 
-    public void addIngredient(Ingredient ingredient, Component ingredientImage, Component methodImage)
+    public void addIngredient(Ingredient ingredient, Image ingredientImage, Image methodImage)
     {
         //add ingredient according to ingredient and ingredient slot
         switch (ingredient)

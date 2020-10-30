@@ -5,43 +5,46 @@ using UnityEngine.UI;
 
 public class UIOrderController : MonoBehaviour
 {
-    public int score; // point value of order
-
-    public bool isFlashing = false;
-
-    public bool timerLow = false;
+    public int score; // value of order
 
 
-    public Color warningColor = Color.red;
+    public Color warningColor = Color.red; 
 
-    public float flashDelay = 0.8f; // lower -> faster 
+    public float flashDelay = 0.8f; // time between flashes
 
-    private GameObject overlay;
+    public bool isFlashing = false; // check if already flashing
 
-    // Start is called before the first frame update
+    public bool timerLow = false; // check if timer is low
+
     void Start()
     {
-        GameObject overlay = transform.Find("Overlay").gameObject;
+        //
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (isFlashing == true)
+        if (timerLow == false && isFlashing == false)
         {
-            StartCoroutine(FlashingOverlay(overlay, warningColor, flashDelay));
+            StartCoroutine(FlashingOverlay(warningColor, flashDelay));
         }
     }
 
-    IEnumerator FlashingOverlay(GameObject overlay, Color warningColor, float flashDelay)
+    public void updateOrderTimer(int newTime)
+    {
+        UIOrderTimer timer = transform.Find("OrderTimer").GetComponent<UIOrderTimer>();
+        timer.timeRemaining = newTime;
+
+    }
+
+    IEnumerator FlashingOverlay(Color warningColor, float flashDelay)
     {
         while (true)
         {
-            overlay.GetComponent<RawImage>().color = warningColor;
+            gameObject.GetComponent<RawImage>().color = warningColor;
 
             yield return new WaitForSeconds(flashDelay);
 
-            overlay.GetComponent<RawImage>().color = new Color(0, 0, 0, 0);
+            gameObject.GetComponent<RawImage>().color = new Color(0, 0, 0, 0);
 
             yield return new WaitForSeconds(flashDelay);
         }
