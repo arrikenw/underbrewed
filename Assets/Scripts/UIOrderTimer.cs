@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIRecipeTimer : MonoBehaviour
+public class UIOrderTimer : MonoBehaviour
 {
     public Slider timer;
 
-    public ulong maxTime;
+    public int maxTime;
 
-    public ulong timeRemaining;
+    public int timeRemaining;
 
     public Color lowColor = Color.red;
     public Color midColor = Color.yellow;
@@ -19,9 +19,9 @@ public class UIRecipeTimer : MonoBehaviour
     GradientColorKey[] colorKey;
     GradientAlphaKey[] alphaKey;
 
-    public ulong fillValue;
+    public float fillValue;
 
-    public bool timerLow = false;
+    public float warningValue;
 
     void Start()
     {
@@ -46,22 +46,22 @@ public class UIRecipeTimer : MonoBehaviour
 
         gradient.SetKeys(colorKey, alphaKey);
 
-        timerLow = false;
-
     }
 
 
     void Update()
     {
-        fillValue = (timeRemaining / maxTime);
+        
+        fillValue = (float)(timeRemaining / maxTime);
 
         timer.value = fillValue;
 
         timer.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = gradient.Evaluate(fillValue);
 
-        if (fillValue < 0.25 && timerLow == false)
+        if (fillValue < warningValue)
         {
-            timerLow = true ;
+            UIOrderController controller = this.transform.parent.GetComponent<UIOrderController>();
+            controller.timerLow = true ;
         }
 
     }    

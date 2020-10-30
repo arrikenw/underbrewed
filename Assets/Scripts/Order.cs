@@ -8,5 +8,6 @@ public class Order : MonoBehaviour
     public int optimalPrepTime; //how long it takes to create recipe if actions are performed perfectly. idk, generate based off cooktimes for each food item?
     public Color targetColour;
     public int score;
-    public ulong timeLeft;
+    public int timeLeft;
+    //public ulong timeLeft;
 }

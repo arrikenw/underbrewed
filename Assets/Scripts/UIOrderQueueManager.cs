@@ -8,50 +8,34 @@ public class UIOrderQueueManager : MonoBehaviour
 
     public GameObject orderTemplate;
 
-
-    // TO DO: find Order type... lol...
-    public Order order;
-    public GameObject orderUI;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    public float gutterSize;
+    public float velocity;
 
     public GameObject addOrderUI(Order order) 
     {
         // Create new instance of template
         GameObject newOrder = GameObject.Instantiate<GameObject>(orderTemplate);
         newOrder.transform.parent = this.transform;
+        newOrder.transform.localPosition = new Vector3(0, 0, 0);
 
 
         // Set timer
-        GameObject timer = newOrder.transform.Find("RecipeTimer").gameObject;
-        timer.GetComponent<UIRecipeTimer>().maxTime = order.timeLeft;
-        timer.GetComponent<UIRecipeTimer>().timeRemaining = order.timeLeft;
+        GameObject timer = newOrder.transform.Find("OrderTimer").gameObject;
+        timer.GetComponent<UIOrderTimer>().maxTime = order.timeLeft;
+        timer.GetComponent<UIOrderTimer>().timeRemaining = order.timeLeft;
 
         // Set image for potion
-        Component potionImage = newOrder.transform.Find("Potion").GetComponent<Image>();
+        Image potionImage = newOrder.transform.Find("Potion").GetComponent<Image>();
         addPotion(potionImage, order.targetColour);
 
         // Set images for ingredients
         GameObject recipe = newOrder.transform.Find("Recipe").gameObject;
 
-        //WARNING 
         addIngredient(order.ingredients[0], recipe.transform.Find("Ingredient1").gameObject.GetComponent<Image>(), recipe.transform.Find("Method1").gameObject.GetComponent<Image>());
         // TO DO: repeat for additional ingredients
 
-        // TO DO: set position using update function
+        reorderQueue(this.gameObject);
 
-        // TO DO: best way to store score?
         newOrder.GetComponent<UIOrderController>().score = order.score;
 
         return newOrder;
@@ -62,15 +46,10 @@ public class UIOrderQueueManager : MonoBehaviour
     {
         Destroy(orderUI);
 
-        // TO DO: reset order queue
+        reorderQueue(this.gameObject);
     }
 
-    public void updateOrderTimer(Order order)
-    {
-        // TO DO: link order to order UI object somehow ... should Order include a GameObject for the OrderUI? 
-    }
-
-    public void addPotion(Component potionImage, Color targetColor)
+    public void addPotion(Image potionImage, Color targetColor)
     {
         //change potion image depending on targetColor
         switch(targetColor)
@@ -83,7 +62,7 @@ public class UIOrderQueueManager : MonoBehaviour
         }
     }
 
-    public void addIngredient(Ingredient ingredient, Component ingredientImage, Component methodImage)
+    public void addIngredient(Ingredient ingredient, Image ingredientImage, Image methodImage)
     {
         //add ingredient according to ingredient and ingredient slot
         switch (ingredient)
@@ -96,4 +75,36 @@ public class UIOrderQueueManager : MonoBehaviour
         }
     }
 
+    public void reorderQueue(GameObject orderQueueUI)
+    {
+        int n = orderQueueUI.transform.childCount;
+
+        for (int i=0; i < n; i++)
+        {
+            GameObject orderUI = orderQueueUI.transform.GetChild(i).gameObject;
+
+            var rt = orderUI.GetComponent<RectTransform>();
+            float width = rt.rect.width;
+
+            Vector3 targetPosition = new Vector3(orderQueueUI.transform.position.x + ((width + this.gutterSize) * i), orderQueueUI.transform.position.y, orderQueueUI.transform.position.z); 
+
+            if (orderUI.transform.position != targetPosition)
+            {
+                StartCoroutine(animateQueue(orderUI, targetPosition));
+            }
+
+        }
+
+    }
+
+    IEnumerator animateQueue(GameObject orderUI, Vector3 targetPosition)
+    {
+        while (true)
+        {
+
+            orderUI.transform.position = Vector3.Lerp(orderUI.transform.position, targetPosition, Time.deltaTime * this.velocity);
+
+            yield return new WaitForSeconds(.1f);
+        }
+    }
 }
