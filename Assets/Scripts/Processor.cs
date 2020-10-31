@@ -25,13 +25,6 @@ public class Processor : Station
         Grill //etc.
     }
 
-    // shading
-    protected Renderer r;
-    [SerializeField]
-    public Material idleMat;
-    [SerializeField]
-    public Material cookMat;
-
     // cooking logic
     protected bool interacting = false;
     protected int timeUntilComplete = 0;
@@ -61,11 +54,6 @@ public class Processor : Station
         {
             psys = Instantiate(psysPrefab, transform.position, transform.rotation);
             psys.Stop();
-        }
-        r = GetComponent<Renderer>();
-        if (idleMat)
-        {
-            r.material = idleMat;
         }
     }
 
