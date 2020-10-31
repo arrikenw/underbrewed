@@ -4,16 +4,14 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 
-public class Processor : Station
-{
-
-    public enum IngredientType
+public enum IngredientType
     {
         Bone,
         Flower,
         MeltedBone,
         CharredFlower,
         Cheese,
+        ChoppedCheese,
         Eyeball,
         Frog,
         ChoppedFrog,
@@ -21,6 +19,8 @@ public class Processor : Station
         Null//etc.
     }
 
+public class Processor : Station
+{
     public enum StationType
     {
         Chop,

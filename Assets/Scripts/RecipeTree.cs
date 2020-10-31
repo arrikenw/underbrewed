@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class RecipeTree : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private LinkedList<RecipeNode> children = new LinkedList<RecipeNode>();
-    private RecipeNode root = new RecipeNode(Processor.IngredientType.Null, Color.clear);
+    // private LinkedList<RecipeNode> children = new LinkedList<RecipeNode>();
+    private RecipeNode root = new RecipeNode(IngredientType.Null, Color.clear);
     void Start()
     {
-        // bone -> chopped frog -> cheese
-        RecipeNode BCCcheese = new RecipeNode(Processor.IngredientType.Cheese, Color.yellow);
-        RecipeNode BCCchoppedFrog = new RecipeNode(Processor.IngredientType.ChoppedFrog, Color.green);
-        BCCchoppedFrog.AddChild(BCCcheese);
-        RecipeNode BCCBone = new RecipeNode(Processor.IngredientType.Bone, Color.white);
-        BCCBone.AddChild(BCCchoppedFrog);
+        // A: bone -> chopped frog -> cheese
+        RecipeNode ACheese = new RecipeNode(IngredientType.Cheese, Color.yellow);
+        RecipeNode AChoppedFrog = new RecipeNode(IngredientType.ChoppedFrog, Color.green, ACheese);
+        // BCCchoppedFrog.AddChild(BCCcheese);
+        RecipeNode ABone = new RecipeNode(IngredientType.Bone, Color.white, AChoppedFrog);
+        // BCCBone.AddChild(BCCchoppedFrog);
+        root.AddChild(ABone);
+
+        // B: melted bone
+        RecipeNode BMeltedBone = new RecipeNode(IngredientType.MeltedBone, new Color(0.59f,0.29f,0.00f,1.00f));
+        root.AddChild(BMeltedBone);
 
         // frog->burn flower->eye ball
 
@@ -30,16 +34,17 @@ public class RecipeTree : MonoBehaviour
 
 
         // cheese
-        RecipeNode cheese = new RecipeNode(Processor.IngredientType.Cheese, Color.yellow);
+        RecipeNode cheese = new RecipeNode(IngredientType.Cheese, Color.yellow);
 
-        root.AddChild(BCCBone);
         root.AddChild(cheese);
-        // root.AddFirst(Processor.IngredientType.Cheese, Color.yellow);
-        // root.AddFirst(Processor.IngredientType.Bone, Color.white);
-        // root.AddFirst(Processor.IngredientType.Flower, Color.magenta);
-        // root.AddFirst(Processor.IngredientType.CharredFlower, Color.red);
-        // root.AddFirst(Processor.IngredientType.Eyeball, Color.green);
-        // root.AddFirst(Processor.IngredientType.MeltedBone, Color.black);
+
+
+        // root.AddFirst(IngredientType.Cheese, Color.yellow);
+        // root.AddFirst(IngredientType.Bone, Color.white);
+        // root.AddFirst(IngredientType.Flower, Color.magenta);
+        // root.AddFirst(IngredientType.CharredFlower, Color.red);
+        // root.AddFirst(IngredientType.Eyeball, Color.green);
+        // root.AddFirst(IngredientType.MeltedBone, Color.black);
 
 
 
@@ -54,9 +59,9 @@ public class RecipeTree : MonoBehaviour
         
     }
 
-    public Color FindColor(LinkedList<Processor.IngredientType> ingredients) {
+    public Color FindColor(LinkedList<IngredientType> ingredients) {
         RecipeNode current = root;
-        foreach (Processor.IngredientType ingredient in ingredients) {
+        foreach (IngredientType ingredient in ingredients) {
             current = current.FindMatchingChild(ingredient);
             if (current == null) {
                 // Use Color.clear as if it means null
@@ -69,19 +74,26 @@ public class RecipeTree : MonoBehaviour
 }
 
 class RecipeNode {
-    private Processor.IngredientType ingredientType;
+    private IngredientType ingredientType;
     private LinkedList<RecipeNode> children;
     // private RecipeNode defaultNode;
     private Color color;
 
-    public RecipeNode(Processor.IngredientType ingredientType, Color color)
+    public RecipeNode(IngredientType ingredientType, Color color)
     {
         this.ingredientType = ingredientType;
         this.color = color;
         this.children = new LinkedList<RecipeNode>();
     }
 
-    public RecipeNode FindMatchingChild(Processor.IngredientType ingredientType)
+    public RecipeNode(IngredientType ingredientType, Color color, RecipeNode initialChild) {
+        this.ingredientType = ingredientType;
+        this.color = color;
+        this.children = new LinkedList<RecipeNode>();
+        AddChild(initialChild);
+    }
+
+    public RecipeNode FindMatchingChild(IngredientType ingredientType)
     {
         foreach (RecipeNode node in children)
         {
@@ -98,7 +110,7 @@ class RecipeNode {
         return color;
     }
      
-    public void AddChild(Processor.IngredientType ingredientType, Color color)
+    public void AddChild(IngredientType ingredientType, Color color)
     {
         children.AddFirst(new RecipeNode(ingredientType, color));
     }

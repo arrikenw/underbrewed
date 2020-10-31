@@ -8,7 +8,7 @@ public class Item : Interactable
 {
 
     // keep track of ingredient 
-    public Processor.IngredientType type;
+    public IngredientType type;
 
     // Start is called before the first frame update
     private bool held = false;
