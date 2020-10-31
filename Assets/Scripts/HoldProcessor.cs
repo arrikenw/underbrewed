@@ -16,16 +16,6 @@ public class HoldProcessor : Processor
     {
         if (!interacting)
         {
-            //stop emmitting particles from the particle systems
-            psys.Stop(true, ParticleSystemStopBehavior.StopEmitting);
-        }
-    }
-        
-
-    public void AttemptInteract()
-    {
-        if (!interacting)
-        {
             return;
         }
 
