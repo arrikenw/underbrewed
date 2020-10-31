@@ -90,9 +90,29 @@ public class PickUpScript : MonoBehaviour
     }
 
     private void UpdateInteract() {
+
+        //dealing with other interactables
         if (Input.GetKeyDown(KeyCode.Comma) && interactableObject != null) {
             print("Interacting");
             interactableObject.GetComponent<Interactable>().Interact(heldItem);
+        }
+
+        //dealing with processors
+        if (interactableObject != null)
+        {
+            HoldProcessor holdProcessor = interactableObject.GetComponent<HoldProcessor>();
+            if (holdProcessor != null && Input.GetKey("g"))
+            {
+                if (holdProcessor.getInteract() == false)
+                {
+                    holdProcessor.AttemptStartInteract();
+                }
+                holdProcessor.AttemptInteract();
+            }
+            if (holdProcessor != null && !Input.GetKey("g"))
+            {
+                holdProcessor.AttemptStopInteract();
+            }
         }
      }
 
@@ -101,7 +121,20 @@ public class PickUpScript : MonoBehaviour
         if (GameObject.ReferenceEquals(heldItem, other.gameObject)) {
             return;
         }
+
         
+        /*
+        //change our focus, so stop interacting
+        if (interactableObject)
+        {
+            HoldProcessor holdProcessor = interactableObject.GetComponent<HoldProcessor>();
+            if (holdProcessor)
+            {
+                holdProcessor.AttemptStopInteract();
+            }
+        }
+        */
+
         Interactable interactable = other.gameObject.GetComponent<Interactable>();
 
         if (interactableObject == null && interactable != null && !interactable.IsLocked()) {
@@ -113,6 +146,19 @@ public class PickUpScript : MonoBehaviour
 
     private void OnTriggerExit(Collider other) 
     {
+
+        //stop interaction on leave
+        if (interactableObject != null)
+        {
+            HoldProcessor holdProcessor = interactableObject.GetComponent<HoldProcessor>();
+            if (holdProcessor != null)
+            {
+                holdProcessor.AttemptStopInteract();
+            }
+        }
+
+
+
         if (interactableObject != null && GameObject.ReferenceEquals(interactableObject, other.gameObject)) {        
             print("Left interactable");
             interactableObject.GetComponent<Interactable>().OnLeave();

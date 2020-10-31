@@ -31,9 +31,9 @@ public class Station : Interactable
     void OnTriggerStay(Collider other) {
         Item itemComponent = other.gameObject.GetComponent<Item>();
         if (storedItem == null && itemComponent != null && !itemComponent.IsHeld() && !itemComponent.IsLocked()) {
-            print("Storing item in Station");
+            
             storedItem = other.gameObject;
-
+            print("Storing item in Station" + storedItem);
             // Set kinematic to true
             storedItem.GetComponent<Rigidbody>().isKinematic = true;
 
