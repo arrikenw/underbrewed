@@ -8,6 +8,9 @@ public class PickUpScript : MonoBehaviour
     private GameObject interactableObject = null;
     private GameObject heldItem = null;
     public Animator animator;
+
+    private int pollGap = 10; //testing, smoother than getkeydown, which was sometimes quite rough
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +23,11 @@ public class PickUpScript : MonoBehaviour
         UpdateThrow();
         UpdateInteract();
         UpdatePickup();
+
+        if (pollGap > 0)
+        {
+            pollGap -= 1;
+        }
     }
 
     private void UpdatePickup() {
@@ -90,9 +98,50 @@ public class PickUpScript : MonoBehaviour
     }
 
     private void UpdateInteract() {
+
+        //dealing with other interactables
         if (Input.GetKeyDown(KeyCode.Comma) && interactableObject != null) {
+            //we want to interact with interactable processors differently, so return 
+            if (interactableObject.GetComponent<Processor>() == null)
+            {
+                return;
+            }
             print("Interacting");
             interactableObject.GetComponent<Interactable>().Interact(heldItem);
+        }
+
+        //dealing with processors
+        if (interactableObject != null)
+        {
+            //processor
+            Processor processor = interactableObject.GetComponent<Processor>();
+            bool isHoldProcessor = !(interactableObject.GetComponent<HoldProcessor>() == null);
+
+            if (processor != null && pollGap == 0 && Input.GetKey("g"))
+            {
+                //toggling on with G works for both
+                if (!processor.getInteract())
+                {
+                    processor.AttemptStartInteract();
+                }else
+                {
+                    //toggling off with G is enabled only for togglable processors
+                    if (!isHoldProcessor)
+                    {
+                        processor.AttemptStopInteract();
+                    }
+                }
+                pollGap = 10;
+            }
+
+            //instantly stop, ignoring polling gap. Gives a smoother feel
+            if (processor != null && !Input.GetKey("g"))
+            {
+                if (isHoldProcessor)
+                {
+                    processor.AttemptStopInteract();
+                }
+            }
         }
      }
 
@@ -101,7 +150,20 @@ public class PickUpScript : MonoBehaviour
         if (GameObject.ReferenceEquals(heldItem, other.gameObject)) {
             return;
         }
+
         
+        /*
+        //change our focus, so stop interacting
+        if (interactableObject)
+        {
+            HoldProcessor holdProcessor = interactableObject.GetComponent<HoldProcessor>();
+            if (holdProcessor)
+            {
+                holdProcessor.AttemptStopInteract();
+            }
+        }
+        */
+
         Interactable interactable = other.gameObject.GetComponent<Interactable>();
 
         if (interactableObject == null && interactable != null && !interactable.IsLocked()) {
@@ -113,6 +175,19 @@ public class PickUpScript : MonoBehaviour
 
     private void OnTriggerExit(Collider other) 
     {
+
+        //stop interaction on leave
+        if (interactableObject != null)
+        {
+            HoldProcessor holdProcessor = interactableObject.GetComponent<HoldProcessor>();
+            if (holdProcessor != null)
+            {
+                holdProcessor.AttemptStopInteract();
+            }
+        }
+
+
+
         if (interactableObject != null && GameObject.ReferenceEquals(interactableObject, other.gameObject)) {        
             print("Left interactable");
             interactableObject.GetComponent<Interactable>().OnLeave();

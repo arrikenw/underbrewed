@@ -12,9 +12,6 @@ public class PrefabScript : MonoBehaviour
     public GameObject charredFlowerPrefab;
     public GameObject cookedFrogPrefab;
 
-    // particle system prefab
-    public ParticleSystem psys;
-
     // lookup tables for cooking times
     public readonly Dictionary<Tuple<Processor.StationType, Processor.IngredientType>, int> cooktimeMap
             = new Dictionary<Tuple<Processor.StationType, Processor.IngredientType>, int>();
