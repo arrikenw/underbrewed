@@ -103,23 +103,27 @@ public class Processor : Station
         //get IngType
         currentIngredient = storedItem.GetComponent<Ingredient>().type;
 
-        //todo add correct type checks here
-        if (currentIngredient != IngType.Bone && currentIngredient != IngType.Flower && currentIngredient != IngType.Frog)
-        {
-            print("item cannot be processed");
-            return;
-        }
-
         //get timer 
         timeUntilComplete = prefabManager.getFromCooktimeMap(new Tuple<StationType, IngType>(station, currentIngredient));
         
+        //lookup failed
+        if (timeUntilComplete == -1)
+        {
+            print("this station cannot process: " + currentIngredient);
+            return;
+        }
+
         //effects
         if (cookEffectsPrefab != null)
         {
             cookEffects = Instantiate(cookEffectsPrefab, transform.position, transform.rotation);
         }
-        psys.Play();
 
+        if (psys)
+        {
+            psys.Play();
+        }
+       
         //object settings
         canPickup = false;
         interacting = true;

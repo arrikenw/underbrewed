@@ -202,7 +202,9 @@ GameObject:
   - component: {fileID: 2259803080065126900}
   - component: {fileID: 7764166300433335169}
   - component: {fileID: 6211707597328957989}
-  - component: {fileID: 443933730502221679}
+  - component: {fileID: -6739672480209334661}
+  - component: {fileID: 3037374858868100450}
+  - component: {fileID: 67723114300461938}
   m_Layer: 0
   m_Name: MortarAndPestelStation
   m_TagString: Untagged
@@ -294,7 +296,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &443933730502221679
+--- !u!114 &-6739672480209334661
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -303,10 +305,41 @@ MonoBehaviour:
   m_GameObject: {fileID: 4955474852227601385}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d5341903e6730149806e68fce03585b, type: 3}
+  m_Script: {fileID: 11500000, guid: 50d286770f463994884c60feacb8cd4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleMat: {fileID: 0}
-  cookMat: {fileID: 0}
+  psysPrefab: {fileID: 7408081723834861634, guid: bac9bb0729c3b43408ca763151bd02c0,
+    type: 3}
   station: 2
-  cookEffectsPrefab: {fileID: 0}
+  cookEffectsPrefab: {fileID: 6579814921043404322, guid: efbaa000c1234d0409f25479379a3a01,
+    type: 3}
+--- !u!65 &3037374858868100450
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4955474852227601385}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5827756, y: 0.47660995, z: 0.63974833}
+  m_Center: {x: 0.5260041, y: 0.69491875, z: 0.01}
+--- !u!114 &67723114300461938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4955474852227601385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d286770f463994884c60feacb8cd4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  psysPrefab: {fileID: 7408081723834861634, guid: bac9bb0729c3b43408ca763151bd02c0,
+    type: 3}
+  station: 2
+  cookEffectsPrefab: {fileID: 6579814921043404322, guid: efbaa000c1234d0409f25479379a3a01,
+    type: 3}

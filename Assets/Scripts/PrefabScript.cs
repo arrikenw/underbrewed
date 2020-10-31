@@ -38,11 +38,18 @@ public class PrefabScript : MonoBehaviour
 
     public int getFromCooktimeMap(Tuple<Processor.StationType, IngType> conditions)
     {
+        //return error value if the key is invalid
+        print(conditions);
+        print(cooktimeMap.ContainsKey(conditions));
+        if (!cooktimeMap.ContainsKey(conditions)){
+            return -1;
+        }
         return cooktimeMap[conditions];
     }
 
     public GameObject getFromIngredientMap(Tuple<Processor.StationType, IngType> conditions)
     {
+        print(conditions);
         return ingredientMap[conditions];
     }
 
@@ -60,7 +67,7 @@ public class PrefabScript : MonoBehaviour
         cooktimeMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Chop, IngType.Cheese), 600);
 
         cooktimeMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Crush, IngType.Frog), 600);
-        cooktimeMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Crush, IngType.Cheese), 600);
+        cooktimeMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Crush, IngType.Bone), 600);
 
         // Outputs
 
@@ -74,8 +81,8 @@ public class PrefabScript : MonoBehaviour
         ingredientMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Chop, IngType.Frog), choppedFrogPrefab);
 
         //crushing
-        ingredientMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Chop, IngType.Bone), crushedBonePrefab);
-        ingredientMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Chop, IngType.Eyeball), crushedEyeballPrefab);
+        ingredientMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Crush, IngType.Bone), crushedBonePrefab);
+        ingredientMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Crush, IngType.Eyeball), crushedEyeballPrefab);
 
     }
 }

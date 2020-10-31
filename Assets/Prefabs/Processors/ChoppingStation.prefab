@@ -122,7 +122,8 @@ GameObject:
   - component: {fileID: 5212734003589303928}
   - component: {fileID: 8794603018788942582}
   - component: {fileID: 8724680418105700937}
-  - component: {fileID: 8415795673652894846}
+  - component: {fileID: -2823369317141404425}
+  - component: {fileID: 5895970014220082160}
   m_Layer: 0
   m_Name: ChoppingStation
   m_TagString: Untagged
@@ -214,7 +215,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &8415795673652894846
+--- !u!114 &-2823369317141404425
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -223,13 +224,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 6721809882490579788}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d5341903e6730149806e68fce03585b, type: 3}
+  m_Script: {fileID: 11500000, guid: 50d286770f463994884c60feacb8cd4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleMat: {fileID: 0}
-  cookMat: {fileID: 0}
-  station: 2
-  cookEffectsPrefab: {fileID: 0}
+  psysPrefab: {fileID: 930311792502371207, guid: cf7a90002d54ad447b6413e9a077a3ad,
+    type: 3}
+  station: 0
+  cookEffectsPrefab: {fileID: 6579814921043404322, guid: efbaa000c1234d0409f25479379a3a01,
+    type: 3}
+--- !u!65 &5895970014220082160
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6721809882490579788}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.51574755, z: 0.7826106}
+  m_Center: {x: 0, y: 0.24212623, z: 0.025896937}
 --- !u!1 &6924498815954786692
 GameObject:
   m_ObjectHideFlags: 0

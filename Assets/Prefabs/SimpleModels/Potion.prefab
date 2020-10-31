@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 7421565670558108724}
   - component: {fileID: 767393721307821924}
   m_Layer: 0
-  m_Name: PotionParent
+  m_Name: Potion
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -362,7 +362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24348bc3b5699d24a821347c9b578a1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 6
+  type: 0
   potionColour: {r: 0, g: 0, b: 0, a: 0}
   opaqueLiquidMaterial: {fileID: 0}
 --- !u!1 &7656079191955185177
