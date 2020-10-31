@@ -6,11 +6,27 @@ using UnityEngine;
 public class PrefabScript : MonoBehaviour
 {
     // prefabs
+
+    //defaults
     public GameObject bonePrefab;
-    public GameObject meltedBonePrefab;
+    public GameObject frogPrefab;
     public GameObject flowerPrefab;
+    public GameObject cheesePrefab;
+    public GameObject eyeballPrefab;
+
+    //grill
+    public GameObject meltedBonePrefab;
     public GameObject charredFlowerPrefab;
     public GameObject cookedFrogPrefab;
+
+    //crush
+    public GameObject crushedBonePrefab;
+    public GameObject crushedEyeballPrefab;
+
+    //chop
+    public GameObject choppedCheesePrefab;
+    public GameObject choppedFrogPrefab;
+    
 
     // lookup tables for cooking times
     public readonly Dictionary<Tuple<Processor.StationType, IngType>, int> cooktimeMap
@@ -33,22 +49,33 @@ public class PrefabScript : MonoBehaviour
     void Start()
     {
         // Times
-        // e.g.
-        // cooktimeMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Cauldron, IngType.Bone), 1000);
-        // cooktimeMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Cauldron, IngType.Flower), 15); //etc.
 
-        // 650
+        //Cooking
+        //TODO VARY TIMES
         cooktimeMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Grill, IngType.Bone), 600);
         cooktimeMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Grill, IngType.Flower), 600);
         cooktimeMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Grill, IngType.Frog), 600);
 
-        // Outputs
-        // e.g.
-        // ingredientMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Cauldron, IngType.Bone), meltedBonePrefab);
-        // ingredientMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Cauldron, IngType.Flower), charredFlowerPrefab); //etc.
+        cooktimeMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Chop, IngType.Frog), 600);
+        cooktimeMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Chop, IngType.Cheese), 600);
 
+        cooktimeMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Crush, IngType.Frog), 600);
+        cooktimeMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Crush, IngType.Cheese), 600);
+
+        // Outputs
+
+        //cooking
         ingredientMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Grill, IngType.Bone), meltedBonePrefab);
         ingredientMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Grill, IngType.Flower), charredFlowerPrefab);
         ingredientMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Grill, IngType.Frog), cookedFrogPrefab);
+
+        //chopping
+        ingredientMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Chop, IngType.Cheese), choppedCheesePrefab);
+        ingredientMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Chop, IngType.Frog), choppedFrogPrefab);
+
+        //crushing
+        ingredientMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Chop, IngType.Bone), crushedBonePrefab);
+        ingredientMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Chop, IngType.Eyeball), crushedEyeballPrefab);
+
     }
 }

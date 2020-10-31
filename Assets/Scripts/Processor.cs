@@ -26,13 +26,14 @@ public class Processor : Station
     public enum StationType
     {
         Chop,
-        Grill //etc.
+        Grill,
+        Crush//etc.
     }
 
     // cooking logic
     protected bool interacting = false;
     protected int timeUntilComplete = 0;
-    private IngType currentIngredient;
+    protected IngType currentIngredient;
 
     // particle effects
     public ParticleSystem psysPrefab;
