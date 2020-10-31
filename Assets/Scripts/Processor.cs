@@ -16,6 +16,7 @@ public class Processor : Station
         Cheese,
         Eyeball,
         Frog,
+        ChoppedFrog,
         CookedFrog,
         //etc.
     }
