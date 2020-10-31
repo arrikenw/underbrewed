@@ -4,24 +4,21 @@ using UnityEngine;
 
 public class UIPauseMenu : MonoBehaviour
 {
-
-    public void Resume()
+    public void ResumeGame()
     {
         // TO DO: Resume game
-        Debug.Log("TO DO: Resume game");
-
+        UnityEngine.SceneManagement.SceneManager.LoadScene("IrisScene");
     }
 
-    public void Restart()
+    public void RestartGame()
     {
-        // TO DO: Resume level
-        Debug.Log("TO DO: Restart level");
+        //// TO DO: Restart game
+        UnityEngine.SceneManagement.SceneManager.LoadScene("IrisScene");
     }
 
     public void Quit()
     {
-        // TO DO: End game
-        UnityEngine.SceneManagement.SceneManager.LoadScene("UIMainMenu");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("IrisUIMainMenu");
     }
 
 }
