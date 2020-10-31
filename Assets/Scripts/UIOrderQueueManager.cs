@@ -104,7 +104,7 @@ public class UIOrderQueueManager : MonoBehaviour
 
             orderUI.transform.position = Vector3.Lerp(orderUI.transform.position, targetPosition, Time.deltaTime * this.velocity);
 
-            yield return new WaitForSeconds(.1f);
+            yield return null;
         }
     }
 }
