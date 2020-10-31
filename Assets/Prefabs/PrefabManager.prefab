@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4809214842786293619
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4809214842786293629}
+  - component: {fileID: 4809214842786293628}
+  m_Layer: 0
+  m_Name: PrefabManager
+  m_TagString: PrefabManagerTag
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4809214842786293629
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4809214842786293619}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.0578698, y: -15.936996, z: 16.523539}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4809214842786293628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4809214842786293619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a47396f50ce460b44b1e1cf19fbd98e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bonePrefab: {fileID: 5789837929922418172, guid: dad9f9563618eba4581732492d27949a,
+    type: 3}
+  frogPrefab: {fileID: 1319328261704842971, guid: 4f4cb856f68ddf04d94e7eb49428e878,
+    type: 3}
+  flowerPrefab: {fileID: 7264707044790559130, guid: 42f5c300018bafc4bbb2637188e267e9,
+    type: 3}
+  cheesePrefab: {fileID: 8009039652199791814, guid: 93f2aa29362ca504a8a7e2404313590e,
+    type: 3}
+  eyeballPrefab: {fileID: 6362214827448252304, guid: d72255d658afaff4ea091023f063c89b,
+    type: 3}
+  meltedBonePrefab: {fileID: 7378391329860651817, guid: df5d06604f75782498469c459422d106,
+    type: 3}
+  charredFlowerPrefab: {fileID: 1187297535943171320, guid: 285a81a2059135c4780a31edf4f26fe2,
+    type: 3}
+  cookedFrogPrefab: {fileID: 3237384372113296511, guid: f9684a04e101a674b8454fd56cba04a4,
+    type: 3}
+  crushedBonePrefab: {fileID: 5994768381193141349, guid: 959e90612302e12458744039d22c323e,
+    type: 3}
+  crushedEyeballPrefab: {fileID: 6948511097556231797, guid: fa9608cb87448cf4096b5482695b9d04,
+    type: 3}
+  choppedCheesePrefab: {fileID: 1487937844590548170, guid: 50156b33173788b44aafc8e35c44c4c3,
+    type: 3}
+  choppedFrogPrefab: {fileID: 2097642393294680124, guid: 240f216eeb5719e429bb285d8e4eb066,
+    type: 3}

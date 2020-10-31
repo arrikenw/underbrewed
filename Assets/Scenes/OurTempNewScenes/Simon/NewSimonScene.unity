@@ -5196,6 +5196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mixColour: {r: 0, g: 0, b: 0, a: 0}
+  recipeTree: {fileID: 1407547484}
 --- !u!65 &63519625
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7791,6 +7792,7 @@ MonoBehaviour:
     type: 3}
   charredFlowerPrefab: {fileID: 1187297535943171320, guid: 285a81a2059135c4780a31edf4f26fe2,
     type: 3}
+  cookedFrogPrefab: {fileID: 0}
   psys: {fileID: 7408081723834861634, guid: bac9bb0729c3b43408ca763151bd02c0, type: 3}
 --- !u!4 &642282793
 Transform:
@@ -9926,7 +9928,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idleMat: {fileID: 2100000, guid: b310113bddb65ae4eb45bff6103dde15, type: 2}
   cookMat: {fileID: 2100000, guid: b310113bddb65ae4eb45bff6103dde15, type: 2}
-  station: 3
+  station: 1
   cookEffectsPrefab: {fileID: 6579814921043404322, guid: efbaa000c1234d0409f25479379a3a01,
     type: 3}
 --- !u!65 &944115120
@@ -12935,6 +12937,49 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a6903ed3ce10bb4f858035f1c0041b9, type: 3}
+--- !u!1 &1407547484
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1407547486}
+  - component: {fileID: 1407547485}
+  m_Layer: 0
+  m_Name: RecipeTree
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1407547485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407547484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f353e172cd947cb46923818b7f7dcbce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1407547486
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407547484}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.3308077, y: -0.3868078, z: 1.8678025}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 25
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1420303908
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13283,6 +13328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 703036f36a692854f8749857bb9353dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
 --- !u!65 &1431407666
 BoxCollider:
   m_ObjectHideFlags: 0
