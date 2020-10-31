@@ -28,7 +28,7 @@ public class HoldProcessor : Processor
         if (timeUntilComplete == 0 && storedItem != null)
         {
             //create new object
-            Tuple<StationType, IngredientType> lookupData = new Tuple<StationType, IngredientType>(station, currentIngredient);
+            Tuple<StationType, IngType> lookupData = new Tuple<StationType, IngType>(station, currentIngredient);
             GameObject processedOutput = Instantiate(prefabManager.getFromIngredientMap(lookupData), storedItem.transform.position, storedItem.transform.rotation);
 
             //destroy object being processed

@@ -26,7 +26,7 @@ public class ToggleProcessor : Processor
                 }
 
                 //create new object
-                Tuple<StationType, IngredientType> lookupData = new Tuple<StationType, IngredientType>(station, currentIngredient);
+                Tuple<StationType, IngType> lookupData = new Tuple<StationType, IngType>(station, currentIngredient);
                 print(lookupData);
                 GameObject processedOutput = Instantiate(prefabManager.getFromIngredientMap(lookupData), storedItem.transform.position, storedItem.transform.rotation);
 

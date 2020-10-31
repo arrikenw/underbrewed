@@ -3,33 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Processor : Station
-{
-
-    public enum IngredientType
+public enum IngType
     {
         Null,
         Bone,
-        Flower,
         MeltedBone,
+        CrushedBone,
+        Flower,
         CharredFlower,
         Cheese,
+        ChoppedCheese,
         Eyeball,
+        CrushedEyeball,
         Frog,
+        ChoppedFrog,
         CookedFrog,
         //etc.
     }
 
+public class Processor : Station
+{
     public enum StationType
     {
         Chop,
-        Grill //etc.
+        Grill,
+        Crush//etc.
     }
 
     // cooking logic
     protected bool interacting = false;
     protected int timeUntilComplete = 0;
-    protected IngredientType currentIngredient;
+    protected IngType currentIngredient;
 
     // particle effects
     public ParticleSystem psysPrefab;
@@ -96,26 +100,30 @@ public class Processor : Station
             return;
         }
 
-        //get ingredientType
+        //get IngType
         currentIngredient = storedItem.GetComponent<Ingredient>().type;
 
-        //todo add correct type checks here
-        if (currentIngredient != IngredientType.Bone && currentIngredient != IngredientType.Flower && currentIngredient != IngredientType.Frog)
+        //get timer 
+        timeUntilComplete = prefabManager.getFromCooktimeMap(new Tuple<StationType, IngType>(station, currentIngredient));
+        
+        //lookup failed
+        if (timeUntilComplete == -1)
         {
-            print("item cannot be processed");
+            print("this station cannot process: " + currentIngredient);
             return;
         }
 
-        //get timer 
-        timeUntilComplete = prefabManager.getFromCooktimeMap(new Tuple<StationType, IngredientType>(station, currentIngredient));
-        
         //effects
         if (cookEffectsPrefab != null)
         {
             cookEffects = Instantiate(cookEffectsPrefab, transform.position, transform.rotation);
         }
-        psys.Play();
 
+        if (psys)
+        {
+            psys.Play();
+        }
+       
         //object settings
         canPickup = false;
         interacting = true;
