@@ -6,16 +6,46 @@ public class RecipeTree : MonoBehaviour
 {
     // Start is called before the first frame update
     private LinkedList<RecipeNode> children = new LinkedList<RecipeNode>();
-    private RecipeNode root = new RecipeNode(Processor.IngredientType.Potion, Color.clear);
+    private RecipeNode root = new RecipeNode(Processor.IngredientType.Null, Color.clear);
     void Start()
     {
-        
-        root.AddChild(Processor.IngredientType.Cheese, Color.yellow);
-        root.AddChild(Processor.IngredientType.Bone, Color.white);
-        root.AddChild(Processor.IngredientType.Flower, Color.magenta);
-        root.AddChild(Processor.IngredientType.CharredFlower, Color.red);
-        root.AddChild(Processor.IngredientType.Eyeball, Color.green);
-        root.AddChild(Processor.IngredientType.MeltedBone, Color.black);
+        // bone -> chopped frog -> cheese
+        RecipeNode BCCcheese = new RecipeNode(Processor.IngredientType.Cheese, Color.yellow);
+        RecipeNode BCCchoppedFrog = new RecipeNode(Processor.IngredientType.ChoppedFrog, Color.green);
+        BCCchoppedFrog.AddChild(BCCcheese);
+        RecipeNode BCCBone = new RecipeNode(Processor.IngredientType.Bone, Color.white);
+        BCCBone.AddChild(BCCchoppedFrog);
+
+        // frog->burn flower->eye ball
+
+        // chopped cheese->burnt bone->flower
+
+        // burn flower->burnt frog->crushed eye ball
+
+        // crushed bone->frog->cheese
+
+        // eye ball->chopped cheese->bone
+
+        // flower->burnt frog->burnt bone
+
+
+        // cheese
+        RecipeNode cheese = new RecipeNode(Processor.IngredientType.Cheese, Color.yellow);
+
+        root.AddChild(BCCBone);
+        root.AddChild(cheese);
+        // root.AddFirst(Processor.IngredientType.Cheese, Color.yellow);
+        // root.AddFirst(Processor.IngredientType.Bone, Color.white);
+        // root.AddFirst(Processor.IngredientType.Flower, Color.magenta);
+        // root.AddFirst(Processor.IngredientType.CharredFlower, Color.red);
+        // root.AddFirst(Processor.IngredientType.Eyeball, Color.green);
+        // root.AddFirst(Processor.IngredientType.MeltedBone, Color.black);
+
+
+
+
+
+
     }
 
     // Update is called once per frame
@@ -71,5 +101,9 @@ class RecipeNode {
     public void AddChild(Processor.IngredientType ingredientType, Color color)
     {
         children.AddFirst(new RecipeNode(ingredientType, color));
+    }
+
+    public void AddChild(RecipeNode node) {
+        children.AddFirst(node);
     }
 }
