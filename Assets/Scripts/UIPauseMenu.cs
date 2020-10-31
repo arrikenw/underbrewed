@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class UIPauseMenu : MonoBehaviour
 {
+    public Transform canvas;
+
     public void ResumeGame()
     {
         // TO DO: Resume game
-        UnityEngine.SceneManagement.SceneManager.LoadScene("IrisScene");
+        if (canvas.gameObject.activeInHierarchy == true)
+        {
+            Time.timeScale = 1; // for time-dependent functions
+            canvas.gameObject.SetActive(false);
+        }
     }
 
     public void RestartGame()
