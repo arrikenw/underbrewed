@@ -4,15 +4,17 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 
-public enum IngredientType
+public enum IngType
     {
         Bone,
-        Flower,
         MeltedBone,
+        CrushedBone,
+        Flower,
         CharredFlower,
         Cheese,
         ChoppedCheese,
         Eyeball,
+        CrushedEyeball,
         Frog,
         ChoppedFrog,
         CookedFrog,
@@ -43,7 +45,7 @@ public class Processor : Station
     // cooking logic
     private int timeUntilComplete = 0;
     private bool isCooking = false;
-    private IngredientType currentIngredient;
+    private IngType currentIngredient;
 
     // particle effects
     private ParticleSystem psys;
@@ -84,13 +86,13 @@ public class Processor : Station
         if (base.storedItem && base.storedItem.GetComponent<Ingredient>())
         {
             //check new item type
-            IngredientType currentIngredient = base.storedItem.GetComponent<Ingredient>().type;
+            IngType currentIngredient = base.storedItem.GetComponent<Ingredient>().type;
 
             if (!isCooking)
             {
 
                 //skip if the type is not a base ingredient
-                if (currentIngredient != IngredientType.Bone && currentIngredient != IngredientType.Flower && currentIngredient != IngredientType.Frog)
+                if (currentIngredient != IngType.Bone && currentIngredient != IngType.Flower && currentIngredient != IngType.Frog)
                 {
                     print("returning");
                     return;
@@ -115,7 +117,7 @@ public class Processor : Station
                 }
 
                 // set cooking time
-                totalCooktime = prefabManager.getFromCooktimeMap(new Tuple<StationType, IngredientType>(station, currentIngredient)); //todo replace with ingredient type of stored object rather than just using bone
+                totalCooktime = prefabManager.getFromCooktimeMap(new Tuple<StationType, IngType>(station, currentIngredient)); //todo replace with ingredient type of stored object rather than just using bone
                 timeUntilComplete = totalCooktime;
             }
             else
@@ -138,7 +140,7 @@ public class Processor : Station
                 if (timeUntilComplete == 100)
                 {
                     //create new object
-                    GameObject processedOutput = Instantiate(prefabManager.getFromIngredientMap(new Tuple<StationType, IngredientType>(station, currentIngredient)), base.storedItem.transform.position, base.storedItem.transform.rotation);
+                    GameObject processedOutput = Instantiate(prefabManager.getFromIngredientMap(new Tuple<StationType, IngType>(station, currentIngredient)), base.storedItem.transform.position, base.storedItem.transform.rotation);
 
                     //destroy object being processed
                     Destroy(base.storedItem);

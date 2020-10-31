@@ -12,7 +12,7 @@ public class Cauldron : Station
     [SerializeField] private Color mixColour; // Recording current colour is needed for future implementations
     private Color baseColour;
 
-    private LinkedList<IngredientType> ingredients = new LinkedList<IngredientType>();
+    private LinkedList<IngType> ingredients = new LinkedList<IngType>();
     [SerializeField] private GameObject recipeTree = null;
 
     protected override void Start()

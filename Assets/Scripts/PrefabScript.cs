@@ -16,19 +16,19 @@ public class PrefabScript : MonoBehaviour
     public ParticleSystem psys;
 
     // lookup tables for cooking times
-    public readonly Dictionary<Tuple<Processor.StationType, IngredientType>, int> cooktimeMap
-            = new Dictionary<Tuple<Processor.StationType, IngredientType>, int>();
+    public readonly Dictionary<Tuple<Processor.StationType, IngType>, int> cooktimeMap
+            = new Dictionary<Tuple<Processor.StationType, IngType>, int>();
 
     // lookup tables for output ingredients
-    public readonly Dictionary<Tuple<Processor.StationType, IngredientType>, GameObject> ingredientMap
-            = new Dictionary<Tuple<Processor.StationType, IngredientType>, GameObject>();
+    public readonly Dictionary<Tuple<Processor.StationType, IngType>, GameObject> ingredientMap
+            = new Dictionary<Tuple<Processor.StationType, IngType>, GameObject>();
 
-    public int getFromCooktimeMap(Tuple<Processor.StationType, IngredientType> conditions)
+    public int getFromCooktimeMap(Tuple<Processor.StationType, IngType> conditions)
     {
         return cooktimeMap[conditions];
     }
 
-    public GameObject getFromIngredientMap(Tuple<Processor.StationType, IngredientType> conditions)
+    public GameObject getFromIngredientMap(Tuple<Processor.StationType, IngType> conditions)
     {
         return ingredientMap[conditions];
     }
@@ -37,21 +37,21 @@ public class PrefabScript : MonoBehaviour
     {
         // Times
         // e.g.
-        // cooktimeMap.Add(new Tuple<Processor.StationType, IngredientType>(Processor.StationType.Cauldron, IngredientType.Bone), 1000);
-        // cooktimeMap.Add(new Tuple<Processor.StationType, IngredientType>(Processor.StationType.Cauldron, IngredientType.Flower), 15); //etc.
+        // cooktimeMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Cauldron, IngType.Bone), 1000);
+        // cooktimeMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Cauldron, IngType.Flower), 15); //etc.
 
         // 650
-        cooktimeMap.Add(new Tuple<Processor.StationType, IngredientType>(Processor.StationType.Grill, IngredientType.Bone), 600);
-        cooktimeMap.Add(new Tuple<Processor.StationType, IngredientType>(Processor.StationType.Grill, IngredientType.Flower), 600);
-        cooktimeMap.Add(new Tuple<Processor.StationType, IngredientType>(Processor.StationType.Grill, IngredientType.Frog), 600);
+        cooktimeMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Grill, IngType.Bone), 600);
+        cooktimeMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Grill, IngType.Flower), 600);
+        cooktimeMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Grill, IngType.Frog), 600);
 
         // Outputs
         // e.g.
-        // ingredientMap.Add(new Tuple<Processor.StationType, IngredientType>(Processor.StationType.Cauldron, IngredientType.Bone), meltedBonePrefab);
-        // ingredientMap.Add(new Tuple<Processor.StationType, IngredientType>(Processor.StationType.Cauldron, IngredientType.Flower), charredFlowerPrefab); //etc.
+        // ingredientMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Cauldron, IngType.Bone), meltedBonePrefab);
+        // ingredientMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Cauldron, IngType.Flower), charredFlowerPrefab); //etc.
 
-        ingredientMap.Add(new Tuple<Processor.StationType, IngredientType>(Processor.StationType.Grill, IngredientType.Bone), meltedBonePrefab);
-        ingredientMap.Add(new Tuple<Processor.StationType, IngredientType>(Processor.StationType.Grill, IngredientType.Flower), charredFlowerPrefab);
-        ingredientMap.Add(new Tuple<Processor.StationType, IngredientType>(Processor.StationType.Grill, IngredientType.Frog), cookedFrogPrefab);
+        ingredientMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Grill, IngType.Bone), meltedBonePrefab);
+        ingredientMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Grill, IngType.Flower), charredFlowerPrefab);
+        ingredientMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Grill, IngType.Frog), cookedFrogPrefab);
     }
 }

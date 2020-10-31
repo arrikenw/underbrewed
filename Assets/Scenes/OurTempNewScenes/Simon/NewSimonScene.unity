@@ -7792,6 +7792,7 @@ MonoBehaviour:
     type: 3}
   charredFlowerPrefab: {fileID: 1187297535943171320, guid: 285a81a2059135c4780a31edf4f26fe2,
     type: 3}
+  cookedFrogPrefab: {fileID: 0}
   psys: {fileID: 7408081723834861634, guid: bac9bb0729c3b43408ca763151bd02c0, type: 3}
 --- !u!4 &642282793
 Transform:
@@ -9927,7 +9928,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idleMat: {fileID: 2100000, guid: b310113bddb65ae4eb45bff6103dde15, type: 2}
   cookMat: {fileID: 2100000, guid: b310113bddb65ae4eb45bff6103dde15, type: 2}
-  station: 3
+  station: 1
   cookEffectsPrefab: {fileID: 6579814921043404322, guid: efbaa000c1234d0409f25479379a3a01,
     type: 3}
 --- !u!65 &944115120
@@ -13327,6 +13328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 703036f36a692854f8749857bb9353dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
 --- !u!65 &1431407666
 BoxCollider:
   m_ObjectHideFlags: 0

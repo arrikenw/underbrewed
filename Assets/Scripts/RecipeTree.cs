@@ -5,20 +5,28 @@ using UnityEngine;
 public class RecipeTree : MonoBehaviour
 {
     // private LinkedList<RecipeNode> children = new LinkedList<RecipeNode>();
-    private RecipeNode root = new RecipeNode(IngredientType.Null, Color.clear);
+    private RecipeNode root = new RecipeNode(IngType.Null, Color.clear);
     void Start()
     {
         // A: bone -> chopped frog -> cheese
-        RecipeNode ACheese = new RecipeNode(IngredientType.Cheese, Color.yellow);
-        RecipeNode AChoppedFrog = new RecipeNode(IngredientType.ChoppedFrog, Color.green, ACheese);
+        RecipeNode ACheese = new RecipeNode(IngType.Cheese, Color.yellow);
+        RecipeNode AChoppedFrog = new RecipeNode(IngType.ChoppedFrog, Color.green, ACheese);
         // BCCchoppedFrog.AddChild(BCCcheese);
-        RecipeNode ABone = new RecipeNode(IngredientType.Bone, Color.white, AChoppedFrog);
+        RecipeNode ABone = new RecipeNode(IngType.Bone, Color.white, AChoppedFrog);
         // BCCBone.AddChild(BCCchoppedFrog);
         root.AddChild(ABone);
 
         // B: melted bone
-        RecipeNode BMeltedBone = new RecipeNode(IngredientType.MeltedBone, new Color(0.59f,0.29f,0.00f,1.00f));
+        RecipeNode BMeltedBone = new RecipeNode(IngType.MeltedBone, new Color(0.59f,0.29f,0.00f,1.00f));
         root.AddChild(BMeltedBone);
+
+        // C: crushed bone -> frog -> cheese
+        // RecipeNode CCheese = new RecipeNode(IngType.Cheese, Color.yellow);
+        // RecipeNode CChoppedFrog = new RecipeNode(IngType.ChoppedFrog, Color.green, CCheese);
+        // // BCCchoppedFrog.AddChild(BCCcheese);
+        // RecipeNode CBone = new RecipeNode(IngType.Bone, Color.white, CChoppedFrog);
+        // // BCCBone.AddChild(BCCchoppedFrog);
+        // root.AddChild(CBone);
 
         // frog->burn flower->eye ball
 
@@ -34,17 +42,17 @@ public class RecipeTree : MonoBehaviour
 
 
         // cheese
-        RecipeNode cheese = new RecipeNode(IngredientType.Cheese, Color.yellow);
+        RecipeNode cheese = new RecipeNode(IngType.Cheese, Color.yellow);
 
         root.AddChild(cheese);
 
 
-        // root.AddFirst(IngredientType.Cheese, Color.yellow);
-        // root.AddFirst(IngredientType.Bone, Color.white);
-        // root.AddFirst(IngredientType.Flower, Color.magenta);
-        // root.AddFirst(IngredientType.CharredFlower, Color.red);
-        // root.AddFirst(IngredientType.Eyeball, Color.green);
-        // root.AddFirst(IngredientType.MeltedBone, Color.black);
+        // root.AddFirst(IngType.Cheese, Color.yellow);
+        // root.AddFirst(IngType.Bone, Color.white);
+        // root.AddFirst(IngType.Flower, Color.magenta);
+        // root.AddFirst(IngType.CharredFlower, Color.red);
+        // root.AddFirst(IngType.Eyeball, Color.green);
+        // root.AddFirst(IngType.MeltedBone, Color.black);
 
 
 
@@ -59,9 +67,9 @@ public class RecipeTree : MonoBehaviour
         
     }
 
-    public Color FindColor(LinkedList<IngredientType> ingredients) {
+    public Color FindColor(LinkedList<IngType> ingredients) {
         RecipeNode current = root;
-        foreach (IngredientType ingredient in ingredients) {
+        foreach (IngType ingredient in ingredients) {
             current = current.FindMatchingChild(ingredient);
             if (current == null) {
                 // Use Color.clear as if it means null
@@ -74,30 +82,30 @@ public class RecipeTree : MonoBehaviour
 }
 
 class RecipeNode {
-    private IngredientType ingredientType;
+    private IngType IngType;
     private LinkedList<RecipeNode> children;
     // private RecipeNode defaultNode;
     private Color color;
 
-    public RecipeNode(IngredientType ingredientType, Color color)
+    public RecipeNode(IngType IngType, Color color)
     {
-        this.ingredientType = ingredientType;
+        this.IngType = IngType;
         this.color = color;
         this.children = new LinkedList<RecipeNode>();
     }
 
-    public RecipeNode(IngredientType ingredientType, Color color, RecipeNode initialChild) {
-        this.ingredientType = ingredientType;
+    public RecipeNode(IngType IngType, Color color, RecipeNode initialChild) {
+        this.IngType = IngType;
         this.color = color;
         this.children = new LinkedList<RecipeNode>();
         AddChild(initialChild);
     }
 
-    public RecipeNode FindMatchingChild(IngredientType ingredientType)
+    public RecipeNode FindMatchingChild(IngType IngType)
     {
         foreach (RecipeNode node in children)
         {
-            if (ingredientType == node.ingredientType)
+            if (IngType == node.IngType)
             {
                 return node;
             }
@@ -110,9 +118,9 @@ class RecipeNode {
         return color;
     }
      
-    public void AddChild(IngredientType ingredientType, Color color)
+    public void AddChild(IngType IngType, Color color)
     {
-        children.AddFirst(new RecipeNode(ingredientType, color));
+        children.AddFirst(new RecipeNode(IngType, color));
     }
 
     public void AddChild(RecipeNode node) {
