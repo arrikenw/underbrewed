@@ -8,6 +8,7 @@ public class Processor : Station
 
     public enum IngredientType
     {
+        Null,
         Bone,
         Flower,
         MeltedBone,
@@ -16,7 +17,7 @@ public class Processor : Station
         Eyeball,
         Frog,
         CookedFrog,
-        Null//etc.
+        //etc.
     }
 
     public enum StationType
@@ -81,6 +82,10 @@ public class Processor : Station
         interacting = false;
         canPickup = true;
         psys.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        if (cookEffects)
+        {
+            Destroy(cookEffects);
+        }
     }
 
     public void AttemptStartInteract()
@@ -92,7 +97,7 @@ public class Processor : Station
         }
 
         //get ingredientType
-        IngredientType currentIngredient = storedItem.GetComponent<Ingredient>().type;
+        currentIngredient = storedItem.GetComponent<Ingredient>().type;
 
         //todo add correct type checks here
         if (currentIngredient != IngredientType.Bone && currentIngredient != IngredientType.Flower && currentIngredient != IngredientType.Frog)
@@ -103,8 +108,15 @@ public class Processor : Station
 
         //get timer 
         timeUntilComplete = prefabManager.getFromCooktimeMap(new Tuple<StationType, IngredientType>(station, currentIngredient));
-
+        
+        //effects
+        if (cookEffectsPrefab != null)
+        {
+            cookEffects = Instantiate(cookEffectsPrefab, transform.position, transform.rotation);
+        }
         psys.Play();
+
+        //object settings
         canPickup = false;
         interacting = true;
     }

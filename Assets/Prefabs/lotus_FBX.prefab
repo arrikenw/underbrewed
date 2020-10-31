@@ -1316,7 +1316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50674572d86c3c469f908a13013c305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
+  type: 2
   mixColour: {r: 0.126691, g: 0.15775569, b: 0.6886792, a: 1}
 --- !u!1 &8259226190888858384
 GameObject:

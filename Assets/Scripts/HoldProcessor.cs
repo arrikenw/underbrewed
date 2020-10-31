@@ -31,7 +31,6 @@ public class HoldProcessor : Processor
 
         if (timeUntilComplete > 0)
         {
-            print(timeUntilComplete);   
             timeUntilComplete -= 1;
         }
 
@@ -39,7 +38,8 @@ public class HoldProcessor : Processor
         if (timeUntilComplete == 0 && storedItem != null)
         {
             //create new object
-            GameObject processedOutput = Instantiate(prefabManager.getFromIngredientMap(new Tuple<StationType, IngredientType>(station, currentIngredient)), storedItem.transform.position, storedItem.transform.rotation);
+            Tuple<StationType, IngredientType> lookupData = new Tuple<StationType, IngredientType>(station, currentIngredient);
+            GameObject processedOutput = Instantiate(prefabManager.getFromIngredientMap(lookupData), storedItem.transform.position, storedItem.transform.rotation);
 
             //destroy object being processed
             Destroy(storedItem);
@@ -51,14 +51,9 @@ public class HoldProcessor : Processor
             storedItem.GetComponent<Rigidbody>().isKinematic = true;
 
             //todo add sound effect or something on completion
-            canPickup = true;
-            locked = false; //idk if this does anything
 
-            //stop emmitting particles from the particle systems
-            psys.Stop(true, ParticleSystemStopBehavior.StopEmitting);
-
-            //stop interacting
-            interacting = false;
+            //stop
+            AttemptStopInteract();
         }
     }
 }
