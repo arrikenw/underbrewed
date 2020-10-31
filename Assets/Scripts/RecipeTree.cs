@@ -4,16 +4,13 @@ using UnityEngine;
 
 public class RecipeTree : MonoBehaviour
 {
-    // private LinkedList<RecipeNode> children = new LinkedList<RecipeNode>();
     private RecipeNode root = new RecipeNode(IngType.Null, Color.clear);
     void Start()
     {
         // A: bone -> chopped frog -> cheese
         RecipeNode ACheese = new RecipeNode(IngType.Cheese, Color.yellow);
         RecipeNode AChoppedFrog = new RecipeNode(IngType.ChoppedFrog, Color.green, ACheese);
-        // BCCchoppedFrog.AddChild(BCCcheese);
         RecipeNode ABone = new RecipeNode(IngType.Bone, Color.white, AChoppedFrog);
-        // BCCBone.AddChild(BCCchoppedFrog);
         root.AddChild(ABone);
 
         // B: melted bone
@@ -21,50 +18,58 @@ public class RecipeTree : MonoBehaviour
         root.AddChild(BMeltedBone);
 
         // C: crushed bone -> frog -> cheese
-        // RecipeNode CCheese = new RecipeNode(IngType.Cheese, Color.yellow);
-        // RecipeNode CChoppedFrog = new RecipeNode(IngType.ChoppedFrog, Color.green, CCheese);
-        // // BCCchoppedFrog.AddChild(BCCcheese);
-        // RecipeNode CBone = new RecipeNode(IngType.Bone, Color.white, CChoppedFrog);
-        // // BCCBone.AddChild(BCCchoppedFrog);
-        // root.AddChild(CBone);
+        RecipeNode CCheese = new RecipeNode(IngType.Cheese, Color.yellow);
+        RecipeNode CFrog = new RecipeNode(IngType.Frog, Color.green, CCheese);
+        RecipeNode CCrushedBone = new RecipeNode(IngType.CrushedBone, Color.white, CFrog);
+        root.AddChild(CCrushedBone);
 
-        // frog->burn flower->eye ball
+        // D: flower -> cooked frog -> melted bone
+        RecipeNode DMeltedBone = new RecipeNode(IngType.MeltedBone, Color.yellow);
+        RecipeNode DCookedFrog = new RecipeNode(IngType.CookedFrog, Color.green, DMeltedBone);
+        RecipeNode DFlower = new RecipeNode(IngType.Flower, Color.white, DCookedFrog);
+        root.AddChild(DFlower);
 
-        // chopped cheese->burnt bone->flower
+        // E: charred flower -> cooked frog -> crushed eyeball
+        RecipeNode ECrushedEyeball = new RecipeNode(IngType.CrushedEyeball, Color.yellow);
+        RecipeNode ECookedFrog = new RecipeNode(IngType.CookedFrog, Color.green, ECrushedEyeball);
+        RecipeNode ECharredFlower = new RecipeNode(IngType.CharredFlower, Color.white, ECookedFrog);
+        root.AddChild(ECharredFlower);
 
-        // burn flower->burnt frog->crushed eye ball
+        // F: cheese
+        RecipeNode FCheese = new RecipeNode(IngType.Cheese, Color.yellow);
+        root.AddChild(FCheese);
 
-        // crushed bone->frog->cheese
+        // G: chopped cheese -> melted bone -> flower
+        RecipeNode GFlower = new RecipeNode(IngType.Flower, Color.magenta);
+        RecipeNode GMeltedBone = new RecipeNode(IngType.MeltedBone, Color.white, GFlower);
+        RecipeNode GChoppedCheese = new RecipeNode(IngType.ChoppedCheese, Color.white, GMeltedBone);
+        root.AddChild(GChoppedCheese);
 
-        // eye ball->chopped cheese->bone
+        // H: eyeball -> chopped cheese -> bone
+        RecipeNode HBone = new RecipeNode(IngType.Bone, Color.white);
+        RecipeNode HChoppedCheese = new RecipeNode(IngType.ChoppedCheese, Color.yellow, HBone);
+        RecipeNode HEyeball = new RecipeNode(IngType.Eyeball, Color.white, HChoppedCheese);
+        root.AddChild(HEyeball);    
 
-        // flower->burnt frog->burnt bone
+        // I: crushed eyeball
+        RecipeNode ICrushedEyeball = new RecipeNode(IngType.CrushedEyeball, Color.white);
+        root.AddChild(ICrushedEyeball);   
 
+        // J: frog-> charred flower -> eye ball
+        RecipeNode JEyeball = new RecipeNode(IngType.Eyeball, Color.white);
+        RecipeNode JCharredFlower = new RecipeNode(IngType.CharredFlower, Color.magenta, JEyeball);
+        RecipeNode JFrog = new RecipeNode(IngType.Frog, Color.green, JCharredFlower);
+        root.AddChild(JFrog);
 
-        // cheese
-        RecipeNode cheese = new RecipeNode(IngType.Cheese, Color.yellow);
+        // K: chopped frog
+        RecipeNode KChoppedFrog = new RecipeNode(IngType.ChoppedFrog, Color.white);
+        root.AddChild(KChoppedFrog);   
 
-        root.AddChild(cheese);
-
-
-        // root.AddFirst(IngType.Cheese, Color.yellow);
-        // root.AddFirst(IngType.Bone, Color.white);
-        // root.AddFirst(IngType.Flower, Color.magenta);
-        // root.AddFirst(IngType.CharredFlower, Color.red);
-        // root.AddFirst(IngType.Eyeball, Color.green);
-        // root.AddFirst(IngType.MeltedBone, Color.black);
-
-
-
-
-
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // L: cooked frog -> crushed bone -> crushed eyeball 
+        RecipeNode LCrushedEyeball = new RecipeNode(IngType.Eyeball, Color.white);
+        RecipeNode LCrushedBone = new RecipeNode(IngType.CharredFlower, Color.magenta, LCrushedEyeball);
+        RecipeNode LCookedFrog = new RecipeNode(IngType.Frog, Color.green, LCrushedBone);
+        root.AddChild(LCookedFrog);
     }
 
     public Color FindColor(LinkedList<IngType> ingredients) {
