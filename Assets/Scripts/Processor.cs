@@ -33,8 +33,8 @@ public class Processor : Station
     public Material cookMat;
 
     // cooking logic
+    protected bool interacting = false;
     protected int timeUntilComplete = 0;
-    protected bool isCooking = false;
     protected IngredientType currentIngredient;
 
     // particle effects
@@ -57,8 +57,11 @@ public class Processor : Station
     {
         base.Start();
         prefabManager = GameObject.FindGameObjectWithTag("PrefabManagerTag").GetComponent<PrefabScript>();
-        psys = Instantiate(psysPrefab, transform.position, transform.rotation);
-        psys.Stop();
+        if (psysPrefab)
+        {
+            psys = Instantiate(psysPrefab, transform.position, transform.rotation);
+            psys.Stop();
+        }
         r = GetComponent<Renderer>();
         if (idleMat)
         {
@@ -79,4 +82,43 @@ public class Processor : Station
         print("set new item to :" + storedItem);
         return;
     }
+
+    public bool getInteract()
+    {
+        return interacting;
+    }
+
+    public void AttemptStopInteract()
+    {
+        interacting = false;
+        canPickup = true;
+        psys.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+    }
+
+    public void AttemptStartInteract()
+    {
+        //don't begin interacting if no item is stored
+        if (storedItem == null)
+        {
+            return;
+        }
+
+        //get ingredientType
+        IngredientType currentIngredient = storedItem.GetComponent<Ingredient>().type;
+
+        //todo add correct type checks here
+        if (currentIngredient != IngredientType.Bone && currentIngredient != IngredientType.Flower && currentIngredient != IngredientType.Frog)
+        {
+            print("item cannot be processed");
+            return;
+        }
+
+        //get timer 
+        timeUntilComplete = prefabManager.getFromCooktimeMap(new Tuple<StationType, IngredientType>(station, currentIngredient));
+
+        psys.Play();
+        canPickup = false;
+        interacting = true;
+    }
+
 }

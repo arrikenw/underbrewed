@@ -93,6 +93,11 @@ public class PickUpScript : MonoBehaviour
 
         //dealing with other interactables
         if (Input.GetKeyDown(KeyCode.Comma) && interactableObject != null) {
+            //we want to interact with interactable processors differently, so return 
+            if (interactableObject.GetComponent<Processor>() == null)
+            {
+                return;
+            }
             print("Interacting");
             interactableObject.GetComponent<Interactable>().Interact(heldItem);
         }
@@ -100,10 +105,11 @@ public class PickUpScript : MonoBehaviour
         //dealing with processors
         if (interactableObject != null)
         {
+            //hold processor
             HoldProcessor holdProcessor = interactableObject.GetComponent<HoldProcessor>();
             if (holdProcessor != null && Input.GetKey("g"))
             {
-                if (holdProcessor.getInteract() == false)
+                if (!holdProcessor.getInteract())
                 {
                     holdProcessor.AttemptStartInteract();
                 }
@@ -112,6 +118,19 @@ public class PickUpScript : MonoBehaviour
             if (holdProcessor != null && !Input.GetKey("g"))
             {
                 holdProcessor.AttemptStopInteract();
+            }
+
+            //toggle processor
+            ToggleProcessor toggleProcessor = interactableObject.GetComponent<ToggleProcessor>();
+            if (toggleProcessor != null && Input.GetKeyDown("g"))
+            {
+                if (!toggleProcessor.getInteract())
+                {
+                    toggleProcessor.AttemptStartInteract();
+                }else
+                {
+                    toggleProcessor.AttemptStopInteract();
+                }
             }
         }
      }
