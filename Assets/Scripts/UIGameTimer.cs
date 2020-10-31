@@ -5,44 +5,13 @@ using UnityEngine.UI;
 
 public class UIGameTimer : MonoBehaviour
 {
-
-    public float timeRemaining = 10;
-
-    //private bool timerEnabled = false;
-
-    public Text timeText;
-
-    void Start()
+    void updateGameTimer(int newTime)
     {
-        DisplayTime(timeRemaining);
-        //timerEnabled = true;
-    }
+        //temp
+        float minutes = Mathf.FloorToInt(newTime / 60);
+        float seconds = Mathf.FloorToInt(newTime % 60);
 
-    void Update()
-    {
-        if (timeRemaining > 0)
-        {
-            timeRemaining -= Time.deltaTime;
-        }
-        else
-        {
-            //End of game timer. End game, etc. 
-            timeRemaining = 0;
-            //timerEnabled = false;
-        }
-
-        DisplayTime(timeRemaining);
-        
-    }
-
-    void DisplayTime(float timeInSeconds)
-    {
-
-        timeInSeconds += 1;
-
-        float minutes = Mathf.FloorToInt(timeInSeconds / 60);
-        float seconds = Mathf.FloorToInt(timeInSeconds % 60);
-
-        timeText.text = string.Format("{0:0}:{1:00}", minutes, seconds);
+        //??
+        this.gameObject.GetComponent<Text>().text = string.Format("{0:0}:{1:00}", minutes, seconds);
     }
 }
