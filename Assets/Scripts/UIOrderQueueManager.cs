@@ -67,11 +67,42 @@ public class UIOrderQueueManager : MonoBehaviour
         //add ingredient according to ingredient and ingredient slot
         switch (ingredient)
         {
-            // TO DO: complete 
-            /*
-            case cheese:
+            case Bone:
+                ingredientImage.sprite = Resources.Load<Sprite>("Asset/Images/Bone");
+                methodImage.sprite = null;
+            case MeltedBone:
+                ingredientImage.sprite = Resources.Load<Sprite>("Asset/Images/Bone");
+                methodImage.sprite = Resources.Load<Sprite>("Asset/Images/Fire");
+            case CrushedBone:
+                ingredientImage.sprite = Resources.Load<Sprite>("Asset/Images/Bone");
+                methodImage.sprite = Resources.Load<Sprite>("Asset/Images/Mortar_Pestle");
+            case Flower:
+                ingredientImage.sprite = Resources.Load<Sprite>("Asset/Images/Lotus");
+                methodImage.sprite = null;
+            case CharredFlower:
+                ingredientImage.sprite = Resources.Load<Sprite>("Asset/Images/Lotus");
+                methodImage.sprite = Resources.Load<Sprite>("Asset/Images/Fire");
+            case Cheese:
                 ingredientImage.sprite = Resources.Load<Sprite>("Asset/Images/Cheese");
-                */
+                methodImage.sprite = null;
+            case ChoppedCheese:
+                ingredientImage.sprite = Resources.Load<Sprite>("Asset/Images/Cheese");
+                methodImage.sprite = Resrouces.Load<Sprite>("Asset/Images/Knife");
+            case Eyeball:
+                ingredientImage.sprite = Resources.Load<Sprite>("Asset/Images/Eyeball");
+                methodImage.sprite = null;
+            case Eyeball:
+                ingredientImage.sprite = Resources.Load<Sprite>("Asset/Images/Eyeball");
+                methodImage.sprite = Resources.Load<Sprite>("Asset/Images/Mortar_Pestle");
+            case Frog:
+                ingredientImage.sprite = Resources.Load<Sprite>("Asset/Images/Frog");
+                methodImage.sprite = null;
+            case ChoppedFrog:
+                ingredientImage.sprite = Resources.Load<Sprite>("Asset/Images/Frog");
+                methodImage.sprite = Resrouces.Load<Sprite>("Asset/Images/Knife");
+            case CookedFrog:
+                ingredientImage.sprite = Resources.Load<Sprite>("Asset/Images/Frog");
+                methodImage.sprite = Resrouces.Load<Sprite>("Asset/Images/Fire");
         }
     }
 
