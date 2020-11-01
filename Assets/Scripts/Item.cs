@@ -26,7 +26,7 @@ public class Item : Interactable
     public void OnPickup() {
         held = true;
         base.Unlock();
-        base.OnLeave();
+        OnLeave();
     }
 
     public void OnDrop() {

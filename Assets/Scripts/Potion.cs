@@ -76,7 +76,7 @@ public class Potion : Item
     }
 
     public override void OnLeave() {
-        base.OnLeave();
         GetComponent<MeshRenderer>().enabled = false;
+        base.OnLeave();
     }
 }

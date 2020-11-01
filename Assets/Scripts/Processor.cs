@@ -144,13 +144,15 @@ public class Processor : Station
 
                     //destroy object being processed
                     Destroy(base.storedItem);
-                    base.storedItem = null;
 
                     //change the stored item to the newly created object
                     base.storedItem = processedOutput;
 
                     //set kinematic to ensure item stays locked in place like the input ingredient
                     storedItem.GetComponent<Rigidbody>().isKinematic = true;
+
+                    // Run .OnStore()
+                    storedItem.GetComponent<Item>().OnStore(); // BUGFIX
                 }
 
                 if (timeUntilComplete <= 0)
@@ -158,6 +160,9 @@ public class Processor : Station
                     //todo add sound effect or something on completion
                     isCooking = false;
                     base.canPickup = true;
+                    locked = false; // BUGFIX
+
+
                     if (r && idleMat)
                     {
                         r.material = idleMat;
