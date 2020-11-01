@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6533211871870638705}
   - component: {fileID: 3449548494723915528}
   m_Layer: 0
-  m_Name: skull_08
+  m_Name: BurntBone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,5 +139,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50674572d86c3c469f908a13013c305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 2
-  mixColour: {r: 0.8018868, g: 0.03404235, b: 0.4215293, a: 1}
+  ingredientType: 2

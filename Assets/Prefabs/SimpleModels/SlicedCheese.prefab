@@ -117,8 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50674572d86c3c469f908a13013c305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 7
-  mixColour: {r: 0, g: 0, b: 0, a: 0}
+  ingredientType: 7
 --- !u!1 &2580340196244436026
 GameObject:
   m_ObjectHideFlags: 0
