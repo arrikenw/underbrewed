@@ -5,7 +5,7 @@ using System;
 
 public class ToggleProcessor : Processor
 {
-    void Start()
+    protected override void Start()
     {
         base.Start();
         print(currentIngredient);

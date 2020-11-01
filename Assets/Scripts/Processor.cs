@@ -101,7 +101,7 @@ public class Processor : Station
         }
 
         //get IngType
-        currentIngredient = storedItem.GetComponent<Ingredient>().type;
+        currentIngredient = storedItem.GetComponent<Ingredient>().GetIngredientType();
 
         //get timer 
         timeUntilComplete = prefabManager.getFromCooktimeMap(new Tuple<StationType, IngType>(station, currentIngredient));

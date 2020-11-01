@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 8009039652199791812}
   - component: {fileID: 8009039652199791813}
   m_Layer: 0
-  m_Name: CheeseParent
+  m_Name: Cheese
   m_TagString: Untagged
   m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -194,5 +194,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50674572d86c3c469f908a13013c305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 5
+  type: 6
   mixColour: {r: 0, g: 1, b: 0.74612737, a: 1}

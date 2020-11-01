@@ -44,7 +44,7 @@ public class Cauldron : Station
         if (base.storedItem != null && base.storedItem.GetComponent<Ingredient>() != null) {
             // Retrieve new cauldron liquid colour from stored Item 
             // mixColour = base.storedItem.GetComponent<Ingredient>().GetColor();
-            ingredients.AddLast(base.storedItem.GetComponent<Item>().type);
+            ingredients.AddLast(base.storedItem.GetComponent<Item>().GetIngredientType());
             mixColour = recipeTree.GetComponent<RecipeTree>().FindColor(ingredients);
 
             // FAIL
