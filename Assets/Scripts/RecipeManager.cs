@@ -31,7 +31,7 @@ public class RecipeManager : MonoBehaviour
 
     //*****************************************************************************
     //handles the processing of completed potions
-    public void processDropoff(Potion potion)
+    public void ProcessDropoff(Potion potion)
     {
         for (int i = 0; i < activeOrders.Count; i++)
         {
@@ -54,7 +54,7 @@ public class RecipeManager : MonoBehaviour
 
     //*****************************************************************************
     //handles the tick by tick updates of order lifetime and UI
-    private void updateActiveOrders()
+    private void UpdateActiveOrders()
     {
         for (int i = 0; i < activeOrders.Count; i++)
         {
@@ -89,7 +89,7 @@ public class RecipeManager : MonoBehaviour
     //*****************************************************************************
     //prepares the queue of items for the level
     //returns time until first order arrives
-    private int generateLevelOrders()
+    private int GenerateLevelOrders()
     {
         int genTime = 0;
         int timeTofirstOrder = -1;
@@ -118,7 +118,7 @@ public class RecipeManager : MonoBehaviour
     void Start()
     {
         curTime = 0;
-        timeToNextOrder = generateLevelOrders();
+        timeToNextOrder = GenerateLevelOrders();
     }
 
 
@@ -160,7 +160,7 @@ public class RecipeManager : MonoBehaviour
         }
 
         //run lifecycle and ui updates for active orders
-        updateActiveOrders();
+        UpdateActiveOrders();
 
         //update the current time
         curTime += 1;
