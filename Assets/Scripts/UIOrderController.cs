@@ -25,6 +25,7 @@ public class UIOrderController : MonoBehaviour
 
     public void updateOrderTimer(int newTime)
     {
+        print(newTime);
         UIOrderTimer timer = transform.Find("OrderTimer").GetComponent<UIOrderTimer>();
         timer.timeRemaining = newTime;
 

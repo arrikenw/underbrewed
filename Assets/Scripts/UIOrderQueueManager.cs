@@ -29,18 +29,20 @@ public class UIOrderQueueManager : MonoBehaviour
     public float gutterSize = 15.0f;
     public float velocity = 4.0f;
 
-    public GameObject addOrderUI(Order order) 
+    public GameObject addOrderUI(Order order, int LifeTime) 
     {
+
+        print("INITIAL LIFETIME OF: "+ LifeTime);
         // Create new instance of template
         GameObject newOrder = GameObject.Instantiate<GameObject>(orderTemplate);
-        newOrder.transform.parent = this.transform;
+        newOrder.transform.SetParent(this.transform, false);
         newOrder.transform.localPosition = new Vector3(0, 0, 0);
 
 
         // Set timer
         GameObject timer = newOrder.transform.Find("OrderTimer").gameObject;
-        timer.GetComponent<UIOrderTimer>().maxTime = order.timeLeft;
-        timer.GetComponent<UIOrderTimer>().timeRemaining = order.timeLeft;
+        timer.GetComponent<UIOrderTimer>().maxTime = LifeTime;
+        timer.GetComponent<UIOrderTimer>().timeRemaining = LifeTime;
 
         // Set image for potion
         Image potionImage = newOrder.transform.Find("Potion").GetComponent<Image>();
@@ -50,7 +52,8 @@ public class UIOrderQueueManager : MonoBehaviour
         GameObject recipe = newOrder.transform.Find("Recipe").gameObject;
 
         addIngredient(order.ingredients[0], recipe.transform.Find("Ingredient1").gameObject.GetComponent<Image>(), recipe.transform.Find("Method1").gameObject.GetComponent<Image>());
-        // TO DO: repeat for additional ingredients
+        addIngredient(order.ingredients[1], recipe.transform.Find("Ingredient2").gameObject.GetComponent<Image>(), recipe.transform.Find("Method2").gameObject.GetComponent<Image>());
+        addIngredient(order.ingredients[2], recipe.transform.Find("Ingredient3").gameObject.GetComponent<Image>(), recipe.transform.Find("Method3").gameObject.GetComponent<Image>());
 
         reorderQueue(this.gameObject);
 
@@ -62,8 +65,11 @@ public class UIOrderQueueManager : MonoBehaviour
 
     public void deleteOrderUI(GameObject orderUI)
     {
-        Destroy(orderUI);
+        //TODO use index for efficiency
 
+
+        Destroy(orderUI);
+        
         reorderQueue(this.gameObject);
     }
 
@@ -83,53 +89,65 @@ public class UIOrderQueueManager : MonoBehaviour
     public void addIngredient(Ingredient ingredient, Image ingredientImage, Image methodImage)
     {
         //add ingredient according to ingredient and ingredient slot
-        /*
-        switch (ingredient)
+        print("typeof"+ingredient.type);
+        switch (ingredient.type)
         {
-            case Bone: // Bone is a type...
+            case IngType.Bone: // Bone is a type...
                 ingredientImage.sprite = Resources.Load<Sprite>("Bone");
                 methodImage.color = new Color (0, 0, 0, 0);
                 methodImage.sprite = null;
-            case MeltedBone:
+                break;
+            case IngType.MeltedBone:
                 ingredientImage.sprite = Resources.Load<Sprite>("Bone");
                 methodImage.sprite = Resources.Load<Sprite>("Fire");
-            case CrushedBone:
+                break;
+            case IngType.CrushedBone:
                 ingredientImage.sprite = Resources.Load<Sprite>("Bone");
                 methodImage.sprite = Resources.Load<Sprite>("Mortar_Pestle");
-            case Flower:
+                break;
+            case IngType.Flower:
                 ingredientImage.sprite = Resources.Load<Sprite>("Lotus");
                 methodImage.color = new Color (0, 0, 0, 0);
                 methodImage.sprite = null;
-            case CharredFlower:
+                break;
+            case IngType.CharredFlower:
                 ingredientImage.sprite = Resources.Load<Sprite>("Lotus");
                 methodImage.sprite = Resources.Load<Sprite>("Fire");
-            case Cheese:
+                break;
+            case IngType.Cheese:
                 ingredientImage.sprite = Resources.Load<Sprite>("Cheese");
                 methodImage.color = new Color (0, 0, 0, 0);
                 methodImage.sprite = null;
-            case ChoppedCheese:
+                break;
+            case IngType.ChoppedCheese:
                 ingredientImage.sprite = Resources.Load<Sprite>("Cheese");
-                methodImage.sprite = Resrouces.Load<Sprite>("Knife");
-            case Eyeball:
+                methodImage.sprite = Resources.Load<Sprite>("Knife");
+                break;
+            case IngType.Eyeball:
                 ingredientImage.sprite = Resources.Load<Sprite>("Eyeball");
                 methodImage.color = new Color (0, 0, 0, 0);        
                 methodImage.sprite = null;
-            case Eyeball:
+                break;
+            case IngType.CrushedEyeball:
                 ingredientImage.sprite = Resources.Load<Sprite>("Eyeball");
                 methodImage.sprite = Resources.Load<Sprite>("Mortar_Pestle");
-            case Frog:
+                break;
+            case IngType.Frog:
                 ingredientImage.sprite = Resources.Load<Sprite>("Frog");
                 methodImage.color = new Color (0, 0, 0, 0);
                 methodImage.sprite = null;
-            case ChoppedFrog:
+                break;
+            case IngType.ChoppedFrog:
                 ingredientImage.sprite = Resources.Load<Sprite>("Frog");
-                methodImage.sprite = Resrouces.Load<Sprite>("Knife");
-            case CookedFrog:
+                methodImage.sprite = Resources.Load<Sprite>("Knife");
+                break;
+            case IngType.CookedFrog:
+                print("attempting cookedfrog");
                 ingredientImage.sprite = Resources.Load<Sprite>("Frog");
-                methodImage.sprite = Resrouces.Load<Sprite>("Fire");
-        
+                methodImage.sprite = Resources.Load<Sprite>("Fire");
+                break;
+
         }
-    */
     }
 
     public void reorderQueue(GameObject orderQueueUI)

@@ -40112,6 +40112,59 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93f2aa29362ca504a8a7e2404313590e, type: 3}
+--- !u!1 &1106808846
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1106808848}
+  - component: {fileID: 1106808847}
+  m_Layer: 0
+  m_Name: ordergen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1106808847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106808846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e90cc4cde5685a646bc5923d6b51b4dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIObjectPrefab: {fileID: 1825099444855732521, guid: be8a151be679bc34a98f6c1bffaadcb7,
+    type: 3}
+  levelConfigFile: {fileID: 4900000, guid: 78a8c3966bdf5d840912172d0cd79577, type: 3}
+  totalLevelOrders: 0
+  orderPrefabs:
+  - {fileID: 3740741261026607297, guid: cb8b47351018036428c2a98076bdfcdc, type: 3}
+  minOrderGap: 0
+  maxOrderGap: 0
+  minOrderPrepTime: 0
+  maxOrderPrepTime: 0
+--- !u!4 &1106808848
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106808846}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.5210948, y: -5.733334, z: 21.304672}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 35
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1107325236
 GameObject:
   m_ObjectHideFlags: 0

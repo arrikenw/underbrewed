@@ -7,8 +7,13 @@ public class RecipeManager : MonoBehaviour
 {
 
     //UI object
-    public GameObject UIObjectPrefab;
+    public GameObject MainUIObject;
     protected UIOrderQueueManager UIObject;
+    
+
+    //testing score
+    public GameObject ScoreObject;
+    public GameObject TimeObject;
 
     //level config, leave blank if random
     [SerializeField]
@@ -83,8 +88,7 @@ public class RecipeManager : MonoBehaviour
             }
 
             //update UI with new time
-            //TODO, uncomment once individual gameobjects hold an updateOrderTimer script
-            //activeOrder.Item2.updateOrderTimer(activeOrder.Item3);
+            activeOrder.Item2.GetComponent<UIOrderController>().updateOrderTimer(activeOrder.Item3);
         }
     }
 
@@ -138,6 +142,8 @@ public class RecipeManager : MonoBehaviour
                 int tempPrepTime = Convert.ToInt32(curOrderData[2]);
                 Tuple<int, Order, int> newOrder = new Tuple<int, Order, int>(tempArrivalTime, tempOrderType, tempPrepTime);
                 print(newOrder);
+                print("ITEM2:"+ newOrder.Item2.ingredients[0]);
+                print("ITEM2TYPE:" + newOrder.Item2.ingredients[0].type);
                 queuedOrders.Enqueue(newOrder);
 
                 //save the first order arrival time as the initial arrival time
@@ -155,9 +161,16 @@ public class RecipeManager : MonoBehaviour
     //start
     void Start()
     {
-        UIObject = UIObjectPrefab.GetComponent<UIOrderQueueManager>();
+        UIObject = MainUIObject.GetComponent<UIOrderQueueManager>();
         curTime = 0;
         timeToNextOrder = generateLevelOrders();
+
+        //testing score
+        ScoreObject.GetComponent<UIGameScore>().updateGameScore(500);
+
+        //testing timer
+        TimeObject.GetComponent<UIGameTimer>().updateGameTimer(999);
+
     }
 
 
@@ -187,9 +200,10 @@ public class RecipeManager : MonoBehaviour
                     Tuple<int, Order, int> queuedOrder = queuedOrders.Dequeue();
                     Order newActiveOrder = queuedOrder.Item2;
                     int timeUntilOrderExpiry = queuedOrder.Item3;
-                    
+
                     //create and store a new UI object
-                    GameObject newActiveOrderUI = UIObject.addOrderUI(newActiveOrder);
+                    print("order time: "+timeUntilOrderExpiry);
+                    GameObject newActiveOrderUI = UIObject.addOrderUI(newActiveOrder, timeUntilOrderExpiry);
 
                     //construct the new (active order, ui, expiry time) tuple and add to the active order list
                     Tuple<Order, GameObject, int> newActiveOrderTuple = new Tuple<Order, GameObject, int>(newActiveOrder, newActiveOrderUI, timeUntilOrderExpiry); 
