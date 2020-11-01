@@ -17,7 +17,6 @@ public class PickUpScript : MonoBehaviour
 
     }
 
-    /*
     // Update is called once per frame
     void FixedUpdate()
     {   
@@ -30,7 +29,6 @@ public class PickUpScript : MonoBehaviour
             pollGap -= 1;
         }
     }
-    */
 
     void Update()
     {
@@ -127,6 +125,7 @@ public class PickUpScript : MonoBehaviour
 
             if (processor != null && pollGap == 0 && Input.GetKey("g"))
             {
+                print("Processing!");
                 //toggling on with G works for both
                 if (!processor.getInteract())
                 {
