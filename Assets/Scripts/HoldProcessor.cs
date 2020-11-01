@@ -7,7 +7,7 @@ public class HoldProcessor : Processor
 {
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         base.Start();
     }
@@ -39,6 +39,9 @@ public class HoldProcessor : Processor
 
             //set kinematic to ensure item stays locked in place like the input ingredient
             storedItem.GetComponent<Rigidbody>().isKinematic = true;
+
+            // Run .OnStore()
+            storedItem.GetComponent<Item>().OnStore(); // BUGFIX
 
             //todo add sound effect or something on completion
 

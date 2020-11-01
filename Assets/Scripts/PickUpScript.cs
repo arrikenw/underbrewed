@@ -17,7 +17,6 @@ public class PickUpScript : MonoBehaviour
 
     }
 
-    /*
     // Update is called once per frame
     void FixedUpdate()
     {   
@@ -30,7 +29,6 @@ public class PickUpScript : MonoBehaviour
             pollGap -= 1;
         }
     }
-    */
 
     void Update()
     {
@@ -110,12 +108,10 @@ public class PickUpScript : MonoBehaviour
         //dealing with other interactables
         if (Input.GetKeyDown(KeyCode.Comma) && interactableObject != null) {
             //we want to interact with interactable processors differently, so return 
-            if (interactableObject.GetComponent<Processor>() == null)
-            {
-                return;
+            if (!interactableObject.GetComponent<Processor>()) {
+                print("Interacting");
+                interactableObject.GetComponent<Interactable>().Interact(heldItem);
             }
-            print("Interacting");
-            interactableObject.GetComponent<Interactable>().Interact(heldItem);
         }
 
         //dealing with processors
@@ -125,8 +121,9 @@ public class PickUpScript : MonoBehaviour
             Processor processor = interactableObject.GetComponent<Processor>();
             bool isHoldProcessor = !(interactableObject.GetComponent<HoldProcessor>() == null);
 
-            if (processor != null && pollGap == 0 && Input.GetKey("g"))
+            if (processor != null && pollGap == 0 && Input.GetKey(KeyCode.Comma))
             {
+                print("Processing!");
                 //toggling on with G works for both
                 if (!processor.getInteract())
                 {
@@ -143,7 +140,7 @@ public class PickUpScript : MonoBehaviour
             }
 
             //instantly stop, ignoring polling gap. Gives a smoother feel
-            if (processor != null && !Input.GetKey("g"))
+            if (processor != null && !Input.GetKey(KeyCode.Comma))
             {
                 if (isHoldProcessor)
                 {

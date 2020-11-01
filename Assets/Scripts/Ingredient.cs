@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Ingredient : Item
 {
-    [SerializeField] private Color mixColour = new Color(); 
+    // keep track of ingredient 
+    [SerializeField] private IngType ingredientType = IngType.Null;
+
+    // [SerializeField] private Color mixColour = new Color(); 
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -17,7 +20,11 @@ public class Ingredient : Item
         
     }
 
-    public Color GetColor() {
-        return mixColour;
+    // public Color GetColor() {
+    //     return mixColour;
+    // }
+
+    public IngType GetIngredientType() {
+        return ingredientType;
     }
 }

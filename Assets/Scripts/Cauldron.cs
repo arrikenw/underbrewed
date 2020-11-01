@@ -44,7 +44,7 @@ public class Cauldron : Station
         if (base.storedItem != null && base.storedItem.GetComponent<Ingredient>() != null) {
             // Retrieve new cauldron liquid colour from stored Item 
             // mixColour = base.storedItem.GetComponent<Ingredient>().GetColor();
-            ingredients.AddLast(base.storedItem.GetComponent<Item>().type);
+            ingredients.AddLast(base.storedItem.GetComponent<Ingredient>().GetIngredientType());
             mixColour = recipeTree.GetComponent<RecipeTree>().FindColor(ingredients);
 
             // FAIL
@@ -81,11 +81,16 @@ public class Cauldron : Station
     public override void Interact(GameObject other) {
         print("Interacting with cauldron");
 
+        Potion potion = other.GetComponent<Potion>();
+
         // Case: Potion
-        if (!mixColour.Equals(baseColour) && other.GetComponent<Potion>() != null) {
-            other.GetComponent<Potion>().SetPotionColor(mixColour);
+        if (!mixColour.Equals(baseColour) && potion != null) {
+            potion.SetPotionColor(mixColour);
+            potion.SetPotionIngredients(ingredients);
+
             mixColour = baseColour;
-            ingredients.Clear(); // just added
+            ingredients.Clear();
+            
             UpdateColours();
         }
     }

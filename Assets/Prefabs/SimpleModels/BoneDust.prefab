@@ -194,5 +194,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50674572d86c3c469f908a13013c305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 3
-  mixColour: {r: 0, g: 0, b: 0, a: 0}
+  ingredientType: 3

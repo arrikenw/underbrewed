@@ -39,7 +39,7 @@ public class RecipeManager : MonoBehaviour
 
     //*****************************************************************************
     //handles the processing of completed potions
-    public void processDropoff(Potion potion)
+    public void ProcessDropoff(Potion potion)
     {
         for (int i = 0; i < activeOrders.Count; i++)
         {
@@ -62,7 +62,7 @@ public class RecipeManager : MonoBehaviour
 
     //*****************************************************************************
     //handles the tick by tick updates of order lifetime and UI
-    private void updateActiveOrders()
+    private void UpdateActiveOrders()
     {
         for (int i = 0; i < activeOrders.Count; i++)
         {
@@ -96,7 +96,7 @@ public class RecipeManager : MonoBehaviour
     //*****************************************************************************
     //prepares the queue of items for the level
     //returns time until first order arrives
-    private int generateLevelOrders()
+    private int GenerateLevelOrders()
     {
         //randomly generate level data if there is no config
         if (!levelConfigFile)
@@ -143,7 +143,7 @@ public class RecipeManager : MonoBehaviour
                 Tuple<int, Order, int> newOrder = new Tuple<int, Order, int>(tempArrivalTime, tempOrderType, tempPrepTime);
                 print(newOrder);
                 print("ITEM2:"+ newOrder.Item2.ingredients[0]);
-                print("ITEM2TYPE:" + newOrder.Item2.ingredients[0].type);
+                print("ITEM2TYPE:" + newOrder.Item2.ingredients[0].GetIngredientType());
                 queuedOrders.Enqueue(newOrder);
 
                 //save the first order arrival time as the initial arrival time
@@ -163,7 +163,7 @@ public class RecipeManager : MonoBehaviour
     {
         UIObject = MainUIObject.GetComponent<UIOrderQueueManager>();
         curTime = 0;
-        timeToNextOrder = generateLevelOrders();
+        timeToNextOrder = GenerateLevelOrders();
 
         //testing score
         ScoreObject.GetComponent<UIGameScore>().updateGameScore(500);
@@ -213,7 +213,7 @@ public class RecipeManager : MonoBehaviour
         }
 
         //run lifecycle and ui updates for active orders
-        updateActiveOrders();
+        UpdateActiveOrders();
 
         //update the current time
         curTime += 1;

@@ -6,10 +6,6 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class Item : Interactable
 {
-
-    // keep track of ingredient 
-    public IngType type;
-
     // Start is called before the first frame update
     private bool held = false;
     protected override void Start()
@@ -26,7 +22,7 @@ public class Item : Interactable
     public void OnPickup() {
         held = true;
         base.Unlock();
-        base.OnLeave();
+        OnLeave();
     }
 
     public void OnDrop() {

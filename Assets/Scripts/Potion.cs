@@ -10,6 +10,9 @@ public class Potion : Item
     [SerializeField] public Color potionColour;
     private GameObject potionLiquid;
     public Material opaqueLiquidMaterial;
+
+    private LinkedList<IngType> ingredients = new LinkedList<IngType>();
+
     void Awake() {
         // Temporarily Set position to zero to ensure combining works properly
         Vector3 actualPosition = transform.position;
@@ -59,13 +62,21 @@ public class Potion : Item
         potionLiquid.GetComponent<Renderer>().material.SetColor("_Color", potionColour);
     }
 
+    public void SetPotionIngredients(LinkedList<IngType> ingredients) {
+        this.ingredients.Clear();
+        foreach (IngType type in ingredients) {
+            this.ingredients.AddLast(type);
+        }
+        print(this.ingredients.ToString());
+    }
+
     public override void OnContact() {
         GetComponent<MeshRenderer>().enabled = true;
         base.OnContact();
     }
 
     public override void OnLeave() {
-        base.OnLeave();
         GetComponent<MeshRenderer>().enabled = false;
+        base.OnLeave();
     }
 }

@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class Portal : Station
 {
-    // TODO: Connect with game/score manager
-
-    // GameManager Object
-    [SerializeField] GameObject gameManager = null;
+    [SerializeField] GameObject recipeManager = null;
 
     protected override void Start()
     {
@@ -20,14 +17,18 @@ public class Portal : Station
     }
 
     private void Deliver() {
-        // TEMP CODE
-        if (base.storedItem != null) {
+        // ACTUAL CODE
+        if (base.storedItem) {
+
+            Potion potion = base.storedItem.GetComponent<Potion>();
+            if (potion) {
+                recipeManager.GetComponent<RecipeManager>().ProcessDropoff(potion);
+            } else {
+                print("NOT A POTION");
+                // TODO: ERROR to indicate not a potion
+            }
+
             Destroy(base.storedItem);
         }
-
-        // ACTUAL CODE
-        // if (base.storedItem != null) {
-        //     gameManager.method();
-        // }
     }
 }
