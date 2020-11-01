@@ -29,7 +29,7 @@ public class UIOrderQueueManager : MonoBehaviour
     public float gutterSize = 15.0f;
     public float velocity = 4.0f;
 
-    public GameObject addOrderUI(Order order, int LifeTime) 
+    public GameObject addOrderUI(Order order, float LifeTime) 
     {
 
         print("INITIAL LIFETIME OF: "+ LifeTime);

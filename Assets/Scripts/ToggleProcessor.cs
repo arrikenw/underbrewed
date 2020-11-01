@@ -15,9 +15,10 @@ public class ToggleProcessor : Processor
     {
         if (interacting)
         {
-            print(currentIngredient);
-            timeUntilComplete -= 1;
-            if (timeUntilComplete == 0)
+            timeUntilComplete -= Time.deltaTime;
+            if (timeUntilComplete <= 0.0f) timeUntilComplete = 0.0f; 
+
+            if (timeUntilComplete == 0.0f)
             {
                 //remove flame etc.
                 if (cookEffects)
