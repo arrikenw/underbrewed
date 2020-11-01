@@ -10,11 +10,11 @@ public class GameTransitions : MonoBehaviour
 
     public Transform target;
 
-    public float forwardVelocity = 25.0f;
+    public float forwardVelocity = 15.0f;
 
     public float rotateVelocity = 0.1f;
 
-    public float minDistance = 10.0f;
+    public float minDistance = 50.0f;
 
     public bool enabled = false;
 
