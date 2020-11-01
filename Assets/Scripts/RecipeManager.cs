@@ -27,6 +27,7 @@ public class RecipeManager : MonoBehaviour
     public float maxOrderPrepTime;
 
     //internal clock logic
+    private bool levelIsEnded;
     private float curTime;
     private float levelEndTime;
     private float timeToNextOrder = 0;
@@ -57,11 +58,20 @@ public class RecipeManager : MonoBehaviour
                 //increment score
                 score += activeOrders[i].Item1.score;
 
+                //update statistics
+                nOrdersCompleted += 1;
+
                 //update score visuals
                 ScoreObject.GetComponent<UIGameScore>().updateGameScore(score);
 
                 //delete order from active list
                 activeOrders.RemoveAt(i);
+
+                //run endgame logic if the last request was completed and there are no more queued orders
+                if (activeOrders.Count == 0 && queuedOrders.Count == 0)
+                {
+                    endLevel();
+                }
                 return;
             }
         }
@@ -177,6 +187,8 @@ public class RecipeManager : MonoBehaviour
     //end level
     void endLevel()
     {
+        levelIsEnded = true;
+
         //TODO camera stuff here
 
         //TODO pause once camera is complete
@@ -184,11 +196,24 @@ public class RecipeManager : MonoBehaviour
         //UI stuff
         //TODO send nOrdersCompleted and completion % to the score UI
         float completionPercent = ((float)nOrdersCompleted) / totalLevelOrders;
+
+        //TODO UI for game win
+        if (completionPercent >= 0.8f)
+        {
+            //TODO
+            print("you won!");
+        }
+        else
+        {
+            //TODO UI for game loss
+            print("you lost!");
+        }
     }
 
     //start
     void Start()
     {
+        levelIsEnded = false;
         UIObject = MainUIObject.GetComponent<UIOrderQueueManager>();
         curTime = 0.0f;
         score = 0;
@@ -201,6 +226,8 @@ public class RecipeManager : MonoBehaviour
     //checks to see if we should add new orders from pending queue to active orders
     void Update()
     {
+        if (!levelIsEnded)
+        {
             //activate new order
             while (queuedOrders.Count > 0)
             {
@@ -226,25 +253,26 @@ public class RecipeManager : MonoBehaviour
                     GameObject newActiveOrderUI = UIObject.addOrderUI(newActiveOrder, timeUntilOrderExpiry);
 
                     //construct the new (active order, ui, expiry time) tuple and add to the active order list
-                    Tuple<Order, GameObject, float> newActiveOrderTuple = new Tuple<Order, GameObject, float>(newActiveOrder, newActiveOrderUI, timeUntilOrderExpiry); 
+                    Tuple<Order, GameObject, float> newActiveOrderTuple = new Tuple<Order, GameObject, float>(newActiveOrder, newActiveOrderUI, timeUntilOrderExpiry);
                     activeOrders.Add(newActiveOrderTuple);
                 }
             }
 
-        //run lifecycle and ui updates for active orders
-        UpdateActiveOrders();
+            //run lifecycle and ui updates for active orders
+            UpdateActiveOrders();
 
-        //update the current time. Don't drop below 0
-        curTime += Time.deltaTime;
-        if (levelEndTime - curTime <= 0.0f) curTime = levelEndTime;
+            //update the current time. Don't drop below 0
+            curTime += Time.deltaTime;
+            if (levelEndTime - curTime <= 0.0f) curTime = levelEndTime;
 
-        //update timer UI
-        TimeObject.GetComponent<UIGameTimer>().updateGameTimer(levelEndTime - curTime);
+            //update timer UI
+            TimeObject.GetComponent<UIGameTimer>().updateGameTimer(levelEndTime - curTime);
 
-        //end game
-        if (levelEndTime <= curTime)
-        {
-            endLevel();
+            //end game
+            if (levelEndTime <= curTime)
+            {
+                endLevel();
+            }
         }
     }
 }
