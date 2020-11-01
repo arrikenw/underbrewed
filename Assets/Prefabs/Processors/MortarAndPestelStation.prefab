@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4528634722226361888}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0.559, y: 0.499, z: 0.898}
+  m_LocalPosition: {x: -0.044, y: -0.224, z: 0.017}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children: []
   m_Father: {fileID: 8874106545926193012}
@@ -107,7 +107,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4899406078552649710}
   m_LocalRotation: {x: -0.80427414, y: 0.08554078, z: 0.1194821, w: 0.5758037}
-  m_LocalPosition: {x: 0.383, y: 1.031, z: 0.659}
+  m_LocalPosition: {x: -0.177, y: 0.342, z: -0.178}
   m_LocalScale: {x: 8, y: 8, z: 8}
   m_Children: []
   m_Father: {fileID: 8874106545926193012}
@@ -199,12 +199,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8874106545926193012}
-  - component: {fileID: 2259803080065126900}
   - component: {fileID: 7764166300433335169}
   - component: {fileID: 6211707597328957989}
-  - component: {fileID: -6739672480209334661}
   - component: {fileID: 3037374858868100450}
   - component: {fileID: 67723114300461938}
+  - component: {fileID: 4754293838286261495}
   m_Layer: 0
   m_Name: MortarAndPestelStation
   m_TagString: Untagged
@@ -221,26 +220,13 @@ Transform:
   m_GameObject: {fileID: 4955474852227601385}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.216, y: -0.065, z: -0.929}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children:
   - {fileID: 412202466162214218}
   - {fileID: 2686646292127358024}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2259803080065126900
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4955474852227601385}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.5827756, y: 0.47660995, z: 0.63974833}
-  m_Center: {x: 0.5260041, y: 0.69491875, z: 0.89245355}
 --- !u!54 &7764166300433335169
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -296,23 +282,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &-6739672480209334661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4955474852227601385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50d286770f463994884c60feacb8cd4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  psysPrefab: {fileID: 7408081723834861634, guid: bac9bb0729c3b43408ca763151bd02c0,
-    type: 3}
-  station: 2
-  cookEffectsPrefab: {fileID: 6579814921043404322, guid: efbaa000c1234d0409f25479379a3a01,
-    type: 3}
 --- !u!65 &3037374858868100450
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -324,8 +293,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5827756, y: 0.47660995, z: 0.63974833}
-  m_Center: {x: 0.5260041, y: 0.69491875, z: 0.01}
+  m_Size: {x: 0.56619364, y: 0.47137502, z: 0.49201387}
+  m_Center: {x: -0.039388735, y: -0.023459667, z: 0.019157875}
 --- !u!114 &67723114300461938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,3 +312,16 @@ MonoBehaviour:
   station: 2
   cookEffectsPrefab: {fileID: 6579814921043404322, guid: efbaa000c1234d0409f25479379a3a01,
     type: 3}
+--- !u!65 &4754293838286261495
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4955474852227601385}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.56619364, y: 0.46018684, z: 0.49201387}
+  m_Center: {x: -0.039388735, y: -0.029053763, z: 0.019157875}

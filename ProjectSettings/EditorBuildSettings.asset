@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Iris/IrisScene.unity
     guid: babfe4554fb89cb4b94a0287aded6638
+  - enabled: 1
+    path: Assets/Scenes/OurTempNewScenes/Arriken/FirstLevelTest.unity
+    guid: ec435bbd8d7a4674daa6e983e466be92
+  - enabled: 1
+    path: Assets/Scenes/OurTempNewScenes/Arriken/SecondTest.unity
+    guid: 0a723694dac9a8a4e963e990de658498
   m_configObjects: {}
