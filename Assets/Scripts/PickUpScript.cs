@@ -17,6 +17,7 @@ public class PickUpScript : MonoBehaviour
 
     }
 
+    /*
     // Update is called once per frame
     void FixedUpdate()
     {   
@@ -29,11 +30,18 @@ public class PickUpScript : MonoBehaviour
             pollGap -= 1;
         }
     }
+    */
+
+    void Update()
+    {
+        UpdateThrow();
+        UpdateInteract();
+        UpdatePickup();
+    }
 
     private void UpdatePickup() {
-
         // Picking Up
-        if (Input.GetKeyDown(KeyCode.M) && heldItem == null && interactableObject != null) {
+            if (Input.GetKeyDown(KeyCode.M) && heldItem == null && interactableObject != null) {
             animator.Play("PickUp");
             // Pickup item directly
             if (interactableObject.GetComponent<Item>() != null) {
