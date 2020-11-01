@@ -49,8 +49,7 @@ public class RecipeManager : MonoBehaviour
             //check if an active order has destination colour that matches potion
 
             //commented out for testing
-            Color testYellow = new Color(176.0f / 255, 191.0f / 255, 26.0f / 255, 1);
-            if (activeOrders[i].Item1.targetColour == testYellow/*potion.potionColour*/)
+            if (activeOrders[i].Item1.targetColour == potion.potionColour)
             {
                 //delete ui
                 UIObject.deleteOrderUI(activeOrders[i].Item2);
@@ -193,6 +192,7 @@ public class RecipeManager : MonoBehaviour
         UIObject = MainUIObject.GetComponent<UIOrderQueueManager>();
         curTime = 0.0f;
         score = 0;
+        ScoreObject.GetComponent<UIGameScore>().updateGameScore(score);
         timeToNextOrder = GenerateLevelOrders();
     }
 
