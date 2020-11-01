@@ -53,7 +53,7 @@ public class RecipeTree : MonoBehaviour
         RecipeNode ECharredFlower = new RecipeNode(IngType.CharredFlower, mixingColor, ECookedFrog);
         root.AddChild(ECharredFlower);
 
-        // F: cheese
+        // F: cheese : yellow
         RecipeNode FCheese = new RecipeNode(IngType.Cheese, yellow);
         root.AddChild(FCheese);
 

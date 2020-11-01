@@ -5,24 +5,6 @@ using UnityEngine.UI;
 
 public class UIOrderQueueManager : MonoBehaviour
 {
-    /*
-    public enum IngredientType
-    {
-        Null,
-        Bone,
-        MeltedBone,
-        CrushedBone,
-        Flower,
-        CharredFlower,
-        Cheese,
-        ChoppedCheese,
-        Eyeball,
-        CrushedEyeball,
-        Frog,
-        ChoppedFrog,
-        CookedFrog
-    }
-    */
 
     public GameObject orderTemplate;
 
@@ -32,7 +14,6 @@ public class UIOrderQueueManager : MonoBehaviour
     public GameObject addOrderUI(Order order, int LifeTime) 
     {
 
-        print("INITIAL LIFETIME OF: "+ LifeTime);
         // Create new instance of template
         GameObject newOrder = GameObject.Instantiate<GameObject>(orderTemplate);
         newOrder.transform.SetParent(this.transform, false);
@@ -65,8 +46,7 @@ public class UIOrderQueueManager : MonoBehaviour
 
     public void deleteOrderUI(GameObject orderUI)
     {
-        //TODO use index for efficiency
-
+        //TO DO: use index for efficiency
 
         Destroy(orderUI);
         
@@ -76,14 +56,46 @@ public class UIOrderQueueManager : MonoBehaviour
     public void addPotion(Image potionImage, Color targetColor)
     {
         //change potion image depending on targetColor
+        /*
         switch(targetColor)
         {
-            // TO DO: complete
-            /*
-            case purple:
-                potionImage.sprite = Resources.Load<Sprite>("Asset/Images/potionPurple");
-                */
-        }
+            case (white):
+                potionImage.sprite = Resources.Load<Sprite>("potionWhite");
+                break;
+            case (brown):
+                potionImage.sprite = Resources.Load<Sprite>("potionBrown");
+                break;
+            case (black):
+                potionImage.sprite = Resources.Load<Sprite>("potionBlack");
+                break;
+            case (grey):
+                potionImage.sprite = Resources.Load<Sprite>("potionGrey");
+                break;
+            case (blue):
+                potionImage.sprite = Resources.Load<Sprite>("potionBlue");
+                break;
+            case (yellow):
+                potionImage.sprite = Resources.Load<Sprite>("potionYellow");
+                break;
+            case (magenta):
+                potionImage.sprite = Resources.Load<Sprite>("potionMagenta");
+                break;
+            case (cyan):
+                potionImage.sprite = Resources.Load<Sprite>("potionCyan");
+                break;
+            case (darkGreen):
+                potionImage.sprite = Resources.Load<Sprite>("potionDarkGreen");
+                break;
+            case (purple):
+                potionImage.sprite = Resources.Load<Sprite>("potionPurple");
+                break;
+            case (red):
+                potionImage.sprite = Resources.Load<Sprite>("potionRed");
+                break;
+            case (orange):
+                potionImage.sprite = Resources.Load<Sprite>("potionOrange");
+                break;
+        }*/
     }
 
     public void addIngredient(Ingredient ingredient, Image ingredientImage, Image methodImage)
@@ -91,7 +103,7 @@ public class UIOrderQueueManager : MonoBehaviour
         //add ingredient according to ingredient and ingredient slot
         switch (ingredient.GetIngredientType())
         {
-            case IngType.Bone: // Bone is a type...
+            case IngType.Bone: 
                 ingredientImage.sprite = Resources.Load<Sprite>("Bone");
                 methodImage.color = new Color (0, 0, 0, 0);
                 methodImage.sprite = null;
