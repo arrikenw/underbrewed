@@ -5,11 +5,29 @@ using UnityEngine.UI;
 
 public class UIOrderQueueManager : MonoBehaviour
 {
+    /*
+    public enum IngredientType
+    {
+        Null,
+        Bone,
+        MeltedBone,
+        CrushedBone,
+        Flower,
+        CharredFlower,
+        Cheese,
+        ChoppedCheese,
+        Eyeball,
+        CrushedEyeball,
+        Frog,
+        ChoppedFrog,
+        CookedFrog
+    }
+    */
 
     public GameObject orderTemplate;
 
-    public float gutterSize;
-    public float velocity;
+    public float gutterSize = 15.0f;
+    public float velocity = 4.0f;
 
     public GameObject addOrderUI(Order order) 
     {
@@ -65,14 +83,53 @@ public class UIOrderQueueManager : MonoBehaviour
     public void addIngredient(Ingredient ingredient, Image ingredientImage, Image methodImage)
     {
         //add ingredient according to ingredient and ingredient slot
+        /*
         switch (ingredient)
         {
-            // TO DO: complete 
-            /*
-            case cheese:
-                ingredientImage.sprite = Resources.Load<Sprite>("Asset/Images/Cheese");
-                */
+            case Bone: // Bone is a type...
+                ingredientImage.sprite = Resources.Load<Sprite>("Bone");
+                methodImage.color = new Color (0, 0, 0, 0);
+                methodImage.sprite = null;
+            case MeltedBone:
+                ingredientImage.sprite = Resources.Load<Sprite>("Bone");
+                methodImage.sprite = Resources.Load<Sprite>("Fire");
+            case CrushedBone:
+                ingredientImage.sprite = Resources.Load<Sprite>("Bone");
+                methodImage.sprite = Resources.Load<Sprite>("Mortar_Pestle");
+            case Flower:
+                ingredientImage.sprite = Resources.Load<Sprite>("Lotus");
+                methodImage.color = new Color (0, 0, 0, 0);
+                methodImage.sprite = null;
+            case CharredFlower:
+                ingredientImage.sprite = Resources.Load<Sprite>("Lotus");
+                methodImage.sprite = Resources.Load<Sprite>("Fire");
+            case Cheese:
+                ingredientImage.sprite = Resources.Load<Sprite>("Cheese");
+                methodImage.color = new Color (0, 0, 0, 0);
+                methodImage.sprite = null;
+            case ChoppedCheese:
+                ingredientImage.sprite = Resources.Load<Sprite>("Cheese");
+                methodImage.sprite = Resrouces.Load<Sprite>("Knife");
+            case Eyeball:
+                ingredientImage.sprite = Resources.Load<Sprite>("Eyeball");
+                methodImage.color = new Color (0, 0, 0, 0);        
+                methodImage.sprite = null;
+            case Eyeball:
+                ingredientImage.sprite = Resources.Load<Sprite>("Eyeball");
+                methodImage.sprite = Resources.Load<Sprite>("Mortar_Pestle");
+            case Frog:
+                ingredientImage.sprite = Resources.Load<Sprite>("Frog");
+                methodImage.color = new Color (0, 0, 0, 0);
+                methodImage.sprite = null;
+            case ChoppedFrog:
+                ingredientImage.sprite = Resources.Load<Sprite>("Frog");
+                methodImage.sprite = Resrouces.Load<Sprite>("Knife");
+            case CookedFrog:
+                ingredientImage.sprite = Resources.Load<Sprite>("Frog");
+                methodImage.sprite = Resrouces.Load<Sprite>("Fire");
+        
         }
+    */
     }
 
     public void reorderQueue(GameObject orderQueueUI)
@@ -104,7 +161,7 @@ public class UIOrderQueueManager : MonoBehaviour
 
             orderUI.transform.position = Vector3.Lerp(orderUI.transform.position, targetPosition, Time.deltaTime * this.velocity);
 
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForEndOfFrame();
         }
     }
 }

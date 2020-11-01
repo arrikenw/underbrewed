@@ -4,24 +4,27 @@ using UnityEngine;
 
 public class UIPauseMenu : MonoBehaviour
 {
+    public Transform canvas;
 
-    public void Resume()
+    public void ResumeGame()
     {
         // TO DO: Resume game
-        Debug.Log("TO DO: Resume game");
-
+        if (canvas.gameObject.activeInHierarchy == true)
+        {
+            Time.timeScale = 1; // for time-dependent functions
+            canvas.gameObject.SetActive(false);
+        }
     }
 
-    public void Restart()
+    public void RestartGame()
     {
-        // TO DO: Resume level
-        Debug.Log("TO DO: Restart level");
+        //// TO DO: Restart game
+        UnityEngine.SceneManagement.SceneManager.LoadScene("IrisScene");
     }
 
     public void Quit()
     {
-        // TO DO: End game
-        UnityEngine.SceneManagement.SceneManager.LoadScene("UIMainMenu");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("IrisUIMainMenu");
     }
 
 }
