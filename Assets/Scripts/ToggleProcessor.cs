@@ -8,7 +8,6 @@ public class ToggleProcessor : Processor
     protected override void Start()
     {
         base.Start();
-        print(currentIngredient);
     }
 
     void Update()
@@ -28,7 +27,6 @@ public class ToggleProcessor : Processor
 
                 //create new object
                 Tuple<StationType, IngType> lookupData = new Tuple<StationType, IngType>(station, currentIngredient);
-                print(lookupData);
                 GameObject processedOutput = Instantiate(prefabManager.getFromIngredientMap(lookupData), storedItem.transform.position, storedItem.transform.rotation);
 
                 //destroy object being processed

@@ -39,8 +39,6 @@ public class PrefabScript : MonoBehaviour
     public float getFromCooktimeMap(Tuple<Processor.StationType, IngType> conditions)
     {
         //return error value if the key is invalid
-        print(conditions);
-        print(cooktimeMap.ContainsKey(conditions));
         if (!cooktimeMap.ContainsKey(conditions)){
             return -1.0f;
         }
@@ -49,7 +47,6 @@ public class PrefabScript : MonoBehaviour
 
     public GameObject getFromIngredientMap(Tuple<Processor.StationType, IngType> conditions)
     {
-        print(conditions);
         return ingredientMap[conditions];
     }
 

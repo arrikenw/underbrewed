@@ -10,7 +10,6 @@ public class RecipeManager : MonoBehaviour
     public GameObject MainUIObject;
     protected UIOrderQueueManager UIObject;
     
-
     //testing score
     public GameObject ScoreObject;
     public GameObject TimeObject;
@@ -19,7 +18,7 @@ public class RecipeManager : MonoBehaviour
     [SerializeField]
     public TextAsset levelConfigFile;
 
-    //recipe generation config
+    //random recipe generation config
     public int totalLevelOrders; //must be > 0
     public Order[] orderPrefabs;
     public float minOrderGap;
@@ -28,9 +27,13 @@ public class RecipeManager : MonoBehaviour
     public float maxOrderPrepTime;
 
     //internal clock logic
-    private int score;
     private float curTime;
+    private float levelEndTime;
     private float timeToNextOrder = 0;
+
+    //scoring and statistics
+    private int nOrdersCompleted;
+    private int score;
 
     //active and enqueued recipes
     private List<Tuple<Order, GameObject, float>> activeOrders = new List<Tuple<Order, GameObject, float>>(); //(order, ui element, time remaining)
@@ -44,13 +47,19 @@ public class RecipeManager : MonoBehaviour
         for (int i = 0; i < activeOrders.Count; i++)
         {
             //check if an active order has destination colour that matches potion
-            if (activeOrders[i].Item1.targetColour == potion.potionColour)
+
+            //commented out for testing
+            Color testYellow = new Color(176.0f / 255, 191.0f / 255, 26.0f / 255, 1);
+            if (activeOrders[i].Item1.targetColour == testYellow/*potion.potionColour*/)
             {
                 //delete ui
                 UIObject.deleteOrderUI(activeOrders[i].Item2);
 
                 //increment score
                 score += activeOrders[i].Item1.score;
+
+                //update score visuals
+                ScoreObject.GetComponent<UIGameScore>().updateGameScore(score);
 
                 //delete order from active list
                 activeOrders.RemoveAt(i);
@@ -99,6 +108,8 @@ public class RecipeManager : MonoBehaviour
     private float GenerateLevelOrders()
     {
         float timeTofirstOrder = -1.0f;
+
+        float orderPrepTime = 0.0f;
         //randomly generate level data if there is no config
         if (!levelConfigFile)
         {
@@ -114,11 +125,18 @@ public class RecipeManager : MonoBehaviour
                 }
 
                 //get the allowed time for the order
-                float orderPrepTime = curRecipe.optimalPrepTime + UnityEngine.Random.Range(minOrderPrepTime, maxOrderPrepTime);
+                orderPrepTime = curRecipe.optimalPrepTime + UnityEngine.Random.Range(minOrderPrepTime, maxOrderPrepTime);
 
                 Tuple<float, Order, float> orderEntry = new Tuple<float, Order, float>(genTime, curRecipe, orderPrepTime);
                 queuedOrders.Enqueue(orderEntry);
             }
+            if (totalLevelOrders == 0)
+            {
+                print("CAN'T GENERATE LEVEL WITH 0 ORDERS");
+                return 0;
+            }
+            //the final order time is the same as the end of the level
+            levelEndTime = genTime + orderPrepTime;
             return timeTofirstOrder;
         }else
         {
@@ -129,19 +147,20 @@ public class RecipeManager : MonoBehaviour
             String[] curOrderData;
 
             //first line is number of orders
-            int nOrders = Convert.ToInt32(levelData[0]);
-            print(nOrders);
+            totalLevelOrders = Convert.ToInt32(levelData[0]);
+
             //rest of lines are the orders
+            float tempArrivalTime = 0.0f;
+            float tempPrepTime = 0.0f;
             for (int i = 1; i < levelData.Length; i++)
             {
                 //data for each order is arranged like so: (arrival time, order, prep time)
                 //the input data should be ordered by arrival time
                 curOrderData = levelData[i].Split(',');
-                float tempArrivalTime = Convert.ToSingle(curOrderData[0]);
+                tempArrivalTime = Convert.ToSingle(curOrderData[0]);
                 Order tempOrderType = orderPrefabs[Convert.ToInt32(curOrderData[1])];
-                float tempPrepTime = Convert.ToSingle(curOrderData[2]);
+                tempPrepTime = Convert.ToSingle(curOrderData[2]);
                 Tuple<float, Order, float> newOrder = new Tuple<float, Order, float>(tempArrivalTime, tempOrderType, tempPrepTime);
-                print(newOrder);
                 queuedOrders.Enqueue(newOrder);
 
                 //save the first order arrival time as the initial arrival time
@@ -150,25 +169,31 @@ public class RecipeManager : MonoBehaviour
                     timeToFirstOrder = Convert.ToSingle(curOrderData[0]);
                 }
             }
+            //the final end time is the same as the end of the level
+            levelEndTime = tempArrivalTime + tempPrepTime;
             return timeToFirstOrder;
         }
     }
 
+    //end level
+    void endLevel()
+    {
+        //TODO camera stuff here
 
+        //TODO pause once camera is complete
+
+        //UI stuff
+        //TODO send nOrdersCompleted and completion % to the score UI
+        float completionPercent = ((float)nOrdersCompleted) / totalLevelOrders;
+    }
 
     //start
     void Start()
     {
         UIObject = MainUIObject.GetComponent<UIOrderQueueManager>();
         curTime = 0.0f;
+        score = 0;
         timeToNextOrder = GenerateLevelOrders();
-
-        //testing score
-        ScoreObject.GetComponent<UIGameScore>().updateGameScore(500);
-
-        //testing timer
-        TimeObject.GetComponent<UIGameTimer>().updateGameTimer(999);
-
     }
 
 
@@ -209,7 +234,17 @@ public class RecipeManager : MonoBehaviour
         //run lifecycle and ui updates for active orders
         UpdateActiveOrders();
 
-        //update the current time
+        //update the current time. Don't drop below 0
         curTime += Time.deltaTime;
+        if (levelEndTime - curTime <= 0.0f) curTime = levelEndTime;
+
+        //update timer UI
+        TimeObject.GetComponent<UIGameTimer>().updateGameTimer(levelEndTime - curTime);
+
+        //end game
+        if (levelEndTime <= curTime)
+        {
+            endLevel();
+        }
     }
 }

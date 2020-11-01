@@ -33,7 +33,6 @@ public class Station : Interactable
         if (storedItem == null && itemComponent != null && !itemComponent.IsHeld() && !itemComponent.IsLocked()) {
             
             storedItem = other.gameObject;
-            print("Storing item in Station" + storedItem);
             // Set kinematic to true
             storedItem.GetComponent<Rigidbody>().isKinematic = true;
 
@@ -60,7 +59,6 @@ public class Station : Interactable
 
     public virtual GameObject TryPickup() {
         if (storedItem != null && canPickup) {
-            print("Picking up from Station");
             
             GameObject tempItem = storedItem;
             storedItem = null;
