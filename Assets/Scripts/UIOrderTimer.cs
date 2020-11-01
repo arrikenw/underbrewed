@@ -51,8 +51,9 @@ public class UIOrderTimer : MonoBehaviour
 
     void Update()
     {
-        
-        fillValue = (float)(timeRemaining / maxTime);
+
+        fillValue = ((float) timeRemaining) / maxTime;
+        print("fillvalue: "+fillValue);
 
         timer.value = fillValue;
 
