@@ -5,7 +5,7 @@ using UnityEngine;
 public class animateCamera : MonoBehaviour
 {
     public GameObject Player;
-    public float speed = 0.0000001f;
+    public float speed = 5.0f;
     private bool started = false;
     // Start is called before the first frame update
     void Start()
@@ -22,37 +22,37 @@ public class animateCamera : MonoBehaviour
         }
         if(started)
         {
-            while (transform.position.x < Player.transform.position.x - 2.435)
+            if (transform.position.x < Player.transform.position.x - 2.435)
             {
                 transform.position += new Vector3(1.0f, 0.0f, 0.0f) * speed * Time.deltaTime;
             }
 
-            while (transform.position.x > Player.transform.position.x - 2.435)
+            if (transform.position.x > Player.transform.position.x - 2.435)
             {
                 transform.position += new Vector3(-1.0f, 0.0f, 0.0f) * speed * Time.deltaTime;
             }
 
-            while (transform.position.y < Player.transform.position.y + 0.95)
+            if (transform.position.y < Player.transform.position.y + 0.95)
             {
                 transform.position += new Vector3(0.0f, 1.0f, 0.0f) * speed * Time.deltaTime;
             }
 
-            while (transform.position.y > Player.transform.position.y + 0.95)
+            if (transform.position.y > Player.transform.position.y + 0.95)
             {
                 transform.position += new Vector3(0.0f, -1.0f, 0.0f) * speed * Time.deltaTime;
             }
 
-            while (transform.position.z < Player.transform.position.z - 2.128)
+            if (transform.position.z < Player.transform.position.z - 2.128)
             {
                 transform.position += new Vector3(0.0f, 0.0f, 1.0f) * speed * Time.deltaTime;
             }
 
-            while (transform.position.z > Player.transform.position.z - 2.128)
+            if (transform.position.z > Player.transform.position.z - 2.128)
             {
                 transform.position += new Vector3(0.0f, 0.0f, -1.0f) * speed * Time.deltaTime;
             }
 
-            // transform.LookAt(Player.transform);
+            transform.LookAt(Player.transform);
         }
     }
 }
