@@ -7,7 +7,8 @@ public class RecipeManager : MonoBehaviour
 {
 
     //UI object
-    public UIOrderQueueManager UIObject;
+    public GameObject UIObjectPrefab;
+    protected UIOrderQueueManager UIObject;
 
     //level config, leave blank if random
     [SerializeField]
@@ -154,6 +155,7 @@ public class RecipeManager : MonoBehaviour
     //start
     void Start()
     {
+        UIObject = UIObjectPrefab.GetComponent<UIOrderQueueManager>();
         curTime = 0;
         timeToNextOrder = generateLevelOrders();
     }
