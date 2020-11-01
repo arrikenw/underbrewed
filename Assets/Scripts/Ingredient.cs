@@ -5,7 +5,7 @@ using UnityEngine;
 public class Ingredient : Item
 {
     // keep track of ingredient 
-    [SerializeField] private IngType type;
+    [SerializeField] private IngType ingredientType = IngType.Null;
 
     // [SerializeField] private Color mixColour = new Color(); 
     // Start is called before the first frame update
@@ -25,6 +25,6 @@ public class Ingredient : Item
     // }
 
     public IngType GetIngredientType() {
-        return type;
+        return ingredientType;
     }
 }
