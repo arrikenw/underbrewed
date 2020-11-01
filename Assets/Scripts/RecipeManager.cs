@@ -189,6 +189,13 @@ public class RecipeManager : MonoBehaviour
     {
         levelIsEnded = true;
 
+        //remove UI orders that still exist (eg. clock runs out before complete)
+        for (int i = 0; i < activeOrders.Count; i++)
+        {
+            //delete ui
+            UIObject.deleteOrderUI(activeOrders[i].Item2);
+        }
+         
         //TODO camera stuff here
 
         //TODO pause once camera is complete
