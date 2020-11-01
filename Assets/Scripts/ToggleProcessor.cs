@@ -40,6 +40,9 @@ public class ToggleProcessor : Processor
                 //set kinematic to ensure item stays locked in place like the input ingredient
                 storedItem.GetComponent<Rigidbody>().isKinematic = true;
 
+                // Run .OnStore()
+                storedItem.GetComponent<Item>().OnStore(); // BUGFIX    
+
                 //todo add sound effect or something on completion
 
                 //stop
