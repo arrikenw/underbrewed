@@ -17,7 +17,7 @@ public class UIOrderController : MonoBehaviour
 
     void Update()
     {
-        if (timerLow == false && isFlashing == false)
+        if (timerLow == true && isFlashing == false)
         {
             StartCoroutine(flashing(warningColor, flashDelay));
         }
@@ -38,7 +38,7 @@ public class UIOrderController : MonoBehaviour
 
             yield return new WaitForSeconds(flashDelay);
 
-            this.gameObject.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+            this.gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
 
             yield return new WaitForSeconds(flashDelay);
         }
