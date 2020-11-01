@@ -23,6 +23,9 @@ public enum IngType
 
 public class Processor : Station
 {
+    public Animator animator;
+    public GameObject knife;
+    public GameObject pestle;
     public enum StationType
     {
         Chop,
@@ -85,10 +88,26 @@ public class Processor : Station
     {
         interacting = false;
         canPickup = true;
-        psys.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        if (psys)
+        {
+            psys.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        }
+        
         if (cookEffects)
         {
             Destroy(cookEffects);
+        }
+
+        animator.Play("EmptyIdle");
+        if (station == StationType.Chop)
+        {
+            knife.SetActive(false);
+            transform.Find("Knife_01").gameObject.SetActive(true);
+        }
+        else if (station == StationType.Crush)
+        {
+            pestle.SetActive(false);
+            transform.Find("pestle").gameObject.SetActive(true);
         }
     }
 
@@ -124,6 +143,19 @@ public class Processor : Station
             psys.Play();
         }
        
+        if (station == StationType.Chop)
+        {
+            knife.SetActive(true);
+            animator.Play("ChopAnim");
+            transform.Find("Knife_01").gameObject.SetActive(false);
+        }
+        else if (station == StationType.Crush)
+        {
+            pestle.SetActive(true);
+            animator.Play("PoundAnim");
+            transform.Find("pestle").gameObject.SetActive(false);
+        }
+
         //object settings
         canPickup = false;
         interacting = true;

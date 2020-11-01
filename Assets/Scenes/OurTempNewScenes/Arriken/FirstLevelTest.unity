@@ -457,8 +457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50674572d86c3c469f908a13013c305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  mixColour: {r: 1, g: 0.026643857, b: 0, a: 1}
+  ingredientType: 0
 --- !u!23 &30792799
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -894,8 +893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50674572d86c3c469f908a13013c305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  mixColour: {r: 1, g: 0.026643857, b: 0, a: 1}
+  ingredientType: 0
 --- !u!23 &54160200
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1116,6 +1114,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EyeBallCrate
+      objectReference: {fileID: 0}
+    - target: {fileID: 165473222506343044, guid: acbaa95c111558d429d2c5cf0a600b97,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acbaa95c111558d429d2c5cf0a600b97, type: 3}
@@ -1637,8 +1640,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50674572d86c3c469f908a13013c305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  mixColour: {r: 1, g: 0.026643857, b: 0, a: 1}
+  ingredientType: 0
 --- !u!23 &83874108
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3788,6 +3790,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoneCrate
       objectReference: {fileID: 0}
+    - target: {fileID: 3718013192193657850, guid: 92379049b79107d4ebb53a8de8b2e1c6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3718013192193894726, guid: 92379049b79107d4ebb53a8de8b2e1c6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4747,8 +4754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50674572d86c3c469f908a13013c305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  mixColour: {r: 1, g: 0.026643857, b: 0, a: 1}
+  ingredientType: 0
 --- !u!23 &325896307
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5909,8 +5915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50674572d86c3c469f908a13013c305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  mixColour: {r: 1, g: 0.026643857, b: 0, a: 1}
+  ingredientType: 0
 --- !u!23 &428192069
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6235,8 +6240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50674572d86c3c469f908a13013c305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  mixColour: {r: 1, g: 0.026643857, b: 0, a: 1}
+  ingredientType: 0
 --- !u!23 &462330538
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6823,6 +6827,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CheeseCrate
+      objectReference: {fileID: 0}
+    - target: {fileID: 767458664924979687, guid: f542516ebb7c46543abc02bfaf6b59f7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f542516ebb7c46543abc02bfaf6b59f7, type: 3}
@@ -31533,8 +31542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50674572d86c3c469f908a13013c305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  mixColour: {r: 1, g: 0.026643857, b: 0, a: 1}
+  ingredientType: 0
 --- !u!23 &931346491
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -37588,8 +37596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50674572d86c3c469f908a13013c305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  mixColour: {r: 1, g: 0.026643857, b: 0, a: 1}
+  ingredientType: 0
 --- !u!23 &1003377412
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -38619,6 +38626,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PotionCrate
       objectReference: {fileID: 0}
+    - target: {fileID: 1955125410150980543, guid: 0585ca603a9e40b4180e4e0880be8cf9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1955125410151151875, guid: 0585ca603a9e40b4180e4e0880be8cf9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -39058,6 +39070,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 698461241300624815, guid: 2a2bd8b6d8bcc3c47810540c9e7bd65c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a2bd8b6d8bcc3c47810540c9e7bd65c, type: 3}
@@ -40128,7 +40145,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1106808847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40141,8 +40158,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90cc4cde5685a646bc5923d6b51b4dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIObjectPrefab: {fileID: 1825099444855732521, guid: be8a151be679bc34a98f6c1bffaadcb7,
-    type: 3}
+  MainUIObject: {fileID: 0}
+  ScoreObject: {fileID: 0}
+  TimeObject: {fileID: 0}
   levelConfigFile: {fileID: 4900000, guid: 78a8c3966bdf5d840912172d0cd79577, type: 3}
   totalLevelOrders: 0
   orderPrefabs:
@@ -41121,8 +41139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50674572d86c3c469f908a13013c305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  mixColour: {r: 1, g: 0.026643857, b: 0, a: 1}
+  ingredientType: 0
 --- !u!23 &1201374088
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -41887,8 +41904,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50674572d86c3c469f908a13013c305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  mixColour: {r: 1, g: 0.026643857, b: 0, a: 1}
+  ingredientType: 0
 --- !u!23 &1257651084
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -42225,8 +42241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50674572d86c3c469f908a13013c305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  mixColour: {r: 1, g: 0.026643857, b: 0, a: 1}
+  ingredientType: 0
 --- !u!23 &1265298219
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -42622,6 +42637,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d72255d658afaff4ea091023f063c89b, type: 3}
+--- !u!1 &1276724366 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3243548015464409481, guid: 837c1872e4149c748970c2625be03b10,
+    type: 3}
+  m_PrefabInstance: {fileID: 5529093446329411749}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1277308449
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43402,8 +43423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50674572d86c3c469f908a13013c305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  mixColour: {r: 1, g: 0.026643857, b: 0, a: 1}
+  ingredientType: 0
 --- !u!23 &1350340575
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -45056,7 +45076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 703036f36a692854f8749857bb9353dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
+  recipeManager: {fileID: 0}
 --- !u!65 &1431407666
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -46065,8 +46085,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50674572d86c3c469f908a13013c305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  mixColour: {r: 1, g: 0.026643857, b: 0, a: 1}
+  ingredientType: 0
 --- !u!23 &1490995723
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -46241,8 +46260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50674572d86c3c469f908a13013c305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  mixColour: {r: 1, g: 0.026643857, b: 0, a: 1}
+  ingredientType: 0
 --- !u!23 &1493556637
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -46431,8 +46449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50674572d86c3c469f908a13013c305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  mixColour: {r: 1, g: 0.026643857, b: 0, a: 1}
+  ingredientType: 0
 --- !u!23 &1503131401
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -46695,8 +46712,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50674572d86c3c469f908a13013c305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  mixColour: {r: 1, g: 0.026643857, b: 0, a: 1}
+  ingredientType: 0
 --- !u!23 &1511032130
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -46973,6 +46989,12 @@ Transform:
   m_Father: {fileID: 728270237}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1523184585 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3243548015792276872, guid: 837c1872e4149c748970c2625be03b10,
+    type: 3}
+  m_PrefabInstance: {fileID: 5529093446329411749}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1523465645
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47614,6 +47636,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: f372f38a1f7071645b2b64005e2380b9, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57e9785ae80b6904298145f7fddc5d4f, type: 3}
+--- !u!1 &1548478714 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3243548014863248389, guid: 837c1872e4149c748970c2625be03b10,
+    type: 3}
+  m_PrefabInstance: {fileID: 5529093446329411749}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1549212698
 GameObject:
   m_ObjectHideFlags: 0
@@ -47975,8 +48003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50674572d86c3c469f908a13013c305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  mixColour: {r: 1, g: 0.026643857, b: 0, a: 1}
+  ingredientType: 0
 --- !u!23 &1566018156
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -49808,6 +49835,7 @@ GameObject:
   - component: {fileID: 1694912890}
   - component: {fileID: 1694912893}
   - component: {fileID: 1694912894}
+  - component: {fileID: 1694912895}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -49913,6 +49941,20 @@ MonoBehaviour:
   right: 0
   up: 0
   disabled: 0
+--- !u!114 &1694912895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694912889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 245773100d02d8047b98c1228c916245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 1276724366}
+  speed: 0.5
 --- !u!4 &1706267976 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3767738777782038735, guid: 0a6903ed3ce10bb4f858035f1c0041b9,
@@ -49953,8 +49995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50674572d86c3c469f908a13013c305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  mixColour: {r: 1, g: 0.026643857, b: 0, a: 1}
+  ingredientType: 0
 --- !u!23 &1706296663
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -50943,6 +50984,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2103124049}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1765744504 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3243548015209942506, guid: 837c1872e4149c748970c2625be03b10,
+    type: 3}
+  m_PrefabInstance: {fileID: 5529093446329411749}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1766447002
 GameObject:
   m_ObjectHideFlags: 0
@@ -51309,6 +51356,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FrogCrate
+      objectReference: {fileID: 0}
+    - target: {fileID: 3480618345385585074, guid: 14294613123f0524b9e785f366163593,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3480618345385937678, guid: 14294613123f0524b9e785f366163593,
         type: 3}
@@ -51968,8 +52020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50674572d86c3c469f908a13013c305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  mixColour: {r: 1, g: 0.026643857, b: 0, a: 1}
+  ingredientType: 0
 --- !u!23 &1856812432
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -52396,8 +52447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50674572d86c3c469f908a13013c305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  mixColour: {r: 1, g: 0.026643857, b: 0, a: 1}
+  ingredientType: 0
 --- !u!23 &1880718773
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -53386,8 +53436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50674572d86c3c469f908a13013c305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  mixColour: {r: 1, g: 0.026643857, b: 0, a: 1}
+  ingredientType: 0
 --- !u!23 &1982402122
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -53727,8 +53776,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50674572d86c3c469f908a13013c305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  mixColour: {r: 1, g: 0.026643857, b: 0, a: 1}
+  ingredientType: 0
 --- !u!23 &2007587028
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -53816,7 +53864,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2010022875
 Transform:
   m_ObjectHideFlags: 0
@@ -54266,8 +54314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50674572d86c3c469f908a13013c305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  mixColour: {r: 1, g: 0.026643857, b: 0, a: 1}
+  ingredientType: 0
 --- !u!23 &2027861259
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -54955,8 +55002,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50674572d86c3c469f908a13013c305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  mixColour: {r: 1, g: 0.026643857, b: 0, a: 1}
+  ingredientType: 0
 --- !u!23 &2065378321
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -55175,6 +55221,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LotusCrate
+      objectReference: {fileID: 0}
+    - target: {fileID: 7579496040545455908, guid: f980158cbb7b6294f9350426bc734043,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7579496040545693080, guid: f980158cbb7b6294f9350426bc734043,
         type: 3}
@@ -55607,6 +55658,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HiddenCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943567467166387640, guid: c83b9916ff3171947ab0aba5221a4a3d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7943567467634671184, guid: c83b9916ff3171947ab0aba5221a4a3d,
         type: 3}
@@ -56615,6 +56671,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SlicedCheese
       objectReference: {fileID: 0}
+    - target: {fileID: 1487937844590548170, guid: 50156b33173788b44aafc8e35c44c4c3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3276472105394862186, guid: 50156b33173788b44aafc8e35c44c4c3,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -56703,6 +56764,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cauldron
+      objectReference: {fileID: 0}
+    - target: {fileID: 1556325714103910985, guid: 52ca54299e99be441a7fbbbd34f72485,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1826284606207337637, guid: 52ca54299e99be441a7fbbbd34f72485,
         type: 3}
@@ -56813,6 +56879,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2823369317141404425, guid: 373c2f993b48f064ab5fdd48f922e03a,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1523184585}
+    - target: {fileID: -2823369317141404425, guid: 373c2f993b48f064ab5fdd48f922e03a,
+        type: 3}
+      propertyPath: knife
+      value: 
+      objectReference: {fileID: 1765744504}
+    - target: {fileID: -2823369317141404425, guid: 373c2f993b48f064ab5fdd48f922e03a,
+        type: 3}
+      propertyPath: pestle
+      value: 
+      objectReference: {fileID: 1548478714}
+    - target: {fileID: -2823369317141404425, guid: 373c2f993b48f064ab5fdd48f922e03a,
+        type: 3}
+      propertyPath: psysPrefab
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -2823369317141404425, guid: 373c2f993b48f064ab5fdd48f922e03a,
+        type: 3}
+      propertyPath: cookEffectsPrefab
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4886192835110648564, guid: 373c2f993b48f064ab5fdd48f922e03a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -56872,6 +56963,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ChoppingStation
+      objectReference: {fileID: 0}
+    - target: {fileID: 6721809882490579788, guid: 373c2f993b48f064ab5fdd48f922e03a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 373c2f993b48f064ab5fdd48f922e03a, type: 3}
@@ -56997,6 +57093,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SquashedEye
       objectReference: {fileID: 0}
+    - target: {fileID: 6948511097556231797, guid: fa9608cb87448cf4096b5482695b9d04,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa9608cb87448cf4096b5482695b9d04, type: 3}
 --- !u!4 &4408886826455824667
@@ -57026,6 +57127,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PrefabManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4809214842786293619, guid: c8258a756a0817241b722addcf5ef750,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4809214842786293629, guid: c8258a756a0817241b722addcf5ef750,
         type: 3}
@@ -57095,6 +57201,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BubblingSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177242491581557917, guid: e8e56b3c517adef45a4dac5373d90fbe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5414900951571401299, guid: e8e56b3c517adef45a4dac5373d90fbe,
         type: 3}
@@ -57174,6 +57285,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3243548015209942506, guid: 837c1872e4149c748970c2625be03b10,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3243548015464409481, guid: 837c1872e4149c748970c2625be03b10,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4646062113723273469, guid: 837c1872e4149c748970c2625be03b10,
         type: 3}
       propertyPath: m_IsActive
@@ -57304,6 +57425,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_Pile_Ironworks
       objectReference: {fileID: 0}
+    - target: {fileID: 5994768381193141349, guid: 959e90612302e12458744039d22c323e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6375516765538150111, guid: 959e90612302e12458744039d22c323e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -57421,6 +57547,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChoppedFrog
       objectReference: {fileID: 0}
+    - target: {fileID: 2097642393294680124, guid: 240f216eeb5719e429bb285d8e4eb066,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4666837053728366267, guid: 240f216eeb5719e429bb285d8e4eb066, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 240f216eeb5719e429bb285d8e4eb066, type: 3}
@@ -57470,6 +57601,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1875019773639569487, guid: 39be46173e128e448891608a0f5b7665,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1523184585}
+    - target: {fileID: 1875019773639569487, guid: 39be46173e128e448891608a0f5b7665,
+        type: 3}
+      propertyPath: knife
+      value: 
+      objectReference: {fileID: 1765744504}
+    - target: {fileID: 1875019773639569487, guid: 39be46173e128e448891608a0f5b7665,
+        type: 3}
+      propertyPath: pestle
+      value: 
+      objectReference: {fileID: 1548478714}
     - target: {fileID: 7361631530829015419, guid: 39be46173e128e448891608a0f5b7665,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -57530,6 +57676,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireStation
       objectReference: {fileID: 0}
+    - target: {fileID: 7881884782824567745, guid: 39be46173e128e448891608a0f5b7665,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39be46173e128e448891608a0f5b7665, type: 3}
 --- !u!1001 &7310293339103645772
@@ -57539,6 +57690,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 67723114300461938, guid: 71ccb19ccddd3ca41964d68e92312557,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1523184585}
+    - target: {fileID: 67723114300461938, guid: 71ccb19ccddd3ca41964d68e92312557,
+        type: 3}
+      propertyPath: knife
+      value: 
+      objectReference: {fileID: 1765744504}
+    - target: {fileID: 67723114300461938, guid: 71ccb19ccddd3ca41964d68e92312557,
+        type: 3}
+      propertyPath: pestle
+      value: 
+      objectReference: {fileID: 1548478714}
+    - target: {fileID: 67723114300461938, guid: 71ccb19ccddd3ca41964d68e92312557,
+        type: 3}
+      propertyPath: psysPrefab
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 67723114300461938, guid: 71ccb19ccddd3ca41964d68e92312557,
+        type: 3}
+      propertyPath: cookEffectsPrefab
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 412202466162214218, guid: 71ccb19ccddd3ca41964d68e92312557,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -57554,10 +57730,20 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4899406078552649710, guid: 71ccb19ccddd3ca41964d68e92312557,
+        type: 3}
+      propertyPath: m_Name
+      value: pestle
+      objectReference: {fileID: 0}
     - target: {fileID: 4955474852227601385, guid: 71ccb19ccddd3ca41964d68e92312557,
         type: 3}
       propertyPath: m_Name
       value: MortarAndPestelStation
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955474852227601385, guid: 71ccb19ccddd3ca41964d68e92312557,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8874106545926193012, guid: 71ccb19ccddd3ca41964d68e92312557,
         type: 3}

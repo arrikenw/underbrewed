@@ -66,7 +66,7 @@ public class PrefabScript : MonoBehaviour
         cooktimeMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Chop, IngType.Frog), 600);
         cooktimeMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Chop, IngType.Cheese), 600);
 
-        cooktimeMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Crush, IngType.Frog), 600);
+        cooktimeMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Crush, IngType.Eyeball), 600);
         cooktimeMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Crush, IngType.Bone), 600);
 
         // Outputs
