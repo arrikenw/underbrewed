@@ -89,8 +89,7 @@ public class UIOrderQueueManager : MonoBehaviour
     public void addIngredient(Ingredient ingredient, Image ingredientImage, Image methodImage)
     {
         //add ingredient according to ingredient and ingredient slot
-        print("typeof"+ingredient.type);
-        switch (ingredient.type)
+        switch (ingredient.GetIngredientType())
         {
             case IngType.Bone: // Bone is a type...
                 ingredientImage.sprite = Resources.Load<Sprite>("Bone");
