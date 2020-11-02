@@ -19,13 +19,14 @@ public class HoldProcessor : Processor
             return;
         }
 
-        if (timeUntilComplete > 0)
+        if (timeUntilComplete > 0.0f)
         {
-            timeUntilComplete -= 1;
+            timeUntilComplete -= Time.deltaTime;
         }
+        if (timeUntilComplete <= 0.0f) timeUntilComplete = 0.0f;
 
         //convert fully processed item
-        if (timeUntilComplete == 0 && storedItem != null)
+        if (timeUntilComplete == 0.0f && storedItem != null)
         {
             //create new object
             Tuple<StationType, IngType> lookupData = new Tuple<StationType, IngType>(station, currentIngredient);

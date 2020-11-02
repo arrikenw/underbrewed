@@ -7,9 +7,9 @@ public class UIOrderTimer : MonoBehaviour
 {
     public Slider timer;
 
-    public int maxTime;
+    public float maxTime;
 
-    public int timeRemaining;
+    public float timeRemaining;
 
     public Color lowColor = Color.red;
     public Color midColor = Color.yellow;
@@ -53,8 +53,6 @@ public class UIOrderTimer : MonoBehaviour
     {
 
         fillValue = ((float) timeRemaining) / maxTime;
-        //print("fillvalue: "+fillValue);
-
         timer.value = fillValue;
 
         timer.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = gradient.Evaluate(fillValue);

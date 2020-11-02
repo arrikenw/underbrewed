@@ -35,7 +35,7 @@ public class Processor : Station
 
     // cooking logic
     protected bool interacting = false;
-    protected int timeUntilComplete = 0;
+    protected float timeUntilComplete = 0;
     protected IngType currentIngredient;
 
     // particle effects
@@ -75,7 +75,6 @@ public class Processor : Station
     public void setStoredItem(GameObject newItem)
     {
         storedItem = newItem;
-        print("set new item to :" + storedItem);
         return;
     }
 
@@ -126,7 +125,7 @@ public class Processor : Station
         timeUntilComplete = prefabManager.getFromCooktimeMap(new Tuple<StationType, IngType>(station, currentIngredient));
         
         //lookup failed
-        if (timeUntilComplete == -1)
+        if (timeUntilComplete == -1.0f)
         {
             print("this station cannot process: " + currentIngredient);
             return;
