@@ -230,14 +230,10 @@ public class RecipeManager : MonoBehaviour
 
         StartCoroutine(TextObject.GetComponent<UIGameText>().endText(2.0f));
 
-        //TODO camera stuff here
-        //Camera.GetComponent<animateCamera>().EndAnimation();
-
-        //TODO pause once camera is complete
-
+        //camera stuff here
+        Camera.GetComponent<animateCamera>().EndAnimation();
 
         // Store and display stats / score
-
         //calculate completion %
         float completionPercent = 100*(((float)nOrdersCompleted) / totalLevelOrders);
 
