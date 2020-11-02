@@ -5,6 +5,11 @@ using System;
 
 public class RecipeManager : MonoBehaviour
 {
+
+    //level number
+    //VERY IMPORTANT FOR STORING HIGHSCORES
+    public int levelNumber;
+
     //Camera
     public GameObject Camera;
 
@@ -230,15 +235,19 @@ public class RecipeManager : MonoBehaviour
 
         //TODO pause once camera is complete
 
-        //UI stuff
-        //TODO send nOrdersCompleted and completion % to the score UI
-        float completionPercent = ((float)nOrdersCompleted) / totalLevelOrders;
 
-        // Display stats
-        // TO DO: include high score
-        EndLevelObject.GetComponent<UIEndScreen>().updateGameStatistics(completionPercent, score);
+        // Store and display stats / score
 
-        //TODO UI for game win
+        //calculate completion %
+        float completionPercent = 100*(((float)nOrdersCompleted) / totalLevelOrders);
+
+        //store highscore if greater than current highscore
+        StoreHighscore(score);
+        
+        //display stats in UI
+        EndLevelObject.GetComponent<UIEndScreen>().updateGameStatistics(completionPercent, score, PlayerPrefs.GetInt("highscore"+levelNumber, 0));
+
+        //end game stats / retry stats
         if (completionPercent >= 0.8f)
         {
             EndLevelObject.GetComponent<UIEndScreen>().updateTitleText(true);
@@ -246,13 +255,20 @@ public class RecipeManager : MonoBehaviour
         }
         else
         {
-            //TODO UI for game loss
             EndLevelObject.GetComponent<UIEndScreen>().updateTitleText(false);
-            //print("you lost!");
         }
 
         // Display end screen
         this.gameObject.GetComponent<UIGameMenu>().showEnd();
+    }
+
+    //store highscore code has been retrieved from:
+    //https://answers.unity.com/questions/644911/how-do-i-store-highscore-locally-c-simple.html
+    void StoreHighscore(int newHighscore)
+    {
+        int oldHighscore = PlayerPrefs.GetInt("highscore"+levelNumber, 0);
+        if (newHighscore > oldHighscore)
+            PlayerPrefs.SetInt("highscore"+levelNumber, newHighscore);
     }
 
     //start
