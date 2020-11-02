@@ -207,7 +207,7 @@ public class RecipeManager : MonoBehaviour
     void endLevel()
     {
         levelIsEnded = true;
-
+        Time.timeScale = 0.0f;
         //remove UI orders that still exist (eg. clock runs out before complete)
         for (int i = 0; i < activeOrders.Count; i++)
         {
