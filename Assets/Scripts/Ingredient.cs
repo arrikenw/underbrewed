@@ -13,10 +13,12 @@ public class Ingredient : Item
     // [SerializeField] private Color mixColour = new Color(); 
 
     private bool usesCombinedMesh = false;
+
+    [SerializeField] private bool canHighlight = true;
     
     void Awake() {
         //print(GetComponent<MeshFilter>().sharedMesh);
-        if (GetComponent<MeshFilter>().sharedMesh == null) {
+        if (canHighlight && GetComponent<MeshFilter>().sharedMesh == null) {
             CombineMesh();
         }
     }

@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ingredientType: 9
+  canHighlight: 0
 --- !u!1 &7020643671721364581
 GameObject:
   m_ObjectHideFlags: 0
