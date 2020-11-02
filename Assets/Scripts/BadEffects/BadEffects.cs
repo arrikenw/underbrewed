@@ -15,7 +15,7 @@ public class BadEffects : MonoBehaviour
     public void ApplyRandomEffect()
     {
         int effect;
-        effect = Random.Range(0, 12);
+        effect = Random.Range(0, 9);
 
         switch(effect)
         {

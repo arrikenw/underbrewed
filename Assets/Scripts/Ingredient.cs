@@ -15,7 +15,7 @@ public class Ingredient : Item
     private bool usesCombinedMesh = false;
     
     void Awake() {
-        print(GetComponent<MeshFilter>().sharedMesh);
+        //print(GetComponent<MeshFilter>().sharedMesh);
         if (GetComponent<MeshFilter>().sharedMesh == null) {
             CombineMesh();
         }
