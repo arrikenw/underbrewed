@@ -63,7 +63,6 @@ public class PickUpScript : MonoBehaviour
         // Dropping
         if (Input.GetKeyUp(KeyCode.M) && heldItem != null) {
             animator.Play("PutDown");
-            print("Dropping");
             heldItem.GetComponent<Rigidbody>().useGravity = true;
             heldItem.GetComponent<Item>().OnDrop();
             heldItem = null;
@@ -93,7 +92,6 @@ public class PickUpScript : MonoBehaviour
     private void UpdateThrow() {
         if (Input.GetKeyDown(KeyCode.Period) && heldItem != null) {
             animator.Play("PutDown");
-            print("Throwing");
             heldItem.GetComponent<Rigidbody>().useGravity = true;
             heldItem.GetComponent<Rigidbody>().AddForce(transform.forward.normalized * throwMagnitude, ForceMode.Impulse);
             heldItem.GetComponent<Rigidbody>().AddForce(transform.up.normalized * 3, ForceMode.Impulse);
@@ -109,7 +107,6 @@ public class PickUpScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Comma) && interactableObject != null) {
             //we want to interact with interactable processors differently, so return 
             if (!interactableObject.GetComponent<Processor>()) {
-                print("Interacting");
                 interactableObject.GetComponent<Interactable>().Interact(heldItem);
             }
         }
@@ -123,7 +120,6 @@ public class PickUpScript : MonoBehaviour
 
             if (processor != null && pollGap == 0 && Input.GetKey(KeyCode.Comma))
             {
-                print("Processing!");
                 //toggling on with G works for both
                 if (!processor.getInteract())
                 {
@@ -172,7 +168,6 @@ public class PickUpScript : MonoBehaviour
         Interactable interactable = other.gameObject.GetComponent<Interactable>();
 
         if (interactableObject == null && interactable != null && !interactable.IsLocked()) {
-            print("Contacted interactable");
             interactableObject = other.gameObject;
             interactableObject.GetComponent<Interactable>().OnContact();
         }
@@ -194,7 +189,6 @@ public class PickUpScript : MonoBehaviour
 
 
         if (interactableObject != null && GameObject.ReferenceEquals(interactableObject, other.gameObject)) {        
-            print("Left interactable");
             interactableObject.GetComponent<Interactable>().OnLeave();
             interactableObject = null;
         }
