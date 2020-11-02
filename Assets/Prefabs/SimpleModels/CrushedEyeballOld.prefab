@@ -13,8 +13,10 @@ GameObject:
   - component: {fileID: 8587835406247766873}
   - component: {fileID: 1259767549448525949}
   - component: {fileID: 7146713741826520087}
+  - component: {fileID: 3040693633480265458}
+  - component: {fileID: 6663483335214348816}
   m_Layer: 0
-  m_Name: SquashedEye
+  m_Name: CrushedEyeballOld
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6948511097556231797}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.059, y: 0.452, z: -3.907}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4315583997528354428}
@@ -60,10 +62,10 @@ BoxCollider:
   m_GameObject: {fileID: 6948511097556231797}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.6793909, y: 0.24701026, z: 0.6602776}
-  m_Center: {x: 0.019312859, y: 0.12284829, z: -0.009467959}
+  m_Size: {x: 0.69553685, y: 0.24701026, z: 0.6764865}
+  m_Center: {x: -0.0044677854, y: 0.12284829, z: -0.0013635159}
 --- !u!23 &1259767549448525949
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -116,6 +118,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ingredientType: 9
+--- !u!33 &3040693633480265458
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6948511097556231797}
+  m_Mesh: {fileID: 0}
+--- !u!64 &6663483335214348816
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6948511097556231797}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1001 &4354613304781752727
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -126,7 +150,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b3148c7f1b33eb9408262cba49362ff0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b3148c7f1b33eb9408262cba49362ff0,
         type: 3}
@@ -141,22 +165,22 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b3148c7f1b33eb9408262cba49362ff0,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.70150864
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b3148c7f1b33eb9408262cba49362ff0,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.08784336
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b3148c7f1b33eb9408262cba49362ff0,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0878127
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b3148c7f1b33eb9408262cba49362ff0,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.70175356
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b3148c7f1b33eb9408262cba49362ff0,
         type: 3}
@@ -166,12 +190,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b3148c7f1b33eb9408262cba49362ff0,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -89.98
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b3148c7f1b33eb9408262cba49362ff0,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -14.27
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b3148c7f1b33eb9408262cba49362ff0,
         type: 3}
@@ -198,16 +222,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 22df0e7d13a20c749a2cb00fe3034207, type: 2}
-    - target: {fileID: -5754084199372789682, guid: b3148c7f1b33eb9408262cba49362ff0,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: -2432090755550338912, guid: 8df4fb0d69a8de04ca9cb91c5c092b16,
-        type: 3}
     - target: {fileID: 919132149155446097, guid: b3148c7f1b33eb9408262cba49362ff0,
         type: 3}
       propertyPath: m_Name
-      value: newCrushedEye
+      value: CrushedEyeballOldActual
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3148c7f1b33eb9408262cba49362ff0, type: 3}
