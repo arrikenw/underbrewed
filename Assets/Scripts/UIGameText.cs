@@ -14,7 +14,7 @@ public class UIGameText : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //StartCoroutine(startText(waitingTime));
+        StartCoroutine(startText(waitingTime));
     }
 
     IEnumerator startText(float waitingTime)

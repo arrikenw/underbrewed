@@ -112,6 +112,15 @@ public class RecipeManager : MonoBehaviour
         }
     }
 
+    //*****************************************************************************
+    //tutorial use only!!! adds a single order to the active orders
+    public void tutorialAddExampleOrder()
+    {
+        Order exampleOrder = orderPrefabs[0];//always just use the first prefab for the example
+        Tuple<Order, GameObject, float> newActiveOrderTuple = new Tuple<Order, GameObject, float>(exampleOrder, newActiveOrderUI, timeUntilOrderExpiry);
+        activeOrders.Add(newActiveOrderTuple);
+    }
+
 
     //*****************************************************************************
     //prepares the queue of items for the level
