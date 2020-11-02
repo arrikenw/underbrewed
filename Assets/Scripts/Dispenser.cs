@@ -28,7 +28,7 @@ public class Dispenser : Station
     }
 
     public GameObject Dispense() {
-        GameObject item = Instantiate(prefabItem);
+        GameObject item = Instantiate(prefabItem, transform.position+(new Vector3(0.0f, 1.0f, 0.0f)), transform.rotation);
         item.GetComponent<Item>().OnDispense();
         return item;
     }

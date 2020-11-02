@@ -17,7 +17,10 @@ public class Ingredient : Item
     // Update is called once per frame
     void Update()
     {
-        
+        if (transform.position.y < -3.0f)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     // public Color GetColor() {

@@ -33,6 +33,14 @@ public class Player : MonoBehaviour
 
     public Rigidbody rb;
 
+    private int invert = 1;
+    private float invertCountdown = 0.0f;
+    public void InvertMovement()
+    {
+        invert = -1;
+        invertCountdown = 10.0f;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +54,14 @@ public class Player : MonoBehaviour
     void Update()
     {
         ActionUpdates();
+        if (invertCountdown <= 0.0f)
+        {
+            invert = 1;
+        }
+        else
+        {
+            invertCountdown -= Time.deltaTime;
+        }
     }
 
     void ActionUpdates()
@@ -140,7 +156,7 @@ public class Player : MonoBehaviour
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
 
-        Vector3 direction = (new Vector3(h, 0.0f, v)).normalized;
+        Vector3 direction = (new Vector3(h*invert, 0.0f, v* invert)).normalized;
 
         rb.MovePosition(rb.position + direction * speed);
         rb.velocity = new Vector3(0f,0f,0f); 
