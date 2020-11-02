@@ -43446,7 +43446,7 @@ MonoBehaviour:
   levelConfigFile: {fileID: 4900000, guid: 78a8c3966bdf5d840912172d0cd79577, type: 3}
   totalLevelOrders: 0
   orderPrefabs:
-  - {fileID: 3740741261026607297, guid: cb8b47351018036428c2a98076bdfcdc, type: 3}
+  - {fileID: 3218142699619845334, guid: c095a9fe72eea0a4c93fa686d6ecc52f, type: 3}
   minOrderGap: 0
   maxOrderGap: 0
   minOrderPrepTime: 0
@@ -55814,6 +55814,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1376545082}
+    - target: {fileID: 867933852404832076, guid: 6d1f87e59e8f8014ab90a9e39ebb54dc,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: pauseGame
+      objectReference: {fileID: 0}
     - target: {fileID: 867933852465112299, guid: 6d1f87e59e8f8014ab90a9e39ebb54dc,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -55824,6 +55829,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1376545082}
+    - target: {fileID: 867933853013999456, guid: 6d1f87e59e8f8014ab90a9e39ebb54dc,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: restartGame
+      objectReference: {fileID: 0}
     - target: {fileID: 8672436344347755382, guid: 6d1f87e59e8f8014ab90a9e39ebb54dc,
         type: 3}
       propertyPath: m_LocalPosition.x

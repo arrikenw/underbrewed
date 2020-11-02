@@ -102,6 +102,49 @@ public class UIOrderQueueManager : MonoBehaviour
                 potionImage.sprite = Resources.Load<Sprite>("potionOrange");
                 break;
         }*/
+
+        if (targetColor == Color.yellow)
+        {
+            potionImage.sprite = Resources.Load<Sprite>("potionYellow");
+        } else if (targetColor == Color.red)
+        {
+            potionImage.sprite = Resources.Load<Sprite>("potionRed");
+        } else if (targetColor == Color.blue)
+        {
+            potionImage.sprite = Resources.Load<Sprite>("potionBlue");
+        } else if (targetColor == Color.cyan)
+        {
+            potionImage.sprite = Resources.Load<Sprite>("potionCyan");
+        }
+        else if (targetColor == Color.magenta)
+        {
+            potionImage.sprite = Resources.Load<Sprite>("potionMagenta");
+        } else if (targetColor == Color.white)
+        {
+            potionImage.sprite = Resources.Load<Sprite>("potionWhite");
+        } else if (targetColor == Color.grey)
+        {
+            potionImage.sprite = Resources.Load<Sprite>("potionGrey");
+        } else if (targetColor == Color.black)
+        {
+            potionImage.sprite = Resources.Load<Sprite>("potionBlack");
+        } else if (targetColor == new Color(0.59f, 0.29f, 0.00f, 1.00f))
+        {
+            // brown
+            potionImage.sprite = Resources.Load<Sprite>("potionBrown");
+        } else if (targetColor == new Color(0.35f, 0.27f, 0.70f, 1.00f))
+        {
+            // purple
+            potionImage.sprite = Resources.Load<Sprite>("potionPurple");
+        } else if (targetColor == new Color(0.11f, 0.30f, 0.24f, 1.00f))
+        {
+            // darkGreen 
+            potionImage.sprite = Resources.Load<Sprite>("potionDarkGreen");
+        } else if (targetColor == new Color(1.00f, 0.40f, 0.00f, 1.00f))
+        {
+            // orange
+            potionImage.sprite = Resources.Load<Sprite>("potionOrange");
+        }
     }
 
     public void addIngredient(Ingredient ingredient, Image ingredientImage, Image methodImage)
