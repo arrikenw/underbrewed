@@ -4,18 +4,52 @@ using UnityEngine;
 
 public class UIPauseMenu : MonoBehaviour
 {
-    public Transform canvas;
+    GameObject[] pauseObjects;
 
-    public void ResumeGame()
+    void Start()
     {
-        // TO DO: Resume game
-        if (canvas.gameObject.activeInHierarchy == true)
+        pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
+        hidePaused();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Time.timeScale = 1; // for time-dependent functions
-            canvas.gameObject.SetActive(false);
+            
+            PauseGame();
         }
     }
 
+    public void PauseGame()
+    {
+        if (Time.timeScale == 1)
+        {
+            Time.timeScale = 0;
+            showPaused();
+        }
+        else if (Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+            hidePaused();
+        }
+    }
+
+    public void showPaused()
+    {
+        foreach(GameObject g in pauseObjects)
+        {
+            g.SetActive(true);
+        }
+    }
+
+    public void hidePaused()
+    {
+        foreach(GameObject g in pauseObjects)
+        {
+            g.SetActive(false);
+        }
+    }
     public void RestartGame()
     {
         //// TO DO: Restart game
