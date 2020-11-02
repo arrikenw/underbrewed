@@ -15,6 +15,10 @@ public class UIMainMenu : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("LevelSelect");
     }
 
+    void Start()
+    {
+        Time.timeScale = 1.0f;
+    }
 
     public void Quit()
     {
