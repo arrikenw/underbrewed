@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2857163718184572613}
   - component: {fileID: 1155583245116086624}
   - component: {fileID: 4030021961220976042}
+  - component: {fileID: 3739840966167495610}
   - component: {fileID: 2318252367914201386}
-  - component: {fileID: 2318252367914201389}
   - component: {fileID: 2318252367914201388}
   m_Layer: 0
   m_Name: CookedFrog
@@ -28,9 +28,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3237384372113296511}
-  m_LocalRotation: {x: 0.000000081460335, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.888, y: 5.24, z: 2.43}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -83,6 +83,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &3739840966167495610
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3237384372113296511}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4454997591212173726, guid: 3334c2612975a5a499152df6c821b23c, type: 3}
 --- !u!54 &2318252367914201386
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -93,25 +107,12 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &2318252367914201389
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3237384372113296511}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.6556399, y: 2.0968099, z: 1.6800799}
-  m_Center: {x: 0, y: -0.88839495, z: -0.55436003}
 --- !u!114 &2318252367914201388
 MonoBehaviour:
   m_ObjectHideFlags: 0

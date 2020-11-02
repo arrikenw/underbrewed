@@ -18,10 +18,10 @@ public class Potion : Item
         Vector3 actualPosition = transform.position;
         transform.position = Vector3.zero;
 
-        // Get actual potion object
-        GameObject actualPotion = transform.GetChild(0).gameObject;
+        // // Get actual potion object
+        // GameObject actualPotion = transform.GetChild(0).gameObject;
 
-        MeshFilter[] meshFilters = actualPotion.GetComponentsInChildren<MeshFilter>();
+        MeshFilter[] meshFilters = GetComponentsInChildren<MeshFilter>();
         CombineInstance[] combine = new CombineInstance[meshFilters.Length];
 
         int i = 0;
@@ -71,11 +71,23 @@ public class Potion : Item
     }
 
     public override void OnContact() {
+        MeshRenderer[] meshRenderers = GetComponentsInChildren<MeshRenderer>();
+        for (int i = 0; i < meshRenderers.Length; i++)
+        {
+            meshRenderers[i].enabled = false;
+        }
+
         GetComponent<MeshRenderer>().enabled = true;
         base.OnContact();
     }
 
     public override void OnLeave() {
+        MeshRenderer[] meshRenderers = GetComponentsInChildren<MeshRenderer>();
+        for (int i = 0; i < meshRenderers.Length; i++)
+        {
+            meshRenderers[i].enabled = true;
+        }
+
         GetComponent<MeshRenderer>().enabled = false;
         base.OnLeave();
     }

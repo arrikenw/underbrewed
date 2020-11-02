@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4545842185801399204}
   - component: {fileID: 227086481919061947}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: EyeballActual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2690534919225283927}
-  m_LocalRotation: {x: 0, y: -0.9974346, z: 0, w: 0.07158463}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.3535534, y: 0.61237246, z: -0.3535534, w: -0.61237246}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.002, y: 0.002, z: 0.002}
   m_Children: []
   m_Father: {fileID: 5981044195663998250}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -171.79, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 270, z: 60}
 --- !u!33 &4545842185801399204
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -90,10 +90,11 @@ GameObject:
   - component: {fileID: 5981044195663998250}
   - component: {fileID: 6091762245076548182}
   - component: {fileID: 6091762245076548169}
+  - component: {fileID: 1242537861639388806}
   - component: {fileID: 6091762245076548183}
   - component: {fileID: 6091762245076548180}
   m_Layer: 0
-  m_Name: Eye
+  m_Name: Eyeball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106,14 +107,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6362214827448252304}
-  m_LocalRotation: {x: -0, y: -0, z: -0.8419697, w: 0.53952485}
-  m_LocalPosition: {x: -2.5600004, y: 0.59, z: -4.29}
-  m_LocalScale: {x: 0.0020000015, y: 0.0020000017, z: 0.002}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2540435172087831591}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -114.69701}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &6091762245076548182
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -143,6 +144,14 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 100
   m_Center: {x: 0, y: 130, z: 0}
+--- !u!33 &1242537861639388806
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6362214827448252304}
+  m_Mesh: {fileID: 0}
 --- !u!23 &6091762245076548183
 MeshRenderer:
   m_ObjectHideFlags: 0
