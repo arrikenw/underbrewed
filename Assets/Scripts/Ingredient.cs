@@ -15,7 +15,7 @@ public class Ingredient : Item
     private bool usesCombinedMesh = false;
     
     void Awake() {
-        print(GetComponent<MeshFilter>().sharedMesh);
+        //print(GetComponent<MeshFilter>().sharedMesh);
         if (GetComponent<MeshFilter>().sharedMesh == null) {
             CombineMesh();
         }
@@ -24,6 +24,14 @@ public class Ingredient : Item
     protected override void Start()
     {
         base.Start();
+    }
+
+    void Update() 
+    {
+        if (transform.position.y < -3.0f)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     // public Color GetColor() {
