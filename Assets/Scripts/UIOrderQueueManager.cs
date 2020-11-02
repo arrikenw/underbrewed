@@ -9,7 +9,12 @@ public class UIOrderQueueManager : MonoBehaviour
     public GameObject orderTemplate;
 
     public float gutterSize = 15.0f;
-    public float velocity = 4.0f;
+    public float velocity = 1.0f;
+
+    void LateUpdate()
+    {
+        //reorderQueue(this.gameObject);
+    }
 
     public GameObject addOrderUI(Order order, int LifeTime) 
     {
@@ -48,9 +53,11 @@ public class UIOrderQueueManager : MonoBehaviour
     {
         //TO DO: use index for efficiency
 
-        Destroy(orderUI);
-        
+        //Destroy(orderUI);
+        orderUI.SetActive(false);
+
         reorderQueue(this.gameObject);
+
     }
 
     public void addPotion(Image potionImage, Color targetColor)
@@ -163,7 +170,7 @@ public class UIOrderQueueManager : MonoBehaviour
 
     public void reorderQueue(GameObject orderQueueUI)
     {
-        int n = orderQueueUI.transform.childCount;
+        /*int n = orderQueueUI.transform.childCount;
 
         for (int i=0; i < n; i++)
         {
@@ -179,16 +186,39 @@ public class UIOrderQueueManager : MonoBehaviour
                 StartCoroutine(animateQueue(orderUI, targetPosition));
             }
 
+        }*/
+        int n=0;
+
+        foreach(Transform child in orderQueueUI.transform)
+        {
+            if (child.gameObject.activeSelf)
+            {
+
+                var rt = child.GetComponent<RectTransform>();
+
+                float width = rt.rect.width;
+
+                //Vector3 targetPosition = new Vector3(orderQueueUI.transform.position.x + ((width + this.gutterSize) * n), orderQueueUI.transform.position.y, orderQueueUI.transform.position.z);
+                Vector3 targetLocalPosition = new Vector3((width + this.gutterSize) * n, 0, 0);
+                if (child.position != targetLocalPosition)
+                {
+                    StartCoroutine(animateQueue(child.gameObject, targetLocalPosition));
+                }
+
+                n++;
+            }
         }
 
     }
 
     IEnumerator animateQueue(GameObject orderUI, Vector3 targetPosition)
     {
-        while (true)
+        float t = 0;
+        while (orderUI.transform.localPosition != targetPosition)
         {
+            orderUI.transform.localPosition = Vector3.Lerp(orderUI.transform.localPosition, targetPosition, t);
 
-            orderUI.transform.position = Vector3.Lerp(orderUI.transform.position, targetPosition, Time.deltaTime * this.velocity);
+            t += Time.deltaTime * this.velocity;
 
             yield return new WaitForEndOfFrame();
         }

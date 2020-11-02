@@ -43440,8 +43440,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainUIObject: {fileID: 8902717918989122200}
-  ScoreObject: {fileID: 0}
-  TimeObject: {fileID: 0}
+  ScoreObject: {fileID: 8902717918610504654}
+  TimeObject: {fileID: 8902717919435211096}
   levelConfigFile: {fileID: 4900000, guid: 78a8c3966bdf5d840912172d0cd79577, type: 3}
   totalLevelOrders: 0
   orderPrefabs:
@@ -58350,7 +58350,7 @@ MonoBehaviour:
   orderTemplate: {fileID: 320578666801891974, guid: b3363575be9f24b4981d6cc7bca8932a,
     type: 3}
   gutterSize: 15
-  velocity: 4
+  velocity: 1
 --- !u!1 &8902717919435211096
 GameObject:
   m_ObjectHideFlags: 0
