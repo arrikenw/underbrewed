@@ -16,9 +16,8 @@ public class UIOrderQueueManager : MonoBehaviour
         //reorderQueue(this.gameObject);
     }
 
-    public GameObject addOrderUI(Order order, int LifeTime) 
+    public GameObject addOrderUI(Order order, float LifeTime)
     {
-
         // Create new instance of template
         GameObject newOrder = GameObject.Instantiate<GameObject>(orderTemplate);
         newOrder.transform.SetParent(this.transform, false);
@@ -63,7 +62,7 @@ public class UIOrderQueueManager : MonoBehaviour
     public void addPotion(Image potionImage, Color targetColor)
     {
         //change potion image depending on targetColor
-        
+
         /*switch(targetColor)
         {
             case (white):
@@ -110,7 +109,7 @@ public class UIOrderQueueManager : MonoBehaviour
         //add ingredient according to ingredient and ingredient slot
         switch (ingredient.GetIngredientType())
         {
-            case IngType.Bone: 
+            case IngType.Bone:
                 ingredientImage.sprite = Resources.Load<Sprite>("Bone");
                 methodImage.color = new Color (0, 0, 0, 0);
                 methodImage.sprite = null;
@@ -143,7 +142,7 @@ public class UIOrderQueueManager : MonoBehaviour
                 break;
             case IngType.Eyeball:
                 ingredientImage.sprite = Resources.Load<Sprite>("Eyeball");
-                methodImage.color = new Color (0, 0, 0, 0);        
+                methodImage.color = new Color (0, 0, 0, 0);
                 methodImage.sprite = null;
                 break;
             case IngType.CrushedEyeball:
@@ -160,7 +159,6 @@ public class UIOrderQueueManager : MonoBehaviour
                 methodImage.sprite = Resources.Load<Sprite>("Knife");
                 break;
             case IngType.CookedFrog:
-                print("attempting cookedfrog");
                 ingredientImage.sprite = Resources.Load<Sprite>("Frog");
                 methodImage.sprite = Resources.Load<Sprite>("Fire");
                 break;
@@ -179,7 +177,7 @@ public class UIOrderQueueManager : MonoBehaviour
             var rt = orderUI.GetComponent<RectTransform>();
             float width = rt.rect.width;
 
-            Vector3 targetPosition = new Vector3(orderQueueUI.transform.position.x + ((width + this.gutterSize) * i), orderQueueUI.transform.position.y, orderQueueUI.transform.position.z); 
+            Vector3 targetPosition = new Vector3(orderQueueUI.transform.position.x + ((width + this.gutterSize) * i), orderQueueUI.transform.position.y, orderQueueUI.transform.position.z);
 
             if (orderUI.transform.position != targetPosition)
             {

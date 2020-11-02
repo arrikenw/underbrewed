@@ -7,9 +7,9 @@ public class UIOrderTimer : MonoBehaviour
 {
     public Slider timer;
 
-    public int maxTime;
+    public float maxTime;
 
-    public int timeRemaining;
+    public float timeRemaining;
 
     public Color lowColor = Color.red;
     public Color midColor = Color.yellow;
@@ -51,7 +51,7 @@ public class UIOrderTimer : MonoBehaviour
     }
 
     void Update()
-    {        
+    {
         fillValue = ((float) timeRemaining) / maxTime;
 
         timer.value = fillValue;
@@ -63,6 +63,6 @@ public class UIOrderTimer : MonoBehaviour
             timerLow = true;
         }
 
-    }    
-    
+    }
+
 }

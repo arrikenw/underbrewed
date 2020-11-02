@@ -7,7 +7,7 @@ public class UIOrderController : MonoBehaviour
 {
     public int score; // value of order
 
-    public Color warningColor = Color.red; 
+    public Color warningColor = Color.red;
 
     public float flashDelay = 0.8f; // time between flashes
 
@@ -33,7 +33,7 @@ public class UIOrderController : MonoBehaviour
         }
     }
 
-    public void updateOrderTimer(int newTime)
+    public void updateOrderTimer(float newTime)
     {
         timer.timeRemaining = newTime;
     }
