@@ -11,7 +11,7 @@ using UnityEngine.UI;
 public class Station : Interactable
 {
     // storage logic
-    protected GameObject storedItem;
+    [SerializeField] protected GameObject storedItem;
     protected bool canPickup = true;
 
 
@@ -28,7 +28,7 @@ public class Station : Interactable
      }
      */
 
-    void OnTriggerStay(Collider other) {
+    protected virtual void OnTriggerStay(Collider other) {
         Item itemComponent = other.gameObject.GetComponent<Item>();
         if (storedItem == null && itemComponent != null && !itemComponent.IsHeld() && !itemComponent.IsLocked()) {
             
