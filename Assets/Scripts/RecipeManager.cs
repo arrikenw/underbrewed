@@ -29,6 +29,8 @@ public class RecipeManager : MonoBehaviour
     public float maxOrderPrepTime;
 
     //internal clock logic
+    public float countdownDuration;
+    private bool inCountdown;
     private bool levelIsEnded;
     private float curTime;
     private float levelEndTime;
@@ -110,6 +112,21 @@ public class RecipeManager : MonoBehaviour
             //update UI with new time
             activeOrder.Item2.GetComponent<UIOrderController>().updateOrderTimer(activeOrder.Item3);
         }
+    }
+
+    //*****************************************************************************
+    //tutorial use only!!! adds a single order to the active orders
+    public void tutorialAddExampleOrder()
+    {
+        //always just use the first prefab for the example
+        Order exampleOrder = orderPrefabs[0];
+
+        //create and store a new UI object
+        float timeUntilOrderExpiry = 600000.0f;
+        GameObject newActiveOrderUI = UIObject.addOrderUI(exampleOrder, timeUntilOrderExpiry);
+
+        Tuple<Order, GameObject, float> newActiveOrderTuple = new Tuple<Order, GameObject, float>(exampleOrder, newActiveOrderUI, timeUntilOrderExpiry);
+        activeOrders.Add(newActiveOrderTuple);
     }
 
 
@@ -226,6 +243,8 @@ public class RecipeManager : MonoBehaviour
         levelIsEnded = false;
         UIObject = MainUIObject.GetComponent<UIOrderQueueManager>();
         curTime = 0.0f;
+        inCountdown = true;
+        Time.timeScale = 0.0f;
         score = 0;
         ScoreObject.GetComponent<UIGameScore>().updateGameScore(score);
         timeToNextOrder = GenerateLevelOrders();
@@ -236,6 +255,19 @@ public class RecipeManager : MonoBehaviour
     //checks to see if we should add new orders from pending queue to active orders
     void Update()
     {
+        if (inCountdown)
+        {
+            if (countdownDuration >= 0.0f)
+            {
+                countdownDuration -= Time.unscaledDeltaTime;
+            }else
+            {
+                inCountdown = false;
+                Time.timeScale = 1.0f;
+            }
+            return;
+        }
+
         if (!levelIsEnded)
         {
             //activate new order
