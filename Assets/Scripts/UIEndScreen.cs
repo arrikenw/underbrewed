@@ -22,7 +22,7 @@ public class UIEndScreen : MonoBehaviour
 
     public void updateGameStatistics(float completed, int score) //int highScore
     {
-        this.gameObject.transform.Find("GameStatistics").GetComponent<Text>().text = string.Format("% of orders completed: {0}\nTotal score: {1}\nCurrent high score: xx", completed, score); 
+        this.gameObject.transform.Find("GameStatistics").GetComponent<Text>().text = string.Format("% of orders completed: {0}\nRound score: {1}\nHigh score: xx", completed, score); 
     }
     
 }
