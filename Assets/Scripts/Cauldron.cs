@@ -15,6 +15,9 @@ public class Cauldron : Station
     private LinkedList<IngType> ingredients = new LinkedList<IngType>();
     [SerializeField] private GameObject recipeTree = null;
 
+    private bool dud = false;
+    [SerializeField] private Color dudColour;
+
     protected override void Start()
     {
         if (recipeTree == null) {
@@ -42,6 +45,11 @@ public class Cauldron : Station
 
     private void Mix() {
         if (base.storedItem != null && base.storedItem.GetComponent<Ingredient>() != null) {
+            if (dud) {
+                Destroy(base.storedItem);
+                return;
+            }
+
             // Retrieve new cauldron liquid colour from stored Item 
             // mixColour = base.storedItem.GetComponent<Ingredient>().GetColor();
             ingredients.AddLast(base.storedItem.GetComponent<Ingredient>().GetIngredientType());
@@ -49,8 +57,9 @@ public class Cauldron : Station
 
             // FAIL
             if (mixColour.Equals(Color.clear)) {
-                mixColour = baseColour;
+                mixColour = dudColour;
                 ingredients.Clear();
+                dud = true;
                 print("CAULDRON FAIL");
             }
 
@@ -90,6 +99,7 @@ public class Cauldron : Station
 
             mixColour = baseColour;
             ingredients.Clear();
+            dud = false;
             
             UpdateColours();
         }
