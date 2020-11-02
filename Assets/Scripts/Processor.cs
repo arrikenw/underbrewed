@@ -141,7 +141,11 @@ public class Processor : Station
         {
             psys.Play();
         }
-       
+
+        //object settings
+        canPickup = false;
+        interacting = true;
+
         if (station == StationType.Chop)
         {
             knife.SetActive(true);
@@ -155,9 +159,7 @@ public class Processor : Station
             transform.Find("pestle").gameObject.SetActive(false);
         }
 
-        //object settings
-        canPickup = false;
-        interacting = true;
+        
     }
 
 }
