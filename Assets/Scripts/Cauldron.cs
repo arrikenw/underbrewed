@@ -25,9 +25,9 @@ public class Cauldron : Station
         base.Start();
 
         // Get child objects
-        cauldronLiquid = transform.GetChild(0).gameObject;
-        bubbles = cauldronLiquid.transform.GetChild(0).gameObject;
-        bubbleBurst = bubbles.transform.GetChild(0).gameObject;
+        cauldronLiquid = transform.Find("CauldronLiquid").gameObject;
+        bubbles = cauldronLiquid.transform.Find("Bubbles").gameObject;  
+        bubbleBurst = bubbles.transform.Find("BubbleBurst").gameObject;
 
         // Get colour values
         baseColour = cauldronLiquid.GetComponent<Renderer>().material.color;

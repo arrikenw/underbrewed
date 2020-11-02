@@ -5195,6 +5195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f57cbb44542a1542a468091c5f5c843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storedItem: {fileID: 0}
   mixColour: {r: 0, g: 0, b: 0, a: 0}
   recipeTree: {fileID: 1407547484}
 --- !u!65 &63519625
@@ -7487,6 +7488,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 91928008460416929, guid: 39be46173e128e448891608a0f5b7665,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 91928008460416929, guid: 39be46173e128e448891608a0f5b7665,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 91928008460416929, guid: 39be46173e128e448891608a0f5b7665,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7361631530829015419, guid: 39be46173e128e448891608a0f5b7665,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7567,6 +7583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa72c6ea350bc4f42b318ac0273b792b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storedItem: {fileID: 0}
 --- !u!65 &529870863
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9873,6 +9890,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa72c6ea350bc4f42b318ac0273b792b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storedItem: {fileID: 0}
 --- !u!65 &925005951
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10540,6 +10558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa72c6ea350bc4f42b318ac0273b792b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storedItem: {fileID: 0}
 --- !u!65 &998874025
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11650,6 +11669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa72c6ea350bc4f42b318ac0273b792b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storedItem: {fileID: 0}
 --- !u!65 &1151805929
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11932,6 +11952,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a27e8c5957cfc0d4194a1b18a7de712d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storedItem: {fileID: 0}
   prefabItem: {fileID: 7264707044790559130, guid: 42f5c300018bafc4bbb2637188e267e9,
     type: 3}
 --- !u!1 &1229118117 stripped
@@ -12026,6 +12047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa72c6ea350bc4f42b318ac0273b792b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storedItem: {fileID: 0}
 --- !u!65 &1255824931
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12207,6 +12229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a27e8c5957cfc0d4194a1b18a7de712d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storedItem: {fileID: 0}
   prefabItem: {fileID: 5789837929922418172, guid: dad9f9563618eba4581732492d27949a,
     type: 3}
 --- !u!4 &1285390667 stripped
@@ -13474,6 +13497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 703036f36a692854f8749857bb9353dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storedItem: {fileID: 0}
   recipeManager: {fileID: 0}
 --- !u!65 &1431407666
 BoxCollider:
@@ -15247,6 +15271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa72c6ea350bc4f42b318ac0273b792b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storedItem: {fileID: 0}
 --- !u!65 &1748645658
 BoxCollider:
   m_ObjectHideFlags: 0

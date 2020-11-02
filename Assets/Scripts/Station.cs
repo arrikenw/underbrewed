@@ -37,7 +37,13 @@ public class Station : Interactable
             storedItem.GetComponent<Rigidbody>().isKinematic = true;
 
             // Set new position of the stored item
-            storedItem.transform.position = transform.position + new Vector3(0f, 0.5f, 0f);
+            if (transform.Find("StorePosition")) {
+                // Assign position of "StorePosition" to storedItem
+                storedItem.transform.position = transform.Find("StorePosition").position;
+            } else {
+                // Assign position based of Station's position
+                storedItem.transform.position = transform.position + new Vector3(0f, 0.5f, 0f);
+            }
 
             // Set item is locked and cannot be directly interacted with
             storedItem.GetComponent<Item>().OnStore();
