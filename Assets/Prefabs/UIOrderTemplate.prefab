@@ -498,7 +498,7 @@ GameObject:
   - component: {fileID: 320578666801891968}
   - component: {fileID: 320578666801891970}
   m_Layer: 5
-  m_Name: OrderTemplate
+  m_Name: UIOrderTemplate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -579,7 +579,7 @@ MonoBehaviour:
   warningColor: {r: 1, g: 0, b: 0, a: 1}
   flashDelay: 0.8
   isFlashing: 0
-  timerLow: 0
+  timer: {fileID: 0}
 --- !u!1 &320578667199414959
 GameObject:
   m_ObjectHideFlags: 0
@@ -946,4 +946,5 @@ MonoBehaviour:
   midColor: {r: 1, g: 0.38488668, b: 0, a: 0}
   highColor: {r: 0, g: 0.754717, b: 0.0036995367, a: 0}
   fillValue: 0
-  warningValue: 0
+  warningValue: 0.25
+  timerLow: 0
