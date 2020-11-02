@@ -43451,11 +43451,12 @@ MonoBehaviour:
   levelConfigFile: {fileID: 4900000, guid: 78a8c3966bdf5d840912172d0cd79577, type: 3}
   totalLevelOrders: 0
   orderPrefabs:
-  - {fileID: 3740741261026607297, guid: cb8b47351018036428c2a98076bdfcdc, type: 3}
+  - {fileID: 3218142699619845334, guid: c095a9fe72eea0a4c93fa686d6ecc52f, type: 3}
   minOrderGap: 0
   maxOrderGap: 0
   minOrderPrepTime: 0
   maxOrderPrepTime: 0
+  countdownDuration: 3
 --- !u!4 &1376545081
 Transform:
   m_ObjectHideFlags: 0

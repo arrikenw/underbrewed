@@ -27,6 +27,8 @@ public class RecipeManager : MonoBehaviour
     public float maxOrderPrepTime;
 
     //internal clock logic
+    public float countdownDuration;
+    private bool inCountdown;
     private bool levelIsEnded;
     private float curTime;
     private float levelEndTime;
@@ -223,6 +225,8 @@ public class RecipeManager : MonoBehaviour
         levelIsEnded = false;
         UIObject = MainUIObject.GetComponent<UIOrderQueueManager>();
         curTime = 0.0f;
+        inCountdown = true;
+        Time.timeScale = 0.0f;
         score = 0;
         ScoreObject.GetComponent<UIGameScore>().updateGameScore(score);
         timeToNextOrder = GenerateLevelOrders();
@@ -233,6 +237,19 @@ public class RecipeManager : MonoBehaviour
     //checks to see if we should add new orders from pending queue to active orders
     void Update()
     {
+        if (inCountdown)
+        {
+            if (countdownDuration >= 0.0f)
+            {
+                countdownDuration -= Time.unscaledDeltaTime;
+            }else
+            {
+                inCountdown = false;
+                Time.timeScale = 1.0f;
+            }
+            return;
+        }
+
         if (!levelIsEnded)
         {
             //activate new order
