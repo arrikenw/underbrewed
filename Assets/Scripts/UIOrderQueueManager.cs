@@ -63,8 +63,8 @@ public class UIOrderQueueManager : MonoBehaviour
     public void addPotion(Image potionImage, Color targetColor)
     {
         //change potion image depending on targetColor
-        /*
-        switch(targetColor)
+        
+        /*switch(targetColor)
         {
             case (white):
                 potionImage.sprite = Resources.Load<Sprite>("potionWhite");

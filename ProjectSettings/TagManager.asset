@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PrefabManagerTag
   - ShowOnPause
+  - ShowOnEnd
   layers:
   - Default
   - TransparentFX
