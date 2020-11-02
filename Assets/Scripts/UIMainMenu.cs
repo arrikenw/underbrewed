@@ -12,7 +12,7 @@ public class UIMainMenu : MonoBehaviour
 
     public void LoadGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("IrisScene");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("LevelSelect");
     }
 
 

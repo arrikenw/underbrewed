@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - PrefabManagerTag
+  - ShowOnPause
+  - ShowOnEnd
   layers:
   - Default
   - TransparentFX
