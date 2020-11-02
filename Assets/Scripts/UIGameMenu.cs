@@ -20,7 +20,6 @@ public class UIGameMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            
             pauseGame();
         }
     }
@@ -74,8 +73,7 @@ public class UIGameMenu : MonoBehaviour
 
     public void restartGame()
     {
-        //// TO DO: Restart game
-        UnityEngine.SceneManagement.SceneManager.LoadScene("IrisScene");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("NewMainScene");
     }
 
     public void Quit()

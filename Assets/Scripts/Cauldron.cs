@@ -18,7 +18,7 @@ public class Cauldron : Station
     protected override void Start()
     {
         if (recipeTree == null) {
-            Debug.LogError("Assign a GameObject with recipeTree Script to Cauldron in the inspector before resuming");
+            //Debug.LogError("Assign a GameObject with recipeTree Script to Cauldron in the inspector before resuming");
             UnityEditor.EditorApplication.isPlaying = false;
         }
 
