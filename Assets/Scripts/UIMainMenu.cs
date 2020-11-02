@@ -7,7 +7,7 @@ public class UIMainMenu : MonoBehaviour
 
     public void LoadTutorial()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("IrisScene");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("NewMainScene");
     }
 
     public void LoadGame()

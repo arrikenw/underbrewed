@@ -5,11 +5,19 @@ using System;
 
 public class RecipeManager : MonoBehaviour
 {
+    //Camera
+    public GameObject Camera;
 
     //UI object
     public GameObject MainUIObject;
     protected UIOrderQueueManager UIObject;
-    
+
+    //End screen object
+    public GameObject EndLevelObject;
+
+    // Game text 
+    public GameObject TextObject;
+
     //testing score
     public GameObject ScoreObject;
     public GameObject TimeObject;
@@ -27,6 +35,8 @@ public class RecipeManager : MonoBehaviour
     public float maxOrderPrepTime;
 
     //internal clock logic
+    public float countdownDuration;
+    private bool inCountdown;
     private bool levelIsEnded;
     private float curTime;
     private float levelEndTime;
@@ -110,6 +120,21 @@ public class RecipeManager : MonoBehaviour
         }
     }
 
+    //*****************************************************************************
+    //tutorial use only!!! adds a single order to the active orders
+    public void tutorialAddExampleOrder()
+    {
+        //always just use the first prefab for the example
+        Order exampleOrder = orderPrefabs[0];
+
+        //create and store a new UI object
+        float timeUntilOrderExpiry = 600000.0f;
+        GameObject newActiveOrderUI = UIObject.addOrderUI(exampleOrder, timeUntilOrderExpiry);
+
+        Tuple<Order, GameObject, float> newActiveOrderTuple = new Tuple<Order, GameObject, float>(exampleOrder, newActiveOrderUI, timeUntilOrderExpiry);
+        activeOrders.Add(newActiveOrderTuple);
+    }
+
 
     //*****************************************************************************
     //prepares the queue of items for the level
@@ -187,16 +212,21 @@ public class RecipeManager : MonoBehaviour
     //end level
     void endLevel()
     {
-        levelIsEnded = true;
+        
 
+        levelIsEnded = true;
+        Time.timeScale = 0.0f;
         //remove UI orders that still exist (eg. clock runs out before complete)
         for (int i = 0; i < activeOrders.Count; i++)
         {
             //delete ui
             UIObject.deleteOrderUI(activeOrders[i].Item2);
         }
-         
+
+        StartCoroutine(TextObject.GetComponent<UIGameText>().endText(2.0f));
+
         //TODO camera stuff here
+        //Camera.GetComponent<animateCamera>().EndAnimation();
 
         //TODO pause once camera is complete
 
@@ -204,17 +234,25 @@ public class RecipeManager : MonoBehaviour
         //TODO send nOrdersCompleted and completion % to the score UI
         float completionPercent = ((float)nOrdersCompleted) / totalLevelOrders;
 
+        // Display stats
+        // TO DO: include high score
+        EndLevelObject.GetComponent<UIEndScreen>().updateGameStatistics(completionPercent, score);
+
         //TODO UI for game win
         if (completionPercent >= 0.8f)
         {
-            //TODO
-            print("you won!");
+            EndLevelObject.GetComponent<UIEndScreen>().updateTitleText(true);
+            
         }
         else
         {
             //TODO UI for game loss
-            print("you lost!");
+            EndLevelObject.GetComponent<UIEndScreen>().updateTitleText(false);
+            //print("you lost!");
         }
+
+        // Display end screen
+        this.gameObject.GetComponent<UIGameMenu>().showEnd();
     }
 
     //start
@@ -223,9 +261,12 @@ public class RecipeManager : MonoBehaviour
         levelIsEnded = false;
         UIObject = MainUIObject.GetComponent<UIOrderQueueManager>();
         curTime = 0.0f;
+        inCountdown = true;
+        Time.timeScale = 0.0f;
         score = 0;
         ScoreObject.GetComponent<UIGameScore>().updateGameScore(score);
         timeToNextOrder = GenerateLevelOrders();
+        StartCoroutine(TextObject.GetComponent<UIGameText>().startText(1.2f));
     }
 
 
@@ -233,6 +274,19 @@ public class RecipeManager : MonoBehaviour
     //checks to see if we should add new orders from pending queue to active orders
     void Update()
     {
+        if (inCountdown)
+        {
+            if (countdownDuration >= 0.0f)
+            {
+                countdownDuration -= Time.unscaledDeltaTime;
+            }else
+            {
+                inCountdown = false;
+                Time.timeScale = 1.0f;
+            }
+            return;
+        }
+
         if (!levelIsEnded)
         {
             //activate new order
