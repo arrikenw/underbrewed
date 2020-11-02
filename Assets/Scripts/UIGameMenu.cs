@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIPauseMenu : MonoBehaviour
+public class UIGameMenu : MonoBehaviour
 {
     GameObject[] pauseObjects;
+    GameObject[] endObjects; 
 
     void Start()
     {
         pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
         hidePaused();
+
+        endObjects = GameObject.FindGameObjectsWithTag("ShowOnEnd");
+        hideEnd();
     }
 
     void Update()
@@ -17,11 +21,11 @@ public class UIPauseMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             
-            PauseGame();
+            pauseGame();
         }
     }
 
-    public void PauseGame()
+    public void pauseGame()
     {
         if (Time.timeScale == 1)
         {
@@ -50,7 +54,25 @@ public class UIPauseMenu : MonoBehaviour
             g.SetActive(false);
         }
     }
-    public void RestartGame()
+
+    public void showEnd()
+    {
+        foreach (GameObject g in endObjects)
+        {
+            g.SetActive(true);
+        }
+    }
+
+
+    public void hideEnd()
+    {
+        foreach(GameObject g in endObjects)
+        {
+            g.SetActive(false);
+        }
+    }
+
+    public void restartGame()
     {
         //// TO DO: Restart game
         UnityEngine.SceneManagement.SceneManager.LoadScene("IrisScene");
