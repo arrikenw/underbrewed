@@ -21,7 +21,7 @@ public class UIOrderQueueManager : MonoBehaviour
         // Create new instance of template
         GameObject newOrder = GameObject.Instantiate<GameObject>(orderTemplate);
         newOrder.transform.SetParent(this.transform, false);
-        newOrder.transform.localPosition = new Vector3(0, 0, 0);
+        newOrder.transform.localPosition = new Vector3(800, 0, 0);
 
 
         // Set timer

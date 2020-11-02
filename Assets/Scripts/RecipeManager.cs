@@ -11,7 +11,13 @@ public class RecipeManager : MonoBehaviour
     //UI object
     public GameObject MainUIObject;
     protected UIOrderQueueManager UIObject;
-    
+
+    //End screen object
+    public GameObject EndLevelObject;
+
+    // Game text 
+    public GameObject TextObject;
+
     //testing score
     public GameObject ScoreObject;
     public GameObject TimeObject;
@@ -206,6 +212,8 @@ public class RecipeManager : MonoBehaviour
     //end level
     void endLevel()
     {
+        
+
         levelIsEnded = true;
         Time.timeScale = 0.0f;
         //remove UI orders that still exist (eg. clock runs out before complete)
@@ -215,8 +223,10 @@ public class RecipeManager : MonoBehaviour
             UIObject.deleteOrderUI(activeOrders[i].Item2);
         }
 
+        StartCoroutine(TextObject.GetComponent<UIGameText>().endText(2.0f));
+
         //TODO camera stuff here
-        Camera.GetComponent<animateCamera>().EndAnimation();
+        //Camera.GetComponent<animateCamera>().EndAnimation();
 
         //TODO pause once camera is complete
 
@@ -224,17 +234,25 @@ public class RecipeManager : MonoBehaviour
         //TODO send nOrdersCompleted and completion % to the score UI
         float completionPercent = ((float)nOrdersCompleted) / totalLevelOrders;
 
+        // Display stats
+        // TO DO: include high score
+        EndLevelObject.GetComponent<UIEndScreen>().updateGameStatistics(completionPercent, score);
+
         //TODO UI for game win
         if (completionPercent >= 0.8f)
         {
-            //TODO
-            print("you won!");
+            EndLevelObject.GetComponent<UIEndScreen>().updateTitleText(true);
+            
         }
         else
         {
             //TODO UI for game loss
-            print("you lost!");
+            EndLevelObject.GetComponent<UIEndScreen>().updateTitleText(false);
+            //print("you lost!");
         }
+
+        // Display end screen
+        this.gameObject.GetComponent<UIGameMenu>().showEnd();
     }
 
     //start
@@ -248,6 +266,7 @@ public class RecipeManager : MonoBehaviour
         score = 0;
         ScoreObject.GetComponent<UIGameScore>().updateGameScore(score);
         timeToNextOrder = GenerateLevelOrders();
+        StartCoroutine(TextObject.GetComponent<UIGameText>().startText(1.2f));
     }
 
 
