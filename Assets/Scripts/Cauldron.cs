@@ -94,4 +94,15 @@ public class Cauldron : Station
             UpdateColours();
         }
     }
+
+    protected override void OnTriggerStay(Collider other) {
+        // Don't collected potions
+        // Can refactor to ONLY collect ingredients
+        if (other.gameObject.GetComponent<Potion>()) {
+            return;
+        } else {
+            base.OnTriggerStay(other);
+        }
+    }
+
 }
