@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Iris/IrisScene.unity
     guid: babfe4554fb89cb4b94a0287aded6638
   - enabled: 1
-    path: Assets/Scenes/OurTempNewScenes/Arriken/FirstLevelTest.unity
+    path: Assets/Scenes/OurTempNewScenes/Arriken/Tutorial.unity
     guid: ec435bbd8d7a4674daa6e983e466be92
   - enabled: 1
     path: Assets/Scenes/OurTempNewScenes/Arriken/SecondTest.unity
