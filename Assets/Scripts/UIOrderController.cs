@@ -7,27 +7,35 @@ public class UIOrderController : MonoBehaviour
 {
     public int score; // value of order
 
-    public Color warningColor = Color.red; 
+    public Color warningColor = Color.red;
 
     public float flashDelay = 0.8f; // time between flashes
 
-    public bool isFlashing = false; // check if already flashing
+    public bool isFlashing = false; // check if timer is already flashing
 
-    public bool timerLow = false; // check if timer is low
+    public UIOrderTimer timer;
+
+    bool timerLow = false; // check if timer is low
+
+    void Awake()
+    {
+        timer = transform.Find("OrderTimer").GetComponent<UIOrderTimer>();
+    }
 
     void Update()
     {
+        timerLow = timer.timerLow;
+
         if (timerLow == true && isFlashing == false)
         {
             StartCoroutine(flashing(warningColor, flashDelay));
+            isFlashing = true;
         }
     }
 
     public void updateOrderTimer(float newTime)
     {
-        UIOrderTimer timer = transform.Find("OrderTimer").GetComponent<UIOrderTimer>();
         timer.timeRemaining = newTime;
-
     }
 
     IEnumerator flashing(Color warningColor, float flashDelay)
