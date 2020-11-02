@@ -29,10 +29,8 @@ public class UIOrderQueueManager : MonoBehaviour
     public float gutterSize = 15.0f;
     public float velocity = 4.0f;
 
-    public GameObject addOrderUI(Order order, int LifeTime) 
+    public GameObject addOrderUI(Order order, float LifeTime) 
     {
-
-        print("INITIAL LIFETIME OF: "+ LifeTime);
         // Create new instance of template
         GameObject newOrder = GameObject.Instantiate<GameObject>(orderTemplate);
         newOrder.transform.SetParent(this.transform, false);
@@ -141,7 +139,6 @@ public class UIOrderQueueManager : MonoBehaviour
                 methodImage.sprite = Resources.Load<Sprite>("Knife");
                 break;
             case IngType.CookedFrog:
-                print("attempting cookedfrog");
                 ingredientImage.sprite = Resources.Load<Sprite>("Frog");
                 methodImage.sprite = Resources.Load<Sprite>("Fire");
                 break;
