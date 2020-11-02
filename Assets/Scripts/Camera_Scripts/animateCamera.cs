@@ -16,17 +16,17 @@ public class animateCamera : MonoBehaviour
         
     }
 
+    public void EndAnimation()
+    {
+        started = true;
+        xSpeed = Mathf.Abs(transform.position.x - (Player.transform.position.x - 2.435f)) * speed;
+        ySpeed = Mathf.Abs(transform.position.y - (Player.transform.position.y + 0.95f)) * speed;
+        zSpeed = Mathf.Abs(transform.position.z - (Player.transform.position.z - 2.128f)) * speed;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.J))
-        {
-            started = true;
-            xSpeed = Mathf.Abs(transform.position.x - (Player.transform.position.x - 2.435f)) * speed;
-            ySpeed = Mathf.Abs(transform.position.y - (Player.transform.position.y + 0.95f)) * speed;
-            zSpeed = Mathf.Abs(transform.position.z - (Player.transform.position.z - 2.128f)) * speed;
-
-        }
         if(started)
         {
             if (transform.position.x < Player.transform.position.x - 2.435)

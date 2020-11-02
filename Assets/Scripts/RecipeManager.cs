@@ -5,6 +5,8 @@ using System;
 
 public class RecipeManager : MonoBehaviour
 {
+    //Camera
+    public GameObject Camera;
 
     //UI object
     public GameObject MainUIObject;
@@ -195,8 +197,9 @@ public class RecipeManager : MonoBehaviour
             //delete ui
             UIObject.deleteOrderUI(activeOrders[i].Item2);
         }
-         
+
         //TODO camera stuff here
+        Camera.GetComponent<animateCamera>().EndAnimation();
 
         //TODO pause once camera is complete
 
