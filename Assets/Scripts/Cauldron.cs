@@ -25,9 +25,9 @@ public class Cauldron : Station
         base.Start();
 
         // Get child objects
-        cauldronLiquid = transform.GetChild(0).gameObject;
-        bubbles = cauldronLiquid.transform.GetChild(0).gameObject;
-        bubbleBurst = bubbles.transform.GetChild(0).gameObject;
+        cauldronLiquid = transform.Find("CauldronLiquid").gameObject;
+        bubbles = cauldronLiquid.transform.Find("Bubbles").gameObject;  
+        bubbleBurst = bubbles.transform.Find("BubbleBurst").gameObject;
 
         // Get colour values
         baseColour = cauldronLiquid.GetComponent<Renderer>().material.color;
@@ -94,4 +94,15 @@ public class Cauldron : Station
             UpdateColours();
         }
     }
+
+    protected override void OnTriggerStay(Collider other) {
+        // Don't collected potions
+        // Can refactor to ONLY collect ingredients
+        if (other.gameObject.GetComponent<Potion>()) {
+            return;
+        } else {
+            base.OnTriggerStay(other);
+        }
+    }
+
 }

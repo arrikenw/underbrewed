@@ -6,7 +6,7 @@ public class GameTransitions : MonoBehaviour
 {
     public float duration;
 
-    public Camera camera;
+    public Camera cam;
 
     public Transform target;
 
@@ -16,11 +16,11 @@ public class GameTransitions : MonoBehaviour
 
     public float minDistance = 50.0f;
 
-    public bool enabled = false;
+    //public bool enabled = false;
 
     void Start()
     {
-        camera = this.GetComponent<Camera>();
+        cam = this.GetComponent<Camera>();
         StartCoroutine(ZoomCamera());
     }
     /*void FixedUpdate()
@@ -72,7 +72,7 @@ public class GameTransitions : MonoBehaviour
 
             if (Vector3.Distance(transform.position, target.position) > minDistance)
             {
-                camera.fieldOfView -= (Time.deltaTime * forwardVelocity);
+                GetComponent<Camera>().fieldOfView -= (Time.deltaTime * forwardVelocity);
             }
 
             yield return new WaitForEndOfFrame();

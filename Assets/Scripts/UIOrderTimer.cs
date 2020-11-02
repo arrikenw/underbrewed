@@ -19,9 +19,11 @@ public class UIOrderTimer : MonoBehaviour
     GradientColorKey[] colorKey;
     GradientAlphaKey[] alphaKey;
 
-    public float fillValue;
+    float fillValue;
 
-    public float warningValue;
+    float warningValue = 0.25f;
+
+    public bool timerLow = false;
 
     void Start()
     {
@@ -48,21 +50,19 @@ public class UIOrderTimer : MonoBehaviour
 
     }
 
-
     void Update()
     {
-
         fillValue = ((float) timeRemaining) / maxTime;
+
         timer.value = fillValue;
 
         timer.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = gradient.Evaluate(fillValue);
 
         if (fillValue < warningValue)
         {
-            UIOrderController controller = this.transform.parent.GetComponent<UIOrderController>();
-            controller.timerLow = true ;
+            timerLow = true;
         }
 
-    }    
-    
+    }
+
 }
