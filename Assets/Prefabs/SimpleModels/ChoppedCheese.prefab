@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: -1124057843978551612}
   - component: {fileID: 772234547912333573}
   - component: {fileID: 3346890866002556041}
-  - component: {fileID: 7048800947143560176}
   - component: {fileID: -5389448672833952694}
+  - component: {fileID: -1098018702203749012}
   m_Layer: 0
   m_Name: ChoppedCheese
   m_TagString: Untagged
@@ -115,20 +115,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1487937844590548170}
   m_Mesh: {fileID: 0}
---- !u!114 &7048800947143560176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1487937844590548170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f50674572d86c3c469f908a13013c305, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ingredientType: 0
-  canHighlight: 0
 --- !u!64 &-5389448672833952694
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -143,6 +129,20 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &-1098018702203749012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487937844590548170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6106e23566faff43aa19a2d863d9325, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ingredientType: 7
+  canHighlight: 1
 --- !u!1 &2580340196244436026
 GameObject:
   m_ObjectHideFlags: 0
