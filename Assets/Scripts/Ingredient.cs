@@ -10,12 +10,11 @@ public class Ingredient : Item
     // keep track of ingredient 
     [SerializeField] public IngType ingredientType = IngType.Null;
 
-    // [SerializeField] private Color mixColour = new Color(); 
-
     private bool usesCombinedMesh = false;
+
+    // [SerializeField] private bool canHighlight = true;
     
-    void Awake() {
-        //print(GetComponent<MeshFilter>().sharedMesh);
+    protected virtual void Awake() {
         if (GetComponent<MeshFilter>().sharedMesh == null) {
             CombineMesh();
         }
@@ -34,9 +33,6 @@ public class Ingredient : Item
         }
     }
 
-    // public Color GetColor() {
-    //     return mixColour;
-    // }
 
     public IngType GetIngredientType() {
         return ingredientType;
@@ -66,7 +62,7 @@ public class Ingredient : Item
             GetComponent<MeshCollider>().sharedMesh = GetComponent<MeshFilter>().sharedMesh;
         }
 
-        GetComponent<MeshRenderer>().enabled = false;
+        // GetComponent<MeshRenderer>().enabled = false;
 
         // Restore position
         transform.position = actualPosition;

@@ -12,9 +12,11 @@ GameObject:
   - component: {fileID: 824984905373277501}
   - component: {fileID: -1124057843978551612}
   - component: {fileID: 772234547912333573}
-  - component: {fileID: -6941244734559659140}
+  - component: {fileID: 3346890866002556041}
+  - component: {fileID: -5389448672833952694}
+  - component: {fileID: -1098018702203749012}
   m_Layer: 0
-  m_Name: SlicedCheese
+  m_Name: ChoppedCheese
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,7 +107,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-6941244734559659140
+--- !u!33 &3346890866002556041
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487937844590548170}
+  m_Mesh: {fileID: 0}
+--- !u!64 &-5389448672833952694
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487937844590548170}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
+--- !u!114 &-1098018702203749012
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -114,10 +138,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1487937844590548170}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f50674572d86c3c469f908a13013c305, type: 3}
+  m_Script: {fileID: 11500000, guid: e6106e23566faff43aa19a2d863d9325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ingredientType: 7
+  canHighlight: 1
 --- !u!1 &2580340196244436026
 GameObject:
   m_ObjectHideFlags: 0
