@@ -392,7 +392,7 @@ PrefabInstance:
     - target: {fileID: 4899406078552649710, guid: 71ccb19ccddd3ca41964d68e92312557,
         type: 3}
       propertyPath: m_Name
-      value: pestle
+      value: Pestle
       objectReference: {fileID: 0}
     - target: {fileID: 4955474852227601385, guid: 71ccb19ccddd3ca41964d68e92312557,
         type: 3}
@@ -38427,10 +38427,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: HandKnife
       objectReference: {fileID: 0}
+    - target: {fileID: 2287938590449283276, guid: 837c1872e4149c748970c2625be03b10,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3243548014863248389, guid: 837c1872e4149c748970c2625be03b10,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3243548014863248389, guid: 837c1872e4149c748970c2625be03b10,
         type: 3}
