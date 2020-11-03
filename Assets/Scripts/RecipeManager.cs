@@ -191,6 +191,7 @@ public class RecipeManager : MonoBehaviour
             //rest of lines are the orders
             float tempArrivalTime = 0.0f;
             float tempPrepTime = 0.0f;
+            levelEndTime = 0.0f;
             for (int i = 1; i < levelData.Length; i++)
             {
                 //data for each order is arranged like so: (arrival time, order, prep time)
@@ -202,6 +203,11 @@ public class RecipeManager : MonoBehaviour
                 Tuple<float, Order, float> newOrder = new Tuple<float, Order, float>(tempArrivalTime, tempOrderType, tempPrepTime);
                 queuedOrders.Enqueue(newOrder);
 
+                if (tempArrivalTime + tempPrepTime > levelEndTime)
+                {
+                    levelEndTime = tempArrivalTime + tempPrepTime;
+                }
+
                 //save the first order arrival time as the initial arrival time
                 if (i == 1)
                 {
@@ -209,7 +215,6 @@ public class RecipeManager : MonoBehaviour
                 }
             }
             //the final end time is the same as the end of the level
-            levelEndTime = tempArrivalTime + tempPrepTime;
             return timeToFirstOrder;
         }
     }

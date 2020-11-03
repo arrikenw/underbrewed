@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 165473222508530050}
   - component: {fileID: 165473222504270372}
   - component: {fileID: 4989193449283081125}
+  - component: {fileID: 7826430767086887633}
   m_Layer: 0
   m_Name: EyeBallCrate
   m_TagString: Untagged
@@ -108,8 +109,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a27e8c5957cfc0d4194a1b18a7de712d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storedItem: {fileID: 0}
   prefabItem: {fileID: 6362214827448252304, guid: d72255d658afaff4ea091023f063c89b,
     type: 3}
+--- !u!114 &7826430767086887633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165473222506343044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9d543efd67c1142b7b82a1a6b487a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1352866786026327971
 GameObject:
   m_ObjectHideFlags: 0

@@ -231,11 +231,9 @@ MonoBehaviour:
   animator: {fileID: 0}
   knife: {fileID: 0}
   pestle: {fileID: 0}
-  psysPrefab: {fileID: 930311792502371207, guid: cf7a90002d54ad447b6413e9a077a3ad,
-    type: 3}
+  psysPrefab: {fileID: 0}
   station: 0
-  cookEffectsPrefab: {fileID: 6579814921043404322, guid: efbaa000c1234d0409f25479379a3a01,
-    type: 3}
+  cookEffectsPrefab: {fileID: 0}
 --- !u!65 &5895970014220082160
 BoxCollider:
   m_ObjectHideFlags: 0
