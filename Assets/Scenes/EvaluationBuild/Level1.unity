@@ -1692,6 +1692,12 @@ Transform:
   m_Father: {fileID: 583904792}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &242153962 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8862375416685616268, guid: 373c2f993b48f064ab5fdd48f922e03a,
+    type: 3}
+  m_PrefabInstance: {fileID: 3237455756212463585}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &271168328
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1937,7 +1943,7 @@ PrefabInstance:
         type: 3}
       propertyPath: knife
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 793925317}
     - target: {fileID: 1875019773639569487, guid: 39be46173e128e448891608a0f5b7665,
         type: 3}
       propertyPath: pestle
@@ -23721,6 +23727,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: f372f38a1f7071645b2b64005e2380b9, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57e9785ae80b6904298145f7fddc5d4f, type: 3}
+--- !u!1 &793925317 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2287938590449283276, guid: 837c1872e4149c748970c2625be03b10,
+    type: 3}
+  m_PrefabInstance: {fileID: 5529093446329411749}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &803599687
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34137,7 +34149,7 @@ PrefabInstance:
         type: 3}
       propertyPath: knife
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 242153962}
     - target: {fileID: 67723114300461938, guid: 71ccb19ccddd3ca41964d68e92312557,
         type: 3}
       propertyPath: pestle
@@ -38672,7 +38684,7 @@ PrefabInstance:
         type: 3}
       propertyPath: knife
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 793925317}
     - target: {fileID: -2823369317141404425, guid: 373c2f993b48f064ab5fdd48f922e03a,
         type: 3}
       propertyPath: pestle
@@ -39425,7 +39437,7 @@ PrefabInstance:
         type: 3}
       propertyPath: knife
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 793925317}
     - target: {fileID: 1875019773639569487, guid: 39be46173e128e448891608a0f5b7665,
         type: 3}
       propertyPath: pestle
