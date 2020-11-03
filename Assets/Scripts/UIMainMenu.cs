@@ -7,7 +7,7 @@ public class UIMainMenu : MonoBehaviour
 
     public void LoadTutorial()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Level1");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Tutorial");
     }
 
     public void LoadGame()
