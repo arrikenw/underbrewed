@@ -13,12 +13,12 @@ public class UILevelSelect : MonoBehaviour
 
     public void GoBack()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu_Iris_ver");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 
     public void PlayLevel1()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Level1_Iris_ver");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level1");
     }
 
     public void DisplayHighScore()

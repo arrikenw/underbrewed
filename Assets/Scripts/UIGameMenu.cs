@@ -95,7 +95,7 @@ public class UIGameMenu : MonoBehaviour
 
     public void Quit()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu_Iris_ver");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 
 }
