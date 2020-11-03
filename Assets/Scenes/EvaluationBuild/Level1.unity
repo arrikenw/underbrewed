@@ -862,8 +862,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.023451045, y: 0.023451047, z: 0.014913045}
-  m_Center: {x: 0.00016009295, y: -0.00006113945, z: 0.007479041}
+  m_Size: {x: 0.023451041, y: 0.023451049, z: 0.015550552}
+  m_Center: {x: 0.0001600933, y: -0.00006113887, z: 0.007797793}
 --- !u!65 &106024650
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -875,8 +875,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.02, y: 0.02, z: 0.014913044}
-  m_Center: {x: 0.00016009294, y: -0.00006113945, z: 0.0074790404}
+  m_Size: {x: 0.02, y: 0.02, z: 0.014151931}
+  m_Center: {x: 0.0001600933, y: -0.000061139464, z: 0.0070984853}
 --- !u!54 &106024651
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3373,8 +3373,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.023451045, y: 0.023451047, z: 0.014913045}
-  m_Center: {x: 0.00016009295, y: -0.00006113945, z: 0.007479041}
+  m_Size: {x: 0.023451041, y: 0.023451049, z: 0.015568748}
+  m_Center: {x: 0.0001600933, y: -0.00006113887, z: 0.007806891}
 --- !u!65 &565927195
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36873,8 +36873,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.023451045, y: 0.023451047, z: 0.014913045}
-  m_Center: {x: 0.00016009295, y: -0.00006113945, z: 0.007479041}
+  m_Size: {x: 0.023451041, y: 0.023451049, z: 0.015666405}
+  m_Center: {x: 0.0001600933, y: -0.00006113887, z: 0.007855721}
 --- !u!65 &2019079334
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36886,8 +36886,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.02, y: 0.02, z: 0.014913044}
-  m_Center: {x: 0.00016009294, y: -0.00006113945, z: 0.0074790404}
+  m_Size: {x: 0.02, y: 0.02, z: 0.014046269}
+  m_Center: {x: 0.0001600933, y: -0.000061139464, z: 0.007045654}
 --- !u!54 &2019079335
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -37905,6 +37905,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cauldron
+      objectReference: {fileID: 0}
+    - target: {fileID: 1826284606207337636, guid: 52ca54299e99be441a7fbbbd34f72485,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.01600478
+      objectReference: {fileID: 0}
+    - target: {fileID: 1826284606207337636, guid: 52ca54299e99be441a7fbbbd34f72485,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.008024911
       objectReference: {fileID: 0}
     - target: {fileID: 1826284606207337637, guid: 52ca54299e99be441a7fbbbd34f72485,
         type: 3}
