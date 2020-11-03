@@ -9,7 +9,7 @@ public class UIOrderQueueManager : MonoBehaviour
     public GameObject orderTemplate;
 
     public float gutterSize = 15.0f;
-    public float velocity = 1.0f;
+    public float velocity = 0.5f;
 
     public GameObject addOrderUI(Order order, float LifeTime)
     {
@@ -246,6 +246,7 @@ public class UIOrderQueueManager : MonoBehaviour
     IEnumerator animateQueue(GameObject orderUI, Vector3 targetPosition)
     {
         float t = 0;
+
         while (orderUI.transform.localPosition != targetPosition)
         {
             orderUI.transform.localPosition = Vector3.Lerp(orderUI.transform.localPosition, targetPosition, t);
