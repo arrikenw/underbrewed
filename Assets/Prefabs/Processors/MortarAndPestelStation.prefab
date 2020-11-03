@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4287280154907554379
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3149612222394001925}
+  m_Layer: 0
+  m_Name: StorePosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3149612222394001925
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4287280154907554379}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.05, y: 0, z: 0.021}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8874106545926193012}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4528634722226361888
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,7 +42,7 @@ GameObject:
   - component: {fileID: 1077760349414736635}
   - component: {fileID: 4171440992354900307}
   m_Layer: 0
-  m_Name: mortar
+  m_Name: Mortar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,7 +123,7 @@ GameObject:
   - component: {fileID: 3774243260486419462}
   - component: {fileID: 8861971792751478735}
   m_Layer: 0
-  m_Name: pestle (1)
+  m_Name: Pestle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -224,6 +254,7 @@ Transform:
   m_Children:
   - {fileID: 412202466162214218}
   - {fileID: 2686646292127358024}
+  - {fileID: 3149612222394001925}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -307,6 +338,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50d286770f463994884c60feacb8cd4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storedItem: {fileID: 0}
+  animator: {fileID: 0}
+  knife: {fileID: 0}
+  pestle: {fileID: 0}
   psysPrefab: {fileID: 7408081723834861634, guid: bac9bb0729c3b43408ca763151bd02c0,
     type: 3}
   station: 2
