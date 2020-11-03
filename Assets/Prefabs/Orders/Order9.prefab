@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredients:
   - {fileID: 2201798155421467528, guid: 4f4cb856f68ddf04d94e7eb49428e878, type: 3}
-  - {fileID: 8004750676493620874, guid: 285a81a2059135c4780a31edf4f26fe2, type: 3}
+  - {fileID: 7226730808235905628, guid: 6488f4656dce00c47ad12e483724de78, type: 3}
   - {fileID: 6091762245076548180, guid: d72255d658afaff4ea091023f063c89b, type: 3}
   optimalPrepTime: 15
   targetColour: {r: 0.35, g: 0.27, b: 0.7, a: 1}
