@@ -1,18 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIGameMenu : MonoBehaviour
 {
     GameObject[] pauseObjects;
-    GameObject[] endObjects; 
+    GameObject[] endObjects;
+    GameObject[] playObjects;
 
     void Start()
     {
         pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
+
         hidePaused();
 
         endObjects = GameObject.FindGameObjectsWithTag("ShowOnEnd");
+       
+        playObjects = GameObject.FindGameObjectsWithTag("HideOnEnd");
+
         hideEnd();
     }
 
@@ -20,7 +26,6 @@ public class UIGameMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            
             pauseGame();
         }
     }
@@ -61,6 +66,11 @@ public class UIGameMenu : MonoBehaviour
         {
             g.SetActive(true);
         }
+
+        foreach (GameObject g in playObjects)
+        {
+            g.SetActive(false);
+        }
     }
 
 
@@ -70,17 +80,22 @@ public class UIGameMenu : MonoBehaviour
         {
             g.SetActive(false);
         }
+
+        foreach (GameObject g in playObjects)
+        {
+            g.SetActive(true);
+        }
     }
 
     public void restartGame()
     {
-        //// TO DO: Restart game
-        UnityEngine.SceneManagement.SceneManager.LoadScene("IrisScene");
+        Scene activeScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
+        UnityEngine.SceneManagement.SceneManager.LoadScene(activeScene.name);
     }
 
     public void Quit()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("IrisUIMainMenu");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 
 }

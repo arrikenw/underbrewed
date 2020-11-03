@@ -251,7 +251,6 @@ GameObject:
   - component: {fileID: 6219700559733326650}
   - component: {fileID: 7421565670558108724}
   - component: {fileID: 767393721307821924}
-  - component: {fileID: 5607837997166564883}
   m_Layer: 0
   m_Name: Potion
   m_TagString: Untagged
@@ -345,7 +344,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -363,23 +362,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24348bc3b5699d24a821347c9b578a1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   potionColour: {r: 0, g: 0, b: 0, a: 0}
   opaqueLiquidMaterial: {fileID: 0}
---- !u!136 &5607837997166564883
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7421565670558108728}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.29
-  m_Height: 1.05
-  m_Direction: 1
-  m_Center: {x: -0.03, y: -0.18, z: 0.01}
 --- !u!1 &7656079191955185177
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,7 +375,7 @@ GameObject:
   - component: {fileID: 7022250753029817507}
   - component: {fileID: 7421565669582480197}
   m_Layer: 0
-  m_Name: newPotion
+  m_Name: PotionActual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

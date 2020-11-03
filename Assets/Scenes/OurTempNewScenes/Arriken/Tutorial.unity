@@ -6918,8 +6918,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90cc4cde5685a646bc5923d6b51b4dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelNumber: 0
   Camera: {fileID: 0}
   MainUIObject: {fileID: 0}
+  EndLevelObject: {fileID: 0}
+  TextObject: {fileID: 0}
   ScoreObject: {fileID: 0}
   TimeObject: {fileID: 0}
   levelConfigFile: {fileID: 4900000, guid: 78a8c3966bdf5d840912172d0cd79577, type: 3}
@@ -12941,6 +12944,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MRCAULDRON
+      objectReference: {fileID: 0}
+    - target: {fileID: 7252856930647911511, guid: 4ae568391555da942a59af275af064ce,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7252856930647911511, guid: 4ae568391555da942a59af275af064ce,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8564432387583044754, guid: 4ae568391555da942a59af275af064ce,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8564432387583044754, guid: 4ae568391555da942a59af275af064ce,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ae568391555da942a59af275af064ce, type: 3}

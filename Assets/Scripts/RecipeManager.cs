@@ -5,13 +5,24 @@ using System;
 
 public class RecipeManager : MonoBehaviour
 {
+
+    //level number
+    //VERY IMPORTANT FOR STORING HIGHSCORES
+    public int levelNumber;
+
     //Camera
     public GameObject Camera;
 
     //UI object
     public GameObject MainUIObject;
     protected UIOrderQueueManager UIObject;
-    
+
+    //End screen object
+    public GameObject EndLevelObject;
+
+    // Game text 
+    public GameObject TextObject;
+
     //testing score
     public GameObject ScoreObject;
     public GameObject TimeObject;
@@ -206,6 +217,8 @@ public class RecipeManager : MonoBehaviour
     //end level
     void endLevel()
     {
+        
+
         levelIsEnded = true;
         Time.timeScale = 0.0f;
         //remove UI orders that still exist (eg. clock runs out before complete)
@@ -215,26 +228,43 @@ public class RecipeManager : MonoBehaviour
             UIObject.deleteOrderUI(activeOrders[i].Item2);
         }
 
-        //TODO camera stuff here
+        StartCoroutine(TextObject.GetComponent<UIGameText>().endText(2.0f));
+
+        //camera stuff here
         Camera.GetComponent<animateCamera>().EndAnimation();
 
-        //TODO pause once camera is complete
+        // Store and display stats / score
+        //calculate completion %
+        float completionPercent = 100*(((float)nOrdersCompleted) / totalLevelOrders);
 
-        //UI stuff
-        //TODO send nOrdersCompleted and completion % to the score UI
-        float completionPercent = ((float)nOrdersCompleted) / totalLevelOrders;
+        //store highscore if greater than current highscore
+        StoreHighscore(score);
+        
+        //display stats in UI
+        EndLevelObject.GetComponent<UIEndScreen>().updateGameStatistics(completionPercent, score, PlayerPrefs.GetInt("highscore"+levelNumber, 0));
 
-        //TODO UI for game win
+        //end game stats / retry stats
         if (completionPercent >= 0.8f)
         {
-            //TODO
-            print("you won!");
+            EndLevelObject.GetComponent<UIEndScreen>().updateTitleText(true);
+            
         }
         else
         {
-            //TODO UI for game loss
-            print("you lost!");
+            EndLevelObject.GetComponent<UIEndScreen>().updateTitleText(false);
         }
+
+        // Display end screen
+        this.gameObject.GetComponent<UIGameMenu>().showEnd();
+    }
+
+    //store highscore code has been retrieved from:
+    //https://answers.unity.com/questions/644911/how-do-i-store-highscore-locally-c-simple.html
+    void StoreHighscore(int newHighscore)
+    {
+        int oldHighscore = PlayerPrefs.GetInt("highscore"+levelNumber, 0);
+        if (newHighscore > oldHighscore)
+            PlayerPrefs.SetInt("highscore"+levelNumber, newHighscore);
     }
 
     //start
@@ -248,6 +278,7 @@ public class RecipeManager : MonoBehaviour
         score = 0;
         ScoreObject.GetComponent<UIGameScore>().updateGameScore(score);
         timeToNextOrder = GenerateLevelOrders();
+        StartCoroutine(TextObject.GetComponent<UIGameText>().startText(1.2f));
     }
 
 

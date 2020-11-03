@@ -9,7 +9,7 @@ public class RecipeTree : MonoBehaviour
     Color stageOneColor = new Color(0.69f,0.75f,0.10f,1.00f); // Acid Green
     Color stageTwoColor = new Color(0.95f,0.61f,0.73f,1.00f); // Amaranth Pink
 
-    Color yellow = Color.yellow; //
+    Color yellow = new Color(1, 0.922f, 0.016f, 1); //there was an issue with Color.yellow
     Color red = Color.red; //
     Color blue = Color.blue; //
     Color cyan = Color.cyan; //
@@ -85,9 +85,9 @@ public class RecipeTree : MonoBehaviour
         root.AddChild(KChoppedFrog);   
 
         // L: cooked frog -> crushed bone -> crushed eyeball: orange
-        RecipeNode LCrushedEyeball = new RecipeNode(IngType.Eyeball, orange);
-        RecipeNode LCrushedBone = new RecipeNode(IngType.CharredFlower, stageTwoColor, LCrushedEyeball);
-        RecipeNode LCookedFrog = new RecipeNode(IngType.Frog, stageOneColor, LCrushedBone);
+        RecipeNode LCrushedEyeball = new RecipeNode(IngType.CrushedEyeball, orange);
+        RecipeNode LCrushedBone = new RecipeNode(IngType.CrushedBone, stageTwoColor, LCrushedEyeball);
+        RecipeNode LCookedFrog = new RecipeNode(IngType.CookedFrog, stageOneColor, LCrushedBone);
         root.AddChild(LCookedFrog);
     }
 

@@ -7,7 +7,7 @@ public class UIMainMenu : MonoBehaviour
 
     public void LoadTutorial()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("IrisScene");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level1");
     }
 
     public void LoadGame()
@@ -15,6 +15,10 @@ public class UIMainMenu : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("LevelSelect");
     }
 
+    void Start()
+    {
+        Time.timeScale = 1.0f;
+    }
 
     public void Quit()
     {

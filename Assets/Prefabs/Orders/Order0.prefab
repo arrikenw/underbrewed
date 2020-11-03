@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ingredients:
-  - {fileID: 6672306298583402426, guid: dad9f9563618eba4581732492d27949a, type: 3}
-  - {fileID: -6255027268350840269, guid: 240f216eeb5719e429bb285d8e4eb066, type: 3}
+  - {fileID: 7400476925728131917, guid: dad9f9563618eba4581732492d27949a, type: 3}
+  - {fileID: 7190071976509986616, guid: 240f216eeb5719e429bb285d8e4eb066, type: 3}
   - {fileID: 8009039652199791813, guid: 93f2aa29362ca504a8a7e2404313590e, type: 3}
   optimalPrepTime: 15
   targetColour: {r: 1, g: 1, b: 1, a: 1}

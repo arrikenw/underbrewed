@@ -94,7 +94,7 @@ public class PickUpScript : MonoBehaviour
             animator.Play("PutDown");
             heldItem.GetComponent<Rigidbody>().useGravity = true;
             heldItem.GetComponent<Rigidbody>().AddForce(transform.forward.normalized * throwMagnitude, ForceMode.Impulse);
-            heldItem.GetComponent<Rigidbody>().AddForce(transform.up.normalized * 3, ForceMode.Impulse);
+            heldItem.GetComponent<Rigidbody>().AddForce(transform.up.normalized * 1, ForceMode.Impulse);
             heldItem.GetComponent<Item>().OnDrop();
 
             heldItem = null;
