@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5443219344822157383}
   - component: {fileID: 4228175789519848665}
   m_Layer: 0
-  m_Name: Order12
+  m_Name: Order11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,8 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredients:
   - {fileID: 2318252367914201388, guid: f9684a04e101a674b8454fd56cba04a4, type: 3}
-  - {fileID: -4011665070509325397, guid: 959e90612302e12458744039d22c323e, type: 3}
-  - {fileID: 7146713741826520087, guid: fa9608cb87448cf4096b5482695b9d04, type: 3}
+  - {fileID: 6291640856825041039, guid: 94e05ffcbcbe4aa489785238073611bc, type: 3}
+  - {fileID: -6732004845188268982, guid: 38e234d76e087e74999c9b42dbd16075, type: 3}
   optimalPrepTime: 15
   targetColour: {r: 1, g: 0.4, b: 0, a: 1}
   score: 10
