@@ -3,7 +3,22 @@ guid: 667c2626923c4694791813231b9f4485
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 455A64
+    second: {fileID: 2100000, guid: bef81cb2b57210049891883a022154d7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 78909C
+    second: {fileID: 2100000, guid: c58e26cbdb811ff469bfd03e916785d6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FF5722
+    second: {fileID: 2100000, guid: 0e21249b250ca1147a56a11f9006ed36, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
