@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Final_V1/MainMenu_Iris_ver.unity
+    path: Assets/Scenes/Iris/IrisUIMainMenu.unity
     guid: 0f7ed1a53b42c2849b89cb82793331f0
   - enabled: 1
     path: Assets/Scenes/Iris/IrisScene.unity
@@ -18,15 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/OurTempNewScenes/Arriken/SecondTest.unity
     guid: 0a723694dac9a8a4e963e990de658498
   - enabled: 1
-    path: Assets/Scenes/Final_V1/LevelSelect_Iris_ver.unity
+    path: Assets/Scenes/Iris/LevelSelect.unity
     guid: 9b4e045a46204414e9198b7632096f14
   - enabled: 1
     path: Assets/Scenes/Iris/NewMainScene.unity
     guid: 6592728267f0ebb448ccfeadca6ff562
-  - enabled: 1
-    path: Assets/Scenes/Final_V1/Level1_Iris_ver.unity
-    guid: 303be381d8a0d174994ab1e2659313c9
-  - enabled: 1
-    path: Assets/Scenes/Final_V1/JoelSceneArriken.unity
-    guid: bd42fc1c6e937da489921955670bed7a
   m_configObjects: {}

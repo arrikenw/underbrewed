@@ -67,6 +67,7 @@ public class Potion : Item
         foreach (IngType type in ingredients) {
             this.ingredients.AddLast(type);
         }
+        print(this.ingredients.ToString());
     }
 
     public override void OnContact() {
