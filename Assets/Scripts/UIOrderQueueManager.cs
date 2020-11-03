@@ -32,9 +32,22 @@ public class UIOrderQueueManager : MonoBehaviour
         GameObject recipe = newOrder.transform.Find("Recipe").gameObject;
 
         addIngredient(order.ingredients[0], recipe.transform.Find("Ingredient1").gameObject.GetComponent<Image>(), recipe.transform.Find("Method1").gameObject.GetComponent<Image>());
-        addIngredient(order.ingredients[1], recipe.transform.Find("Ingredient2").gameObject.GetComponent<Image>(), recipe.transform.Find("Method2").gameObject.GetComponent<Image>());
-        addIngredient(order.ingredients[2], recipe.transform.Find("Ingredient3").gameObject.GetComponent<Image>(), recipe.transform.Find("Method3").gameObject.GetComponent<Image>());
-
+        if (order.ingredients.Length >= 2)
+        {
+            addIngredient(order.ingredients[1], recipe.transform.Find("Ingredient2").gameObject.GetComponent<Image>(), recipe.transform.Find("Method2").gameObject.GetComponent<Image>());
+        }else
+        {
+            recipe.transform.Find("Ingredient2").gameObject.SetActive(false);
+            recipe.transform.Find("Method2").gameObject.SetActive(false);
+        }
+        if (order.ingredients.Length >= 3)
+        {
+            addIngredient(order.ingredients[2], recipe.transform.Find("Ingredient3").gameObject.GetComponent<Image>(), recipe.transform.Find("Method3").gameObject.GetComponent<Image>());
+        }else
+        {
+            recipe.transform.Find("Ingredient3").gameObject.SetActive(false);
+            recipe.transform.Find("Method3").gameObject.SetActive(false);
+        }
         reorderQueue(this.gameObject);
 
         newOrder.GetComponent<UIOrderController>().score = order.score;
@@ -96,8 +109,10 @@ public class UIOrderQueueManager : MonoBehaviour
                 potionImage.sprite = Resources.Load<Sprite>("potionOrange");
                 break;
         }*/
-
-        if (targetColor == Color.yellow)
+        print("tar: "+targetColor);
+        print("yellow: "+Color.yellow);
+        print(targetColor == new Color(1, 0.922f, 0.016f, 1));
+        if (targetColor == new Color(1, 0.922f, 0.016f, 1))
         {
             potionImage.sprite = Resources.Load<Sprite>("potionYellow");
         } else if (targetColor == Color.red)
