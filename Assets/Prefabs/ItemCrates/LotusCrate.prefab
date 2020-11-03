@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7579496040543333410}
   - component: {fileID: 7579496040547594116}
   - component: {fileID: 7579496040645867784}
+  - component: {fileID: 1582325533384868246}
   m_Layer: 0
   m_Name: LotusCrate
   m_TagString: Untagged
@@ -122,6 +123,18 @@ MonoBehaviour:
   storedItem: {fileID: 0}
   prefabItem: {fileID: 3440437755074052630, guid: ded7c688defd27840b96ab0fbcce6f70,
     type: 3}
+--- !u!114 &1582325533384868246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7579496040545455908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9d543efd67c1142b7b82a1a6b487a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &575161929467920568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -189,7 +202,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flower
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5183029998029945773, guid: ded7c688defd27840b96ab0fbcce6f70,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4306295705495691509, guid: ded7c688defd27840b96ab0fbcce6f70, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ded7c688defd27840b96ab0fbcce6f70, type: 3}
 --- !u!4 &2901867727474623153 stripped
 Transform:
@@ -264,7 +283,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flower (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5183029998029945773, guid: ded7c688defd27840b96ab0fbcce6f70,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4306295705495691509, guid: ded7c688defd27840b96ab0fbcce6f70, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ded7c688defd27840b96ab0fbcce6f70, type: 3}
 --- !u!4 &2705258926152690558 stripped
 Transform:
@@ -339,7 +364,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flower (7)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5183029998029945773, guid: ded7c688defd27840b96ab0fbcce6f70,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4306295705495691509, guid: ded7c688defd27840b96ab0fbcce6f70, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ded7c688defd27840b96ab0fbcce6f70, type: 3}
 --- !u!4 &2498790183021379764 stripped
 Transform:
@@ -414,7 +445,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flower (11)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5183029998029945773, guid: ded7c688defd27840b96ab0fbcce6f70,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4306295705495691509, guid: ded7c688defd27840b96ab0fbcce6f70, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ded7c688defd27840b96ab0fbcce6f70, type: 3}
 --- !u!4 &94667947015447589 stripped
 Transform:
@@ -489,7 +526,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flower (9)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5183029998029945773, guid: ded7c688defd27840b96ab0fbcce6f70,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4306295705495691509, guid: ded7c688defd27840b96ab0fbcce6f70, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ded7c688defd27840b96ab0fbcce6f70, type: 3}
 --- !u!4 &8009074529448852017 stripped
 Transform:
@@ -564,7 +607,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flower (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5183029998029945773, guid: ded7c688defd27840b96ab0fbcce6f70,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4306295705495691509, guid: ded7c688defd27840b96ab0fbcce6f70, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ded7c688defd27840b96ab0fbcce6f70, type: 3}
 --- !u!4 &7415943655756697885 stripped
 Transform:
@@ -639,7 +688,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flower (5)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5183029998029945773, guid: ded7c688defd27840b96ab0fbcce6f70,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4306295705495691509, guid: ded7c688defd27840b96ab0fbcce6f70, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ded7c688defd27840b96ab0fbcce6f70, type: 3}
 --- !u!4 &7027105267424425885 stripped
 Transform:
@@ -714,7 +769,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flower (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5183029998029945773, guid: ded7c688defd27840b96ab0fbcce6f70,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4306295705495691509, guid: ded7c688defd27840b96ab0fbcce6f70, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ded7c688defd27840b96ab0fbcce6f70, type: 3}
 --- !u!4 &8800757230237543784 stripped
 Transform:
@@ -789,7 +850,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flower (8)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5183029998029945773, guid: ded7c688defd27840b96ab0fbcce6f70,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4306295705495691509, guid: ded7c688defd27840b96ab0fbcce6f70, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ded7c688defd27840b96ab0fbcce6f70, type: 3}
 --- !u!4 &8572534903678303112 stripped
 Transform:
@@ -864,7 +931,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flower (6)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5183029998029945773, guid: ded7c688defd27840b96ab0fbcce6f70,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4306295705495691509, guid: ded7c688defd27840b96ab0fbcce6f70, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ded7c688defd27840b96ab0fbcce6f70, type: 3}
 --- !u!4 &8436290128455781915 stripped
 Transform:
@@ -939,7 +1012,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flower (10)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5183029998029945773, guid: ded7c688defd27840b96ab0fbcce6f70,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4306295705495691509, guid: ded7c688defd27840b96ab0fbcce6f70, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ded7c688defd27840b96ab0fbcce6f70, type: 3}
 --- !u!4 &4672954413186243339 stripped
 Transform:
@@ -1014,7 +1093,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flower (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5183029998029945773, guid: ded7c688defd27840b96ab0fbcce6f70,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4306295705495691509, guid: ded7c688defd27840b96ab0fbcce6f70, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ded7c688defd27840b96ab0fbcce6f70, type: 3}
 --- !u!4 &6360572856279740661 stripped
 Transform:

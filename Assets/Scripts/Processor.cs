@@ -120,7 +120,7 @@ public class Processor : Station
         else if (station == StationType.Crush)
         {
             pestle.SetActive(false);
-            transform.Find("Pestle").gameObject.SetActive(true);
+            transform.Find("pestle").gameObject.SetActive(true);
         }
     }
 
@@ -172,7 +172,7 @@ public class Processor : Station
         {
             pestle.SetActive(true);
             animator.Play("PoundAnim");
-            transform.Find("Pestle").gameObject.SetActive(false);
+            transform.Find("pestle").gameObject.SetActive(false);
         }
 
         

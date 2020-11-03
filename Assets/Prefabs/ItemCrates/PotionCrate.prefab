@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1955125410148792505}
   - component: {fileID: 1955125410144664351}
   - component: {fileID: 1955125410150980540}
+  - component: {fileID: 9207820642825624877}
   m_Layer: 0
   m_Name: PotionCrate
   m_TagString: Untagged
@@ -111,8 +112,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a27e8c5957cfc0d4194a1b18a7de712d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storedItem: {fileID: 0}
   prefabItem: {fileID: 7421565670558108728, guid: 04b84eac5e5110e45a19548cc23ec833,
     type: 3}
+--- !u!114 &9207820642825624877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955125410150980543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9d543efd67c1142b7b82a1a6b487a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &791233816851283558
 PrefabInstance:
   m_ObjectHideFlags: 0

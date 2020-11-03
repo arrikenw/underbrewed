@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Cauldron : Station
 {
+    public GameObject BadEventController;
+
     private GameObject cauldronLiquid;
     private GameObject bubbles;
     private GameObject bubbleBurst;
@@ -22,7 +24,7 @@ public class Cauldron : Station
     {
         if (recipeTree == null) {
             //Debug.LogError("Assign a GameObject with recipeTree Script to Cauldron in the inspector before resuming");
-            UnityEditor.EditorApplication.isPlaying = false;
+            //UnityEditor.EditorApplication.isPlaying = false;
         }
 
         base.Start();
@@ -60,6 +62,7 @@ public class Cauldron : Station
                 mixColour = dudColour;
                 ingredients.Clear();
                 dud = true;
+                BadEventController.GetComponent<BadEffects>().ApplyRandomEffect();
                 print("CAULDRON FAIL");
             }
 
