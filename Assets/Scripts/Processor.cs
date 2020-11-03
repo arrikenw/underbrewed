@@ -56,7 +56,20 @@ public class Processor : Station
     // Start is called before the first frame update
     protected override void Start()
     {
-        base.Start();
+        if (station == StationType.Chop) {
+            // Override Highlighting
+            highlighter = Resources.Load<Material>("Highlighter");
+            actual = transform.Find("ChoppingBoard").gameObject.GetComponent<Renderer>().material;  
+        }
+        else if (station == StationType.Crush) {
+            // Override Highlighting
+            highlighter = Resources.Load<Material>("Highlighter");
+            actual = transform.Find("Mortar").gameObject.GetComponent<Renderer>().material; 
+        } else {
+            base.Start();
+        }
+
+        // Processor specific stuff
         prefabManager = GameObject.FindGameObjectWithTag("PrefabManagerTag").GetComponent<PrefabScript>();
         if (psysPrefab)
         {
@@ -87,6 +100,7 @@ public class Processor : Station
     {
         interacting = false;
         canPickup = true;
+        locked = false;
         if (psys)
         {
             psys.Stop(true, ParticleSystemStopBehavior.StopEmitting);
@@ -101,12 +115,12 @@ public class Processor : Station
         if (station == StationType.Chop)
         {
             knife.SetActive(false);
-            transform.Find("Knife_01").gameObject.SetActive(true);
+            transform.Find("Knife").gameObject.SetActive(true);
         }
         else if (station == StationType.Crush)
         {
             pestle.SetActive(false);
-            transform.Find("pestle").gameObject.SetActive(true);
+            transform.Find("Pestle").gameObject.SetActive(true);
         }
     }
 
@@ -143,23 +157,54 @@ public class Processor : Station
         }
 
         //object settings
-        canPickup = false;
         interacting = true;
+        OnLeave(); // Removes highlighting
+        canPickup = false; // Prevents pickup
+        locked = true; // Prevents highlighting
 
         if (station == StationType.Chop)
         {
             knife.SetActive(true);
             animator.Play("ChopAnim");
-            transform.Find("Knife_01").gameObject.SetActive(false);
+            transform.Find("Knife").gameObject.SetActive(false);
         }
         else if (station == StationType.Crush)
         {
             pestle.SetActive(true);
             animator.Play("PoundAnim");
-            transform.Find("pestle").gameObject.SetActive(false);
+            transform.Find("Pestle").gameObject.SetActive(false);
         }
 
         
     }
 
+    public override void OnContact() {
+        if (!locked) {
+            if (station == StationType.Chop) {
+                // Override Highlighting
+                transform.Find("ChoppingBoard").gameObject.GetComponent<Renderer>().material = highlighter;
+            }
+            else if (station == StationType.Crush) {
+                // Override Highlighting
+                transform.Find("Mortar").gameObject.GetComponent<Renderer>().material = highlighter;
+            } else {
+                base.OnContact();
+            }
+        }
+    }
+
+    public override void OnLeave() {
+        if (!locked) {
+            if (station == StationType.Chop) {
+                // Override Highlighting
+                transform.Find("ChoppingBoard").gameObject.GetComponent<Renderer>().material = actual;
+            }
+            else if (station == StationType.Crush) {
+                // Override Highlighting
+                transform.Find("Mortar").gameObject.GetComponent<Renderer>().material = actual;
+            } else {
+                base.OnLeave();
+            }
+        }
+    }
 }
