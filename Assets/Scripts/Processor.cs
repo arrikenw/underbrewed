@@ -120,7 +120,7 @@ public class Processor : Station
         else if (station == StationType.Crush)
         {
             pestle.SetActive(false);
-            transform.Find("pestle").gameObject.SetActive(true);
+            transform.Find("Pestle").gameObject.SetActive(true);
         }
     }
 
@@ -166,13 +166,13 @@ public class Processor : Station
         {
             knife.SetActive(true);
             animator.Play("ChopAnim");
-            transform.Find("Knife_01").gameObject.SetActive(false);
+            transform.Find("Knife").gameObject.SetActive(false);
         }
         else if (station == StationType.Crush)
         {
             pestle.SetActive(true);
             animator.Play("PoundAnim");
-            transform.Find("pestle").gameObject.SetActive(false);
+            transform.Find("Pestle").gameObject.SetActive(false);
         }
 
         
@@ -203,7 +203,7 @@ public class Processor : Station
                 // Override Highlighting
                 transform.Find("Mortar").gameObject.GetComponent<Renderer>().material = actual;
             } else {
-                base.OnContact();
+                base.OnLeave();
             }
         }
     }
