@@ -115,7 +115,7 @@ public class Processor : Station
         if (station == StationType.Chop)
         {
             knife.SetActive(false);
-            transform.Find("Knife_01").gameObject.SetActive(true);
+            transform.Find("Knife").gameObject.SetActive(true);
         }
         else if (station == StationType.Crush)
         {
