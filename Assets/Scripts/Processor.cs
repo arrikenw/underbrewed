@@ -24,8 +24,8 @@ public enum IngType
 public class Processor : Station
 {
     public Animator animator;
-    public GameObject knife;
-    public GameObject pestle;
+    public GameObject handKnife;
+    public GameObject handPestle;
     public enum StationType
     {
         Chop,
@@ -114,7 +114,7 @@ public class Processor : Station
         animator.Play("EmptyIdle");
         if (station == StationType.Chop)
         {
-            knife.SetActive(false);
+            handKnife.SetActive(false);
             transform.Find("Knife").gameObject.SetActive(true);
         }
         else if (station == StationType.Crush)
@@ -164,13 +164,13 @@ public class Processor : Station
 
         if (station == StationType.Chop)
         {
-            knife.SetActive(true);
+            handKnife.SetActive(true);
             animator.Play("ChopAnim");
             transform.Find("Knife").gameObject.SetActive(false);
         }
         else if (station == StationType.Crush)
         {
-            pestle.SetActive(true);
+            handPestle.SetActive(true);
             animator.Play("PoundAnim");
             transform.Find("pestle").gameObject.SetActive(false);
         }
@@ -207,4 +207,5 @@ public class Processor : Station
             }
         }
     }
+    
 }

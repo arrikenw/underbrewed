@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3243548014863248386}
   - component: {fileID: 3243548014863248387}
   m_Layer: 0
-  m_Name: pestle
+  m_Name: HandPestle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -688,7 +688,7 @@ PrefabInstance:
     - target: {fileID: 2729315710824963461, guid: d4f8c7a7f08837049aa73bae28955786,
         type: 3}
       propertyPath: m_Name
-      value: Knife
+      value: HandKnife
       objectReference: {fileID: 0}
     - target: {fileID: 3362969018681853759, guid: d4f8c7a7f08837049aa73bae28955786,
         type: 3}
