@@ -57,12 +57,4 @@ public class BadEffects : MonoBehaviour
         }
 
     }
-
-    void Update()
-    {
-        if(Input.GetKeyDown("n"))
-        {
-            ApplyRandomEffect();
-        }
-    }
 }

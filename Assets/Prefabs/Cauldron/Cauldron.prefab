@@ -129,8 +129,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.023451045, y: 0.023451047, z: 0.014913045}
-  m_Center: {x: 0.00016009295, y: -0.00006113945, z: 0.007479041}
+  m_Size: {x: 0.023451041, y: 0.023451049, z: 0.015662408}
+  m_Center: {x: 0.0001600933, y: -0.00006113887, z: 0.007853725}
 --- !u!114 &1826284606207337637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,8 +143,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f57cbb44542a1542a468091c5f5c843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storedItem: {fileID: 0}
+  BadEventController: {fileID: 0}
   mixColour: {r: 0, g: 0, b: 0, a: 0}
   recipeTree: {fileID: 0}
+  dudColour: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &2051535946427917150
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4287280154907554379}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.05, y: 0, z: 0.106}
+  m_LocalPosition: {x: -0.05, y: 0, z: -0.006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8874106545926193012}
@@ -310,11 +310,9 @@ MonoBehaviour:
   animator: {fileID: 0}
   knife: {fileID: 0}
   pestle: {fileID: 0}
-  psysPrefab: {fileID: 7408081723834861634, guid: bac9bb0729c3b43408ca763151bd02c0,
-    type: 3}
+  psysPrefab: {fileID: 0}
   station: 2
-  cookEffectsPrefab: {fileID: 6579814921043404322, guid: efbaa000c1234d0409f25479379a3a01,
-    type: 3}
+  cookEffectsPrefab: {fileID: 0}
 --- !u!65 &4754293838286261495
 BoxCollider:
   m_ObjectHideFlags: 0

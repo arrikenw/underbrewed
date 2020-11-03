@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 767458664922972897}
   - component: {fileID: 767458664927101255}
   - component: {fileID: 767458663576535002}
+  - component: {fileID: -2754516320930440619}
   m_Layer: 0
   m_Name: CheeseCrate
   m_TagString: Untagged
@@ -110,8 +111,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a27e8c5957cfc0d4194a1b18a7de712d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storedItem: {fileID: 0}
   prefabItem: {fileID: 8009039652199791814, guid: 93f2aa29362ca504a8a7e2404313590e,
     type: 3}
+--- !u!114 &-2754516320930440619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767458664924979687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9d543efd67c1142b7b82a1a6b487a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &767458664400560775
 PrefabInstance:
   m_ObjectHideFlags: 0
