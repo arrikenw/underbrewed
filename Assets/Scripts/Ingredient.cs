@@ -62,7 +62,7 @@ public class Ingredient : Item
             GetComponent<MeshCollider>().sharedMesh = GetComponent<MeshFilter>().sharedMesh;
         }
 
-        // GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<MeshRenderer>().enabled = false;
 
         // Restore position
         transform.position = actualPosition;
