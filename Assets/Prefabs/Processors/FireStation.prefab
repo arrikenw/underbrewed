@@ -139,6 +139,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   storedItem: {fileID: 0}
+  animator: {fileID: 0}
+  handKnife: {fileID: 0}
+  handPestle: {fileID: 0}
   psysPrefab: {fileID: 7408081723834861634, guid: bac9bb0729c3b43408ca763151bd02c0,
     type: 3}
   station: 1
@@ -168,7 +171,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8142792188219051926}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.01, z: 0}
+  m_LocalPosition: {x: 0, y: 2.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7361631530829015419}
