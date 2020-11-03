@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EvaluationBuild/MainMenu.unity
     guid: 640839f86e4cc1a43b59427e7e2d5d2c
+  - enabled: 1
+    path: Assets/Scenes/EvaluationBuild/Tutorial.unity
+    guid: 09034b0426d88ea40a33f589d3df7c69
   m_configObjects: {}
