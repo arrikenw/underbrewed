@@ -1144,7 +1144,7 @@ PrefabInstance:
     - target: {fileID: 1590084261856554636, guid: 6d1f87e59e8f8014ab90a9e39ebb54dc,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1859133581847557934, guid: 6d1f87e59e8f8014ab90a9e39ebb54dc,
         type: 3}
@@ -33217,7 +33217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90cc4cde5685a646bc5923d6b51b4dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelNumber: 4
+  levelNumber: 0
   Camera: {fileID: 1694912889}
   MainUIObject: {fileID: 1443670330}
   EndLevelObject: {fileID: 1699995031}
