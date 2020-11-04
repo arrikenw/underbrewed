@@ -35,12 +35,17 @@ public class Item : Interactable
     }
 
     public void OnStore() {
+        // Run OnLeave in case the item being stored is currently being highlighted
         OnLeave();
         base.Lock();
     }
 
     public void OnDirectStore() {
         held = false;
+        base.Lock();
+    }
+
+    public void OnProcessStore() {
         base.Lock();
     }
 

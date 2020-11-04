@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Bin : Station
 {
+    public GameObject tutorialController;
+
     protected override void Start()
     {
         base.Start();
@@ -17,6 +19,10 @@ public class Bin : Station
     private void Dump() {
         if (base.storedItem != null) {
             Destroy(base.storedItem);
+            if (tutorialController)
+            {
+                tutorialController.GetComponent<TutorialScript>().OnUseBin();
+            }
         }
     }
 }

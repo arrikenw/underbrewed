@@ -43,9 +43,22 @@ public class HoldProcessor : Processor
             storedItem.GetComponent<Rigidbody>().isKinematic = true;
 
             // Run .OnStore()
-            storedItem.GetComponent<Item>().OnStore(); // BUGFIX
+            storedItem.GetComponent<Item>().OnProcessStore();
 
-            //todo add sound effect or something on completion
+            //tutorial changes
+            // advance tutorial
+            if (tutorialController)
+            {
+                if (station == StationType.Chop)
+                {
+                    tutorialController.GetComponent<TutorialScript>().OnUseChop();
+                }
+                if (station == StationType.Crush)
+                {
+                    print("attempt advance crush");
+                    tutorialController.GetComponent<TutorialScript>().OnUseCrush();
+                }
+            }
 
             //stop
             AttemptStopInteract();

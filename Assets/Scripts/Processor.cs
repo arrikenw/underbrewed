@@ -36,6 +36,9 @@ public class Processor : Station
         Crush//etc.
     }
 
+    // tutorial
+    public GameObject tutorialController;
+
     // cooking logic
     protected bool interacting = false;
     protected float timeUntilComplete = 0;

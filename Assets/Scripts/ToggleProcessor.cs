@@ -41,9 +41,24 @@ public class ToggleProcessor : Processor
                 storedItem.GetComponent<Rigidbody>().isKinematic = true;
 
                 // Run .OnStore()
-                storedItem.GetComponent<Item>().OnStore(); // BUGFIX    
+                storedItem.GetComponent<Item>().OnProcessStore();
 
-                //todo add sound effect or something on completion
+                // advance tutorial
+                if (tutorialController)
+                {
+                    print("attempt advance");
+                    if (station == StationType.Crush)
+                    {
+                        print("attempt advance crush");
+                        tutorialController.GetComponent<TutorialScript>().OnUseCrush();
+                    }
+                    if (station == StationType.Grill)
+                    {
+                        print("attempt advance grill");
+                        tutorialController.GetComponent<TutorialScript>().OnUseBurn();
+                    }
+                }
+
 
                 //stop
                 AttemptStopInteract();

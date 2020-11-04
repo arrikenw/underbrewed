@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class Cauldron : Station
 {
+    public bool isTutorial;
+    public GameObject tutorialController;
+
     public GameObject BadEventController;
 
     private GameObject cauldronLiquid;
@@ -49,6 +52,7 @@ public class Cauldron : Station
         if (base.storedItem != null && base.storedItem.GetComponent<Ingredient>() != null) {
             if (dud) {
                 Destroy(base.storedItem);
+                tutorialController.GetComponent<TutorialScript>().OnBadRecipeCreated();
                 return;
             }
 
@@ -64,6 +68,24 @@ public class Cauldron : Station
                 dud = true;
                 BadEventController.GetComponent<BadEffects>().ApplyRandomEffect();
                 print("CAULDRON FAIL");
+
+                //tutorial integration for failures
+                if (tutorialController)
+                {
+                    tutorialController.GetComponent<TutorialScript>().OnBadRecipeCreated();
+                }
+            }else
+            {
+                //tutorial integration
+                if (tutorialController)
+                {
+                    //burnt bone is the tutorial recipe example
+                    //it has a mix color of brown
+                    if (mixColour == new Color(0.59f, 0.29f, 0.00f, 1.00f))
+                    {
+                        tutorialController.GetComponent<TutorialScript>().OnGoodRecipeCreated();
+                    }
+                }
             }
 
             // Destroy stored Item 
