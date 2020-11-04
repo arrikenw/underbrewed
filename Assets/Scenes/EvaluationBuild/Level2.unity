@@ -1097,7 +1097,7 @@ PrefabInstance:
     - target: {fileID: 1588743275608689128, guid: 6d1f87e59e8f8014ab90a9e39ebb54dc,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1590084261248566950, guid: 6d1f87e59e8f8014ab90a9e39ebb54dc,
         type: 3}
@@ -5546,6 +5546,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e90cc4cde5685a646bc5923d6b51b4dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTutorial: 0
+  tutorialManager: {fileID: 0}
   levelNumber: 0
   Camera: {fileID: 1694912889}
   MainUIObject: {fileID: 511914885}
@@ -5809,6 +5811,7 @@ MonoBehaviour:
   EyeCrate: {fileID: 906828105}
   PotionCrate: {fileID: 2065406914}
   BigFire: {fileID: 0}
+  isTutorial: 0
   badSound: {fileID: 1988113467}
 --- !u!1001 &1427677354
 PrefabInstance:
@@ -9462,7 +9465,7 @@ PrefabInstance:
     - target: {fileID: 2438890222191969592, guid: 08346d735e6489443abf5ee1882117e6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.15
+      value: 0.197
       objectReference: {fileID: 0}
     - target: {fileID: 2438890222191969592, guid: 08346d735e6489443abf5ee1882117e6,
         type: 3}
@@ -9472,7 +9475,7 @@ PrefabInstance:
     - target: {fileID: 2438890222191969592, guid: 08346d735e6489443abf5ee1882117e6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.164
+      value: -6.225
       objectReference: {fileID: 0}
     - target: {fileID: 2438890222191969592, guid: 08346d735e6489443abf5ee1882117e6,
         type: 3}
@@ -9911,7 +9914,7 @@ PrefabInstance:
     - target: {fileID: 6620773616416739452, guid: 6b916a87e17c7e443911d6e9697077b1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.117
+      value: -5.96
       objectReference: {fileID: 0}
     - target: {fileID: 6620773616416739452, guid: 6b916a87e17c7e443911d6e9697077b1,
         type: 3}
