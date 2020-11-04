@@ -11,6 +11,7 @@ public class Ingredient : Item
     [SerializeField] public IngType ingredientType = IngType.Null;
 
     private bool usesCombinedMesh = false;
+    private int lifetime = 30; // lifetime before despawn in seconds
 
     // [SerializeField] private bool canHighlight = true;
     
@@ -27,10 +28,21 @@ public class Ingredient : Item
 
     void Update() 
     {
+        // if below the floor, destroy itself
         if (transform.position.y < -3.0f)
         {
             Destroy(this.gameObject);
         }
+
+        // lifetime TODO
+        /*if (lifetime <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            lifetime -= 
+        }*/
     }
 
 

@@ -55,6 +55,10 @@ public class RecipeManager : MonoBehaviour
     private int nOrdersCompleted;
     private int score;
 
+    //sounds
+    public AudioSource Success;
+    public AudioSource Failure;
+
     //active and enqueued recipes
     private List<Tuple<Order, GameObject, float>> activeOrders = new List<Tuple<Order, GameObject, float>>(); //(order, ui element, time remaining)
     private Queue<Tuple<float, Order, float>> queuedOrders = new Queue<Tuple<float, Order, float>>(); //(time order will arrive, order, order duration).  note, should added in sorted order by time arrived
@@ -64,6 +68,8 @@ public class RecipeManager : MonoBehaviour
     //handles the processing of completed potions
     public void ProcessDropoff(Potion potion)
     {
+        print("currently delivered potion color:");
+        print(potion.potionColour);
         for (int i = 0; i < activeOrders.Count; i++)
         {
             //check if an active order has destination colour that matches potion
@@ -71,6 +77,9 @@ public class RecipeManager : MonoBehaviour
             //commented out for testing
             if (activeOrders[i].Item1.targetColour == potion.potionColour)
             {
+                //play success sound
+                Success.Play();
+
                 //delete ui
                 UIObject.deleteOrderUI(activeOrders[i].Item2);
 
@@ -104,8 +113,10 @@ public class RecipeManager : MonoBehaviour
                     }
                 }
                 return;
-            }
+            } 
         }
+        //play failure sound
+        Failure.Play();
     }
 
 

@@ -13,7 +13,7 @@ public class BigFireScript : MonoBehaviour
     public void StartFire()
     {
         this.gameObject.SetActive(true);
-        EffectCount = 10.0f;
+        EffectCount = 6.0f;
     }
     // Update is called once per frame
     void Update()

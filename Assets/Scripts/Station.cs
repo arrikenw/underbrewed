@@ -45,6 +45,21 @@ public class Station : Interactable
                 storedItem.transform.position = transform.position + new Vector3(0f, 0.5f, 0f);
             }
 
+
+
+            // spaghetti
+            if (this.gameObject.GetComponent<ToggleProcessor>() != null)
+            {
+                Processor processor = this.gameObject.GetComponent<Processor>();
+
+                if (!processor.getInteract())
+                {
+                    processor.AttemptStartInteract();
+                }
+            }
+
+
+
             // Set item is locked and cannot be directly interacted with
             storedItem.GetComponent<Item>().OnStore();
             
@@ -99,6 +114,17 @@ public class Station : Interactable
             
             // Set item can be picked up via the station
             canPickup = true;
+
+            // spaghetti
+            if (this.gameObject.GetComponent<ToggleProcessor>() != null)
+            {
+                Processor processor = this.gameObject.GetComponent<Processor>();
+
+                if (!processor.getInteract())
+                {
+                    processor.AttemptStartInteract();
+                }
+            }
 
             return true;
         } else {

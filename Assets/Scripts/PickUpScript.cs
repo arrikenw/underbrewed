@@ -14,6 +14,8 @@ public class PickUpScript : MonoBehaviour
     public GameObject tutorialController;
     private int tutorialCount = 3;
 
+    private bool isHolding = false;
+
     private int pollGap = 10; //testing, smoother than getkeydown, which was sometimes quite rough
 
     // Start is called before the first frame update
@@ -23,7 +25,7 @@ public class PickUpScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    /*void FixedUpdate()
     {   
         UpdateThrow();
         UpdateInteract();
@@ -33,7 +35,7 @@ public class PickUpScript : MonoBehaviour
         {
             pollGap -= 1;
         }
-    }
+    }*/
 
     void Update()
     {
@@ -43,59 +45,73 @@ public class PickUpScript : MonoBehaviour
     }
 
     private void UpdatePickup() {
-        // Picking Up
-            if (Input.GetKeyDown(KeyCode.M) && heldItem == null && interactableObject != null) {
-            animator.Play("PickUp");
-            pickUpSound.Play();
-            // Pickup item directly
-            if (interactableObject.GetComponent<Item>() != null) {
-                heldItem = interactableObject;
-                heldItem.GetComponent<Rigidbody>().useGravity = false;
-
-                heldItem.GetComponent<Item>().OnPickup();
-                interactableObject = null;
-            } 
-
-            // Pickup item from station
-            else if (interactableObject.GetComponent<Station>() != null) {
-                heldItem = interactableObject.GetComponent<Station>().TryPickup();
-
-                if (heldItem != null) {
-                    heldItem.GetComponent<Rigidbody>().useGravity = false;
-                }
-            }
-        }
-
-        // Dropping
-        if (Input.GetKeyUp(KeyCode.M) && heldItem != null) {
-            animator.Play("PutDown");
-            heldItem.GetComponent<Rigidbody>().useGravity = true;
-
-            bool directStore = false;
-            // Try storing to a station directly first
-            if (interactableObject != null && interactableObject.GetComponent<Station>()) {
-                directStore = interactableObject.GetComponent<Station>().TryDirectStore(heldItem.GetComponent<Item>());
-            } 
-            
-            if (!directStore) {
-                heldItem.GetComponent<Item>().OnDrop();
-            }
-
-            heldItem = null;
-
-            //progress to next tutorial message after 3 attempts to grab and drop an object
-            if (tutorialController)
+        // Picking Up and dropping 
+        if (Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.O) || Input.GetKeyDown(KeyCode.Z)) 
+        {
+            if (!isHolding && heldItem == null && interactableObject != null)
             {
-                tutorialCount -= 1;
-                if (tutorialCount <= 0)
+                // Pickup item directly
+                if (interactableObject.GetComponent<Item>() != null)
                 {
-                    tutorialController.GetComponent<TutorialScript>().OnLearnPickup();
+                    animator.Play("PickUp");
+                    pickUpSound.Play();
+                    heldItem = interactableObject;
+                    heldItem.GetComponent<Rigidbody>().useGravity = false;
+
+                    heldItem.GetComponent<Item>().OnPickup();
+                    interactableObject = null;
+                }
+
+                // Pickup item from station
+                else if (interactableObject.GetComponent<Station>() != null)
+                {
+                    heldItem = interactableObject.GetComponent<Station>().TryPickup();
+
+                    if (heldItem != null)
+                    {
+                        isHolding = true;
+                        animator.Play("PickUp");
+                        pickUpSound.Play();
+                        heldItem.GetComponent<Rigidbody>().useGravity = false;
+                    }
+                }
+            }
+            else if (isHolding && heldItem != null)
+            {
+                isHolding = false;
+                animator.Play("PutDown");
+                heldItem.GetComponent<Rigidbody>().useGravity = true;
+
+                bool directStore = false;
+                // Try storing to a station directly first
+                if (interactableObject != null && interactableObject.GetComponent<Station>())
+                {
+                    directStore = interactableObject.GetComponent<Station>().TryDirectStore(heldItem.GetComponent<Item>());
+                }
+
+                if (!directStore)
+                {
+                    heldItem.GetComponent<Item>().OnDrop();
+                }
+
+                heldItem = null;
+
+                //progress to next tutorial message after 3 attempts to grab and drop an object
+                if (tutorialController)
+                {
+                    tutorialCount -= 1;
+                    if (tutorialCount <= 0)
+                    {
+                        tutorialController.GetComponent<TutorialScript>().OnLearnPickup();
+                    }
                 }
             }
         }
+
 
         // Moving
-        if (heldItem != null) {
+        if (heldItem != null) 
+        {
 
             // Reset Velocities
             heldItem.GetComponent<Rigidbody>().velocity = new Vector3(0f,0f,0f); 
@@ -115,30 +131,71 @@ public class PickUpScript : MonoBehaviour
         }
     }
 
-    private void UpdateThrow() {
-        if (Input.GetKeyDown(KeyCode.Period) && heldItem != null) {
-            animator.Play("PutDown");
-            heldItem.GetComponent<Rigidbody>().useGravity = true;
-            heldItem.GetComponent<Rigidbody>().AddForce(transform.forward.normalized * throwMagnitude, ForceMode.Impulse);
-            heldItem.GetComponent<Rigidbody>().AddForce(transform.up.normalized * 1, ForceMode.Impulse);
-            heldItem.GetComponent<Item>().OnDrop();
+    private void UpdateThrow() 
+    {
+        if (Input.GetKeyDown(KeyCode.Period) || Input.GetKeyDown("[") || Input.GetKeyDown(KeyCode.C)) 
+        {
+            if (heldItem != null)
+            {
 
-            heldItem = null;
+                animator.Play("PutDown");
+                heldItem.GetComponent<Rigidbody>().useGravity = true;
+                heldItem.GetComponent<Rigidbody>().AddForce(transform.forward.normalized * throwMagnitude, ForceMode.Impulse);
+                heldItem.GetComponent<Rigidbody>().AddForce(transform.up.normalized * 1.5f, ForceMode.Impulse);
+                heldItem.GetComponent<Item>().OnDrop();
+
+                heldItem = null;
+                isHolding = false;
+            }
+            
         }
     }
 
-    private void UpdateInteract() {
+    private void UpdateInteract() 
+    {
+        Processor processor;
 
-        //dealing with other interactables
-        if (Input.GetKeyDown(KeyCode.Comma) && interactableObject != null) {
-            //we want to interact with interactable processors differently, so return 
-            if (!interactableObject.GetComponent<Processor>()) {
+        // only continue if we have interactable object
+        if (!interactableObject)
+        {
+            return;
+        }
+        else
+        {
+            processor = interactableObject.GetComponent<Processor>();
+        }
+        
+        //dealing with interacting
+        if (Input.GetKeyDown(KeyCode.Comma) || Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.X)) 
+        {
+            // non processors get interacted with here
+            if (!processor)
+            {
                 interactableObject.GetComponent<Interactable>().Interact(heldItem);
+            }
+
+            // else processors get delt with here
+            else
+            {
+                // if processors has not started, start
+                if (processor && !processor.getInteract())
+                {
+                    processor.AttemptStartInteract();
+                }
             }
         }
 
-        //dealing with processors
-        if (interactableObject != null)
+        if (Input.GetKeyUp(KeyCode.Comma) || Input.GetKeyUp(KeyCode.P) || Input.GetKeyUp(KeyCode.X))
+        {
+            // if you let go on a holder processor, stop
+            if (interactableObject.GetComponent<HoldProcessor>())
+            {
+                processor.AttemptStopInteract();
+            }
+        }
+
+            /*//dealing with processors
+            if (interactableObject != null)
         {
             //processor
             Processor processor = interactableObject.GetComponent<Processor>();
@@ -169,7 +226,7 @@ public class PickUpScript : MonoBehaviour
                     processor.AttemptStopInteract();
                 }
             }
-        }
+        }*/
      }
 
     private void OnTriggerStay(Collider other)
@@ -193,7 +250,8 @@ public class PickUpScript : MonoBehaviour
 
         Interactable interactable = other.gameObject.GetComponent<Interactable>();
 
-        if (interactableObject == null && interactable != null && !interactable.IsLocked()) {
+        if (interactableObject == null && interactable != null && !interactable.IsLocked()) 
+        {
             interactableObject = other.gameObject;
             interactableObject.GetComponent<Interactable>().OnContact();
         }
@@ -214,7 +272,8 @@ public class PickUpScript : MonoBehaviour
 
 
 
-        if (interactableObject != null && GameObject.ReferenceEquals(interactableObject, other.gameObject)) {        
+        if (interactableObject != null && GameObject.ReferenceEquals(interactableObject, other.gameObject)) 
+        {        
             interactableObject.GetComponent<Interactable>().OnLeave();
             interactableObject = null;
         }
