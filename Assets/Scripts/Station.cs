@@ -77,4 +77,32 @@ public class Station : Interactable
             return null;
         }
     }
+
+    public bool TryDirectStore(Item item) {
+        if (storedItem == null) {
+            
+            storedItem = item.gameObject;
+            // Set kinematic to true
+            storedItem.GetComponent<Rigidbody>().isKinematic = true;
+
+            // Set new position of the stored item
+            if (transform.Find("StorePosition")) {
+                // Assign position of "StorePosition" to storedItem
+                storedItem.transform.position = transform.Find("StorePosition").position;
+            } else {
+                // Assign position based of Station's position
+                storedItem.transform.position = transform.position + new Vector3(0f, 0.5f, 0f);
+            }
+
+            // Set item is locked and cannot be directly interacted with
+            storedItem.GetComponent<Item>().OnDirectStore();
+            
+            // Set item can be picked up via the station
+            canPickup = true;
+
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
