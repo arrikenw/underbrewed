@@ -19,6 +19,7 @@ public class ToggleProcessor : Processor
 
             if (timeUntilComplete == 0.0f)
             {
+                finishedSound.Play();
                 //remove flame etc.
                 if (cookEffects)
                 {
