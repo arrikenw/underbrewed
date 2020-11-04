@@ -14,8 +14,6 @@ public class PickUpScript : MonoBehaviour
     public GameObject tutorialController;
     private int tutorialCount = 3;
 
-    private bool isHolding = false;
-
     private int pollGap = 10; //testing, smoother than getkeydown, which was sometimes quite rough
 
     // Start is called before the first frame update
@@ -48,7 +46,7 @@ public class PickUpScript : MonoBehaviour
         // Picking Up and dropping 
         if (Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.O) || Input.GetKeyDown(KeyCode.Z)) 
         {
-            if (!isHolding && heldItem == null && interactableObject != null)
+            if (heldItem == null && interactableObject != null)
             {
                 // Pickup item directly
                 if (interactableObject.GetComponent<Item>() != null)
@@ -69,16 +67,14 @@ public class PickUpScript : MonoBehaviour
 
                     if (heldItem != null)
                     {
-                        isHolding = true;
                         animator.Play("PickUp");
                         pickUpSound.Play();
                         heldItem.GetComponent<Rigidbody>().useGravity = false;
                     }
                 }
             }
-            else if (isHolding && heldItem != null)
+            else if (heldItem != null)
             {
-                isHolding = false;
                 animator.Play("PutDown");
                 heldItem.GetComponent<Rigidbody>().useGravity = true;
 
@@ -145,7 +141,6 @@ public class PickUpScript : MonoBehaviour
                 heldItem.GetComponent<Item>().OnDrop();
 
                 heldItem = null;
-                isHolding = false;
             }
             
         }
