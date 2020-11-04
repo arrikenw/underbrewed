@@ -115,6 +115,17 @@ public class Station : Interactable
             // Set item can be picked up via the station
             canPickup = true;
 
+            // spaghetti
+            if (this.gameObject.GetComponent<ToggleProcessor>() != null)
+            {
+                Processor processor = this.gameObject.GetComponent<Processor>();
+
+                if (!processor.getInteract())
+                {
+                    processor.AttemptStartInteract();
+                }
+            }
+
             return true;
         } else {
             return false;
