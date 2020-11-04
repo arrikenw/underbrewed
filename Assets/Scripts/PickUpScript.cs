@@ -9,6 +9,7 @@ public class PickUpScript : MonoBehaviour
     private GameObject heldItem = null;
     public Animator animator;
     public AudioSource pickUpSound;
+    public AudioSource putDownSound;
 
     //tutorial
     public GameObject tutorialController;
@@ -77,6 +78,8 @@ public class PickUpScript : MonoBehaviour
             {
                 animator.Play("PutDown");
                 heldItem.GetComponent<Rigidbody>().useGravity = true;
+                putDownSound.Play();
+                //pickUpSound.Play();
 
                 bool directStore = false;
                 // Try storing to a station directly first
@@ -135,6 +138,7 @@ public class PickUpScript : MonoBehaviour
             {
 
                 animator.Play("PutDown");
+                putDownSound.Play();
                 heldItem.GetComponent<Rigidbody>().useGravity = true;
                 heldItem.GetComponent<Rigidbody>().AddForce(transform.forward.normalized * throwMagnitude, ForceMode.Impulse);
                 heldItem.GetComponent<Rigidbody>().AddForce(transform.up.normalized * 1.5f, ForceMode.Impulse);
