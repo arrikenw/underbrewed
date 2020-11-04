@@ -24,6 +24,10 @@ public class UIGameText : MonoBehaviour
         gameTextObject.GetComponent<Image>().color = new Color (0, 0, 0, 0);
     }
 
+    
+
+    /*
+    // removed from final
     public IEnumerator endText(float duration)
     {
         gameTextObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Times_Up");
@@ -33,5 +37,5 @@ public class UIGameText : MonoBehaviour
 
         gameTextObject.GetComponent<Image>().sprite = null;
         gameTextObject.GetComponent<Image>().color = new Color(0, 0, 0, 0);
-    }
+    } */
 }

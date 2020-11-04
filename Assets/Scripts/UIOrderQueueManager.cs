@@ -70,50 +70,9 @@ public class UIOrderQueueManager : MonoBehaviour
     {
         //change potion image depending on targetColor
 
-        /*switch(targetColor)
-        {
-            case (white):
-                potionImage.sprite = Resources.Load<Sprite>("potionWhite");
-                break;
-            case (brown):
-                potionImage.sprite = Resources.Load<Sprite>("potionBrown");
-                break;
-            case (black):
-                potionImage.sprite = Resources.Load<Sprite>("potionBlack");
-                break;
-            case (grey):
-                potionImage.sprite = Resources.Load<Sprite>("potionGrey");
-                break;
-            case (blue):
-                potionImage.sprite = Resources.Load<Sprite>("potionBlue");
-                break;
-            case (yellow):
-                potionImage.sprite = Resources.Load<Sprite>("potionYellow");
-                break;
-            case (magenta):
-                potionImage.sprite = Resources.Load<Sprite>("potionMagenta");
-                break;
-            case (cyan):
-                potionImage.sprite = Resources.Load<Sprite>("potionCyan");
-                break;
-            case (darkGreen):
-                potionImage.sprite = Resources.Load<Sprite>("potionDarkGreen");
-                break;
-            case (purple):
-                potionImage.sprite = Resources.Load<Sprite>("potionPurple");
-                break;
-            case (red):
-                potionImage.sprite = Resources.Load<Sprite>("potionRed");
-                break;
-            case (orange):
-                potionImage.sprite = Resources.Load<Sprite>("potionOrange");
-                break;
-        }*/
-        print("tar: "+targetColor);
-        print("yellow: "+Color.yellow);
-        print(targetColor == new Color(1, 0.922f, 0.016f, 1));
         if (targetColor == new Color(1, 0.922f, 0.016f, 1))
         {
+            // yellow
             potionImage.sprite = Resources.Load<Sprite>("potionYellow");
         } else if (targetColor == Color.red)
         {
@@ -131,12 +90,14 @@ public class UIOrderQueueManager : MonoBehaviour
         } else if (targetColor == Color.white)
         {
             potionImage.sprite = Resources.Load<Sprite>("potionWhite");
-        } else if (targetColor == Color.grey)
+        } else if (targetColor == new Color(0.95f, 0.61f, 0.73f, 1.00f))
         {
-            potionImage.sprite = Resources.Load<Sprite>("potionGrey");
-        } else if (targetColor == Color.black)
+            // pink
+            potionImage.sprite = Resources.Load<Sprite>("potionPink");
+        } else if (targetColor == new Color(0.69f, 0.75f, 0.10f, 1.00f))
         {
-            potionImage.sprite = Resources.Load<Sprite>("potionBlack");
+            // light green
+            potionImage.sprite = Resources.Load<Sprite>("potionLightGreen");
         } else if (targetColor == new Color(0.59f, 0.29f, 0.00f, 1.00f))
         {
             // brown

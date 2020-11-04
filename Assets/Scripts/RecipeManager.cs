@@ -249,8 +249,6 @@ public class RecipeManager : MonoBehaviour
             UIObject.deleteOrderUI(activeOrders[i].Item2);
         }
 
-        StartCoroutine(TextObject.GetComponent<UIGameText>().endText(2.0f));
-
         //camera stuff here
         Camera.GetComponent<animateCamera>().EndAnimation();
 
