@@ -43,7 +43,22 @@ public class ToggleProcessor : Processor
                 // Run .OnStore()
                 storedItem.GetComponent<Item>().OnStore(); // BUGFIX    
 
-                //todo add sound effect or something on completion
+                // advance tutorial
+                if (tutorialController)
+                {
+                    print("attempt advance");
+                    if (station == StationType.Crush)
+                    {
+                        print("attempt advance crush");
+                        tutorialController.GetComponent<TutorialScript>().OnUseCrush();
+                    }
+                    if (station == StationType.Grill)
+                    {
+                        print("attempt advance grill");
+                        tutorialController.GetComponent<TutorialScript>().OnUseBurn();
+                    }
+                }
+
 
                 //stop
                 AttemptStopInteract();

@@ -10,6 +10,10 @@ public class PickUpScript : MonoBehaviour
     public Animator animator;
     public AudioSource pickUpSound;
 
+    //tutorial
+    public GameObject tutorialController;
+    private int tutorialCount = 3;
+
     private int pollGap = 10; //testing, smoother than getkeydown, which was sometimes quite rough
 
     // Start is called before the first frame update
@@ -68,6 +72,16 @@ public class PickUpScript : MonoBehaviour
             heldItem.GetComponent<Rigidbody>().useGravity = true;
             heldItem.GetComponent<Item>().OnDrop();
             heldItem = null;
+
+            //progress to next tutorial message after 3 attempts to grab and drop an object
+            if (tutorialController)
+            {
+                tutorialCount -= 1;
+                if (tutorialCount <= 0)
+                {
+                    tutorialController.GetComponent<TutorialScript>().OnLearnPickup();
+                }
+            }
         }
 
         // Moving
