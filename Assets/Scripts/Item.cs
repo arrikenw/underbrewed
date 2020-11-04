@@ -35,6 +35,7 @@ public class Item : Interactable
     }
 
     public void OnStore() {
+        OnLeave();
         base.Lock();
     }
 
