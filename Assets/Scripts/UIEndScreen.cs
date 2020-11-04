@@ -8,7 +8,7 @@ public class UIEndScreen : MonoBehaviour
 
     public void updateTitleText(bool win)
     {
-        Text titleText = this.gameObject.transform.Find("TitleText").GetComponent<Text>();
+        Text titleText = this.gameObject.transform.Find("TitleTextPanel").Find("TitleText").GetComponent<Text>();
 
         if (win)
         {
@@ -44,7 +44,7 @@ public class UIEndScreen : MonoBehaviour
             grade = "H1";
         }
 
-        this.gameObject.transform.Find("GameStatistics").GetComponent<Text>().text = string.Format("Score: {0}\nGrade: {1}\n\nHigh score: {2}", score, grade, highScore); 
+        this.gameObject.transform.Find("GameStatisticsPanel").Find("GameStatistics").GetComponent<Text>().text = string.Format("Score: {0}\nGrade: {1}\n\nHigh score: {2}", score, grade, highScore); 
     }
     
 }
