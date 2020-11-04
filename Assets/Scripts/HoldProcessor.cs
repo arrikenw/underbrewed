@@ -28,6 +28,7 @@ public class HoldProcessor : Processor
         //convert fully processed item
         if (timeUntilComplete == 0.0f && storedItem != null)
         {
+            finishedSound.Play();
             //create new object
             Tuple<StationType, IngType> lookupData = new Tuple<StationType, IngType>(station, currentIngredient);
             GameObject processedOutput = Instantiate(prefabManager.getFromIngredientMap(lookupData), storedItem.transform.position, storedItem.transform.rotation);

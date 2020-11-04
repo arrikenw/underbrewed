@@ -8,6 +8,7 @@ public class PickUpScript : MonoBehaviour
     private GameObject interactableObject = null;
     private GameObject heldItem = null;
     public Animator animator;
+    public AudioSource pickUpSound;
 
     private int pollGap = 10; //testing, smoother than getkeydown, which was sometimes quite rough
 
@@ -41,6 +42,7 @@ public class PickUpScript : MonoBehaviour
         // Picking Up
             if (Input.GetKeyDown(KeyCode.M) && heldItem == null && interactableObject != null) {
             animator.Play("PickUp");
+            pickUpSound.Play();
             // Pickup item directly
             if (interactableObject.GetComponent<Item>() != null) {
                 heldItem = interactableObject;

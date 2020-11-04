@@ -12,10 +12,15 @@ public class BadEffects : MonoBehaviour
     public GameObject PotionCrate;
     public GameObject BigFire;
 
+    public AudioSource badSound;
+
     public void ApplyRandomEffect()
     {
+
         int effect;
         effect = Random.Range(0, 9);
+
+        badSound.Play();
 
         switch(effect)
         {

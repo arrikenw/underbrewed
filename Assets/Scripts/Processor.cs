@@ -26,6 +26,9 @@ public class Processor : Station
     public Animator animator;
     public GameObject handKnife;
     public GameObject handPestle;
+    public AudioSource soundEffect;
+    public AudioSource finishedSound;
+    
     public enum StationType
     {
         Chop,
@@ -111,6 +114,7 @@ public class Processor : Station
             Destroy(cookEffects);
         }
 
+        soundEffect.Stop();
         animator.Play("EmptyIdle");
         if (station == StationType.Chop)
         {
@@ -162,6 +166,7 @@ public class Processor : Station
         canPickup = false; // Prevents pickup
         locked = true; // Prevents highlighting
 
+        soundEffect.Play();
         if (station == StationType.Chop)
         {
             handKnife.SetActive(true);
