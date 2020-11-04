@@ -354,6 +354,16 @@ PrefabInstance:
       propertyPath: pestle
       value: 
       objectReference: {fileID: 1214670665}
+    - target: {fileID: 67723114300461938, guid: 71ccb19ccddd3ca41964d68e92312557,
+        type: 3}
+      propertyPath: handPestle
+      value: 
+      objectReference: {fileID: 1214670665}
+    - target: {fileID: 67723114300461938, guid: 71ccb19ccddd3ca41964d68e92312557,
+        type: 3}
+      propertyPath: handKnife
+      value: 
+      objectReference: {fileID: 793925317}
     - target: {fileID: 3774243260486419462, guid: 71ccb19ccddd3ca41964d68e92312557,
         type: 3}
       propertyPath: m_UseGravity
@@ -850,7 +860,7 @@ MonoBehaviour:
   BadEventController: {fileID: 1416141095}
   mixColour: {r: 0, g: 0, b: 0, a: 0}
   recipeTree: {fileID: 448707899}
-  dudColour: {r: 0, g: 0, b: 0, a: 1}
+  dudColour: {r: 0.22745098, g: 0.1764706, b: 0.1764706, a: 1}
 --- !u!65 &106024649
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1959,6 +1969,16 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 132196717}
+    - target: {fileID: 1875019773639569487, guid: 39be46173e128e448891608a0f5b7665,
+        type: 3}
+      propertyPath: handPestle
+      value: 
+      objectReference: {fileID: 1214670665}
+    - target: {fileID: 1875019773639569487, guid: 39be46173e128e448891608a0f5b7665,
+        type: 3}
+      propertyPath: handKnife
+      value: 
+      objectReference: {fileID: 793925317}
     - target: {fileID: 7361631530829015419, guid: 39be46173e128e448891608a0f5b7665,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3361,7 +3381,7 @@ MonoBehaviour:
   BadEventController: {fileID: 1416141095}
   mixColour: {r: 0, g: 0, b: 0, a: 0}
   recipeTree: {fileID: 448707899}
-  dudColour: {r: 0, g: 0, b: 0, a: 1}
+  dudColour: {r: 0.22745098, g: 0.1764706, b: 0.1764706, a: 1}
 --- !u!65 &565927194
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36861,7 +36881,7 @@ MonoBehaviour:
   BadEventController: {fileID: 1416141095}
   mixColour: {r: 0, g: 0, b: 0, a: 0}
   recipeTree: {fileID: 448707899}
-  dudColour: {r: 0, g: 0, b: 0, a: 1}
+  dudColour: {r: 0.2264151, g: 0.1762193, b: 0.1762193, a: 1}
 --- !u!65 &2019079333
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -37931,6 +37951,21 @@ PrefabInstance:
       propertyPath: BadEventController
       value: 
       objectReference: {fileID: 1416141095}
+    - target: {fileID: 1826284606207337637, guid: 52ca54299e99be441a7fbbbd34f72485,
+        type: 3}
+      propertyPath: dudColour.r
+      value: 0.22745098
+      objectReference: {fileID: 0}
+    - target: {fileID: 1826284606207337637, guid: 52ca54299e99be441a7fbbbd34f72485,
+        type: 3}
+      propertyPath: dudColour.g
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 1826284606207337637, guid: 52ca54299e99be441a7fbbbd34f72485,
+        type: 3}
+      propertyPath: dudColour.b
+      value: 0.1764706
+      objectReference: {fileID: 0}
     - target: {fileID: 2221116091206736115, guid: 52ca54299e99be441a7fbbbd34f72485,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -38050,6 +38085,16 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 132196717}
+    - target: {fileID: -2823369317141404425, guid: 373c2f993b48f064ab5fdd48f922e03a,
+        type: 3}
+      propertyPath: handPestle
+      value: 
+      objectReference: {fileID: 1214670665}
+    - target: {fileID: -2823369317141404425, guid: 373c2f993b48f064ab5fdd48f922e03a,
+        type: 3}
+      propertyPath: handKnife
+      value: 
+      objectReference: {fileID: 793925317}
     - target: {fileID: 4886192835110648564, guid: 373c2f993b48f064ab5fdd48f922e03a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -38368,10 +38413,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: HandKnife
       objectReference: {fileID: 0}
+    - target: {fileID: 2287938590449283276, guid: 837c1872e4149c748970c2625be03b10,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3243548014863248389, guid: 837c1872e4149c748970c2625be03b10,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3243548014863248389, guid: 837c1872e4149c748970c2625be03b10,
         type: 3}
@@ -38397,6 +38447,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3243548015464409480, guid: 837c1872e4149c748970c2625be03b10,
+        type: 3}
+      propertyPath: speed
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 3243548015813143493, guid: 837c1872e4149c748970c2625be03b10,
         type: 3}
@@ -38684,6 +38739,16 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 132196717}
+    - target: {fileID: 1875019773639569487, guid: 39be46173e128e448891608a0f5b7665,
+        type: 3}
+      propertyPath: handPestle
+      value: 
+      objectReference: {fileID: 1214670665}
+    - target: {fileID: 1875019773639569487, guid: 39be46173e128e448891608a0f5b7665,
+        type: 3}
+      propertyPath: handKnife
+      value: 
+      objectReference: {fileID: 793925317}
     - target: {fileID: 7361631530829015419, guid: 39be46173e128e448891608a0f5b7665,
         type: 3}
       propertyPath: m_LocalPosition.x
