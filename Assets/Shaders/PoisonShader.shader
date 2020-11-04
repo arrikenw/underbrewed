@@ -40,7 +40,7 @@ Shader "Unlit/PoisonShader"
 	{
 		v2f o;
 		o.color = v.color;
-		v.vertex = float4(0.05 * sin(v.vertex.x + 2 * sin(_Time.z)) + v.vertex.x, 0.05 * sin(v.vertex.y + 3 * cos(_Time.z)) + v.vertex.y, v.vertex.z, 1);
+		v.vertex = float4(0.05 * sin(v.vertex.x + 1.5 * sin(_Time.z)) + v.vertex.x, 0.05 * sin(v.vertex.y + 2.5 * cos(_Time.z)) + v.vertex.y, v.vertex.z, 1);
 
 		//default transformations
 		o.vertex = UnityObjectToClipPos(v.vertex);
