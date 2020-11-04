@@ -68,6 +68,8 @@ public class RecipeManager : MonoBehaviour
     //handles the processing of completed potions
     public void ProcessDropoff(Potion potion)
     {
+        print("currently delivered potion color:");
+        print(potion.potionColour);
         for (int i = 0; i < activeOrders.Count; i++)
         {
             //check if an active order has destination colour that matches potion
