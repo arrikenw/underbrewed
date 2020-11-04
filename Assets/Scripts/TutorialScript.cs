@@ -26,6 +26,7 @@ public class TutorialScript : MonoBehaviour
 
 
     private TutorialState curState = TutorialState.Welcome;
+    public AudioSource soundEffect;
     public GameObject UIObject;
     public GameObject MRCAULDRON;
 
@@ -76,6 +77,7 @@ public class TutorialScript : MonoBehaviour
                 Destroy(UIObject.transform.GetChild(0).gameObject);
             }
         }
+        soundEffect.Play();
     }
 
 

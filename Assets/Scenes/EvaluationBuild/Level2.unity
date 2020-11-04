@@ -5548,7 +5548,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTutorial: 0
   tutorialManager: {fileID: 0}
-  levelNumber: 0
+  levelNumber: 1
   Camera: {fileID: 1694912889}
   MainUIObject: {fileID: 511914885}
   EndLevelObject: {fileID: 1789917254}
