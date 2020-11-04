@@ -16,6 +16,10 @@ public class UIGameText : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(waitingTime);
 
+        gameTextObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Set");
+
+        yield return new WaitForSecondsRealtime(waitingTime);
+
         gameTextObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Go");
 
         yield return new WaitForSecondsRealtime(waitingTime);
