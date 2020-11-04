@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4287280154907554379}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.05, y: 0, z: -0.006}
+  m_LocalPosition: {x: -0.05, y: -0.15, z: 0.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8874106545926193012}
@@ -292,8 +292,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.56619364, y: 0.47137502, z: 0.49201387}
-  m_Center: {x: -0.039388735, y: -0.023459667, z: 0.019157875}
+  m_Size: {x: 0.63908654, y: 0.60571957, z: 0.63668597}
+  m_Center: {x: -0.03981749, y: 0.078782536, z: 0.011992802}
 --- !u!114 &67723114300461938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,8 +308,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   storedItem: {fileID: 0}
   animator: {fileID: 0}
-  knife: {fileID: 0}
-  pestle: {fileID: 0}
+  handKnife: {fileID: 0}
+  handPestle: {fileID: 0}
   psysPrefab: {fileID: 0}
   station: 2
   cookEffectsPrefab: {fileID: 0}
@@ -324,5 +324,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.56619364, y: 0.46018684, z: 0.49201387}
-  m_Center: {x: -0.039388735, y: -0.029053763, z: 0.019157875}
+  m_Size: {x: 0.56619364, y: 0.43055826, z: 0.56556076}
+  m_Center: {x: -0.039388735, y: -0.014239475, z: 0.011253108}

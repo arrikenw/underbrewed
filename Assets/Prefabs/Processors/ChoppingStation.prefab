@@ -158,8 +158,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.51574755, z: 0.7826106}
-  m_Center: {x: 0, y: 0.24212623, z: 0.025896937}
+  m_Size: {x: 1, y: 0.12591743, z: 0.7826106}
+  m_Center: {x: 0, y: 0.04721117, z: 0.025896937}
 --- !u!54 &8794603018788942582
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -229,8 +229,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   storedItem: {fileID: 0}
   animator: {fileID: 0}
-  knife: {fileID: 0}
-  pestle: {fileID: 0}
+  handKnife: {fileID: 0}
+  handPestle: {fileID: 0}
   psysPrefab: {fileID: 0}
   station: 0
   cookEffectsPrefab: {fileID: 0}
@@ -245,8 +245,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.51574755, z: 0.7826106}
-  m_Center: {x: 0, y: 0.24212623, z: 0.025896937}
+  m_Size: {x: 1.1016288, y: 0.6002632, z: 0.84431607}
+  m_Center: {x: -0.017765164, y: 0.28438404, z: 0.02385822}
 --- !u!1001 &6853635656374944009
 PrefabInstance:
   m_ObjectHideFlags: 0
