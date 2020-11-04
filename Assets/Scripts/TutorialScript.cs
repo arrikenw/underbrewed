@@ -14,6 +14,7 @@ public class TutorialScript : MonoBehaviour
         UseCrush,
         UseBurn,
         UseChop,
+        LearnOrder,
         MakeGood,
         UsePotionGood,
         UsePortal,
@@ -35,7 +36,7 @@ public class TutorialScript : MonoBehaviour
             UIObject.SetActive(false);
             MRCAULDRON.SetActive(false);
         }
-        if (Input.GetKeyDown("q"))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             if (curState == TutorialState.Welcome) {
                 OnWelcome();
@@ -51,6 +52,16 @@ public class TutorialScript : MonoBehaviour
                 OnLearnStation();
                 return;
             }
+            if (curState == TutorialState.LearnThrowing)
+            {
+                OnLearnThrowing();
+                return;
+            }
+            if (curState == TutorialState.LearnOrder)
+            {
+                OnLearnOrder();
+                return;
+            }
         }
     }
 
@@ -62,8 +73,8 @@ public class TutorialScript : MonoBehaviour
             if (UIObject.transform.childCount >= 2)
             {
                 UIObject.transform.GetChild(1).gameObject.SetActive(true);
+                Destroy(UIObject.transform.GetChild(0).gameObject);
             }
-            Destroy(UIObject.transform.GetChild(0).gameObject);
         }
     }
 
@@ -95,6 +106,16 @@ public class TutorialScript : MonoBehaviour
     public void OnLearnPickup()  //implemented
     {
         if (curState == TutorialState.LearnPickUp)
+        {
+            curState = TutorialState.LearnThrowing;
+            nextMessage();
+            print("moving to station");
+        }
+    }
+
+    public void OnLearnThrowing()  //implemented
+    {
+        if (curState == TutorialState.LearnThrowing)
         {
             curState = TutorialState.LearnStation;
             nextMessage();
@@ -137,6 +158,16 @@ public class TutorialScript : MonoBehaviour
     public void OnUseChop() //implemented
     {
         if (curState == TutorialState.UseChop)
+        {
+            curState = TutorialState.LearnOrder;
+            nextMessage();
+            print("moving to learn order");
+        }
+    }
+
+    public void OnLearnOrder() //press space
+    {
+        if (curState == TutorialState.LearnOrder)
         {
             curState = TutorialState.MakeGood;
             nextMessage();

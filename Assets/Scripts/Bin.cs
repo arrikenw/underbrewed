@@ -19,10 +19,10 @@ public class Bin : Station
     private void Dump() {
         if (base.storedItem != null) {
             Destroy(base.storedItem);
-        }
-        if (tutorialController)
-        {
-            tutorialController.GetComponent<TutorialScript>().OnUseBin();
+            if (tutorialController)
+            {
+                tutorialController.GetComponent<TutorialScript>().OnUseBin();
+            }
         }
     }
 }

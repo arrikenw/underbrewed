@@ -12,6 +12,9 @@ public class BadEffects : MonoBehaviour
     public GameObject PotionCrate;
     public GameObject BigFire;
 
+    [SerializeField]
+    public bool isTutorial = false;
+
     public AudioSource badSound;
 
     public void ApplyRandomEffect()
@@ -21,6 +24,18 @@ public class BadEffects : MonoBehaviour
         effect = Random.Range(0, 9);
 
         badSound.Play();
+
+        //showcase a range of effects during the tutorial
+        if (isTutorial)
+        {
+            EyeCrate.GetComponent<ItemExplosion>().Explode();
+            PotionCrate.GetComponent<ItemExplosion>().Explode();
+            BigFire.GetComponent<BigFireScript>().StartFire();
+            CheeseCrate.GetComponent<ItemExplosion>().Explode();
+            FrogCrate.GetComponent<ItemExplosion>().Explode();
+            Camera.GetComponent<PostProcessScript>().ApplyEffect();
+            return;
+        }
 
         switch(effect)
         {
