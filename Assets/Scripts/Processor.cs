@@ -115,16 +115,18 @@ public class Processor : Station
         }
 
         soundEffect.Stop();
-        animator.Play("EmptyIdle");
         if (station == StationType.Chop)
         {
+            animator.Play("EmptyIdle");
             handKnife.SetActive(false);
             transform.Find("Knife").gameObject.SetActive(true);
         }
         else if (station == StationType.Crush)
         {
-            handPestle.SetActive(false);
-            transform.Find("Pestle").gameObject.SetActive(true);
+            animator.Play("PestelToIdle");
+            // handPestle.SetActive(false);
+            // transform.Find("Pestle").gameObject.SetActive(true);
+
         }
     }
 
@@ -175,9 +177,9 @@ public class Processor : Station
         }
         else if (station == StationType.Crush)
         {
-            handPestle.SetActive(true);
-            animator.Play("PoundAnim");
-            transform.Find("Pestle").gameObject.SetActive(false);
+            // handPestle.SetActive(true);
+            animator.Play("PestelToPound");
+            // transform.Find("Pestle").gameObject.SetActive(false);
         }
 
         

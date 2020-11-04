@@ -41,10 +41,11 @@ public class PickUpScript : MonoBehaviour
     private void UpdatePickup() {
         // Picking Up
             if (Input.GetKeyDown(KeyCode.M) && heldItem == null && interactableObject != null) {
-            animator.Play("PickUp");
-            pickUpSound.Play();
+           
             // Pickup item directly
             if (interactableObject.GetComponent<Item>() != null) {
+                animator.Play("PickUp");
+                pickUpSound.Play();
                 heldItem = interactableObject;
                 heldItem.GetComponent<Rigidbody>().useGravity = false;
 
@@ -54,6 +55,8 @@ public class PickUpScript : MonoBehaviour
 
             // Pickup item from station
             else if (interactableObject.GetComponent<Station>() != null) {
+                animator.Play("PickUp");
+                pickUpSound.Play();
                 heldItem = interactableObject.GetComponent<Station>().TryPickup();
 
                 if (heldItem != null) {

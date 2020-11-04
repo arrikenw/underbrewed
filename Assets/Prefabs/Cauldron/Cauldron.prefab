@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 1826284606207337637}
   - component: {fileID: 2051535946427917150}
   - component: {fileID: 8396348728484567584}
+  - component: {fileID: 4540129576405280922}
   m_Layer: 0
   m_Name: Cauldron
   m_TagString: Untagged
@@ -33,7 +34,7 @@ Transform:
   m_GameObject: {fileID: 1556325714103910985}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: 1.97, y: 0.563, z: 3.99}
-  m_LocalScale: {x: 50, y: 50, z: 50}
+  m_LocalScale: {x: 40, y: 40, z: 40}
   m_Children:
   - {fileID: 1826284606272645158}
   - {fileID: 4758183725629679526}
@@ -114,7 +115,7 @@ BoxCollider:
   m_GameObject: {fileID: 1556325714103910985}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.02, y: 0.02, z: 0.014913044}
   m_Center: {x: 0.00016009294, y: -0.00006113945, z: 0.0074790404}
@@ -129,8 +130,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.023451041, y: 0.023451049, z: 0.015662408}
-  m_Center: {x: 0.0001600933, y: -0.00006113887, z: 0.007853725}
+  m_Size: {x: 0.024678558, y: 0.025966035, z: 0.01871646}
+  m_Center: {x: 0.0006944269, y: 0.000025947393, z: 0.009380752}
 --- !u!114 &1826284606207337637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,7 +148,7 @@ MonoBehaviour:
   BadEventController: {fileID: 0}
   mixColour: {r: 0, g: 0, b: 0, a: 0}
   recipeTree: {fileID: 0}
-  dudColour: {r: 0, g: 0, b: 0, a: 0}
+  dudColour: {r: 0.2735849, g: 0.24132253, b: 0.24132253, a: 1}
 --- !u!114 &2051535946427917150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,6 +175,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BubblingSFX: {fileID: 6214445194037598820}
+--- !u!136 &4540129576405280922
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556325714103910985}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.013
+  m_Height: 0.023451047
+  m_Direction: 1
+  m_Center: {x: 0.00016009295, y: -0.00006113945, z: 0.007479041}
 --- !u!1001 &984233653698035767
 PrefabInstance:
   m_ObjectHideFlags: 0
