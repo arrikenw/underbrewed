@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 2989588352564926294}
   - component: {fileID: 1052102393792553884}
   - component: {fileID: 1826284606207337641}
-  - component: {fileID: 1826284606207337646}
   - component: {fileID: 1826284606207337636}
   - component: {fileID: 1826284606207337637}
   - component: {fileID: 2051535946427917150}
   - component: {fileID: 8396348728484567584}
+  - component: {fileID: 4540129576405280922}
   m_Layer: 0
   m_Name: Cauldron
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_GameObject: {fileID: 1556325714103910985}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: 1.97, y: 0.563, z: 3.99}
-  m_LocalScale: {x: 50, y: 50, z: 50}
+  m_LocalScale: {x: 40, y: 40, z: 40}
   m_Children:
   - {fileID: 1826284606272645158}
   - {fileID: 4758183725629679526}
@@ -105,19 +105,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &1826284606207337646
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1556325714103910985}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.02, y: 0.02, z: 0.014913044}
-  m_Center: {x: 0.00016009294, y: -0.00006113945, z: 0.0074790404}
 --- !u!65 &1826284606207337636
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -129,8 +116,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.023451041, y: 0.023451049, z: 0.015662408}
-  m_Center: {x: 0.0001600933, y: -0.00006113887, z: 0.007853725}
+  m_Size: {x: 0.027108394, y: 0.029342532, z: 0.01871646}
+  m_Center: {x: 0.00075634115, y: -0.00012085429, z: 0.009380754}
 --- !u!114 &1826284606207337637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,10 +131,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   storedItem: {fileID: 0}
+  isTutorial: 0
+  tutorialController: {fileID: 0}
   BadEventController: {fileID: 0}
   mixColour: {r: 0, g: 0, b: 0, a: 0}
   recipeTree: {fileID: 0}
-  dudColour: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &2051535946427917150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,6 +162,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BubblingSFX: {fileID: 6214445194037598820}
+--- !u!136 &4540129576405280922
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556325714103910985}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.012
+  m_Height: 0.023451047
+  m_Direction: 1
+  m_Center: {x: 0.00016009295, y: -0.00006113945, z: 0.007479041}
 --- !u!1001 &984233653698035767
 PrefabInstance:
   m_ObjectHideFlags: 0

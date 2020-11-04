@@ -247,6 +247,8 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7421565670558108730, guid: 04b84eac5e5110e45a19548cc23ec833, type: 3}
     - {fileID: 767393721307821924, guid: 04b84eac5e5110e45a19548cc23ec833, type: 3}
+    - {fileID: 6219700559733326650, guid: 04b84eac5e5110e45a19548cc23ec833, type: 3}
+    - {fileID: 7421565670558108724, guid: 04b84eac5e5110e45a19548cc23ec833, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 04b84eac5e5110e45a19548cc23ec833, type: 3}
 --- !u!4 &7783825791592952413 stripped
 Transform:
@@ -329,6 +331,8 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7421565670558108730, guid: 04b84eac5e5110e45a19548cc23ec833, type: 3}
     - {fileID: 767393721307821924, guid: 04b84eac5e5110e45a19548cc23ec833, type: 3}
+    - {fileID: 6219700559733326650, guid: 04b84eac5e5110e45a19548cc23ec833, type: 3}
+    - {fileID: 7421565670558108724, guid: 04b84eac5e5110e45a19548cc23ec833, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 04b84eac5e5110e45a19548cc23ec833, type: 3}
 --- !u!4 &7783825791566993464 stripped
 Transform:
@@ -411,6 +415,8 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7421565670558108730, guid: 04b84eac5e5110e45a19548cc23ec833, type: 3}
     - {fileID: 767393721307821924, guid: 04b84eac5e5110e45a19548cc23ec833, type: 3}
+    - {fileID: 6219700559733326650, guid: 04b84eac5e5110e45a19548cc23ec833, type: 3}
+    - {fileID: 7421565670558108724, guid: 04b84eac5e5110e45a19548cc23ec833, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 04b84eac5e5110e45a19548cc23ec833, type: 3}
 --- !u!4 &7783825791335635387 stripped
 Transform:
@@ -493,6 +499,8 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7421565670558108730, guid: 04b84eac5e5110e45a19548cc23ec833, type: 3}
     - {fileID: 767393721307821924, guid: 04b84eac5e5110e45a19548cc23ec833, type: 3}
+    - {fileID: 6219700559733326650, guid: 04b84eac5e5110e45a19548cc23ec833, type: 3}
+    - {fileID: 7421565670558108724, guid: 04b84eac5e5110e45a19548cc23ec833, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 04b84eac5e5110e45a19548cc23ec833, type: 3}
 --- !u!4 &7783825791363202830 stripped
 Transform:
