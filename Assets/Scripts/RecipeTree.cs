@@ -6,8 +6,8 @@ public class RecipeTree : MonoBehaviour
 {
     private RecipeNode root = new RecipeNode(IngType.Null, Color.clear);
 
-    Color stageOneColor = new Color(0.69f,0.75f,0.10f,1.00f); // Acid Green
-    Color stageTwoColor = new Color(0.95f,0.61f,0.73f,1.00f); // Amaranth Pink
+    Color stageOneColor = new Color(0.83f,0.83f,0.83f,1.00f); // Light Grey
+    Color stageTwoColor = new Color(0.41f,0.41f,0.41f,1.00f); // Dim Grey
 
     Color yellow = new Color(1, 0.922f, 0.016f, 1); //there was an issue with Color.yellow
     Color red = Color.red; //
@@ -15,9 +15,9 @@ public class RecipeTree : MonoBehaviour
     Color cyan = Color.cyan; //
     Color magenta = Color.magenta; //
     Color white = Color.white; //
-    Color grey = Color.grey; //
-    Color black = Color.black; //
 
+    Color pink = new Color(0.95f,0.61f,0.73f,1.00f); // Amaranth Pink
+    Color lightGreen = new Color(0.69f,0.75f,0.10f,1.00f); // Acid Green
     Color brown = new Color(0.59f,0.29f,0.00f,1.00f); //
     Color purple = new Color(0.35f,0.27f,0.70f,1.00f);
     Color darkGreen = new Color(0.11f,0.30f,0.24f,1.00f); //
@@ -36,14 +36,14 @@ public class RecipeTree : MonoBehaviour
         RecipeNode BMeltedBone = new RecipeNode(IngType.MeltedBone, brown);
         root.AddChild(BMeltedBone);
 
-        // C: crushed bone -> frog -> cheese: black
-        RecipeNode CCheese = new RecipeNode(IngType.Cheese, black);
+        // C: crushed bone -> frog -> cheese: lightGreen
+        RecipeNode CCheese = new RecipeNode(IngType.Cheese, lightGreen);
         RecipeNode CFrog = new RecipeNode(IngType.Frog, stageTwoColor, CCheese);
         RecipeNode CCrushedBone = new RecipeNode(IngType.CrushedBone, stageOneColor, CFrog);
         root.AddChild(CCrushedBone);
 
-        // D: flower -> cooked frog -> melted bone: grey
-        RecipeNode DMeltedBone = new RecipeNode(IngType.MeltedBone, grey);
+        // D: flower -> cooked frog -> melted bone: pink
+        RecipeNode DMeltedBone = new RecipeNode(IngType.MeltedBone, pink);
         RecipeNode DCookedFrog = new RecipeNode(IngType.CookedFrog, stageTwoColor, DMeltedBone);
         RecipeNode DFlower = new RecipeNode(IngType.Flower, stageOneColor, DCookedFrog);
         root.AddChild(DFlower);

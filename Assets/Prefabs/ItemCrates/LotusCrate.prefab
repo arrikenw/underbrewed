@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7579496040547594116}
   - component: {fileID: 7579496040645867784}
   - component: {fileID: 1582325533384868246}
+  - component: {fileID: 1502673663532636171}
   m_Layer: 0
   m_Name: LotusCrate
   m_TagString: Untagged
@@ -135,6 +136,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9d543efd67c1142b7b82a1a6b487a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &1502673663532636171
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7579496040545455908}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2034892, y: 0.6968992, z: 1.1301229}
+  m_Center: {x: -0.02004467, y: 0.3484496, z: 0.0022066757}
 --- !u!1001 &575161929467920568
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -21,7 +21,7 @@ public class Cauldron : Station
     [SerializeField] private GameObject recipeTree = null;
 
     private bool dud = false;
-    [SerializeField] private Color dudColour;
+    private Color dudColour = Color.black;
 
     protected override void Start()
     {

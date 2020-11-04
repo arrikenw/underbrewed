@@ -41,7 +41,7 @@ public class ToggleProcessor : Processor
                 storedItem.GetComponent<Rigidbody>().isKinematic = true;
 
                 // Run .OnStore()
-                storedItem.GetComponent<Item>().OnStore(); // BUGFIX    
+                storedItem.GetComponent<Item>().OnProcessStore();
 
                 // advance tutorial
                 if (tutorialController)

@@ -70,7 +70,17 @@ public class PickUpScript : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.M) && heldItem != null) {
             animator.Play("PutDown");
             heldItem.GetComponent<Rigidbody>().useGravity = true;
-            heldItem.GetComponent<Item>().OnDrop();
+
+            bool directStore = false;
+            // Try storing to a station directly first
+            if (interactableObject != null && interactableObject.GetComponent<Station>()) {
+                directStore = interactableObject.GetComponent<Station>().TryDirectStore(heldItem.GetComponent<Item>());
+            } 
+            
+            if (!directStore) {
+                heldItem.GetComponent<Item>().OnDrop();
+            }
+
             heldItem = null;
 
             //progress to next tutorial message after 3 attempts to grab and drop an object

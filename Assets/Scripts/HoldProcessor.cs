@@ -43,7 +43,7 @@ public class HoldProcessor : Processor
             storedItem.GetComponent<Rigidbody>().isKinematic = true;
 
             // Run .OnStore()
-            storedItem.GetComponent<Item>().OnStore(); // BUGFIX
+            storedItem.GetComponent<Item>().OnProcessStore();
 
             //tutorial changes
             // advance tutorial
