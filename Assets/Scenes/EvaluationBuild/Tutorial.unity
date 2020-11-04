@@ -14765,6 +14765,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MRCAULDRON
       objectReference: {fileID: 0}
+    - target: {fileID: 2160199648493124728, guid: 4ae568391555da942a59af275af064ce,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7252856930647911511, guid: 4ae568391555da942a59af275af064ce,
         type: 3}
       propertyPath: m_UseGravity
