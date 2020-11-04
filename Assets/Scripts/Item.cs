@@ -38,6 +38,11 @@ public class Item : Interactable
         base.Lock();
     }
 
+    public void OnDirectStore() {
+        held = false;
+        base.Lock();
+    }
+
     public bool IsHeld() {
         return held;
     }
