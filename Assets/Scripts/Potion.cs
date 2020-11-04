@@ -11,6 +11,8 @@ public class Potion : Item
     private GameObject potionLiquid;
     public Material opaqueLiquidMaterial;
 
+    public GameObject tutorialController;
+
     private LinkedList<IngType> ingredients = new LinkedList<IngType>();
 
     void Awake() {
@@ -60,6 +62,23 @@ public class Potion : Item
 
         potionLiquid.GetComponent<Renderer>().material = opaqueLiquidMaterial; // Temp fix
         potionLiquid.GetComponent<Renderer>().material.SetColor("_Color", potionColour);
+
+        //tutorial integration
+        //kinda expensive and is called during main game as well, but only gets called when we fill potion so OK maybe? X D D DDDDDDD
+        GameObject tutorialController = GameObject.FindWithTag("TutorialController");
+        print(tutorialController);
+        print(colour);
+        print(Color.black);
+        if (tutorialController)
+        {
+            if (colour == Color.black)
+            {
+                tutorialController.GetComponent<TutorialScript>().OnUsePotionDud();
+            }else
+            {
+                tutorialController.GetComponent<TutorialScript>().OnUsePotionGood();
+            }
+        }
     }
 
     public void SetPotionIngredients(LinkedList<IngType> ingredients) {

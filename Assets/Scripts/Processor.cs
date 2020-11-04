@@ -36,6 +36,9 @@ public class Processor : Station
         Crush//etc.
     }
 
+    // tutorial
+    public GameObject tutorialController;
+
     // cooking logic
     protected bool interacting = false;
     protected float timeUntilComplete = 0;
@@ -124,7 +127,7 @@ public class Processor : Station
         else if (station == StationType.Crush)
         {
             handPestle.SetActive(false);
-            transform.Find("Pestle").gameObject.SetActive(true);
+            transform.Find("pestle").gameObject.SetActive(true);
         }
     }
 
@@ -177,7 +180,7 @@ public class Processor : Station
         {
             handPestle.SetActive(true);
             animator.Play("PoundAnim");
-            transform.Find("Pestle").gameObject.SetActive(false);
+            transform.Find("pestle").gameObject.SetActive(false);
         }
 
         

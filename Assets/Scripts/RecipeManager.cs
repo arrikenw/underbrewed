@@ -6,6 +6,10 @@ using System;
 public class RecipeManager : MonoBehaviour
 {
 
+    //tutorial config
+    public bool isTutorial;
+    public GameObject tutorialManager;
+
     //level number
     //VERY IMPORTANT FOR STORING HIGHSCORES
     public int levelNumber;
@@ -82,10 +86,22 @@ public class RecipeManager : MonoBehaviour
                 //delete order from active list
                 activeOrders.RemoveAt(i);
 
+
+                //if in tutorial
+                if (isTutorial)
+                {
+                    tutorialManager.GetComponent<TutorialScript>().OnUsePortal();
+                }
+
+
                 //run endgame logic if the last request was completed and there are no more queued orders
                 if (activeOrders.Count == 0 && queuedOrders.Count == 0)
                 {
-                    endLevel();
+                    //don't end level if we are in the tutorial
+                    if (!isTutorial)
+                    {
+                        endLevel();
+                    }
                 }
                 return;
             }
