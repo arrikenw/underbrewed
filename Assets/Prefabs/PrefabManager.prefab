@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bonePrefab: {fileID: 5789837929922418172, guid: dad9f9563618eba4581732492d27949a,
     type: 3}
-  frogPrefab: {fileID: 1319328261704842971, guid: 4f4cb856f68ddf04d94e7eb49428e878,
+  frogPrefab: {fileID: 9021964973401448161, guid: 0c75f7742f0ab7d4c8a471a6603a821f,
     type: 3}
   flowerPrefab: {fileID: 3440437755074052630, guid: ded7c688defd27840b96ab0fbcce6f70,
     type: 3}
@@ -57,7 +57,7 @@ MonoBehaviour:
     type: 3}
   charredFlowerPrefab: {fileID: 7056990759249634979, guid: 6488f4656dce00c47ad12e483724de78,
     type: 3}
-  cookedFrogPrefab: {fileID: 3237384372113296511, guid: f9684a04e101a674b8454fd56cba04a4,
+  cookedFrogPrefab: {fileID: 3284478410719786980, guid: deebd5c7f779b104f8516297bb88946b,
     type: 3}
   crushedBonePrefab: {fileID: 3895104135938541330, guid: 94e05ffcbcbe4aa489785238073611bc,
     type: 3}
