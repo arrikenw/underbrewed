@@ -6,6 +6,7 @@ using UnityEngine;
 public class PostProcessScript : MonoBehaviour
 {
     public Material material;
+    public AudioSource screenEffectSound;
 
     private bool applyAffect = false;
     private float affectCounter = 0.0f;
@@ -25,6 +26,7 @@ public class PostProcessScript : MonoBehaviour
     {
         applyAffect = true;
         affectCounter = 10.0f;
+        screenEffectSound.Play();
     }
 
     void Update()
@@ -32,6 +34,7 @@ public class PostProcessScript : MonoBehaviour
         if (affectCounter <= 0.0f)
         {
             applyAffect = false;
+            screenEffectSound.Stop();
         }
         else
         {

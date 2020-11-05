@@ -43,7 +43,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a69f5e4299a637b49a51f2bbbd2fd691, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.158
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -455,6 +455,7 @@ MonoBehaviour:
   handPestle: {fileID: 0}
   soundEffect: {fileID: 9072249776450899131}
   finishedSound: {fileID: 4495800744115139568}
+  tutorialController: {fileID: 0}
   psysPrefab: {fileID: 0}
   station: 2
   cookEffectsPrefab: {fileID: 0}
@@ -520,7 +521,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: af37800e43ac07c47b6acddfef1275c5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.155
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -11,6 +11,8 @@ public class Cauldron : Station
 
     public GameObject BadEventController;
 
+    public AudioSource potionCollection;
+
     private GameObject cauldronLiquid;
     private GameObject bubbles;
     private GameObject bubbleBurst;
@@ -118,9 +120,11 @@ public class Cauldron : Station
         Potion potion = other.GetComponent<Potion>();
 
         // Case: Potion
-        if (!mixColour.Equals(baseColour) && potion != null) {
+        if (!mixColour.Equals(baseColour) && potion && !potion.HasColor()) {
             potion.SetPotionColor(mixColour);
             potion.SetPotionIngredients(ingredients);
+
+            potionCollection.Play();
 
             mixColour = baseColour;
             ingredients.Clear();
