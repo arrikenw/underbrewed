@@ -9,6 +9,7 @@ TagManager:
   - ShowOnEnd
   - HideOnEnd
   - TutorialController
+  - Music
   layers:
   - Default
   - TransparentFX

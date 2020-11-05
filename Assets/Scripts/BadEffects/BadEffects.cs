@@ -41,7 +41,10 @@ public class BadEffects : MonoBehaviour
         {
             case 0:
                 // invert player movement
-                Player.GetComponent<Player>().InvertMovement();
+                //Player.GetComponent<Player>().InvertMovement();
+                // add screen shader
+                print("screen effect");
+                Camera.GetComponent<PostProcessScript>().ApplyEffect();
                 break;
             case 1:
                 // add screen shader

@@ -11,6 +11,8 @@ public class Potion : Item
     private GameObject potionLiquid;
     public Material opaqueLiquidMaterial;
 
+    private bool hasColour = false;
+
     public GameObject tutorialController;
 
     private LinkedList<IngType> ingredients = new LinkedList<IngType>();
@@ -59,6 +61,7 @@ public class Potion : Item
 
     public void SetPotionColor(Color colour) {
         potionColour = colour;
+        hasColour = true;
 
         potionLiquid.GetComponent<Renderer>().material = opaqueLiquidMaterial; // Temp fix
         potionLiquid.GetComponent<Renderer>().material.SetColor("_Color", potionColour);
@@ -108,5 +111,10 @@ public class Potion : Item
 
         GetComponent<MeshRenderer>().enabled = false;
         base.OnLeave();
+    }
+
+    public bool HasColor()
+    {
+        return hasColour;
     }
 }
