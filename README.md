@@ -70,6 +70,17 @@ dot dot dot
 dot dot dot
 
 ## Individual Contributions
+
+### Arriken Worsley
+dot dot dot
+
+### Joel Kenna
+dot dot dot
+
+### Simon Tran
+dot dot dot
+
+### Iris Li
 dot dot dot
 	
 ## Technologies
