@@ -35,6 +35,9 @@ dot dot dot
 ## Graphics and Camera Motion
 
 ### Graphics
+Unity’s default lighting shaders are applied across most objects to provide realistic lighting. 
+Custom fragment shaders are used to add interesting graphical effects, for example by creating a swirl effect for portals and providing colouring for fire particles.
+After the initial render is complete, a custom fragment shader is applied to the initial render texture to provide post-processing effects and generate the final render texture.
 
 ### Camera Motion
 #### Third Person Static Camera
