@@ -108,7 +108,37 @@ dot dot dot
 dot dot dot
 
 ### Observational Method
-dot dot dot
+## Methodology
+We used the “Think Aloud” observational method. Participants were invited to individually live-stream their playthrough of the tutorial and first stage to the examiners through a discord channel. Examiners remained muted during the playthrough and did not communicate with the participants. Each playthroughs was observed in real time by the examiners and was recorded for future reference and evaluation. 
+
+Participant demographic information
+Age	Gender	Occupation	Self-estimate of hours of video games played per week
+X	Male	Doctor of Optometry student	16
+X	Male	3rd year undergraduate student	10
+X	Male	2nd year undergraduate student	X
+x	Male	1st year undergraduate student	40
+x	Male	Unemployed	30
+
+## Strengths and weaknesses of methodology
+The breadth of this demographic research was quite limited – all participants were either university students or planning on undertaking tertiary studies. Furthermore, all participants were male and sat within a similar age range. However, as our game is quite simple and lacks a story, we expect these factors to have little bearing on how the game is played or perceived.
+
+Additionally, all participants had some degree of familiarity with video games. This familiarity could cause our evaluation of our game to be biased; for example, users may have played similar games before and could use their prior knowledge to supplement sections of the game where goals or mechanics were not communicated clearly. On the other hand, this familiarly meant that we could easily identify where our game failed to meet the expectations of a typical “gamer”.
+Another area of weakness of our querying method was that the lack of a dialogue between the participant and examiners meant that feedback was mainly focused on the initial stumbling blocks users faced –in a more open method (TODO GET NAME OR SOMETHING), users could be moved forward, allowing for feedback to be provided across the entire game. However, as our users were given less assistance, their feedback couldn’t extend beyond their points of blockage. As our tutorial was quite lacklustre when we performed our observations, we received limited feedback on later stages of the game. 
+
+
+
+
+
+Feedback gathered
+•	Weak tutorial – did not require users to show competency before they could continue
+•	Bad recipe effects were confusing to users (did not know what was causing them)
+•	Easy to accidentally skip messages in tutorial
+•	Levels were far too difficult, with most users scoring between 10 – 30 out of a possible score of 130. 
+•	Mistakenly thought togglable stations were meant to be held
+•	Many users attempted to “break the game” by repeatedly activating item generators
+•	Throwing was under-utilised, with many users seeming to not be aware of the feature
+•	TODO etc. 
+
 
 ## Feedback Changes
 dot dot dot
