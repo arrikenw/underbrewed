@@ -43,6 +43,7 @@ Throughout a level, orders will continually arrive in the top left of the screen
 To create a potion, players must place ingredients into cauldrons in the order they appear on the recipe. If an ingredient has an icon beneath it, the player must first process the ingredient in a corresponding station before adding it to a cauldron. 
 To deliver a completed potion, players must fill a bottle with liquid from the cauldron they have brewed the potion in, then must drop or throw the bottled potion through the delivery portal. Each successful delivery will increase the players’ score, which is displayed in the lower right of the screen. The time left until the level ends is displayed below the score.
 If a player places ingredient into the cauldron in a way that does not match any valid potions, the game will trigger a negative effect (eg. apply a distorted screen shader, sends ingredients flying across the stage).
+
 <b> We recommend that new players play our tutorial level before attempting stages, as provides an in-depth overview of the game’s controls and mechanics. </b>
 
 ## Graphics and Camera Motion
