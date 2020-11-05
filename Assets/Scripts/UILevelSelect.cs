@@ -21,6 +21,16 @@ public class UILevelSelect : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("Level1");
     }
 
+    public void PlayLevel2()
+    {
+       //UnityEngine.SceneManagement.SceneManager.LoadScene("Level2");
+    }
+
+    public void PlayLevel3()
+    {
+        //UnityEngine.SceneManagement.SceneManager.LoadScene("Level3");
+    }
+
     public void DisplayHighScore()
     {
         Transform levels = this.gameObject.transform.Find("Levels").transform;
