@@ -7293,7 +7293,7 @@ MonoBehaviour:
   maxOrderGap: 0
   minOrderPrepTime: 0
   maxOrderPrepTime: 0
-  countdownDuration: 4
+  countdownDuration: 5
   Success: {fileID: 278342740}
   Failure: {fileID: 1901594827}
 --- !u!4 &1376545081
