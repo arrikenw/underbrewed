@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BadEffects : MonoBehaviour
 {
-    public GameObject Player;
     public GameObject Camera;
     public GameObject FrogCrate;
     public GameObject CheeseCrate;
@@ -21,7 +20,7 @@ public class BadEffects : MonoBehaviour
     {
 
         int effect;
-        effect = Random.Range(0, 9);
+        effect = Random.Range(0, 7);
 
         badSound.Play();
 
@@ -40,34 +39,22 @@ public class BadEffects : MonoBehaviour
         switch(effect)
         {
             case 0:
-                // invert player movement
-                //Player.GetComponent<Player>().InvertMovement();
-                // add screen shader
-                print("screen effect");
-                Camera.GetComponent<PostProcessScript>().ApplyEffect();
-                break;
-            case 1:
-                // add screen shader
-                print("screen effect");
-                Camera.GetComponent<PostProcessScript>().ApplyEffect();
-                break;
-            case 2:
                 print("frog explode");
                 FrogCrate.GetComponent<ItemExplosion>().Explode();
                 break;
-            case 3:
+            case 1:
                 print("cheese explode");
                 CheeseCrate.GetComponent<ItemExplosion>().Explode();
                 break;
-            case 4:
+            case 2:
                 print("big fire");
                 BigFire.GetComponent<BigFireScript>().StartFire();
                 break;
-            case 5:
+            case 3:
                 print("potion explode");
                 PotionCrate.GetComponent<ItemExplosion>().Explode();
                 break;
-            case 6:
+            case 4:
                 print("eyeball explode");
                 EyeCrate.GetComponent<ItemExplosion>().Explode();
                 break;
