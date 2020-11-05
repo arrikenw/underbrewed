@@ -178,16 +178,6 @@ Additionally, all participants had some degree of familiarity with video games. 
 Another area of weakness of our querying method was that the lack of a dialogue between the participant and examiners meant that feedback was mainly focused on the initial stumbling blocks users faced –in a more open method (TODO GET NAME OR SOMETHING), users could be moved forward, allowing for feedback to be provided across the entire game. However, as our users were given less assistance, their feedback couldn’t extend beyond their points of blockage. As our tutorial was quite lacklustre when we performed our observations, we received limited feedback on later stages of the game. 
 
 
-## Feedback gathered
-- Weak tutorial – did not require users to show competency before they could continue
-- Bad recipe effects were confusing to users (did not know what was causing them)
-- Easy to accidentally skip messages in tutorial
-- Levels were far too difficult, with most users scoring between 10 – 30 out of a possible score of 130. 
-- Mistakenly thought togglable stations were meant to be held
-- Many users attempted to “break the game” by repeatedly activating item generators
-- Throwing was under-utilised, with many users seeming to not be aware of the feature
-- TODO etc. 
-
 ### Gameplay
 * Overall, participants stated that they found the game enjoyable and relatively bug-free, with instructions clearly stating the objective of the game, and controls working as expected
 * While this was mentioned in the tutorial, the majority of participants were not aware that ingredients had to be added to the cauldron in a particular order to be considered “correct”. Additionally, they were unaware that certain special effects (such as ingredients exploding) were the result of adding “incorrect” ingredients to the cauldron
