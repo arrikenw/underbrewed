@@ -53,18 +53,41 @@ If a player places an ingredient into the cauldron that does not match any valid
 
 ## Graphics and Camera Motion
 
-### Graphics
-* Unity’s default lighting shaders are applied across most objects to provide realistic lighting. 
-* Custom fragment shaders are used to add interesting graphical effects, for example by creating a swirl effect for portals and providing colouring for fire particles.
-* After the initial render is complete, a custom fragment shader is applied to the initial render texture to provide post-processing effects and generate the final render texture.
-
 ### Camera Motion
 #### Third Person Static Camera
-The game is primarily played with a static camera. The camera is placed high above the level, similar to a bird's eye view, allowing the player to see everything as the play they game. This camera position was chosen as it made the entire level viewable for the player while not issues of traditional cameras, such as occlusion. (image needed)
+The game is primarily played with a static camera. The camera is placed high above the level, similar to a bird's eye view, allowing the player to see everything as the play they game. This camera position was chosen as it made the entire level viewable for the player while not issues of traditional cameras, such as occlusion.
+<p align="center">
+  <img src="Images/StaticCamera.png"  width="600" >
+</p>
+
 
 #### Action Replay Camera
-When a level finishes, an "action replay" occurs, with the camera moving down towards the player to produce the end game screen. The camera's movements will always to the opposite quarter of the level that the player is on in order to avoid occlusion from the level's walls. (image needed)
+When a level finishes, an "action replay" occurs, with the camera moving down towards the player to produce the end game screen. The camera's movements will always to the opposite quarter of the level that the player is on in order to avoid occlusion from the level's walls.
+<p align="center">
+  <img src="Images/ActionReplay.gif"  width="600" >
+</p>
 
+### Graphics
+#### Lighting and effects
+* Unity’s default lighting shaders are applied across most objects to provide realistic lighting. 
+* Custom fragment shaders are used to add interesting graphical effects, for example by creating a swirl effect for portals and providing colouring for fire particles.
+
+#### Post-processing
+* After the initial render is complete, a custom fragment shader is applied to the initial render texture to provide post-processing effects and generate the final render texture, with this post-processing is handled through Unity's ```OnRenderImage()``` functionality. We have provided a sample of our code for applying post-processing shaders below:
+
+```
+    void OnRenderImage(RenderTexture source, RenderTexture destination)
+    {
+        if (applyAffect)
+        {
+            Graphics.Blit(source, destination, material);
+        }
+        else
+        {
+            Graphics.Blit(source, destination);
+        }
+    }
+```
 
 ## Shaders and Particle Systems
 
@@ -179,14 +202,14 @@ The interview consisted of open-ended questions surrounding the gameplay, graphi
 | Age | Gender    | Occupation                     | Self-estimate of hours of video games played per week |
 |-----|--------   |--------------------------------|-------------------------------------------------------|
 | 20   | Male     | 3rd year undergraduate student | 10                                                    |
-| 20   | Female   | 3rd year undergraduate student | xx                                                    |
+| 20   | Female   | 3rd year undergraduate student | 2                                                     |
 | 20   | Female   | 2nd year undergraduate student | 14                                                    |
 | X   | Male   | 1st year undergraduate student | 40                                                       |
 | X   | Male   | Unemployed                     | 30                                                     |
 
 #### Strengths and weaknesses of methodology
 
-TO DO: comment on demographic
+The demographic of participants was quite narrow, with all participants being between ages 18 and 20, and undertaking tertiary education. While levels of gaming experience varied between participants, all participants had some familiarity with gaming and reported playing, on average, between 2 and 14 hours of games per week.
 
 This querying method allowed participants to experience the game at their own pace and without influence from others.
 
@@ -272,7 +295,7 @@ Another area of weakness of our querying method was that the lack of a dialogue 
 
 ## Resource References
 
-
+TO DO: Statement here
 
 ## Individual Contributions
 
@@ -288,46 +311,21 @@ dot dot dot
 ### Iris Li
 dot dot dot
 	
+	
 ## References
-
-Texture for fire particle system: https://80.lv/articles/breakdown-magic-fire-effect-in-unity/ 
-
-Decoration Models and textures: https://assetstore.unity.com/packages/3d/environments/fantasy/mega-fantasy-props-pack-87811
-
-
-### Models
-
-https://poly.google.com/user/4aEd8rQgKu2
-
-https://poly.google.com/user/6WNlPxHAo7o
-
-https://poly.google.com/user/a4-Oxy9dNsF
-
-
-### Icons for scroll and ingredients
-
-https://clipartmax.com/ 
-
-https://clipart-library.com/ 
-
-https://www.clipartkey.com/
-
-
-### Icons for potions
-
-Created for this project by a friend, Ben Czapla
 
 ### Logic for highscores
 
 Logic for storing highscores locally was retrieved from:
 
 https://answers.unity.com/questions/644911/how-do-i-store-highscore-locally-c-simple.html
-    
-### Other useful resources
 
-https://www.sitepoint.com/adding-pause-main-menu-and-game-over-screens-in-unity/
+Pause menu and end screen: https://www.sitepoint.com/adding-pause-main-menu-and-game-over-screens-in-unity/
 
-https://www.youtube.com/watch?v=CJ8FKjYtrT4 (buttons)
+Fire particle system: https://80.lv/articles/breakdown-magic-fire-effect-in-unity/ 
+
+Button animation: https://www.youtube.com/watch?v=CJ8FKjYtrT4
+
 
 ### Sound effects
 
@@ -361,7 +359,8 @@ Chopping sound: https://www.youtube.com/watch?v=BrDkL5Y7kCs
 
 Game trailer music: https://www.youtube.com/watch?v=v4pTPigj0Gk
 
-### 3D models and textures
+
+### Textures, materials, and 3D models
 
 Flower model: https://free3d.com/3d-model/hinduismlotus-flower-v1--463468.html
 
@@ -374,6 +373,8 @@ Cheese model: https://www.cgtrader.com/items/258230/download-page
 Eye model: https://www.cgtrader.com/items/44082/download-page
 
 Bone model: https://poly.google.com/view/9KOTx3n2lfm
+
+Book model: https://poly.google.com/user/6WNlPxHAo7o
 
 Potion model: https://poly.google.com/view/dOREefQfDQu
 
@@ -391,17 +392,38 @@ Squashed eye model: https://www.turbosquid.com/3d-models/3d-rectangle-flow-splas
 
 Chopped cheese model: https://www.turbosquid.com/3d-models/free-max-mode/1033609
 
+Crate and candle models, wall texture: https://assetstore.unity.com/packages/3d/environments/fantasy/mega-fantasy-props-pack-87811
+
 Crushed rock model: https://www.turbosquid.com/3d-models/rock-pile-obj-free/813686
 
 Chopping board model: https://www.turbosquid.com/3d-models/free-chopping-board-3d-model/538266
 
 Frog model: https://www.turbosquid.com/FullPreview/Index.cfm/ID/753743
 
+Fire particle system texture: https://80.lv/articles/breakdown-magic-fire-effect-in-unity/ 
+
 Fire station model: https://www.turbosquid.com/3d-models/pit-firepit-3ds/701220
+
+Interior decorations: https://poly.google.com/user/4aEd8rQgKu2
+
+Ladder model: https://poly.google.com/user/a4-Oxy9dNsF
 
 Witch hat: https://free3d.com/3d-model/witchhat-v4--231135.html
 
 Wood texture: https://www.pinterest.com.au/pin/14496030030351650/
+
+
+### Sprites
+
+Ingredients: https://clipartmax.com/ 
+
+Potions: Benjamin Czapla (student work)
+
+Scroll: https://www.clipartkey.com/
+
+Stations: https://clipart-library.com/ 
+
+
 
 
 ## Technologies
