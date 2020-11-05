@@ -257,7 +257,9 @@ https://www.clipartkey.com/
 Icons for potions:
 Created for this project by a friend, Ben Czapla
 
-
+Logic for storing highscores locally was retrieved from:
+https://answers.unity.com/questions/644911/how-do-i-store-highscore-locally-c-simple.html
+    
 Other useful resources:
 https://www.sitepoint.com/adding-pause-main-menu-and-game-over-screens-in-unity/
 https://www.youtube.com/watch?v=CJ8FKjYtrT4 (buttons)
