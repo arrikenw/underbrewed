@@ -33,12 +33,13 @@ Underbrewed uses a static camera and third person perspective, and is designed t
 ## How to Play
 ### Basic controls
 - Movement: WASD and arrow keys are both supported
-- Pick up item: Press ‘m’ while facing an item
-- Drop item: Press ‘m’ again while holding an item
+- Pick up item: Press ‘M’ while facing an item
+- Drop item: Press ‘M’ again while holding an item
 - Throw item: Press ‘.’ While holding an item
 - Interact with station: Press ‘,’ while facing the station
 - Fill potion from cauldron: Press ‘,’ while holding a bottle and facing a cauldron
 - Open pause menu: Press ‘Esc’
+- The optional key sets "O", "P", "[" and "Z", "X", "C" can be used instead of the default "M", ",", "."
 
 ### Gameplay
 Throughout a level, orders will continually arrive in the top left of the screen. Each order contains a potion, the ingredients needed to brew the potion, and a timer that indicates how long the player will have to complete the order. 
@@ -72,7 +73,21 @@ When a level finishes, an "action replay" occurs, with the camera moving down to
 * A custom fragment shader is used to provide interesting colouring for our flame effects.
 
 #### Post-processing
-* After the initial render is complete, a custom fragment shader is applied to the initial render texture to provide post-processing effects and generate the final render texture.
+* After the initial render is complete, a custom fragment shader is applied to the initial render texture to provide post-processing effects and generate the final render texture, with this post-processing is handled through Unity's ```OnRenderImage()``` functionality. We have provided a sample of our code for applying post-processing shaders below:
+
+```C#
+    void OnRenderImage(RenderTexture source, RenderTexture destination)
+    {
+        if (applyAffect)
+        {
+            Graphics.Blit(source, destination, material);
+        }
+        else
+        {
+            Graphics.Blit(source, destination);
+        }
+    }
+```
 
 
 ## Shaders and Particle Systems
@@ -239,7 +254,7 @@ Another area of weakness of our querying method was that the lack of a dialogue 
 		* We were unable to remove these challenges with the time given, but would like to have implemented these changes
 		* Players can restart the tutorial at any time by using the pause menu
 <p align="center">
-	<img src="Images/TutorialImproved.PNG"  width="300" >
+	<img src="Images/TutorialImproved.PNG"  width="600" >
 	
 	Pictured: The reworked tutorial now prompts the user to complete certain tasks in order to advance to the next step.
 </p>
@@ -248,6 +263,11 @@ Another area of weakness of our querying method was that the lack of a dialogue 
 * Some participants felt confused by the different cauldron colours, as one of the potions was very similar in colour to the colour used to represent an “incorrect” potion
 	* Potion colours were changed so that a black potion represented an “incorrect” potion
 	* Grey colours were used to represent different stages of the potion in the cauldron, and bright colours were used to represent the final potions
+<p align="center">
+	<img src="Images/Cauldrons.PNG"  width="600" >
+	Pictured: A cauldron with one ingredient added and a black "incorrect" potion.
+</p>
+
 * In general, participants felt there was a lack of feedback when playing the main level, and were unsure if they had submitted a “correct” potion. Participants suggested using sound effects or visual cues to indicate to indicate if players made a mistake or submitted a “correct” potion
 	* Additional sound effects were implemented, such as when an ingredient is finished processing at a station, when an incorrect ingredient is added to a cauldron, and when a potion is delivered into the portal.
 * Players were required to hold down a key in order to carry an item, however many participants stated that this felt awkward
@@ -298,7 +318,7 @@ dot dot dot
 
 ### Logic for highscores
 
-Logic for storing highscores locally was retrieved from:
+Logic for storing highscores locally was retrieved from the following url:
 
 https://answers.unity.com/questions/644911/how-do-i-store-highscore-locally-c-simple.html
 
