@@ -7,9 +7,9 @@
 * [Introduction](#introduction)
 * [How to Play](#how-to-play)
 * [Graphics and Camera Motion](#using-images)
-* [Shaders](#shaders)
+* [Shaders](#shaders-and-particle-systems)
 * [Evaluation Methods](#evaluation-methods)
-* [Feedback Changes](#feedback-changes)
+* [Feedback Changes](#evaluation-and-changes-implemented-changes)
 * [Resource References](#resource-references)
 * [Individual Contributions](#individual-contributions)
 
@@ -55,18 +55,18 @@ If a player places ingredient into the cauldron in a way that does not match any
 
 ### Camera Motion
 #### Third Person Static Camera
-The game is primarily played with a static camera. The camera is placed high above the level, similar to a bird's eye view, allowing the player to see everything as the play the game. This camera position was chosen as it made the entire level viewable for the player while not issues of traditional cameras, such as occlusion. (image needed)
+The game is primarily played with a static camera. The camera is placed high above the level, similar to a bird's eye view, allowing the player to see everything as the play they game. This camera position was chosen as it made the entire level viewable for the player while not issues of traditional cameras, such as occlusion. (image needed)
 
 #### Action Replay Camera
-When a level finishes an "action replay" occurs, with the camera moving down towards the player to produce the end game screen. The camera's movements will always to the opposite quarter of the level that the player is on in order to avoid occlusion from the level's walls. (image needed)
+When a level finishes, an "action replay" occurs, with the camera moving down towards the player to produce the end game screen. The camera's movements will always to the opposite quarter of the level that the player is on in order to avoid occlusion from the level's walls. (image needed)
 
 
-## Shaders
+## Shaders and Particle Systems
 
 ### Potion Liquid Shader
 The potion liquid shader, produces a swirling liquid, with the liquid slowly falling towards the center. This shader was used for the cauldron liquid, the portal center, as well as the backgrounds for the menus. The shader was produced with help from an online tutorial found [here](http://enemyhideout.com/2016/08/creating-a-whirlpool-shader/). 
 <p align="center">
-  <img src="Images/CauldronLiquid.gif"  width="300" >
+  <img src="Images/CauldronLiquid.gif"  width="500" >
 </p>
 
 The first part of the shader is the function rotate, which rotates a point around the center by `rotationAmount` radians. This was done by coverting the initial cartesian point into a polar co-ordinates, increasing the angle by `rotationAmount` radians, and returning the point converted back into a cartesian point.
@@ -121,7 +121,7 @@ return fragColor;
 TODO GENERAL FLAVOUR DESC
 
 <p align="center">
-  <img src="Images/ScreenEffect.gif"  width="300" >
+  <img src="Images/ScreenEffect.gif"  width="500" >
 </p>
 
 This shader has two main aspects, a screen shake and distortion effect and a colouring effect. 
@@ -151,7 +151,7 @@ A greenish colouration is applied to the screen by retrieving the texture colour
 ### Fire particle system
 
 <p align="center">
-  <img src="Gifs/FireParticleSystem.gif"  width="300" >
+  <img src="Gifs/FireParticleSystem.gif"  width="500" >
 </p>
 
 The fire of the cauldrons and burning stations were created using Unity’s Particle System API. Each fire consisted of three particle systems of different sizes and colours. Using multiple particle systems helped to create the different “layers” of the fire (red, orange, and yellow).
@@ -213,11 +213,16 @@ Another area of weakness of our querying method was that the lack of a dialogue 
 ### Gameplay
 * Overall, participants stated that they found the game enjoyable and relatively bug-free, with instructions clearly stating the objective of the game, and controls working as expected
 * While this was mentioned in the tutorial, the majority of participants were not aware that ingredients had to be added to the cauldron in a particular order to be considered “correct”. Additionally, they were unaware that certain special effects (such as ingredients exploding) were the result of adding “incorrect” ingredients to the cauldron
-	* The tutorial was reworked so that tips were less dense, and the instructions were more clear
+	* The tutorial was reworked so that tips were clearer and more precise
 	* An additional stage was added to the tutorial, in which players are instructed to make an “incorrect” potion to observe the special effects
 * Some participants felt confused by the different cauldron colours, as one of the potions was very similar in colour to the colour used to represent an “incorrect” potion
 	* Potion colours were changed so that a black potion represented an “incorrect” potion
 	* Grey colours were used to represent different stages of the potion in the cauldron, and bright colours were used to represent the final potions
+<p align="center">
+	<img src="Images/Cauldrons.PNG"  width="500" >
+	
+	Pictured: A potion with one ingredient added and a black "incorrect" potion.
+</p>
 * In general, participants felt there was a lack of feedback when playing the main level, and were unsure if they had submitted a “correct” potion. Participants suggested using sound effects or visual cues to indicate to indicate if players made a mistake or submitted a “correct” potion
 	* Additional sound effects were implemented, such as when an ingredient is finished processing at a station, when an incorrect ingredient is added to a cauldron, and when a potion is delivered into the portal.
 * Players were required to hold down a key in order to carry an item, however many participants stated that this felt awkward
@@ -243,9 +248,11 @@ Another area of weakness of our querying method was that the lack of a dialogue 
 		* We were unable to remove these challenges with the time given, but would like to have implemented these changes
 		* Players can restart the tutorial at any time by using the pause menu
 <p align="center">
-	<img src="Images/TutorialImproved.png"  width="300" >
+	<img src="Images/TutorialImproved.PNG"  width="500" >
+	
 	Pictured: The reworked tutorial now prompts the user to complete certain tasks in order to advance to the next step.
 </p>
+
 * Many participants also mentioned that they felt the game would be more enjoyable with more music and sound effects, both in game, and for menus and buttons
 	* Additonal sound effects were implemented for different stations and actions
 	* Music was also added to the main menu and level select scenes, and sound effects were added to UI buttons
@@ -261,34 +268,6 @@ Another area of weakness of our querying method was that the lack of a dialogue 
 
 ## Resource References
 
-Texture for fire particle system:
-https://80.lv/articles/breakdown-magic-fire-effect-in-unity/ 
-
-
-Models and textures: https://assetstore.unity.com/packages/3d/environments/fantasy/mega-fantasy-props-pack-87811
-
-
-Models: 
-https://poly.google.com/user/4aEd8rQgKu2
-https://poly.google.com/user/6WNlPxHAo7o
-https://poly.google.com/user/a4-Oxy9dNsF
-
-
-Icons for scroll and ingredients:
-https://clipartmax.com/ 
-https://clipart-library.com/ 
-https://www.clipartkey.com/
-
-
-Icons for potions:
-Created for this project by a friend, Ben Czapla
-
-Logic for storing highscores locally was retrieved from:
-https://answers.unity.com/questions/644911/how-do-i-store-highscore-locally-c-simple.html
-    
-Other useful resources:
-https://www.sitepoint.com/adding-pause-main-menu-and-game-over-screens-in-unity/
-https://www.youtube.com/watch?v=CJ8FKjYtrT4 (buttons)
 
 
 ## Individual Contributions
@@ -305,6 +284,122 @@ dot dot dot
 ### Iris Li
 dot dot dot
 	
+## References
+
+Texture for fire particle system: https://80.lv/articles/breakdown-magic-fire-effect-in-unity/ 
+
+Decoration Models and textures: https://assetstore.unity.com/packages/3d/environments/fantasy/mega-fantasy-props-pack-87811
+
+
+### Models
+
+https://poly.google.com/user/4aEd8rQgKu2
+
+https://poly.google.com/user/6WNlPxHAo7o
+
+https://poly.google.com/user/a4-Oxy9dNsF
+
+
+### Icons for scroll and ingredients
+
+https://clipartmax.com/ 
+
+https://clipart-library.com/ 
+
+https://www.clipartkey.com/
+
+
+### Icons for potions
+
+Created for this project by a friend, Ben Czapla
+
+### Logic for highscores
+
+Logic for storing highscores locally was retrieved from:
+
+https://answers.unity.com/questions/644911/how-do-i-store-highscore-locally-c-simple.html
+    
+### Other useful resources
+
+https://www.sitepoint.com/adding-pause-main-menu-and-game-over-screens-in-unity/
+
+https://www.youtube.com/watch?v=CJ8FKjYtrT4 (buttons)
+
+### Sound effects
+
+Game background music: https://www.youtube.com/watch?v=iX6ex5fYT7o
+
+Screen effect sound: https://www.youtube.com/watch?v=vJz54_quoow
+
+Menu background music: https://www.youtube.com/watch?v=rsEeiIrJy4E
+
+Pick up sound: https://freesound.org/people/pogmothoin/sounds/401722/
+
+Bad effect sound: https://freesound.org/people/GabrielAraujo/sounds/242503/
+
+Missed order sound: https://freesound.org/people/themusicalnomad/sounds/253886/
+
+Tutorial complete sound: https://freesound.org/people/deleted_user_877451/sounds/76426/
+
+Menu buttons sound: https://freesound.org/people/Christopherderp/sounds/342200/
+
+Order complete sound: https://freesound.org/search/?q=bwg2020+correct
+
+Cauldron bubbling: https://freesound.org/people/lonemonk/sounds/108746/
+
+Station finish sound: https://www.youtube.com/watch?v=QDKBDduuJ_0
+
+Level dings: https://www.youtube.com/watch?v=R6F0ysJIeHQ
+
+Mortar and pestle sound: https://www.youtube.com/watch?v=PJo5yIPhFSM
+
+Chopping sound: https://www.youtube.com/watch?v=BrDkL5Y7kCs
+
+Game trailer music: https://www.youtube.com/watch?v=v4pTPigj0Gk
+
+### 3D models and textures
+
+Flower model: https://free3d.com/3d-model/hinduismlotus-flower-v1--463468.html
+
+Outside decoration: https://assetstore.unity.com/packages/3d/environments/fantasy/free-cartoon-halloween-pack-mobile-vr-45896
+
+Outside decoration: https://assetstore.unity.com/packages/3d/environments/fantasy/halloween-cemetery-set-19125
+
+Cheese model: https://www.cgtrader.com/items/258230/download-page
+
+Eye model: https://www.cgtrader.com/items/44082/download-page
+
+Bone model: https://poly.google.com/view/9KOTx3n2lfm
+
+Potion model: https://poly.google.com/view/dOREefQfDQu
+
+Knife model: https://poly.google.com/view/0X5xcxjszwI
+
+Cauldron design reference: https://www.youtube.com/watch?v=x-6cvNjUuAI
+
+Bubbles design reference: https://www.youtube.com/watch?v=ajsA6vWBhKI
+
+Pick up script design reference: https://www.youtube.com/watch?v=90OiysC4j5Y
+
+Bin model: https://www.turbosquid.com/3d-models/free-c4d-mode-m%C3%BClleimer-bin/483718
+ 
+Squashed eye model: https://www.turbosquid.com/3d-models/3d-rectangle-flow-splash-model-1213683
+
+Chopped cheese model: https://www.turbosquid.com/3d-models/free-max-mode/1033609
+
+Crushed rock model: https://www.turbosquid.com/3d-models/rock-pile-obj-free/813686
+
+Chopping board model: https://www.turbosquid.com/3d-models/free-chopping-board-3d-model/538266
+
+Frog model: https://www.turbosquid.com/FullPreview/Index.cfm/ID/753743
+
+Fire station model: https://www.turbosquid.com/3d-models/pit-firepit-3ds/701220
+
+Witch hat: https://free3d.com/3d-model/witchhat-v4--231135.html
+
+Wood texture: https://www.pinterest.com.au/pin/14496030030351650/
+
+
 ## Technologies
 Project is created with:
 * Unity 2019.4.3f1
