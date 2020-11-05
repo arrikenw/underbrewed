@@ -104,6 +104,12 @@ return fragColor;
 
 ## Screen Distortion Shader
 
+TODO GENERAL FLAVOUR DESC
+
+<p align="center">
+  <img src="Images/ScreenEffect.gif"  width="300" >
+</p>
+
 This shader has two main aspects, a screen shake and distortion effect and a colouring effect. 
 
 The core of the code used to create the screen motion effects is presented below:
