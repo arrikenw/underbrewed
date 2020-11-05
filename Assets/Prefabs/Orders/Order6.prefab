@@ -46,7 +46,7 @@ MonoBehaviour:
   ingredients:
   - {fileID: -1098018702203749012, guid: 50156b33173788b44aafc8e35c44c4c3, type: 3}
   - {fileID: 3449548494723915528, guid: df5d06604f75782498469c459422d106, type: 3}
-  - {fileID: 4306295705495691509, guid: ded7c688defd27840b96ab0fbcce6f70, type: 3}
+  - {fileID: 5938876564312115847, guid: ded7c688defd27840b96ab0fbcce6f70, type: 3}
   optimalPrepTime: 15
   targetColour: {r: 1, g: 0, b: 1, a: 1}
   score: 10
