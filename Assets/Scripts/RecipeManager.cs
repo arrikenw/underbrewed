@@ -57,6 +57,7 @@ public class RecipeManager : MonoBehaviour
     //scoring and statistics
     private int nOrdersCompleted;
     private int score;
+    private int maxScore;
 
     //sounds
     public AudioSource Success;
@@ -272,7 +273,8 @@ public class RecipeManager : MonoBehaviour
 
         // Store and display stats / score
         //calculate completion %
-        float completionPercent = 100*(((float)nOrdersCompleted) / totalLevelOrders);
+        maxScore = 10 * totalLevelOrders;
+        float completionPercent = 100*(((float)score) / maxScore);
 
         //store highscore if greater than current highscore
         StoreHighscore(score);
@@ -281,7 +283,7 @@ public class RecipeManager : MonoBehaviour
         EndLevelObject.GetComponent<UIEndScreen>().updateGameStatistics(completionPercent, score, PlayerPrefs.GetInt("highscore"+levelNumber, 0));
 
         //end game stats / retry stats
-        if (completionPercent >= 0.8f)
+        if (completionPercent >= 50.0f)
         {
             EndLevelObject.GetComponent<UIEndScreen>().updateTitleText(true);
             
