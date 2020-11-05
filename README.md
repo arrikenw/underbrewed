@@ -100,18 +100,34 @@ return fragColor;
 ```
 
 ## Screen Distortion Shader
-dot dot dot
+
+This shader is used to create a disorienting effect when a player incorrectly brews a potion. There are two core aspects of the shader, a screen transformation and a colour tinting. 
+
+### Transformations
+The internal trig functions are used to create a screen shake effect. The choice of using a sin function on time for one axis and a cos function on time on the other axis was to ensure this screen shake took the form of a spiral around the screen’s centre rather than as a slide along a line (which would occur if the same trig functions were used on both axes). The external sin function is used to create a stretching / warping effect across the entire image, producing a mild sense of disorientation. To ensure the final image largely remains centred and intelligible, the overall effect is scaled significantly to ensure that it remains dwarfed by the original state.  
+```Shaderlab
+X = (0.05 * sin(v.vertex.x + 1.5 * sin(_Time.z)) + v.vertex.x
+Y = (0.05 * sin(v.vertex.y + 2.5 * cos(_Time.z)) + v.vertex.y
+```
+
+### Colours
+A greenish colouration is applied to the screen by retrieving the texture colour of the final image and then mixing it with a static green colour and a green colour whose strength varies with sin of the current time, resulting in a green hued image with an intensity that varies over time. The formula for this colouration is as follows: 
+
+```Shaderlab
+final_colour = 0.6*texture_colour + 0.2*sin_green_colour + 0.2*flat_green_colour
+```
+
 
 ## Evaluation Methods
 
-### Querying Method
+## Querying Method
 dot dot dot
 
-### Observational Method
-## Methodology
+## Observational Method
+### Methodology
 We used the “Think Aloud” observational method. Participants were invited to individually live-stream their playthrough of the tutorial and first stage to the examiners through a discord channel. Examiners remained muted during the playthrough and did not communicate with the participants. Each playthroughs was observed in real time by the examiners and was recorded for future reference and evaluation. 
 
-## Participant demographic information
+### Participant demographic information
 | Age | Gender | Occupation                     | Self-estimate of hours of video games played per week |
 |-----|--------|--------------------------------|-------------------------------------------------------|
 | X   | Male   | Doctor of Optometry student    | 16                                                    |
@@ -121,14 +137,14 @@ We used the “Think Aloud” observational method. Participants were invited to
 | X   | Male   | Unemployed                     | 30                                                    |
 
 
-## Strengths and weaknesses of methodology
+### Strengths and weaknesses of methodology
 The breadth of this demographic research was quite limited – all participants were either university students or planning on undertaking tertiary studies. Furthermore, all participants were male and sat within a similar age range. However, as our game is quite simple and lacks a story, we expect these factors to have little bearing on how the game is played or perceived.
 
 Additionally, all participants had some degree of familiarity with video games. This familiarity could cause our evaluation of our game to be biased; for example, users may have played similar games before and could use their prior knowledge to supplement sections of the game where goals or mechanics were not communicated clearly. On the other hand, this familiarly meant that we could easily identify where our game failed to meet the expectations of a typical “gamer”.
 Another area of weakness of our querying method was that the lack of a dialogue between the participant and examiners meant that feedback was mainly focused on the initial stumbling blocks users faced –in a more open method (TODO GET NAME OR SOMETHING), users could be moved forward, allowing for feedback to be provided across the entire game. However, as our users were given less assistance, their feedback couldn’t extend beyond their points of blockage. As our tutorial was quite lacklustre when we performed our observations, we received limited feedback on later stages of the game. 
 
 
-## Feedback gathered
+### Feedback gathered
 - Weak tutorial – did not require users to show competency before they could continue
 - Bad recipe effects were confusing to users (did not know what was causing them)
 - Easy to accidentally skip messages in tutorial
