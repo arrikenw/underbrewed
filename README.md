@@ -242,6 +242,10 @@ Another area of weakness of our querying method was that the lack of a dialogue 
 	* Participants felt hindered by the need to always press the spacebar to continue to the next tip, and the inability to navigate back to a previous tip
 		* We were unable to remove these challenges with the time given, but would like to have implemented these changes
 		* Players can restart the tutorial at any time by using the pause menu
+<p align="center">
+	<img src="Images/TutorialImproved.png"  width="300" >
+	Pictured: The reworked tutorial now prompts the user to complete certain tasks in order to advance to the next step.
+</p>
 * Many participants also mentioned that they felt the game would be more enjoyable with more music and sound effects, both in game, and for menus and buttons
 	* Additonal sound effects were implemented for different stations and actions
 	* Music was also added to the main menu and level select scenes, and sound effects were added to UI buttons
