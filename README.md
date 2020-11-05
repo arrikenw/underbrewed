@@ -56,10 +56,16 @@ If a player places an ingredient into the cauldron that does not match any valid
 
 ### Camera Motion
 #### Third Person Static Camera
-The game is primarily played with a static camera. The camera is placed high above the level, similar to a bird's eye view, allowing the player to see everything as the play they game. This camera position was chosen as it made the entire level viewable for the player while not issues of traditional cameras, such as occlusion. (image needed)
+The game is primarily played with a static camera. The camera is placed high above the level, similar to a bird's eye view, allowing the player to see everything as the play they game. This camera position was chosen as it made the entire level viewable for the player while avoiding the issues of traditional cameras, such as occlusion.
+<p align="center">
+  <img src="Images/StaticCamera.png"  width="600" >
+</p>
 
 #### Action Replay Camera
-When a level finishes, an "action replay" occurs, with the camera moving down towards the player to produce the end game screen. The camera's movements will always to the opposite quarter of the level that the player is on in order to avoid occlusion from the level's walls. (image needed)
+When a level finishes, an "action replay" occurs, with the camera moving down towards the player and focusing on them to produce the end game screen. The camera will always approach from the opposite quarter of the level to the player in order to avoid occlusion from the level's walls.
+<p align="center">
+  <img src="Images/ActionReplay.gif"  width="600" >
+</p>
 
 ### Graphics Pipeline
 #### Geometry shaders
