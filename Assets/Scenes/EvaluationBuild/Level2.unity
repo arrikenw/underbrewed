@@ -8865,6 +8865,11 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 0.0000002456122
       objectReference: {fileID: 0}
+    - target: {fileID: 81916347514496042, guid: eb882e058ab2b0243ad75607aa3f7890,
+        type: 3}
+      propertyPath: recipeManager
+      value: 
+      objectReference: {fileID: 1376545079}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb882e058ab2b0243ad75607aa3f7890, type: 3}
 --- !u!1 &1922975870
