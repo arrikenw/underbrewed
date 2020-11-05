@@ -69,10 +69,13 @@ When a level finishes, an "action replay" occurs, with the camera moving down to
 
 ### Graphics Pipeline
 #### Geometry shaders
-* While our system doesn't contain any custom geometry shaders, the particle systems that create our flame and smoke effects are built Unity's particle system functionality, which makes heavy use of geometry shaders to construct quads from particle vertices.
+* While our game doesn't contain any custom geometry shaders, the particle systems we use to create in-game effects are built using Unity's particle system functionality, which makes heavy use of geometry shaders to construct quads based on particle vertices. In our game, these systems include:
+	* Bubble particle systems
+	* Flame particle systems
+	* Smoke particle systems
 
-#### Fragment / Pixel shaders
-* Unity’s lighting fragment shaders are used in most objects in our scenes in order to provide realistic lighting. 
+#### Fragment shaders
+* Unity’s lighting fragment shaders are used throughout our scenes in order to provide realistic lighting. 
 * A custom fragment shader is used to creating a rich swirling effect for our menu backgrounds and cauldron contents.
 * A custom fragment shader is used to provide interesting colouring for our flame effects.
 
