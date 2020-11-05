@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8724967043335830621}
   - component: {fileID: 4711379509949767063}
   - component: {fileID: 8736254415900147187}
-  - component: {fileID: -6732004845188268982}
+  - component: {fileID: 924406992702497591}
   m_Layer: 0
   m_Name: CrushedEyeball
   m_TagString: Untagged
@@ -112,7 +112,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2081681006941222076}
   m_Mesh: {fileID: 0}
---- !u!114 &-6732004845188268982
+--- !u!114 &924406992702497591
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,11 +121,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2081681006941222076}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6106e23566faff43aa19a2d863d9325, type: 3}
+  m_Script: {fileID: 11500000, guid: e901e6842d6b4c648a9dd50c43c59b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ingredientType: 9
-  canHighlight: 1
 --- !u!1 &7020643671721364581
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4989193449283081125}
   - component: {fileID: 7826430767086887633}
   - component: {fileID: 8420810362083547714}
+  - component: {fileID: 1212903640978557240}
   m_Layer: 0
   m_Name: EyeBallCrate
   m_TagString: Untagged
@@ -136,8 +137,21 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2034888, y: 0.8480691, z: 1.1301227}
-  m_Center: {x: -0.020044662, y: 0.42403454, z: 0.0022061905}
+  m_Size: {x: 1.2034888, y: 0.931575, z: 1.1301227}
+  m_Center: {x: -0.020044668, y: 0.4657875, z: 0.0022061912}
+--- !u!135 &1212903640978557240
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165473222506343044}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6017444
+  m_Center: {x: -0.020044655, y: 0.30356488, z: 0.0022062063}
 --- !u!1 &1352866786026327971
 GameObject:
   m_ObjectHideFlags: 0
@@ -767,6 +781,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.0024999992
+      objectReference: {fileID: 0}
+    - target: {fileID: 6091762245076548169, guid: d72255d658afaff4ea091023f063c89b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6091762245076548182, guid: d72255d658afaff4ea091023f063c89b,
         type: 3}

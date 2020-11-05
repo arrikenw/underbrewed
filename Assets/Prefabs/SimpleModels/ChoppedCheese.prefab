@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 772234547912333573}
   - component: {fileID: 3346890866002556041}
   - component: {fileID: -5389448672833952694}
-  - component: {fileID: -1098018702203749012}
+  - component: {fileID: 6093777683801255654}
   m_Layer: 0
   m_Name: ChoppedCheese
   m_TagString: Untagged
@@ -129,7 +129,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &-1098018702203749012
+--- !u!114 &6093777683801255654
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1487937844590548170}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6106e23566faff43aa19a2d863d9325, type: 3}
+  m_Script: {fileID: 11500000, guid: e901e6842d6b4c648a9dd50c43c59b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ingredientType: 7
