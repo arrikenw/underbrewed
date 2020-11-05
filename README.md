@@ -50,7 +50,54 @@ When a level finishes an "action replay" occurs, with the camera moving down tow
 dot dot dot
 
 ## Potion Liquid Shader
-dot dot dot
+The potion liquid shader, produces a swirling liquid, with the liquid slowly falling towards the center. This shader was used for the cauldron liquid, the portal center, as well as the backgrounds for the menus. The shader was produced with help from an online tutorial found [here](http://enemyhideout.com/2016/08/creating-a-whirlpool-shader/). 
+
+The first part of the shader is the function rotate, which rotates a point around the center by `rotationAmount` radians. This was done by coverting the initial cartesian point into a polar co-ordinates, increasing the angle by `rotationAmount` radians, and returning the point converted back into a cartesian point.
+```Shaderlab
+// rotates a point
+float2 rotate( float rotationAmount, float2 p)
+{
+	float a = atan2(p.y, p.x);
+	float r = length(p);
+
+	a += rotationAmount;
+
+	return float2(cos(a) * r, sin(a) * r);
+}
+```
+The input uv point is first converted to be relative to the center of the uv texture, then rotated twice with the rotation function. The first rotation rotates all points by a fixed amount, while the latter rotates the points based off a mask called `motion`. This mask increases the rotation speed based of the alpha value of the mask, making the further out points rotate faster.
+```Shaderlab
+// find point position relative to middle of uv
+float2 p = i.uv - float2(0.5, 0.5);
+
+// if point is outside the circle, render it transparent
+if (length(p) > 0.5)
+{
+	return fixed4(0, 0, 0, 0);
+}
+
+// For rotation
+
+// _Swirl is general swirl amount, motion.r increases swirl amount the further out it is
+p = rotate(_Rotation * _Time * _Speed, p);
+p = rotate(_Swirl * (motion.a * _Time), p);
+```
+Finally, the rotated point is used to calculate the uv point, which is multiplied by the colour to find the final colour output. The x value of the uv is based of time offset by the inverse of the radius of the rotated point. This produces the effect the liquid falling into the center. The y value of the uv is based of the angle of the rotated point. This gives the shader the circlular texture from the initial straight vertical texture.
+```Shaderlab
+// For texture moving towards center
+float2 uv;
+        
+uv.x = (_Time[0] * _Speed) - (1 / (length(p) + _Swirliness));
+// angle of new point
+float a = atan2(p.y, p.x);
+// divide angle by two pi to get angle in radians scaled to between 0-1
+uv.y = a/(3.1416 * 2);
+
+// Now we can get our color.
+fixed4 fragColor = tex2D(_MainTex, uv) * _Color;
+
+return fragColor;
+```
 
 ## Screen Distortion Shader
 dot dot dot
