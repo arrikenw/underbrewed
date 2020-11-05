@@ -9,7 +9,7 @@
 * [Graphics and Camera Motion](#using-images)
 * [Shaders](#shaders-and-particle-systems)
 * [Evaluation Methods](#evaluation-methods)
-* [Feedback Changes](#evaluation-and-changes-implemented-changes)
+* [Feedback Changes](#evaluation-and-changes-implemented)
 * [Resource References](#resource-references)
 * [Individual Contributions](#individual-contributions)
 
