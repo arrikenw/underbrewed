@@ -226,6 +226,12 @@ This querying method allowed participants to experience the game at their own pa
 #### Methodology
 We used the “Think Aloud” observational method. Participants were invited to individually live-stream their playthrough of the tutorial and first stage to the examiners through a Discord channel. Examiners remained muted during the playthrough and did not communicate with the participants. Each playthroughs was observed in real time by the examiners and was recorded for future reference and evaluation. 
 
+<p align="center">
+	<img src="Images/Observation.gif"  width="600" >
+	
+	Pictured: A screen capture from a "Think Aloud" observation session showing a user struggling to use a station.
+</p>
+
 #### Participant demographic information
 | Age | Gender | Occupation                     | Self-estimate of hours of video games played per week |
 |-----|--------|--------------------------------|-------------------------------------------------------|
@@ -273,7 +279,7 @@ Another area of weakness of our querying method was that the lack of a dialogue 
 	* Grey colours were used to represent different stages of the potion in the cauldron, and bright colours were used to represent the final potions
 <p align="center">
 	<img src="Images/Cauldrons.PNG"  width="600" >
-	
+
 	Pictured: A cauldron with one ingredient added and a black "incorrect" potion.
 </p>
 
