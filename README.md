@@ -53,11 +53,6 @@ If a player places an ingredient into the cauldron that does not match any valid
 
 ## Graphics and Camera Motion
 
-### Graphics
-* Unity’s default lighting shaders are applied across most objects to provide realistic lighting. 
-* Custom fragment shaders are used to add interesting graphical effects, for example by creating a swirl effect for portals and providing colouring for fire particles.
-* After the initial render is complete, a custom fragment shader is applied to the initial render texture to provide post-processing effects and generate the final render texture.
-
 ### Camera Motion
 #### Third Person Static Camera
 The game is primarily played with a static camera. The camera is placed high above the level, similar to a bird's eye view, allowing the player to see everything as the play they game. This camera position was chosen as it made the entire level viewable for the player while not issues of traditional cameras, such as occlusion. (image needed)
@@ -65,6 +60,27 @@ The game is primarily played with a static camera. The camera is placed high abo
 #### Action Replay Camera
 When a level finishes, an "action replay" occurs, with the camera moving down towards the player to produce the end game screen. The camera's movements will always to the opposite quarter of the level that the player is on in order to avoid occlusion from the level's walls. (image needed)
 
+### Graphics
+#### Lighting and effects
+* Unity’s default lighting shaders are applied across most objects to provide realistic lighting. 
+* Custom fragment shaders are used to add interesting graphical effects, for example by creating a swirl effect for portals and providing colouring for fire particles.
+
+#### Post-processing
+* After the initial render is complete, a custom fragment shader is applied to the initial render texture to provide post-processing effects and generate the final render texture, with this post-processing is handled through Unity's ```OnRenderImage()``` functionality. We have provided a sample of our code for applying post-processing shaders below:
+
+```
+    void OnRenderImage(RenderTexture source, RenderTexture destination)
+    {
+        if (applyAffect)
+        {
+            Graphics.Blit(source, destination, material);
+        }
+        else
+        {
+            Graphics.Blit(source, destination);
+        }
+    }
+```
 
 ## Shaders and Particle Systems
 
