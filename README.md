@@ -135,7 +135,10 @@ A greenish colouration is applied to the screen by retrieving the texture colour
 
 
 ### Fire particle system
-TO DO: add image
+
+<p align="center">
+  <img src="Gifs/FireParticleSystem.gif"  width="300" >
+</p>
 
 The fire of the cauldrons and burning stations were created using Unity’s Particle System API. Each fire consisted of three particle systems of different sizes and colours. Using multiple particle systems helped to create the different “layers” of the fire (red, orange, and yellow).
 
@@ -180,7 +183,7 @@ We used the “Think Aloud” observational method. Participants were invited to
 |-----|--------|--------------------------------|-------------------------------------------------------|
 | X   | Male   | Doctor of Optometry student    | 16                                                    |
 | X   | Male   | 3rd year undergraduate student | 10                                                    |
-| X   | Male   | 2nd year undergraduate student | 40                                                    |
+| X   | Male   | 2nd year undergraduate student | ?                                                     |
 | X   | Male   | 1st year undergraduate student | 40                                                    |
 | X   | Male   | Unemployed                     | 30                                                    |
 
@@ -253,6 +256,7 @@ https://poly.google.com/user/6WNlPxHAo7o
 https://poly.google.com/user/a4-Oxy9dNsF
 
 
+
 Icons for scroll and ingredients:
 https://clipartmax.com/ 
 https://clipart-library.com/ 
@@ -283,6 +287,79 @@ dot dot dot
 
 ### Iris Li
 dot dot dot
+
+## References:
+Game background music: https://www.youtube.com/watch?v=iX6ex5fYT7o
+
+Screen effect sound: https://www.youtube.com/watch?v=vJz54_quoow
+
+Menu background music: https://www.youtube.com/watch?v=rsEeiIrJy4E
+
+Pick up sound: https://freesound.org/people/pogmothoin/sounds/401722/
+
+Bad effect sound: https://freesound.org/people/GabrielAraujo/sounds/242503/
+
+Missed order sound: https://freesound.org/people/themusicalnomad/sounds/253886/
+
+Tutorial complete sound: https://freesound.org/people/deleted_user_877451/sounds/76426/
+
+Menu buttons sound: https://freesound.org/people/Christopherderp/sounds/342200/
+
+Order complete sound: https://freesound.org/search/?q=bwg2020+correct
+
+Cauldron bubbling: https://freesound.org/people/lonemonk/sounds/108746/
+
+Station finish sound: https://www.youtube.com/watch?v=QDKBDduuJ_0
+
+Level dings: https://www.youtube.com/watch?v=R6F0ysJIeHQ
+
+Mortar and pestle sound: https://www.youtube.com/watch?v=PJo5yIPhFSM
+
+Chopping sound: https://www.youtube.com/watch?v=BrDkL5Y7kCs
+
+Game trailer music: https://www.youtube.com/watch?v=v4pTPigj0Gk
+
+Flower model: https://free3d.com/3d-model/hinduismlotus-flower-v1--463468.html
+
+Outside decoration: https://assetstore.unity.com/packages/3d/environments/fantasy/free-cartoon-halloween-pack-mobile-vr-45896
+
+Outside decoration: https://assetstore.unity.com/packages/3d/environments/fantasy/halloween-cemetery-set-19125
+
+Cheese model: https://www.cgtrader.com/items/258230/download-page
+
+Eye model: https://www.cgtrader.com/items/44082/download-page
+
+Bone model: https://poly.google.com/view/9KOTx3n2lfm
+
+Potion model: https://poly.google.com/view/dOREefQfDQu
+
+Knife model: https://poly.google.com/view/0X5xcxjszwI
+
+Cauldron design reference: https://www.youtube.com/watch?v=x-6cvNjUuAI
+
+Bubbles design reference: https://www.youtube.com/watch?v=ajsA6vWBhKI
+
+Pick up script design reference: https://www.youtube.com/watch?v=90OiysC4j5Y
+
+Bin model: https://www.turbosquid.com/3d-models/free-c4d-mode-m%C3%BClleimer-bin/483718
+
+Squashed eye model: https://www.turbosquid.com/3d-models/3d-rectangle-flow-splash-model-1213683
+
+Chopped cheese model: https://www.turbosquid.com/3d-models/free-max-mode/1033609
+
+Crushed rock model: https://www.turbosquid.com/3d-models/rock-pile-obj-free/813686
+
+Chopping board model: https://www.turbosquid.com/3d-models/free-chopping-board-3d-model/538266
+
+Frog model: https://www.turbosquid.com/FullPreview/Index.cfm/ID/753743
+
+Fire station model: https://www.turbosquid.com/3d-models/pit-firepit-3ds/701220
+
+Witch hat: https://free3d.com/3d-model/witchhat-v4--231135.html
+
+Wood texture: https://www.pinterest.com.au/pin/14496030030351650/
+
+
 	
 ## Technologies
 Project is created with:
