@@ -8,21 +8,43 @@ public class UIEndScreen : MonoBehaviour
 
     public void updateTitleText(bool win)
     {
-        Text titleText = this.gameObject.transform.Find("TitleText").GetComponent<Text>();
+        Text titleText = this.gameObject.transform.Find("TitleTextPanel").Find("TitleText").GetComponent<Text>();
 
         if (win)
         {
-            titleText.text = "YOU WON!";
+            titleText.text = "YOU PASSED!";
         }
         else
         {
-            titleText.text = "YOU LOST!";
+            titleText.text = "YOU FAILED!";
         }
     }
 
-    public void updateGameStatistics(float completed, int score, int highScore)
+    public void updateGameStatistics(float percentage, int score, int highScore)
     {
-        this.gameObject.transform.Find("GameStatistics").GetComponent<Text>().text = string.Format("% of orders completed: {0}\nRound score: {1}\nHigh score: {2}", completed, score, highScore); 
+        string grade = "grade"; 
+
+        if (percentage < 50)
+        {
+            grade = "N";
+        } else if (percentage >= 50 && percentage < 65)
+        {
+            grade = "P";
+        } else if (percentage >= 65 && percentage < 70)
+        {
+            grade = "H3";
+        } else if (percentage >= 70 && percentage < 75)
+        {
+            grade = "H2B";
+        } else if (percentage >= 75 && percentage < 80)
+        {
+            grade = "H2A";
+        } else if (percentage >= 80)
+        {
+            grade = "H1";
+        }
+
+        this.gameObject.transform.Find("GameStatisticsPanel").Find("GameStatistics").GetComponent<Text>().text = string.Format("Score: {0}\nGrade: {1}\n\nHigh score: {2}", score, grade, highScore); 
     }
     
 }
