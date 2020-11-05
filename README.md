@@ -111,13 +111,15 @@ dot dot dot
 ## Methodology
 We used the “Think Aloud” observational method. Participants were invited to individually live-stream their playthrough of the tutorial and first stage to the examiners through a discord channel. Examiners remained muted during the playthrough and did not communicate with the participants. Each playthroughs was observed in real time by the examiners and was recorded for future reference and evaluation. 
 
-Participant demographic information
-Age	Gender	Occupation	Self-estimate of hours of video games played per week
-X	Male	Doctor of Optometry student	16
-X	Male	3rd year undergraduate student	10
-X	Male	2nd year undergraduate student	X
-x	Male	1st year undergraduate student	40
-x	Male	Unemployed	30
+## Participant demographic information
+| Age | Gender	| Occupation | Self-estimate of hours of video games played per week |
+| :---         |     :---:      |          ---: |
+| X | Male | Doctor of Optometry student | 16 |
+| X | Male | 3rd year undergraduate student | 10 |
+| X | Male | 2nd year undergraduate student | X |
+| X | Male | 1st year undergraduate student | 40 |
+| X | Male | Unemployed | 30 |
+
 
 ## Strengths and weaknesses of methodology
 The breadth of this demographic research was quite limited – all participants were either university students or planning on undertaking tertiary studies. Furthermore, all participants were male and sat within a similar age range. However, as our game is quite simple and lacks a story, we expect these factors to have little bearing on how the game is played or perceived.
