@@ -33,12 +33,13 @@ Underbrewed uses a static camera and third person perspective, and is designed t
 ## How to Play
 ### Basic controls
 - Movement: WASD and arrow keys are both supported
-- Pick up item: Press ‘m’ while facing an item
-- Drop item: Press ‘m’ again while holding an item
+- Pick up item: Press ‘M’ while facing an item
+- Drop item: Press ‘M’ again while holding an item
 - Throw item: Press ‘.’ While holding an item
 - Interact with station: Press ‘,’ while facing the station
 - Fill potion from cauldron: Press ‘,’ while holding a bottle and facing a cauldron
 - Open pause menu: Press ‘Esc’
+- The optional key sets "O", "P", "[" and "Z", "X", "C" can be used instead of the default "M", ",", "."
 
 ### Gameplay
 Throughout a level, orders will continually arrive in the top left of the screen. Each order contains a potion, the ingredients needed to brew the potion, and a timer that indicates how long the player will have to complete the order.
@@ -53,20 +54,50 @@ If a player places an ingredient into the cauldron that does not match any valid
 
 ## Graphics and Camera Motion
 
-### Graphics
-* Unity’s default lighting shaders are applied across most objects to provide realistic lighting. 
-* Custom fragment shaders are used to add interesting graphical effects, for example by creating a swirl effect for portals and providing colouring for fire particles.
-* After the initial render is complete, a custom fragment shader is applied to the initial render texture to provide post-processing effects and generate the final render texture.
-
 ### Camera Motion
-#### Third Person Static Camera
-The game is primarily played with a static camera. The camera is placed high above the level, similar to a bird's eye view, allowing the player to see everything as the play they game. This camera position was chosen as it made the entire level viewable for the player while not issues of traditional cameras, such as occlusion. (image needed)
+
+The game is primarily played with a static camera. The camera is placed high above the level, similar to a bird's eye view, allowing the player to see everything as the play they game. This camera position was chosen as it made the entire level viewable for the player while avoiding the issues of traditional cameras, such as occlusion.
+<p align="center">
+  <img src="Images/StaticCamera.png"  width="600" >
+</p>
 
 #### Action Replay Camera
-When a level finishes, an "action replay" occurs, with the camera moving down towards the player to produce the end game screen. The camera's movements will always to the opposite quarter of the level that the player is on in order to avoid occlusion from the level's walls. (image needed)
+When a level finishes, an "action replay" occurs, with the camera moving down towards the player and focusing on them to produce the end game screen. The camera will always approach from the opposite quarter of the level to the player in order to avoid occlusion from the level's walls.
+<p align="center">
+  <img src="Images/ActionReplay.gif"  width="600" >
+</p>
 
-<<<<<<< Updated upstream
-=======
+
+### Graphics Pipeline
+#### Geometry shaders
+While our game doesn't contain any custom geometry shaders, the particle systems we use to create in-game effects are built using Unity's particle system functionality, which makes heavy use of geometry shaders to construct quads based on particle vertices. In our game, these systems include:	
+* Bubble particle systems
+* Flame particle systems
+* Smoke particle systems
+
+#### Fragment shaders
+Our game makes heavy use of custom and Unity-provided fragment shaders to handle lighting and effects. Our uses of fragment shaders are listed below:
+* Unity’s lighting fragment shaders are used throughout our scenes in order to provide realistic lighting. 
+* A custom fragment shader is used to creating a rich swirling effect for our menu backgrounds and cauldron contents.
+* A custom fragment shader is used to provide interesting colouring for our flame effects.
+
+#### Post-processing
+After the initial render is complete, a custom fragment shader is applied to the initial render texture to provide post-processing effects and generate the final render texture, with this post-processing is handled through Unity's ```OnRenderImage()``` functionality. We have provided a sample of our code for applying post-processing shaders below:
+
+```C#
+    void OnRenderImage(RenderTexture source, RenderTexture destination)
+    {
+        if (applyAffect)
+        {
+            Graphics.Blit(source, destination, material);
+        }
+        else
+        {
+            Graphics.Blit(source, destination);
+        }
+    }
+```
+
 ### Graphics Pipeline
 #### Vertex shader stage
 
@@ -95,14 +126,12 @@ When a level finishes, an "action replay" occurs, with the camera moving down to
     }
 ```
 
->>>>>>> Stashed changes
-
 ## Shaders and Particle Systems
 
 ### Potion Liquid Shader
 The potion liquid shader, produces a swirling liquid, with the liquid slowly falling towards the center. This shader was used for the cauldron liquid, the portal center, as well as the backgrounds for the menus. The shader was produced with help from an online tutorial found [here](http://enemyhideout.com/2016/08/creating-a-whirlpool-shader/).
 <p align="center">
-  <img src="Images/CauldronLiquid.gif"  width="300" >
+  <img src="Images/CauldronLiquid.gif"  width="600" >
 </p>
 
 The first part of the shader is the function rotate, which rotates a point around the center by `rotationAmount` radians. This was done by coverting the initial cartesian point into a polar co-ordinates, increasing the angle by `rotationAmount` radians, and returning the point converted back into a cartesian point.
@@ -157,7 +186,7 @@ return fragColor;
 TODO GENERAL FLAVOUR DESC
 
 <p align="center">
-  <img src="Images/ScreenEffect.gif"  width="300" >
+  <img src="Images/ScreenEffect.gif"  width="600" >
 </p>
 
 This shader has two main aspects, a screen shake and distortion effect and a colouring effect.
@@ -187,7 +216,7 @@ A greenish colouration is applied to the screen by retrieving the texture colour
 ### Fire particle system
 
 <p align="center">
-  <img src="Gifs/FireParticleSystem.gif"  width="300" >
+  <img src="Gifs/FireParticleSystem.gif"  width="600" >
 </p>
 
 The fire of the cauldrons and burning stations were created using Unity’s Particle System API.
@@ -210,38 +239,34 @@ The interview consisted of open-ended questions surrounding the gameplay, graphi
 | Age | Gender    | Occupation                     | Self-estimate of hours of video games played per week |
 |-----|--------   |--------------------------------|-------------------------------------------------------|
 | 20   | Male     | 3rd year undergraduate student | 10                                                    |
-| 20   | Female   | 3rd year undergraduate student | xx                                                    |
+| 20   | Female   | 3rd year undergraduate student | 2                                                     |
 | 20   | Female   | 2nd year undergraduate student | 14                                                    |
 | X   | Male   | 1st year undergraduate student | 40                                                       |
 | X   | Male   | Unemployed                     | 30                                                     |
 
 #### Strengths and weaknesses of methodology
 
-<<<<<<< Updated upstream
-TO DO: comment on demographic
-
-This querying method allowed participants to experience the game at their own pace and without influence from others.
-
-This method allowed particpants time to reflect on their experience and concisely share their thoughts. Some participants had even collated their own notes and thoughts on the game, and presented them during the interview. 
-
-TO DO: more discussion
-=======
 The demographic of participants was quite narrow, with all participants being between ages 18 and 20, and undertaking tertiary education. While levels of gaming experience varied between participants, all participants had some familiarity with gaming. Participants reported playing between 2 and 14 hours of games per week. While a broader demographic in participants is generally desirable, we felt that the participants interviewed were able to use their previous gaming experience and expectations to provide relevant and insightful feedback.
 
 This querying method allowed participants to experience the game at their own pace and without influence from others. This method also gave participants time to reflect on their experience and concisely share their opinions. Some participants had even collated their own notes on their experience, and presented them during the interview. Participants feedback was useful in determining which aspects of the game were well-understood, and which aspects were considered pain points. However, some participants gave generic answers and struggled to recall or comment on certain elements of the game in detail when prompted. As interviewers were not present when participants were testing the game, interviewers were not able to fully capture or observe the participants' experience, or prompt participants to interact with certain elements of the game.
 
->>>>>>> Stashed changes
 
 ### Observational Method
 #### Methodology
 We used the “Think Aloud” observational method. Participants were invited to individually live-stream their playthrough of the tutorial and first stage to the examiners through a Discord channel. Examiners remained muted during the playthrough and did not communicate with the participants. Each playthroughs was observed in real time by the examiners and was recorded for future reference and evaluation.
+
+<p align="center">
+	<img src="Images/Observation.gif"  width="600" >
+	
+	Pictured: A screen capture from a "Think Aloud" observation session showing a user struggling to use a station.
+</p>
 
 #### Participant demographic information
 | Age | Gender | Occupation                     | Self-estimate of hours of video games played per week |
 |-----|--------|--------------------------------|-------------------------------------------------------|
 | X   | Male   | Doctor of Optometry student    | 16                                                    |
 | X   | Male   | 3rd year undergraduate student | 10                                                    |
-| X   | Male   | 2nd year undergraduate student | 40                                                     |
+| X   | Male   | 2nd year undergraduate student | 40                                                    |
 | X   | Male   | 1st year undergraduate student | 40                                                    |
 | X   | Male   | Unemployed                     | 30                                                    |
 
@@ -272,13 +297,9 @@ Another area of weakness of our querying method was that the lack of a dialogue 
 		* We were unable to remove these challenges with the time given, but would like to have implemented these changes
 		* Players can restart the tutorial at any time by using the pause menu
 <p align="center">
-<<<<<<< Updated upstream
-	<img src="Images/TutorialImproved.PNG"  width="300" >
-	
-=======
+
 	<img src="Images/TutorialImproved.PNG"  width="600" >
 
->>>>>>> Stashed changes
 	Pictured: The reworked tutorial now prompts the user to complete certain tasks in order to advance to the next step.
 </p>
 
@@ -286,6 +307,12 @@ Another area of weakness of our querying method was that the lack of a dialogue 
 * Some participants felt confused by the different cauldron colours, as one of the potions was very similar in colour to the colour used to represent an “incorrect” potion
 	* Potion colours were changed so that a black potion represented an “incorrect” potion
 	* Grey colours were used to represent different stages of the potion in the cauldron, and bright colours were used to represent the final potions
+<p align="center">
+	<img src="Images/Cauldrons.PNG"  width="600" >
+
+	Pictured: A cauldron with one ingredient added and a black "incorrect" potion.
+</p>
+
 * In general, participants felt there was a lack of feedback when playing the main level, and were unsure if they had submitted a “correct” potion. Participants suggested using sound effects or visual cues to indicate to indicate if players made a mistake or submitted a “correct” potion
 	* Additional sound effects were implemented, such as when an ingredient is finished processing at a station, when an incorrect ingredient is added to a cauldron, and when a potion is delivered into the portal.
 * Players were required to hold down a key in order to carry an item, however many participants stated that this felt awkward
@@ -315,7 +342,7 @@ Another area of weakness of our querying method was that the lack of a dialogue 
 
 ## Resource References
 
-
+TO DO: Statement here
 
 ## Individual Contributions
 
@@ -329,58 +356,23 @@ dot dot dot
 dot dot dot
 
 ### Iris Li
-<<<<<<< Updated upstream
-dot dot dot
-	
-=======
+
 Designed and implemented most UI elements, including the main menu, level select scene, pause menu, end screen, and in-game elements such as text, including game score and timer, order queue, and progress bars for stations. Assisted with linking UI elements to the game controller. Sourced sprites, and assisted with sourcing models and textures for the interior of the scene. Created the fire particle system. Interviewed 3 participants for evaluation purposes and contributed to team discussion and report-writing.
 
-
->>>>>>> Stashed changes
 ## References
-
-Texture for fire particle system: https://80.lv/articles/breakdown-magic-fire-effect-in-unity/ 
-
-Decoration Models and textures: https://assetstore.unity.com/packages/3d/environments/fantasy/mega-fantasy-props-pack-87811
-
-
-### Models
-
-https://poly.google.com/user/4aEd8rQgKu2
-
-https://poly.google.com/user/6WNlPxHAo7o
-
-https://poly.google.com/user/a4-Oxy9dNsF
-
-
-### Icons for scroll and ingredients
-
-https://clipartmax.com/ 
-
-<<<<<<< Updated upstream
-https://clipart-library.com/ 
-=======
-Fire particle system: https://80.lv/articles/breakdown-magic-fire-effect-in-unity/
->>>>>>> Stashed changes
-
-https://www.clipartkey.com/
-
-
-### Icons for potions
-
-Created for this project by a friend, Ben Czapla
 
 ### Logic for highscores
 
-Logic for storing highscores locally was retrieved from:
+Logic for storing highscores locally was retrieved from the following url:
 
 https://answers.unity.com/questions/644911/how-do-i-store-highscore-locally-c-simple.html
-    
-### Other useful resources
 
-https://www.sitepoint.com/adding-pause-main-menu-and-game-over-screens-in-unity/
+Pause menu and end screen: https://www.sitepoint.com/adding-pause-main-menu-and-game-over-screens-in-unity/
 
-https://www.youtube.com/watch?v=CJ8FKjYtrT4 (buttons)
+Fire particle system: https://80.lv/articles/breakdown-magic-fire-effect-in-unity/ 
+
+Button animation: https://www.youtube.com/watch?v=CJ8FKjYtrT4
+
 
 ### Sound effects
 
@@ -414,7 +406,8 @@ Chopping sound: https://www.youtube.com/watch?v=BrDkL5Y7kCs
 
 Game trailer music: https://www.youtube.com/watch?v=v4pTPigj0Gk
 
-### 3D models and textures
+
+### Textures, materials, and 3D models
 
 Flower model: https://free3d.com/3d-model/hinduismlotus-flower-v1--463468.html
 
@@ -427,6 +420,8 @@ Cheese model: https://www.cgtrader.com/items/258230/download-page
 Eye model: https://www.cgtrader.com/items/44082/download-page
 
 Bone model: https://poly.google.com/view/9KOTx3n2lfm
+
+Book model: https://poly.google.com/user/6WNlPxHAo7o
 
 Potion model: https://poly.google.com/view/dOREefQfDQu
 
@@ -444,26 +439,28 @@ Squashed eye model: https://www.turbosquid.com/3d-models/3d-rectangle-flow-splas
 
 Chopped cheese model: https://www.turbosquid.com/3d-models/free-max-mode/1033609
 
+Crate and candle models, wall texture: https://assetstore.unity.com/packages/3d/environments/fantasy/mega-fantasy-props-pack-87811
+
 Crushed rock model: https://www.turbosquid.com/3d-models/rock-pile-obj-free/813686
 
 Chopping board model: https://www.turbosquid.com/3d-models/free-chopping-board-3d-model/538266
 
 Frog model: https://www.turbosquid.com/FullPreview/Index.cfm/ID/753743
 
-<<<<<<< Updated upstream
-=======
-Fire particle system texture: https://80.lv/articles/breakdown-magic-fire-effect-in-unity/
+Fire particle system texture: https://80.lv/articles/breakdown-magic-fire-effect-in-unity/ 
 
->>>>>>> Stashed changes
 Fire station model: https://www.turbosquid.com/3d-models/pit-firepit-3ds/701220
+
+Interior decorations: https://poly.google.com/user/4aEd8rQgKu2
+
+Ladder model: https://poly.google.com/user/a4-Oxy9dNsF
 
 Witch hat: https://free3d.com/3d-model/witchhat-v4--231135.html
 
 Wood texture: https://www.pinterest.com.au/pin/14496030030351650/
 
 
-<<<<<<< Updated upstream
-=======
+
 ### Sprites
 
 Ingredients: https://clipartmax.com/
@@ -472,12 +469,9 @@ Potions: Benjamin Czapla (student work)
 
 Scroll: https://www.clipartkey.com/
 
-Stations: https://clipart-library.com/
+Stations: https://clipart-library.com/ 
 
 
-
-
->>>>>>> Stashed changes
 ## Technologies
 Project is created with:
 * Unity 2019.4.3f1
