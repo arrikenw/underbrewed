@@ -23,12 +23,12 @@ public class UILevelSelect : MonoBehaviour
 
     public void PlayLevel2()
     {
-       //UnityEngine.SceneManagement.SceneManager.LoadScene("Level2");
+       UnityEngine.SceneManagement.SceneManager.LoadScene("Level2");
     }
 
     public void PlayLevel3()
     {
-        //UnityEngine.SceneManagement.SceneManager.LoadScene("Level3");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level3");
     }
 
     public void DisplayHighScore()
