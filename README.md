@@ -49,10 +49,7 @@ When a level finishes an "action replay" occurs, with the camera moving down tow
 
 ## Shaders
 
-### Fire Shader
-dot dot dot
-
-## Potion Liquid Shader
+### Potion Liquid Shader
 The potion liquid shader, produces a swirling liquid, with the liquid slowly falling towards the center. This shader was used for the cauldron liquid, the portal center, as well as the backgrounds for the menus. The shader was produced with help from an online tutorial found [here](http://enemyhideout.com/2016/08/creating-a-whirlpool-shader/). 
 <p align="center">
   <img src="Images/CauldronLiquid.gif"  width="300" >
@@ -105,25 +102,36 @@ fixed4 fragColor = tex2D(_MainTex, uv) * _Color;
 return fragColor;
 ```
 
-## Screen Distortion Shader
+### Screen Distortion Shader
+dot dot dot
 
-The internal trig functions are used to create a screen shake effect. The choice of using a sin function on time for one axis and a cos function on time on the other axis was to ensure this screen shake took the form of a spiral around the screen’s centre rather than as a slide along a line (which would occur if the same trig functions were used on both axes). The external sin function is used to create a stretching / warping effect across the entire image, producing a mild sense of disorientation. To ensure the final image largely remains centred and intelligible, the overall effect is scaled significantly to ensure that it remains dwarfed by the original state.  
+### Fire particle system
 
-```Shaderlab
-X = (0.05 * sin(v.vertex.x + 1.5 * sin(_Time.z)) + v.vertex.x
-Y = (0.05 * sin(v.vertex.y + 2.5 * cos(_Time.z)) + v.vertex.y
-```
+The fire of the cauldrons and burning stations were created using Unity’s Particle System API. Each fire consisted of three particle systems of different sizes and colours. Using multiple particle systems helped to create the different “layers” of the fire (red, orange, and yellow).
 
-A greenish colouration is applied to the screen by retrieving the texture colour of the final image and then mixing it with a static green colour and a green colour whose strength varies with sin of the current time, resulting in a green hued image with an intensity that varies over time. The formula for this colouration is as follows: 
-
-```Shaderlab
-final_colour = 0.6*texture_colour + 0.2*sin_green_colour + 0.2*flat_green_colour
-```
+The texture used in the particle system was created by Evgeny Starostin:
+https://80.lv/articles/breakdown-magic-fire-effect-in-unity/
 
 
 ## Evaluation Methods
 
 ### Querying Method
+
+#### Methodology
+We used the interview querying method. Participants were sent an early version of the game, and instructed to play through a tutorial level and a game level on their own, without observation or input from the developer team. Players were invited to repeat either level as many times as they liked before taking part in an interview conducted over Zoom. 
+
+The interview consisted of open-ended questions. Participants were encouraged to form their own opinions of the game and discuss their feedback with the interviewer in a conversational style. The interviewer took typed notes during the interviews, and reviewed audio recordings of the interviews when necessary. 
+
+#### Participant demographic information
+| Age | Gender    | Occupation                     | Self-estimate of hours of video games played per week |
+|-----|--------   |--------------------------------|-------------------------------------------------------|
+| 20   | Male     | 3rd year undergraduate student | xx                                                    |
+| 20   | Female   | 3rd year undergraduate student | xx                                                    |
+| 20   | Female   | 2nd year undergraduate student | xx                                                    |
+| X   | Male   | 1st year undergraduate student | 40                                                       |
+| X   | Male   | Unemployed                     | 30                                                     |
+
+### Strengths and weaknesses of methodology
 dot dot dot
 
 ### Observational Method
@@ -157,12 +165,80 @@ Another area of weakness of our querying method was that the lack of a dialogue 
 - Throwing was under-utilised, with many users seeming to not be aware of the feature
 - TODO etc. 
 
+### Gameplay
+* Overall, participants stated that they found the game enjoyable and relatively bug-free, with instructions clearly stating the objective of the game, and controls working as expected
+* While this was mentioned in the tutorial, the majority of participants were not aware that ingredients had to be added to the cauldron in a particular order to be considered “correct”. Additionally, they were unaware that certain special effects (such as ingredients exploding) were the result of adding “incorrect” ingredients to the cauldron
+	* The tutorial was reworked so that tips were less dense, and the instructions were more clear
+	* An additional stage was added to the tutorial, in which players are instructed to make an “incorrect” potion to observe the special effects
+* Some participants felt confused by the different cauldron colours, as one of the potions was very similar in colour to the colour used to represent an “incorrect” potion
+	* Potion colours were changed so that a black potion represented an “incorrect” potion
+	* Grey colours were used to represent different stages of the potion in the cauldron, and bright colours were used to represent the final potions
+* In general, participants felt there was a lack of feedback when playing the main level, and were unsure if they had submitted a “correct” potion. Participants suggested using sound effects or visual cues to indicate to indicate if players made a mistake or submitted a “correct” potion
+	* Additional sound effects were implemented, such as when an ingredient is finished processing at a station, when an incorrect ingredient is added to a cauldron, and when a potion is delivered into the portal.
+* Players were required to hold down a key in order to carry an item, however many participants stated that this felt awkward
+	* The mechanism for carrying an item was changed so that pressing the key would pick up or put down an item
+* Some players found it difficult to align the character with certain stations or ingredients
+	* To reduce the chance of this happening, we spaced out stations and ingredients
+	* We also realigned some objects that were not properly aligned with the benches
+* Some participants found that the game ran at a very low frame rate (20 to 30 fps)
+	* We found that certain models had a very high number of vertices. These were switched to alternate models with less vertices
+* The evaluation brought attention to several minor bugs, such as players glitching through certain benches and walls, player movement being disabled after restarting the game, and the ability to generate excessive amounts of ingredients by picking items from the crate in succession
+	* These bugs were fixed for the final build of the game
 
-## Feedback Changes
-dot dot dot
+### Graphics
+* Overall, participants felt positively about the graphics employed in the game. The graphics were often described as “cute”, and the objects and entities were relatively easy to distinguish
+* Some non-interactable decorative objects were placed in the scene, however some participants felt that they might distract inexperienced players
+	* Non-interactable objects were placed more thoughtfully in the scene, and used sparingly 
+
+### Other comments
+* Participants reported mixed feelings about the tutorial level. 
+	* While the tutorial clearly explained the basic concepts of the game, participants felt that progression in the tutorial should be based on task completion, both to provide a sense of achievement for learning controls, and confirm that users were completing the task properly
+		* The tutorial was reworked to progress based on task completion
+	* Participants felt hindered by the need to always press the spacebar to continue to the next tip, and the inability to navigate back to a previous tip
+		* We were unable to remove these challenges with the time given, but would like to have implemented these changes
+		* Players can restart the tutorial at any time by using the pause menu
+* Many participants also mentioned that they felt the game would be more enjoyable with more music and sound effects, both in game, and for menus and buttons
+	* Additonal sound effects were implemented for different stations and actions
+	* Music was also added to the main menu and level select scenes, and sound effects were added to UI buttons
+* The majority of participants felt that the main level was difficult to play, and stated that they needed more time to complete each order
+	* The timing of orders were adjusted, so that more time was allowed to complete each order
+* One participant felt the game would be more enjoyable if orders were created dynamically, and in response to the performance of the player (e.g. a new order could be generated if the player had completed all current orders, as opposed based on a fixed time)
+	* Due to time constraints, these were not implemented, but we feel they could be implemented in a future build
+* Some participants also suggested extra features that might suit the game such as
+	* Introducing different characters with different abilities, e.g. being able to hold multiple items at a time, or dash to move quicker
+	* Have potion bottles break when dropped to increase the difficulty of the game	
+		* Due to time constraints, these were not implemented, but we feel they could be implemented in a future build
+
 
 ## Resource References
-dot dot dot
+
+Texture for fire particle system:
+https://80.lv/articles/breakdown-magic-fire-effect-in-unity/ 
+
+
+Models and textures: https://assetstore.unity.com/packages/3d/environments/fantasy/mega-fantasy-props-pack-87811
+
+
+Models: 
+https://poly.google.com/user/4aEd8rQgKu2
+https://poly.google.com/user/6WNlPxHAo7o
+https://poly.google.com/user/a4-Oxy9dNsF
+
+
+Icons for scroll and ingredients:
+https://clipartmax.com/ 
+https://clipart-library.com/ 
+https://www.clipartkey.com/
+
+
+Icons for potions:
+Created for this project by a friend, Ben Czapla
+
+
+Other useful resources:
+https://www.sitepoint.com/adding-pause-main-menu-and-game-over-screens-in-unity/
+https://www.youtube.com/watch?v=CJ8FKjYtrT4 (buttons)
+
 
 ## Individual Contributions
 
