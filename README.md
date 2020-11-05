@@ -29,25 +29,7 @@ Undercooked is a third person casual potion brewing simulator(?). During a level
 
 
 ## How to Play
-### Basic controls
-- Movement: WASD and arrow keys are both supported
-- Pick up item: Press ‘m’ while facing an item
-- Drop item: Press ‘m’ again while holding an item
-- Throw item: Press ‘.’ While holding an item
-- Interact with station: Press ‘,’ while facing the station
-- Fill potion from cauldron: Press ‘,’ while holding a bottle and facing a cauldron
-- Open pause menu: Press ‘Esc’
-
-### Gameplay
-Throughout a level, orders will continually arrive in the top left of the screen. Each order contains a list of ingredients, a desired output potion, and a time bar that indicates how long the player will have to complete the order. 
-
-To create a potion, players must place ingredients into cauldrons in the order they appear on the recipe. If an ingredient has an icon beneath it, the player must first process the ingredient in a corresponding station before adding it to a cauldron. 
-
-To deliver a completed potion, players must fill a bottle with liquid from the cauldron they have brewed the potion in, then must drop or throw the bottled potion through the delivery portal. Each successful delivery will increase the players’ score, which is displayed in the lower right of the screen. The time left until the level ends is displayed below the score.
-
-If a player places ingredient into the cauldron in a way that does not match any valid potions, the game will trigger a negative effect (eg. apply a distorted screen shader, sends ingredients flying across the stage).
-
-<b> We recommend that new players play our tutorial level before attempting stages, as provides an in-depth overview of the game’s controls and mechanics. </b>
+dot dot dot
 
 
 ## Graphics and Camera Motion
@@ -120,7 +102,7 @@ fixed4 fragColor = tex2D(_MainTex, uv) * _Color;
 return fragColor;
 ```
 
-## Screen Distortion Shader
+### Screen Distortion Shader
 
 TODO GENERAL FLAVOUR DESC
 
@@ -153,6 +135,7 @@ A greenish colouration is applied to the screen by retrieving the texture colour
 
 
 ### Fire particle system
+TO DO: add image
 
 The fire of the cauldrons and burning stations were created using Unity’s Particle System API. Each fire consisted of three particle systems of different sizes and colours. Using multiple particle systems helped to create the different “layers” of the fire (red, orange, and yellow).
 
@@ -165,27 +148,34 @@ https://80.lv/articles/breakdown-magic-fire-effect-in-unity/
 ### Querying Method
 
 #### Methodology
-We used the interview querying method. Participants were sent an early version of the game, and instructed to play through a tutorial level and a game level on their own, without observation or input from the developer team. Players were invited to repeat either level as many times as they liked before taking part in an interview conducted over Zoom. 
+We used the interview querying method. Participants were sent an early version of the game, and instructed to play through a tutorial level and a game level on their own, without observation or input from the developer team. Players were invited to repeat either level as many times as they liked before taking part in an interview conducted over Zoom. The interview was recorded for future reference.
 
-The interview consisted of open-ended questions. Participants were encouraged to form their own opinions of the game and discuss their feedback with the interviewer in a conversational style. The interviewer took typed notes during the interviews, and reviewed audio recordings of the interviews when necessary. 
+The interview consisted of open-ended questions surrounding the gameplay, graphics, and user experience. Participants were encouraged to form their own opinions of the game and discuss their feedback with the interviewer in a conversational style. Dot points and pre-prepared questions were used to guide the discussion. The interviewers took typed notes during the interviews, and reviewed audio recordings of the interviews when necessary. 
 
 #### Participant demographic information
 | Age | Gender    | Occupation                     | Self-estimate of hours of video games played per week |
 |-----|--------   |--------------------------------|-------------------------------------------------------|
-| 20   | Male     | 3rd year undergraduate student | xx                                                    |
+| 20   | Male     | 3rd year undergraduate student | 10                                                    |
 | 20   | Female   | 3rd year undergraduate student | xx                                                    |
-| 20   | Female   | 2nd year undergraduate student | xx                                                    |
+| 20   | Female   | 2nd year undergraduate student | 14                                                    |
 | X   | Male   | 1st year undergraduate student | 40                                                       |
 | X   | Male   | Unemployed                     | 30                                                     |
 
-### Strengths and weaknesses of methodology
-dot dot dot
+#### Strengths and weaknesses of methodology
+
+TO DO: comment on demographic
+
+This querying method allowed participants to experience the game at their own pace and without influence from others.
+
+This method allowed particpants time to reflect on their experience and concisely share their thoughts. Some participants had even collated their own notes and thoughts on the game, and presented them during the interview. 
+
+TO DO: more discussion
 
 ### Observational Method
-## Methodology
-We used the “Think Aloud” observational method. Participants were invited to individually live-stream their playthrough of the tutorial and first stage to the examiners through a discord channel. Examiners remained muted during the playthrough and did not communicate with the participants. Each playthroughs was observed in real time by the examiners and was recorded for future reference and evaluation. 
+#### Methodology
+We used the “Think Aloud” observational method. Participants were invited to individually live-stream their playthrough of the tutorial and first stage to the examiners through a Discord channel. Examiners remained muted during the playthrough and did not communicate with the participants. Each playthroughs was observed in real time by the examiners and was recorded for future reference and evaluation. 
 
-## Participant demographic information
+#### Participant demographic information
 | Age | Gender | Occupation                     | Self-estimate of hours of video games played per week |
 |-----|--------|--------------------------------|-------------------------------------------------------|
 | X   | Male   | Doctor of Optometry student    | 16                                                    |
@@ -195,12 +185,13 @@ We used the “Think Aloud” observational method. Participants were invited to
 | X   | Male   | Unemployed                     | 30                                                    |
 
 
-## Strengths and weaknesses of methodology
+#### Strengths and weaknesses of methodology
 The breadth of this demographic research was quite limited – all participants were either university students or planning on undertaking tertiary studies. Furthermore, all participants were male and sat within a similar age range. However, as our game is quite simple and lacks a story, we expect these factors to have little bearing on how the game is played or perceived.
 
 Additionally, all participants had some degree of familiarity with video games. This familiarity could cause our evaluation of our game to be biased; for example, users may have played similar games before and could use their prior knowledge to supplement sections of the game where goals or mechanics were not communicated clearly. On the other hand, this familiarly meant that we could easily identify where our game failed to meet the expectations of a typical “gamer”.
 Another area of weakness of our querying method was that the lack of a dialogue between the participant and examiners meant that feedback was mainly focused on the initial stumbling blocks users faced –in a more open method (TODO GET NAME OR SOMETHING), users could be moved forward, allowing for feedback to be provided across the entire game. However, as our users were given less assistance, their feedback couldn’t extend beyond their points of blockage. As our tutorial was quite lacklustre when we performed our observations, we received limited feedback on later stages of the game. 
 
+## Evaluation and changes implemented
 
 ### Gameplay
 * Overall, participants stated that they found the game enjoyable and relatively bug-free, with instructions clearly stating the objective of the game, and controls working as expected
