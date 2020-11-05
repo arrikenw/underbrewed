@@ -230,11 +230,11 @@ We used the “Think Aloud” observational method. Participants were invited to
 #### Participant demographic information
 | Age | Gender | Occupation                     | Self-estimate of hours of video games played per week |
 |-----|--------|--------------------------------|-------------------------------------------------------|
-| X   | Male   | Doctor of Optometry student    | 16                                                    |
-| X   | Male   | 3rd year undergraduate student | 10                                                    |
-| X   | Male   | 2nd year undergraduate student | 40                                                    |
-| X   | Male   | 1st year undergraduate student | 40                                                    |
-| X   | Male   | Unemployed                     | 30                                                    |
+| 21  | Male   | Doctor of Optometry student    | 16                                                    |
+| 21  | Male   | 3rd year undergraduate student | 10                                                    |
+| 20  | Male   | 2nd year undergraduate student | 40                                                    |
+| 20  | Male   | 3rd year undergraduate student | 40                                                    |
+| 21  | Male   | Unemployed                     | 30                                                    |
 
 
 #### Strengths and weaknesses of methodology
