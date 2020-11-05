@@ -106,7 +106,20 @@ return fragColor;
 ```
 
 ## Screen Distortion Shader
-dot dot dot
+
+The internal trig functions are used to create a screen shake effect. The choice of using a sin function on time for one axis and a cos function on time on the other axis was to ensure this screen shake took the form of a spiral around the screen’s centre rather than as a slide along a line (which would occur if the same trig functions were used on both axes). The external sin function is used to create a stretching / warping effect across the entire image, producing a mild sense of disorientation. To ensure the final image largely remains centred and intelligible, the overall effect is scaled significantly to ensure that it remains dwarfed by the original state.  
+
+```Shaderlab
+X = (0.05 * sin(v.vertex.x + 1.5 * sin(_Time.z)) + v.vertex.x
+Y = (0.05 * sin(v.vertex.y + 2.5 * cos(_Time.z)) + v.vertex.y
+```
+
+A greenish colouration is applied to the screen by retrieving the texture colour of the final image and then mixing it with a static green colour and a green colour whose strength varies with sin of the current time, resulting in a green hued image with an intensity that varies over time. The formula for this colouration is as follows: 
+
+```Shaderlab
+final_colour = 0.6*texture_colour + 0.2*sin_green_colour + 0.2*flat_green_colour
+```
+
 
 ## Evaluation Methods
 
