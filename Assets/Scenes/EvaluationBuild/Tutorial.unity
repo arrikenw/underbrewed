@@ -2504,9 +2504,9 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: To deliver our order, we will need to bottle it up. To do so, grab a potion
     bottle from the potion bottle crate and hold it in front of the cauldron. After
-    you've brought the potion over, press the ',' key while facing the the cauldron
-    to fill the bottle with your potion. To continue, fill your bottle with the burnt
-    bone potion.
+    you've brought the potion over, press the interact button, ',' while facing the
+    the cauldron to fill the bottle with your potion. To continue, fill your bottle
+    with the burnt bone potion.
 --- !u!222 &332121179
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4828,8 +4828,9 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'The chopping station chops an ingredient. If an ingredient has the knife
     icon below it, make sure you chop it before adding it to a cauldron! Unlike the
-    other stations, when chopping you will need to stand next to the station and
-    hold interact until the ingredient is chopped. Chop some cheese to continue. '
+    other stations, when chopping, you will need to stand next to the station and
+    hold the interact button, '','' until the ingredient is chopped. Chop some cheese
+    to continue. '
 --- !u!222 &710945531
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7951,10 +7952,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: If brew a potion incorrectly by placing the wrong ingredients into a cauldron
-    or filling it in an incorrect sequence, the liquid will turn black. Brewing a
-    potion incorrectly will trigger negative magical effects, so be careful! To continue,
-    brew a bad potion by putting two bones into a cauldron.
+  m_Text: If you brew a potion incorrectly by placing the wrong ingredients into
+    a cauldron or filling it in an incorrect sequence, the liquid will turn black.
+    Brewing a potion incorrectly will trigger negative magical effects, so be careful!
+    To continue, brew a bad potion by putting two bones into a cauldron.
 --- !u!222 &1305718678
 CanvasRenderer:
   m_ObjectHideFlags: 0

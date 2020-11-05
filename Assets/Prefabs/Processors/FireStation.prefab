@@ -266,9 +266,9 @@ GameObject:
   - component: {fileID: 5874417170606188254}
   - component: {fileID: 8530635743884677652}
   - component: {fileID: 7035605180627238858}
-  - component: {fileID: 7035605180627238859}
   - component: {fileID: 7035605180627238862}
   - component: {fileID: 1875019773639569487}
+  - component: {fileID: 5883345695302418741}
   m_Layer: 0
   m_Name: FireStation
   m_TagString: Untagged
@@ -356,19 +356,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &7035605180627238859
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7881884782824567745}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.972, y: 2.3335607, z: 2.972}
-  m_Center: {x: 0, y: 0.9946281, z: 0}
 --- !u!65 &7035605180627238862
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -401,11 +388,25 @@ MonoBehaviour:
   soundEffect: {fileID: 376661163824662960}
   finishedSound: {fileID: 8474133242508433175}
   tutorialController: {fileID: 0}
+  timeUntilComplete: 0
   psysPrefab: {fileID: 7408081723834861634, guid: bac9bb0729c3b43408ca763151bd02c0,
     type: 3}
   station: 1
   cookEffectsPrefab: {fileID: 6579814921043404322, guid: efbaa000c1234d0409f25479379a3a01,
     type: 3}
+--- !u!135 &5883345695302418741
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7881884782824567745}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.76
+  m_Center: {x: 0, y: 0.48, z: 0}
 --- !u!1 &8142792188219051926
 GameObject:
   m_ObjectHideFlags: 0

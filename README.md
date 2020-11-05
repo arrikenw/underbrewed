@@ -1,6 +1,6 @@
-**The University of Melbourne**
-# COMP30019 – Graphics and Interaction
+**The University of Melbourne – COMP30019 – Graphics and Interaction**
 
+# Underbrewed
 
 ## Table of contents
 * [Team Members](#team-members)
@@ -25,8 +25,10 @@
 
 
 ## Introduction
-Undercooked is a third person casual potion brewing simulator(?). During a level, the player must run around the game, preparing different potions in order to deliver orders on time. Points are given for every order delivered on time with the aim being to get the highest score possible. When an incorrect potion is brewed bad effects can occur, changing the gameplay. The entire game is played with a static camera from a third person perspective high above the level. (bad writing please change entirely) (images needed)
 
+Underbrewed is a cooking simulator game, in which players must brew potions according to incoming orders. Players must collect and prepare ingredients, then add them to their cauldron in the correct order. Players must follow each recipe carefully - adding the wrong ingredient to a cauldron triggers special effects and obstacles to distract players! To earn points, players must bottle up and deliver each potion before the order expires. 
+
+Underbrewed uses a static camera and third person perspective, and is designed to be played with a keyboard. 
 
 ## How to Play
 ### Basic controls
@@ -39,19 +41,22 @@ Undercooked is a third person casual potion brewing simulator(?). During a level
 - Open pause menu: Press ‘Esc’
 
 ### Gameplay
-Throughout a level, orders will continually arrive in the top left of the screen. Each order contains a list of ingredients, a desired output potion, and a time bar that indicates how long the player will have to complete the order. 
-To create a potion, players must place ingredients into cauldrons in the order they appear on the recipe. If an ingredient has an icon beneath it, the player must first process the ingredient in a corresponding station before adding it to a cauldron. 
-To deliver a completed potion, players must fill a bottle with liquid from the cauldron they have brewed the potion in, then must drop or throw the bottled potion through the delivery portal. Each successful delivery will increase the players’ score, which is displayed in the lower right of the screen. The time left until the level ends is displayed below the score.
-If a player places ingredient into the cauldron in a way that does not match any valid potions, the game will trigger a negative effect (eg. apply a distorted screen shader, sends ingredients flying across the stage).
+Throughout a level, orders will continually arrive in the top left of the screen. Each order contains a potion, the ingredients needed to brew the potion, and a timer that indicates how long the player will have to complete the order. 
 
-<b> We recommend that new players play our tutorial level before attempting stages, as provides an in-depth overview of the game’s controls and mechanics. </b>
+To create a potion, players must place ingredients into cauldrons in the order they appear on the recipe. If an ingredient has an icon beneath it, the player must first process the ingredient at a corresponding station before adding it to a cauldron. 
+
+To deliver a completed potion, players must fill a bottle with liquid from the cauldron they have brewed the potion in, then must drop or throw the bottled potion through the delivery portal. Each successful delivery will increase the players’ score, which is displayed in the lower right of the screen. The time left until the level ends is displayed below the score.
+
+If a player places an ingredient into the cauldron that does not match any valid potions, the game will trigger a special effect to distract players, such as a shader to distort the screen, or an explosion that sends ingredients flying across the scene.
+
+<b> We recommend that new players play our tutorial level before attempting stages, as it provides an in-depth overview of the game’s controls and mechanics. </b>
 
 ## Graphics and Camera Motion
 
 ### Graphics
-- Unity’s default lighting shaders are applied across most objects to provide realistic lighting. 
-- Custom fragment shaders are used to add interesting graphical effects, for example by creating a swirl effect for portals and providing colouring for fire particles.
-- After the initial render is complete, a custom fragment shader is applied to the initial render texture to provide post-processing effects and generate the final render texture.
+* Unity’s default lighting shaders are applied across most objects to provide realistic lighting. 
+* Custom fragment shaders are used to add interesting graphical effects, for example by creating a swirl effect for portals and providing colouring for fire particles.
+* After the initial render is complete, a custom fragment shader is applied to the initial render texture to provide post-processing effects and generate the final render texture.
 
 ### Camera Motion
 #### Third Person Static Camera
@@ -66,7 +71,7 @@ When a level finishes, an "action replay" occurs, with the camera moving down to
 ### Potion Liquid Shader
 The potion liquid shader, produces a swirling liquid, with the liquid slowly falling towards the center. This shader was used for the cauldron liquid, the portal center, as well as the backgrounds for the menus. The shader was produced with help from an online tutorial found [here](http://enemyhideout.com/2016/08/creating-a-whirlpool-shader/). 
 <p align="center">
-  <img src="Images/CauldronLiquid.gif"  width="500" >
+  <img src="Images/CauldronLiquid.gif"  width="300" >
 </p>
 
 The first part of the shader is the function rotate, which rotates a point around the center by `rotationAmount` radians. This was done by coverting the initial cartesian point into a polar co-ordinates, increasing the angle by `rotationAmount` radians, and returning the point converted back into a cartesian point.
@@ -121,7 +126,7 @@ return fragColor;
 TODO GENERAL FLAVOUR DESC
 
 <p align="center">
-  <img src="Images/ScreenEffect.gif"  width="500" >
+  <img src="Images/ScreenEffect.gif"  width="300" >
 </p>
 
 This shader has two main aspects, a screen shake and distortion effect and a colouring effect. 
@@ -151,13 +156,14 @@ A greenish colouration is applied to the screen by retrieving the texture colour
 ### Fire particle system
 
 <p align="center">
-  <img src="Gifs/FireParticleSystem.gif"  width="500" >
+  <img src="Gifs/FireParticleSystem.gif"  width="300" >
 </p>
 
-The fire of the cauldrons and burning stations were created using Unity’s Particle System API. Each fire consisted of three particle systems of different sizes and colours. Using multiple particle systems helped to create the different “layers” of the fire (red, orange, and yellow).
+The fire of the cauldrons and burning stations were created using Unity’s Particle System API. 
 
-The texture used in the particle system was created by Evgeny Starostin:
-https://80.lv/articles/breakdown-magic-fire-effect-in-unity/
+Each fire consisted of three particle systems of different sizes and colours (red, orange, and yellow sections). Using multiple particle systems helped to create the different “layers” of the fire. 
+
+The texture used in the particle system was created by [Evgeny Starostin](https://80.lv/articles/breakdown-magic-fire-effect-in-unity/)
 
 
 ## Evaluation Methods
@@ -212,35 +218,15 @@ Another area of weakness of our querying method was that the lack of a dialogue 
 
 ### Gameplay
 * Overall, participants stated that they found the game enjoyable and relatively bug-free, with instructions clearly stating the objective of the game, and controls working as expected
-* While this was mentioned in the tutorial, the majority of participants were not aware that ingredients had to be added to the cauldron in a particular order to be considered “correct”. Additionally, they were unaware that certain special effects (such as ingredients exploding) were the result of adding “incorrect” ingredients to the cauldron
-	* The tutorial was reworked so that tips were clearer and more precise
-	* An additional stage was added to the tutorial, in which players are instructed to make an “incorrect” potion to observe the special effects
-* Some participants felt confused by the different cauldron colours, as one of the potions was very similar in colour to the colour used to represent an “incorrect” potion
-	* Potion colours were changed so that a black potion represented an “incorrect” potion
-	* Grey colours were used to represent different stages of the potion in the cauldron, and bright colours were used to represent the final potions
-<p align="center">
-	<img src="Images/Cauldrons.PNG"  width="500" >
-	
-	Pictured: A potion with one ingredient added and a black "incorrect" potion.
-</p>
-* In general, participants felt there was a lack of feedback when playing the main level, and were unsure if they had submitted a “correct” potion. Participants suggested using sound effects or visual cues to indicate to indicate if players made a mistake or submitted a “correct” potion
-	* Additional sound effects were implemented, such as when an ingredient is finished processing at a station, when an incorrect ingredient is added to a cauldron, and when a potion is delivered into the portal.
-* Players were required to hold down a key in order to carry an item, however many participants stated that this felt awkward
-	* The mechanism for carrying an item was changed so that pressing the key would pick up or put down an item
-* Some players found it difficult to align the character with certain stations or ingredients
-	* To reduce the chance of this happening, we spaced out stations and ingredients
-	* We also realigned some objects that were not properly aligned with the benches
 * Some participants found that the game ran at a very low frame rate (20 to 30 fps)
 	* We found that certain models had a very high number of vertices. These were switched to alternate models with less vertices
 * The evaluation brought attention to several minor bugs, such as players glitching through certain benches and walls, player movement being disabled after restarting the game, and the ability to generate excessive amounts of ingredients by picking items from the crate in succession
 	* These bugs were fixed for the final build of the game
 
-### Graphics
-* Overall, participants felt positively about the graphics employed in the game. The graphics were often described as “cute”, and the objects and entities were relatively easy to distinguish
-* Some non-interactable decorative objects were placed in the scene, however some participants felt that they might distract inexperienced players
-	* Non-interactable objects were placed more thoughtfully in the scene, and used sparingly 
-
-### Other comments
+### Instructions / tutorial level
+* While this was mentioned in the tutorial, the majority of participants were not aware that ingredients had to be added to the cauldron in a particular order to be considered “correct”. Additionally, they were unaware that certain special effects (such as ingredients exploding) were the result of adding “incorrect” ingredients to the cauldron
+	* The tutorial was reworked so that tips were clearer and more precise
+	* An additional stage was added to the tutorial, in which players are instructed to make an “incorrect” potion to observe the special effects
 * Participants reported mixed feelings about the tutorial level. 
 	* While the tutorial clearly explained the basic concepts of the game, participants felt that progression in the tutorial should be based on task completion, both to provide a sense of achievement for learning controls, and confirm that users were completing the task properly
 		* The tutorial was reworked to progress based on task completion
@@ -248,11 +234,22 @@ Another area of weakness of our querying method was that the lack of a dialogue 
 		* We were unable to remove these challenges with the time given, but would like to have implemented these changes
 		* Players can restart the tutorial at any time by using the pause menu
 <p align="center">
-	<img src="Images/TutorialImproved.PNG"  width="500" >
+	<img src="Images/TutorialImproved.PNG"  width="300" >
 	
 	Pictured: The reworked tutorial now prompts the user to complete certain tasks in order to advance to the next step.
 </p>
-
+	
+### User experience
+* Some participants felt confused by the different cauldron colours, as one of the potions was very similar in colour to the colour used to represent an “incorrect” potion
+	* Potion colours were changed so that a black potion represented an “incorrect” potion
+	* Grey colours were used to represent different stages of the potion in the cauldron, and bright colours were used to represent the final potions
+* In general, participants felt there was a lack of feedback when playing the main level, and were unsure if they had submitted a “correct” potion. Participants suggested using sound effects or visual cues to indicate to indicate if players made a mistake or submitted a “correct” potion
+	* Additional sound effects were implemented, such as when an ingredient is finished processing at a station, when an incorrect ingredient is added to a cauldron, and when a potion is delivered into the portal.
+* Players were required to hold down a key in order to carry an item, however many participants stated that this felt awkward
+	* The mechanism for carrying an item was changed so that pressing the key would pick up or put down an item
+* Some players found it difficult to align the character with certain stations or ingredients
+	* To reduce the chance of this happening, we spaced out stations and ingredients
+	* We also realigned some objects that were not properly aligned with the benches
 * Many participants also mentioned that they felt the game would be more enjoyable with more music and sound effects, both in game, and for menus and buttons
 	* Additonal sound effects were implemented for different stations and actions
 	* Music was also added to the main menu and level select scenes, and sound effects were added to UI buttons
@@ -260,7 +257,14 @@ Another area of weakness of our querying method was that the lack of a dialogue 
 	* The timing of orders were adjusted, so that more time was allowed to complete each order
 * One participant felt the game would be more enjoyable if orders were created dynamically, and in response to the performance of the player (e.g. a new order could be generated if the player had completed all current orders, as opposed based on a fixed time)
 	* Due to time constraints, these were not implemented, but we feel they could be implemented in a future build
-* Some participants also suggested extra features that might suit the game such as
+
+### Graphics and UI
+* Overall, participants felt positively about the graphics employed in the game. The graphics were often described as “cute”, and the objects and entities were relatively easy to distinguish
+* Some non-interactable decorative objects were placed in the scene, however some participants felt that they might distract inexperienced players
+	* Scenes were updated such that non-interactable objects appeared sparingly, and were placed more thoughtfully in the scene
+
+### Other comments
+* Some participants also suggested extra features that might suit the game such as:
 	* Introducing different characters with different abilities, e.g. being able to hold multiple items at a time, or dash to move quicker
 	* Have potion bottles break when dropped to increase the difficulty of the game	
 		* Due to time constraints, these were not implemented, but we feel they could be implemented in a future build
