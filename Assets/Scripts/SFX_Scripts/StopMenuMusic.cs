@@ -7,7 +7,9 @@ public class StopMenuMusic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MenuMusic.Instance.StopMusic();
+        if (MenuMusic.Instance)
+        {
+            MenuMusic.Instance.StopMusic();
+        }
     }
-
 }

@@ -57,13 +57,13 @@ public class PrefabScript : MonoBehaviour
         //Cooking
         //TODO VARY TIMES
         cooktimeMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Grill, IngType.Bone), 8.0f);
-        cooktimeMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Grill, IngType.Flower), 6.0f);
-        cooktimeMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Grill, IngType.Frog), 7.0f);
+        cooktimeMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Grill, IngType.Flower), 8.0f);
+        cooktimeMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Grill, IngType.Frog), 8.0f);
 
-        cooktimeMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Chop, IngType.Frog), 1.5f);
+        cooktimeMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Chop, IngType.Frog), 2.0f);
         cooktimeMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Chop, IngType.Cheese), 2.0f);
 
-        cooktimeMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Crush, IngType.Eyeball), 9.5f);
+        cooktimeMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Crush, IngType.Eyeball), 9.0f);
         cooktimeMap.Add(new Tuple<Processor.StationType, IngType>(Processor.StationType.Crush, IngType.Bone), 9.0f);
 
         // Outputs
