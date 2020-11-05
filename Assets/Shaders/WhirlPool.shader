@@ -1,4 +1,3 @@
-// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 // http://enemyhideout.com/2016/08/creating-a-whirlpool-shader/
 Shader "Chill/WhirlPool"
 {
@@ -53,6 +52,7 @@ Shader "Chill/WhirlPool"
       float _Swirliness;
 	  half4 _Color;
 
+	  // do nothing here
       v2f vert(appdata v)
       {
         v2f o;
@@ -61,39 +61,45 @@ Shader "Chill/WhirlPool"
         return o;
       }
 
-      float2 rotate( float magnitude , float2 p )
+	  // rotates a point
+      float2 rotate( float rotationAmount, float2 p)
       {
-        float sinTheta = sin(magnitude);
-        float cosTheta = cos(magnitude);
-        float2x2 rotationMatrix = float2x2(cosTheta, -sinTheta, sinTheta, cosTheta);
-        return mul(p, rotationMatrix);
+		  float a = atan2(p.y, p.x);
+		  float r = length(p);
+
+		  a += rotationAmount;
+
+		  return float2(cos(a) * r, sin(a) * r);
       }
 
       fixed4 frag(v2f i) : SV_Target
       {
+		// texture for how much to swirl (more swirl towards outside)
         fixed4 motion = tex2D(_MotionTex, i.uv);
-
+		
+		// find point position relative to middle of uv
         float2 p = i.uv - float2(0.5, 0.5);
 
+		// if point is outside the circle, render it transparent
 		if (length(p) > 0.5)
 		{
 			return fixed4(0, 0, 0, 0);
 		}
-        // Rotate based upon direction
-        p = rotate(_Swirl * (motion.r * _Time), p);
-        p = rotate(_Rotation * _Time * _Speed, p);
 
-        // get the angle of our points, and divide it in half
-        float a = atan2(p.y , p.x ) * 0.5;
-        // the square root of the dot product will convert our angle into our distance from center
-        float r = sqrt(dot(p,p));
-        float2 uv;
-        // x is equal to the square root modified by:
-        // _Speed: The speed at which the pool twists.
-        // _Swirliness: How many 'rings' on the x we have.
-        uv.x = (_Time * _Speed) - 1/(r + _Swirliness);
-        // uv.x = r;
-        uv.y = a/3.1416;
+		// For rotation
+
+        // _Swirl is general swirl amount, motion.r increases swirl amount the further out it is
+        p = rotate(_Rotation * _Time * _Speed, p);
+		p = rotate(_Swirl * (motion.a * _Time), p);
+
+		// For texture moving towards center
+		float2 uv;
+        
+		uv.x = (_Time[0] * _Speed) - (1 / (length(p) + _Swirliness));
+		// angle of new point
+		float a = atan2(p.y, p.x);
+		// divide angle by two pi to get angle in radians scaled to between 0-1
+        uv.y = a/(3.1416 * 2);
 
         // Now we can get our color.
         fixed4 fragColor = tex2D(_MainTex, uv) * _Color;
