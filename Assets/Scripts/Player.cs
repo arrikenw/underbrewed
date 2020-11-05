@@ -49,10 +49,6 @@ public class Player : MonoBehaviour
 
     void FixedUpdate() {
         PositionUpdates();
-        if (Mathf.Abs(rb.position.y - 0.5f) > 0.01)
-        {
-            rb.position = new Vector3(rb.position.x, 0.5f, rb.position.y);
-        }
     }
 
 
