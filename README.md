@@ -51,7 +51,7 @@ If a player places an ingredient into the cauldron that does not match any valid
 
 <b> We recommend that new players play our tutorial level before attempting stages, as it provides an in-depth overview of the game’s controls and mechanics. </b>
 
-## Graphics and Camera Motion
+## Camera Motion and Graphics Pipeline
 
 ### Camera Motion
 #### Third Person Static Camera
@@ -60,7 +60,6 @@ The game is primarily played with a static camera. The camera is placed high abo
   <img src="Images/StaticCamera.png"  width="600" >
 </p>
 
-
 #### Action Replay Camera
 When a level finishes, an "action replay" occurs, with the camera moving down towards the player to produce the end game screen. The camera's movements will always to the opposite quarter of the level that the player is on in order to avoid occlusion from the level's walls.
 <p align="center">
@@ -68,33 +67,20 @@ When a level finishes, an "action replay" occurs, with the camera moving down to
 </p>
 
 ### Graphics
+
 #### Lighting and effects
 * Unity’s default lighting shaders are applied across most objects to provide realistic lighting. 
 * Custom fragment shaders are used to add interesting graphical effects, for example by creating a swirl effect for portals and providing colouring for fire particles.
 
 #### Post-processing
-* After the initial render is complete, a custom fragment shader is applied to the initial render texture to provide post-processing effects and generate the final render texture, with this post-processing is handled through Unity's ```OnRenderImage()``` functionality. We have provided a sample of our code for applying post-processing shaders below:
-
-```
-    void OnRenderImage(RenderTexture source, RenderTexture destination)
-    {
-        if (applyAffect)
-        {
-            Graphics.Blit(source, destination, material);
-        }
-        else
-        {
-            Graphics.Blit(source, destination);
-        }
-    }
-```
+* After the initial render is complete, a custom fragment shader is applied to the initial render texture to provide post-processing effects and generate the final render texture.
 
 ## Shaders and Particle Systems
 
 ### Potion Liquid Shader
 The potion liquid shader, produces a swirling liquid, with the liquid slowly falling towards the center. This shader was used for the cauldron liquid, the portal center, as well as the backgrounds for the menus. The shader was produced with help from an online tutorial found [here](http://enemyhideout.com/2016/08/creating-a-whirlpool-shader/). 
 <p align="center">
-  <img src="Images/CauldronLiquid.gif"  width="300" >
+  <img src="Images/CauldronLiquid.gif"  width="600" >
 </p>
 
 The first part of the shader is the function rotate, which rotates a point around the center by `rotationAmount` radians. This was done by coverting the initial cartesian point into a polar co-ordinates, increasing the angle by `rotationAmount` radians, and returning the point converted back into a cartesian point.
@@ -143,6 +129,10 @@ fixed4 fragColor = tex2D(_MainTex, uv) * _Color;
 
 return fragColor;
 ```
+### Bubbles Particle System
+The bubbles produced by the cauldron is comprised of two differnet particle systems: The first produces the intial bubble, and the latter produces the popped bubble particles. The particle system was produced with help from a tutorial found [here](https://www.youtube.com/watch?v=ajsA6vWBhKI).
+
+The bubbles are emitted upwards from the cauldron's liquid surface, with their velocities changing over time, giving the bubbles a wavy effect as they rise up. When the bubbles expire after a certain lifetime, they emit the next particle system, representing the burst bubble. These burst bubble particles are affected by gravity are emitted in all directions from the expired bubble. This helps acheive the effect of a burst bubble.
 
 ### Screen Distortion Shader
 
@@ -202,14 +192,14 @@ The interview consisted of open-ended questions surrounding the gameplay, graphi
 | Age | Gender    | Occupation                     | Self-estimate of hours of video games played per week |
 |-----|--------   |--------------------------------|-------------------------------------------------------|
 | 20   | Male     | 3rd year undergraduate student | 10                                                    |
-| 20   | Female   | 3rd year undergraduate student | 2                                                     |
+| 20   | Female   | 3rd year undergraduate student | xx                                                    |
 | 20   | Female   | 2nd year undergraduate student | 14                                                    |
 | X   | Male   | 1st year undergraduate student | 40                                                       |
 | X   | Male   | Unemployed                     | 30                                                     |
 
 #### Strengths and weaknesses of methodology
 
-The demographic of participants was quite narrow, with all participants being between ages 18 and 20, and undertaking tertiary education. While levels of gaming experience varied between participants, all participants had some familiarity with gaming and reported playing, on average, between 2 and 14 hours of games per week.
+TO DO: comment on demographic
 
 This querying method allowed participants to experience the game at their own pace and without influence from others.
 
@@ -294,8 +284,8 @@ Another area of weakness of our querying method was that the lack of a dialogue 
 
 
 ## Resource References
+The cauldron liquid shader was produced with help from an online tutorial found [here](http://enemyhideout.com/2016/08/creating-a-whirlpool-shader/).
 
-TO DO: Statement here
 
 ## Individual Contributions
 
@@ -311,21 +301,46 @@ dot dot dot
 ### Iris Li
 dot dot dot
 	
-	
 ## References
+
+Texture for fire particle system: https://80.lv/articles/breakdown-magic-fire-effect-in-unity/ 
+
+Decoration Models and textures: https://assetstore.unity.com/packages/3d/environments/fantasy/mega-fantasy-props-pack-87811
+
+
+### Models
+
+https://poly.google.com/user/4aEd8rQgKu2
+
+https://poly.google.com/user/6WNlPxHAo7o
+
+https://poly.google.com/user/a4-Oxy9dNsF
+
+
+### Icons for scroll and ingredients
+
+https://clipartmax.com/ 
+
+https://clipart-library.com/ 
+
+https://www.clipartkey.com/
+
+
+### Icons for potions
+
+Created for this project by a friend, Ben Czapla
 
 ### Logic for highscores
 
 Logic for storing highscores locally was retrieved from:
 
 https://answers.unity.com/questions/644911/how-do-i-store-highscore-locally-c-simple.html
+    
+### Other useful resources
 
-Pause menu and end screen: https://www.sitepoint.com/adding-pause-main-menu-and-game-over-screens-in-unity/
+https://www.sitepoint.com/adding-pause-main-menu-and-game-over-screens-in-unity/
 
-Fire particle system: https://80.lv/articles/breakdown-magic-fire-effect-in-unity/ 
-
-Button animation: https://www.youtube.com/watch?v=CJ8FKjYtrT4
-
+https://www.youtube.com/watch?v=CJ8FKjYtrT4 (buttons)
 
 ### Sound effects
 
@@ -359,8 +374,7 @@ Chopping sound: https://www.youtube.com/watch?v=BrDkL5Y7kCs
 
 Game trailer music: https://www.youtube.com/watch?v=v4pTPigj0Gk
 
-
-### Textures, materials, and 3D models
+### 3D models and textures
 
 Flower model: https://free3d.com/3d-model/hinduismlotus-flower-v1--463468.html
 
@@ -373,8 +387,6 @@ Cheese model: https://www.cgtrader.com/items/258230/download-page
 Eye model: https://www.cgtrader.com/items/44082/download-page
 
 Bone model: https://poly.google.com/view/9KOTx3n2lfm
-
-Book model: https://poly.google.com/user/6WNlPxHAo7o
 
 Potion model: https://poly.google.com/view/dOREefQfDQu
 
@@ -392,38 +404,17 @@ Squashed eye model: https://www.turbosquid.com/3d-models/3d-rectangle-flow-splas
 
 Chopped cheese model: https://www.turbosquid.com/3d-models/free-max-mode/1033609
 
-Crate and candle models, wall texture: https://assetstore.unity.com/packages/3d/environments/fantasy/mega-fantasy-props-pack-87811
-
 Crushed rock model: https://www.turbosquid.com/3d-models/rock-pile-obj-free/813686
 
 Chopping board model: https://www.turbosquid.com/3d-models/free-chopping-board-3d-model/538266
 
 Frog model: https://www.turbosquid.com/FullPreview/Index.cfm/ID/753743
 
-Fire particle system texture: https://80.lv/articles/breakdown-magic-fire-effect-in-unity/ 
-
 Fire station model: https://www.turbosquid.com/3d-models/pit-firepit-3ds/701220
-
-Interior decorations: https://poly.google.com/user/4aEd8rQgKu2
-
-Ladder model: https://poly.google.com/user/a4-Oxy9dNsF
 
 Witch hat: https://free3d.com/3d-model/witchhat-v4--231135.html
 
 Wood texture: https://www.pinterest.com.au/pin/14496030030351650/
-
-
-### Sprites
-
-Ingredients: https://clipartmax.com/ 
-
-Potions: Benjamin Czapla (student work)
-
-Scroll: https://www.clipartkey.com/
-
-Stations: https://clipart-library.com/ 
-
-
 
 
 ## Technologies
