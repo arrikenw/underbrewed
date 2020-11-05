@@ -40,7 +40,7 @@ public class Processor : Station
     public GameObject tutorialController;
 
     // cooking logic
-    protected bool interacting = false;
+    public bool interacting = false;
     public float timeUntilComplete = 0;
     protected IngType currentIngredient;
 

@@ -7,6 +7,8 @@ public class UIGameMenu : MonoBehaviour
 {
     public bool pauseEnabled;
 
+    public AudioSource gameMusic;
+
     GameObject[] pauseObjects;
     GameObject[] endObjects;
     GameObject[] playObjects;
@@ -54,7 +56,11 @@ public class UIGameMenu : MonoBehaviour
 
     public void showPaused()
     {
-        foreach(GameObject g in pauseObjects)
+        if (gameMusic)
+        {
+            gameMusic.Pause();
+        }
+        foreach (GameObject g in pauseObjects)
         {
             g.SetActive(true);
         }
@@ -62,7 +68,12 @@ public class UIGameMenu : MonoBehaviour
 
     public void hidePaused()
     {
-        foreach(GameObject g in pauseObjects)
+        if (gameMusic)
+        {
+            gameMusic.Play();
+        }
+        
+        foreach (GameObject g in pauseObjects)
         {
             g.SetActive(false);
         }
@@ -70,6 +81,10 @@ public class UIGameMenu : MonoBehaviour
 
     public void showEnd()
     {
+        if (gameMusic)
+        {
+            gameMusic.Stop();
+        }
         foreach (GameObject g in endObjects)
         {
             g.SetActive(true);
