@@ -180,7 +180,7 @@ We used the “Think Aloud” observational method. Participants were invited to
 |-----|--------|--------------------------------|-------------------------------------------------------|
 | X   | Male   | Doctor of Optometry student    | 16                                                    |
 | X   | Male   | 3rd year undergraduate student | 10                                                    |
-| X   | Male   | 2nd year undergraduate student | ?                                                     |
+| X   | Male   | 2nd year undergraduate student | 40                                                    |
 | X   | Male   | 1st year undergraduate student | 40                                                    |
 | X   | Male   | Unemployed                     | 30                                                    |
 
