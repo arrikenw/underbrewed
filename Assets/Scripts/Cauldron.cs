@@ -54,7 +54,11 @@ public class Cauldron : Station
         if (base.storedItem != null && base.storedItem.GetComponent<Ingredient>() != null) {
             if (dud) {
                 Destroy(base.storedItem);
-                tutorialController.GetComponent<TutorialScript>().OnBadRecipeCreated();
+                if (isTutorial)
+                {
+                    tutorialController.GetComponent<TutorialScript>().OnBadRecipeCreated();
+                }
+                
                 return;
             }
 
