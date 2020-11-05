@@ -33,12 +33,13 @@ Underbrewed uses a static camera and third person perspective, and is designed t
 ## How to Play
 ### Basic controls
 - Movement: WASD and arrow keys are both supported
-- Pick up item: Press ‘m’ while facing an item
-- Drop item: Press ‘m’ again while holding an item
+- Pick up item: Press ‘M’ while facing an item
+- Drop item: Press ‘M’ again while holding an item
 - Throw item: Press ‘.’ While holding an item
 - Interact with station: Press ‘,’ while facing the station
 - Fill potion from cauldron: Press ‘,’ while holding a bottle and facing a cauldron
 - Open pause menu: Press ‘Esc’
+- The optional key sets "O", "P", "[" and "Z", "X", "C" can be used instead of the default "M", ",", "."
 
 ### Gameplay
 Throughout a level, orders will continually arrive in the top left of the screen. Each order contains a potion, the ingredients needed to brew the potion, and a timer that indicates how long the player will have to complete the order. 
