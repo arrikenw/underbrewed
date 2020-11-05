@@ -81,7 +81,7 @@ Our game makes heavy use of custom and Unity-provided fragment shaders to handle
 * A custom fragment shader is used to provide interesting colouring for our flame effects.
 
 #### Post-processing
-* After the initial render is complete, a custom fragment shader is applied to the initial render texture to provide post-processing effects and generate the final render texture, with this post-processing is handled through Unity's ```OnRenderImage()``` functionality. We have provided a sample of our code for applying post-processing shaders below:
+After the initial render is complete, a custom fragment shader is applied to the initial render texture to provide post-processing effects and generate the final render texture, with this post-processing is handled through Unity's ```OnRenderImage()``` functionality. We have provided a sample of our code for applying post-processing shaders below:
 
 ```C#
     void OnRenderImage(RenderTexture source, RenderTexture destination)
