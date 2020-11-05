@@ -398,6 +398,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BubblingSound
       objectReference: {fileID: 0}
+    - target: {fileID: 4836269555438694259, guid: e8e56b3c517adef45a4dac5373d90fbe,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.145
+      objectReference: {fileID: 0}
     - target: {fileID: 5414900951571401299, guid: e8e56b3c517adef45a4dac5373d90fbe,
         type: 3}
       propertyPath: m_LocalPosition.x
