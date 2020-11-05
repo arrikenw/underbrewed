@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IngredientPlus : Ingredient
+public class SingleMaterialIngredient : Ingredient
 {   
     protected override void Awake() {
         GetComponent<MeshRenderer>().enabled = false;
