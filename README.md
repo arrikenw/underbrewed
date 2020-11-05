@@ -1,16 +1,18 @@
 **The University of Melbourne**
 # COMP30019 – Graphics and Interaction
 
+
 ## Table of contents
 * [Team Members](#team-members)
 * [Introduction](#introduction)
 * [How to Play](#how-to-play)
 * [Graphics and Camera Motion](#using-images)
 * [Shaders](#shaders)
-* [Observational Methods](#observational-methods)
+* [Evaluation Methods](#evaluation-methods)
 * [Feedback Changes](#feedback-changes)
 * [Resource References](#resource-references)
 * [Individual Contributions](#individual-contributions)
+
 
 ## Team Members
 
@@ -21,21 +23,44 @@
 | Simon Tran  | Game Logic      |  Done |
 | Iris Li  | UI      |  Done |
 
-## Introduction
-Our game is a first person shooter (FPS) that....
 
-You can use emojis :+1: but do not over use it, we are looking for professional work. If you would not add them in your job, do not use them here! :shipit:
+## Introduction
+Undercooked is a third person casual potion brewing simulator(?). During a level, the player must run around the game, preparing different potions in order to deliver orders on time. Points are given for every order delivered on time with the aim being to get the highest score possible. When an incorrect potion is brewed bad effects can occur, changing the gameplay. The entire game is played with a static camera from a third person perspective high above the level. (bad writing please change entirely) (images needed)
+
 
 ## How to Play
 dot dot dot
 
+
 ## Graphics and Camera Motion
-dot dot dot
+
+### Graphics
+
+### Camera Motion
+#### Third Person Static Camera
+The game is primarily played with a static camera. The camera is placed high above the level, similar to a bird's eye view, allowing the player to see everything as the play the game. This camera position was chosen as it made the entire level viewable for the player while not issues of traditional cameras, such as occlusion. (image needed)
+
+#### Action Replay Camera
+When a level finishes an "action replay" occurs, with the camera moving down towards the player to produce the end game screen. The camera's movements will always to the opposite quarter of the level that the player is on in order to avoid occlusion from the level's walls. (image needed)
+
 
 ## Shaders
+
+### Fire Shader
 dot dot dot
 
-## Observational Methods
+## Potion Liquid Shader
+dot dot dot
+
+## Screen Distortion Shader
+dot dot dot
+
+## Evaluation Methods
+
+### Querying Method
+dot dot dot
+
+### Observational Method
 dot dot dot
 
 ## Feedback Changes
