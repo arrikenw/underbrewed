@@ -286,7 +286,7 @@ Texture for fire particle system: https://80.lv/articles/breakdown-magic-fire-ef
 Decoration Models and textures: https://assetstore.unity.com/packages/3d/environments/fantasy/mega-fantasy-props-pack-87811
 
 
-Models: 
+### Models: 
 
 https://poly.google.com/user/4aEd8rQgKu2
 
@@ -295,7 +295,7 @@ https://poly.google.com/user/6WNlPxHAo7o
 https://poly.google.com/user/a4-Oxy9dNsF
 
 
-Icons for scroll and ingredients:
+### Icons for scroll and ingredients:
 
 https://clipartmax.com/ 
 
@@ -304,20 +304,23 @@ https://clipart-library.com/
 https://www.clipartkey.com/
 
 
-Icons for potions:
+### Icons for potions:
 
 Created for this project by a friend, Ben Czapla
+
+### Logic for highscores:
 
 Logic for storing highscores locally was retrieved from:
 
 https://answers.unity.com/questions/644911/how-do-i-store-highscore-locally-c-simple.html
     
-Other useful resources:
+### Other useful resources:
 
 https://www.sitepoint.com/adding-pause-main-menu-and-game-over-screens-in-unity/
 
 https://www.youtube.com/watch?v=CJ8FKjYtrT4 (buttons)
 
+### Sound effects
 
 Game background music: https://www.youtube.com/watch?v=iX6ex5fYT7o
 
@@ -348,6 +351,8 @@ Mortar and pestle sound: https://www.youtube.com/watch?v=PJo5yIPhFSM
 Chopping sound: https://www.youtube.com/watch?v=BrDkL5Y7kCs
 
 Game trailer music: https://www.youtube.com/watch?v=v4pTPigj0Gk
+
+### 3D models and textures
 
 Flower model: https://free3d.com/3d-model/hinduismlotus-flower-v1--463468.html
 
