@@ -21,7 +21,13 @@ public class UIProgressManager : MonoBehaviour
                 timeLeft = station.GetComponent<ToggleProcessor>().timeUntilComplete;
             } else if (station.GetComponent<HoldProcessor>())
             {
-                timeLeft = station.GetComponent<HoldProcessor>().timeUntilComplete;
+                if (station.GetComponent<HoldProcessor>().interacting == false)
+                {
+                    timeLeft = 0.0f;
+                }
+                else {
+                    timeLeft = station.GetComponent<HoldProcessor>().timeUntilComplete;
+                }
             }
 
             if (timeLeft > 0 && timeLeft < maxTime)
