@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4223309025481297722}
   - component: {fileID: 4347842436588805973}
   - component: {fileID: 6200693194329556513}
-  - component: {fileID: 7190071976509986616}
+  - component: {fileID: 3359814469777973221}
   m_Layer: 0
   m_Name: ChoppedFrog
   m_TagString: Untagged
@@ -129,7 +129,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &7190071976509986616
+--- !u!114 &3359814469777973221
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,11 +138,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2097642393294680124}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6106e23566faff43aa19a2d863d9325, type: 3}
+  m_Script: {fileID: 11500000, guid: e901e6842d6b4c648a9dd50c43c59b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ingredientType: 11
-  canHighlight: 1
 --- !u!1001 &759270418005064970
 PrefabInstance:
   m_ObjectHideFlags: 0

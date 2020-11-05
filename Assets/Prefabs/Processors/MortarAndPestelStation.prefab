@@ -327,9 +327,9 @@ GameObject:
   - component: {fileID: 7764166300433335169}
   - component: {fileID: 6211707597328957989}
   - component: {fileID: 3037374858868100450}
-  - component: {fileID: 4754293838286261495}
   - component: {fileID: 2190284909496682169}
   - component: {fileID: 5776898447937451328}
+  - component: {fileID: 7283929741123400846}
   m_Layer: 0
   m_Name: MortarAndPestelStation
   m_TagString: Untagged
@@ -424,19 +424,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.63908654, y: 0.60571957, z: 0.63668597}
   m_Center: {x: -0.03981749, y: 0.078782536, z: 0.011992802}
---- !u!65 &4754293838286261495
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4955474852227601385}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.56619364, y: 0.43055826, z: 0.56556076}
-  m_Center: {x: -0.039388735, y: -0.014239475, z: 0.011253108}
 --- !u!114 &2190284909496682169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,6 +443,7 @@ MonoBehaviour:
   soundEffect: {fileID: 9072249776450899131}
   finishedSound: {fileID: 4495800744115139568}
   tutorialController: {fileID: 0}
+  timeUntilComplete: 0
   psysPrefab: {fileID: 0}
   station: 2
   cookEffectsPrefab: {fileID: 0}
@@ -478,6 +466,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!135 &7283929741123400846
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4955474852227601385}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.33
+  m_Center: {x: -0.03, y: 0, z: 0}
 --- !u!1 &8518259473630470842
 GameObject:
   m_ObjectHideFlags: 0

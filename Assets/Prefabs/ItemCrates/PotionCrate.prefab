@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1955125410150980540}
   - component: {fileID: 9207820642825624877}
   - component: {fileID: 5746119992597809120}
+  - component: {fileID: 2040890452042520090}
   m_Layer: 0
   m_Name: PotionCrate
   m_TagString: Untagged
@@ -140,8 +141,21 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2034888, y: 0.9768878, z: 1.1301227}
-  m_Center: {x: -0.020044666, y: 0.4884439, z: 0.002206191}
+  m_Size: {x: 1.2034888, y: 0.96262544, z: 1.1301227}
+  m_Center: {x: -0.020044666, y: 0.48131272, z: 0.002206191}
+--- !u!135 &2040890452042520090
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955125410150980543}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.56787103
+  m_Center: {x: -0.020044666, y: 0.32139277, z: 0.0004233419}
 --- !u!1 &5565713015738413851
 GameObject:
   m_ObjectHideFlags: 0

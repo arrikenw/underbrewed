@@ -1477,6 +1477,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9061512977735950559, guid: 6d1f87e59e8f8014ab90a9e39ebb54dc,
+        type: 3}
+      propertyPath: gameMusic
+      value: 
+      objectReference: {fileID: 334442742}
     m_RemovedComponents:
     - {fileID: 1588743275608689127, guid: 6d1f87e59e8f8014ab90a9e39ebb54dc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6d1f87e59e8f8014ab90a9e39ebb54dc, type: 3}
@@ -2390,6 +2395,12 @@ PrefabInstance:
 --- !u!4 &334442741 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5176873095747456761, guid: 2ee06c5d7911d804a98c34cee1aee7c6,
+    type: 3}
+  m_PrefabInstance: {fileID: 334442740}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &334442742 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2142868065254385906, guid: 2ee06c5d7911d804a98c34cee1aee7c6,
     type: 3}
   m_PrefabInstance: {fileID: 334442740}
   m_PrefabAsset: {fileID: 0}
@@ -6129,7 +6140,7 @@ PrefabInstance:
     - target: {fileID: 1777460676761321142, guid: 2b49e1ad81b652a438dc5eda584711a3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.0557294
+      value: -1.98
       objectReference: {fileID: 0}
     - target: {fileID: 1777460676761321142, guid: 2b49e1ad81b652a438dc5eda584711a3,
         type: 3}
@@ -7293,6 +7304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseEnabled: 0
+  gameMusic: {fileID: 0}
 --- !u!1001 &1382058809
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8777,7 +8789,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camera
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8939158151161880025, guid: 3222eca603221b34a9a71633bf7539db, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3222eca603221b34a9a71633bf7539db, type: 3}
 --- !u!1 &1646825350 stripped
 GameObject:
