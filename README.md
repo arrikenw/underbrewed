@@ -66,7 +66,7 @@ When a level finishes, an "action replay" occurs, with the camera moving down to
 ### Potion Liquid Shader
 The potion liquid shader, produces a swirling liquid, with the liquid slowly falling towards the center. This shader was used for the cauldron liquid, the portal center, as well as the backgrounds for the menus. The shader was produced with help from an online tutorial found [here](http://enemyhideout.com/2016/08/creating-a-whirlpool-shader/). 
 <p align="center">
-  <img src="Images/CauldronLiquid.gif"  width="300" >
+  <img src="Images/CauldronLiquid.gif"  width="500" >
 </p>
 
 The first part of the shader is the function rotate, which rotates a point around the center by `rotationAmount` radians. This was done by coverting the initial cartesian point into a polar co-ordinates, increasing the angle by `rotationAmount` radians, and returning the point converted back into a cartesian point.
@@ -121,7 +121,7 @@ return fragColor;
 TODO GENERAL FLAVOUR DESC
 
 <p align="center">
-  <img src="Images/ScreenEffect.gif"  width="300" >
+  <img src="Images/ScreenEffect.gif"  width="500" >
 </p>
 
 This shader has two main aspects, a screen shake and distortion effect and a colouring effect. 
@@ -151,7 +151,7 @@ A greenish colouration is applied to the screen by retrieving the texture colour
 ### Fire particle system
 
 <p align="center">
-  <img src="Gifs/FireParticleSystem.gif"  width="300" >
+  <img src="Gifs/FireParticleSystem.gif"  width="500" >
 </p>
 
 The fire of the cauldrons and burning stations were created using Unity’s Particle System API. Each fire consisted of three particle systems of different sizes and colours. Using multiple particle systems helped to create the different “layers” of the fire (red, orange, and yellow).
@@ -218,6 +218,11 @@ Another area of weakness of our querying method was that the lack of a dialogue 
 * Some participants felt confused by the different cauldron colours, as one of the potions was very similar in colour to the colour used to represent an “incorrect” potion
 	* Potion colours were changed so that a black potion represented an “incorrect” potion
 	* Grey colours were used to represent different stages of the potion in the cauldron, and bright colours were used to represent the final potions
+<p align="center">
+	<img src="Images/Cauldrons.PNG"  width="500" >
+	
+	Pictured: A potion with one ingredient added and a black "incorrect" potion.
+</p>
 * In general, participants felt there was a lack of feedback when playing the main level, and were unsure if they had submitted a “correct” potion. Participants suggested using sound effects or visual cues to indicate to indicate if players made a mistake or submitted a “correct” potion
 	* Additional sound effects were implemented, such as when an ingredient is finished processing at a station, when an incorrect ingredient is added to a cauldron, and when a potion is delivered into the portal.
 * Players were required to hold down a key in order to carry an item, however many participants stated that this felt awkward
@@ -243,7 +248,7 @@ Another area of weakness of our querying method was that the lack of a dialogue 
 		* We were unable to remove these challenges with the time given, but would like to have implemented these changes
 		* Players can restart the tutorial at any time by using the pause menu
 <p align="center">
-	<img src="Images/TutorialImproved.PNG"  width="300" >
+	<img src="Images/TutorialImproved.PNG"  width="500" >
 	
 	Pictured: The reworked tutorial now prompts the user to complete certain tasks in order to advance to the next step.
 </p>
