@@ -1617,8 +1617,7 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Quit
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1588743275608689127, guid: 6d1f87e59e8f8014ab90a9e39ebb54dc, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d1f87e59e8f8014ab90a9e39ebb54dc, type: 3}
 --- !u!4 &200046721 stripped
 Transform:
@@ -8778,6 +8777,12 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &1315607991 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1588743275608689128, guid: 6d1f87e59e8f8014ab90a9e39ebb54dc,
+    type: 3}
+  m_PrefabInstance: {fileID: 181872321}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1340307018 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3767738777782038735, guid: 0a6903ed3ce10bb4f858035f1c0041b9,
@@ -9665,6 +9670,7 @@ MonoBehaviour:
   MainUIObject: {fileID: 1067922841}
   EndLevelObject: {fileID: 1594637058}
   TextObject: {fileID: 437955614}
+  MenuObject: {fileID: 1315607991}
   ScoreObject: {fileID: 76340369}
   TimeObject: {fileID: 211643081}
   levelConfigFile: {fileID: 4900000, guid: dbdef570443f9f446a768dc9fc925ba7, type: 3}
@@ -11153,6 +11159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e5a21fd3628e614c988fbe9bded2abc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseEnabled: 0
 --- !u!1001 &1717101810
 PrefabInstance:
   m_ObjectHideFlags: 0

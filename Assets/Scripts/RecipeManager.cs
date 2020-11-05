@@ -27,6 +27,9 @@ public class RecipeManager : MonoBehaviour
     // Game text 
     public GameObject TextObject;
 
+    // Game menu
+    public GameObject MenuObject;
+
     //testing score
     public GameObject ScoreObject;
     public GameObject TimeObject;
@@ -252,6 +255,9 @@ public class RecipeManager : MonoBehaviour
         //camera stuff here
         Camera.GetComponent<animateCamera>().EndAnimation();
 
+        // disable pause menu
+        MenuObject.GetComponent<UIGameMenu>().pauseEnabled = false;
+
         // Store and display stats / score
         //calculate completion %
         float completionPercent = 100*(((float)nOrdersCompleted) / totalLevelOrders);
@@ -274,7 +280,7 @@ public class RecipeManager : MonoBehaviour
         }
 
         // Display end screen
-        this.gameObject.GetComponent<UIGameMenu>().showEnd();
+        MenuObject.GetComponent<UIGameMenu>().showEnd();
     }
 
     //store highscore code has been retrieved from:
@@ -295,9 +301,15 @@ public class RecipeManager : MonoBehaviour
         inCountdown = true;
         Time.timeScale = 0.0f;
         score = 0;
+        MenuObject.GetComponent<UIGameMenu>().pauseEnabled = false;
         ScoreObject.GetComponent<UIGameScore>().updateGameScore(score);
         timeToNextOrder = GenerateLevelOrders();
-        StartCoroutine(TextObject.GetComponent<UIGameText>().startText(1.2f));
+
+        if (!isTutorial)
+        {
+            StartCoroutine(TextObject.GetComponent<UIGameText>().startText(1.2f));
+        }
+
     }
 
 
@@ -314,6 +326,7 @@ public class RecipeManager : MonoBehaviour
             {
                 inCountdown = false;
                 Time.timeScale = 1.0f;
+                MenuObject.GetComponent<UIGameMenu>().pauseEnabled = true;
             }
             return;
         }

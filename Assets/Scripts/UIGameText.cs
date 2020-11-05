@@ -28,8 +28,6 @@ public class UIGameText : MonoBehaviour
         gameTextObject.GetComponent<Image>().color = new Color (0, 0, 0, 0);
     }
 
-    
-
     /*
     // removed from final
     public IEnumerator endText(float duration)
