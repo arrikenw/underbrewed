@@ -153,6 +153,14 @@ fixed4 fragColor = tex2D(_MainTex, uv) * _Color;
 
 return fragColor;
 ```
+### Bubbles Particle System
+The bubbles produced by the cauldron is comprised of two differnet particle systems: The first produces the intial bubble, and the latter produces the popped bubble particles. The particle system was produced with help from a tutorial found [here](https://www.youtube.com/watch?v=ajsA6vWBhKI).
+
+<p align="center">
+  <img src="Images/Bubbles.gif"  width="600" >
+</p>
+
+The bubbles are emitted upwards from the cauldron's liquid surface, with their velocities changing over time, giving the bubbles a wavy effect as they rise up. When the bubbles expire after a certain lifetime, they emit the next particle system, representing the burst bubble. These burst bubble particles are affected by gravity are emitted in all directions from the expired bubble. This helps acheive the effect of a burst bubble.
 
 ### Screen Distortion Shader
 
