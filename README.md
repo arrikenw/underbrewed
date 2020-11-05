@@ -1,61 +1,51 @@
 **The University of Melbourne**
 # COMP30019 – Graphics and Interaction
 
-Final Electronic Submission (project): **4pm, Fri. 6 November**
-
-Do not forget **One member** of your group must submit a text file to the LMS (Canvas) by the due date which includes the commit ID of your final submission.
-
-You can add a link to your Gameplay Video here but you must have already submit it by **4pm, Sun. 25 October**
-
-# Project-2 README
-
-You must modify this `README.md` that describes your application, specifically what it does, how to use it, and how you evaluated and improved it.
-
-Remember that _"this document"_ should be `well written` and formatted **appropriately**. This is just an example of different formating tools available for you. For help with the format you can find a guide [here](https://docs.github.com/en/github/writing-on-github).
-
-
-**Get ready to complete all the tasks:**
-
-- [x] Read the handout for Project-2 carefully
-
-- [ ] Brief explanation of the game
-
-- [ ] How to use it (especially the user interface aspects)
-
-- [ ] How you modelled objects and entities
-
-- [ ] How you handled the graphics pipeline and camera motion
-
-- [ ] Descriptions of how the shaders work
-
-- [ ] Description of the querying and observational methods used, including: description of the participants (how many, demographics), description of the methodology (which techniques did you use, what did you have participants do, how did you record the data), and feedback gathered.
-
-- [ ] Document the changes made to your game based on the information collected during the evaluation.
-
-- [ ] A statement about any code/APIs you have sourced/used from the internet that is not your own.
-
-- [ ] A description of the contributions made by each member of the group.
-
 ## Table of contents
 * [Team Members](#team-members)
-* [Explanation of the game](#explanation-of-the-game)
-* [Technologies](#technologies)
-* [Using Images](#using-images)
-* [Code Snipets ](#code-snippets)
+* [Introduction](#introduction)
+* [How to Play](#how-to-play)
+* [Graphics and Camera Motion](#using-images)
+* [Shaders](#shaders)
+* [Observational Methods](#observational-methods)
+* [Feedback Changes](#feedback-changes)
+* [Resource References](#resource-references)
+* [Individual Contributions](#individual-contributions)
 
 ## Team Members
 
 | Name | Task | State |
 | :---         |     :---:      |          ---: |
-| Student Name 1  | MainScene     |  Done |
-| Student Name 2    | Shader      |  Testing |
-| Student Name 3    | README Format      |  Amazing! |
+| Arriken Worsley  | Scenes/Models     |  Done |
+| Joel Kenna    | Game Logic      |  Done |
+| Simon Tran  | Game Logic      |  Done |
+| Iris Li  | UI      |  Done |
 
-## Explanation of the game
+## Introduction
 Our game is a first person shooter (FPS) that....
 
 You can use emojis :+1: but do not over use it, we are looking for professional work. If you would not add them in your job, do not use them here! :shipit:
 
+## How to Play
+dot dot dot
+
+## Graphics and Camera Motion
+dot dot dot
+
+## Shaders
+dot dot dot
+
+## Observational Methods
+dot dot dot
+
+## Feedback Changes
+dot dot dot
+
+## Resource References
+dot dot dot
+
+## Individual Contributions
+dot dot dot
 	
 ## Technologies
 Project is created with:
