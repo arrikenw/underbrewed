@@ -307,7 +307,9 @@ Another area of weakness of our querying method was that the lack of a dialogue 
 
 ## Resource References
 
-TO DO: Statement here
+* The cauldron liquid shader was produced with help from an online tutorial found [here](http://enemyhideout.com/2016/08/creating-a-whirlpool-shader/).
+* The bubbles particle system was produced with help from an online tutorial found [here](https://www.youtube.com/watch?v=ajsA6vWBhKI).
+* The pick up logic was initially inspired by a youtube video found [here](https://www.youtube.com/watch?v=90OiysC4j5Y).
 
 ## Individual Contributions
 
