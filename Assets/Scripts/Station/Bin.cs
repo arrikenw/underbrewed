@@ -16,6 +16,25 @@ public class Bin : Station
         Dump();
     }
 
+    protected override void OnTriggerStay(Collider other)
+    {
+        Item itemComponent = other.gameObject.GetComponent<Item>();
+        if (storedItem == null && itemComponent != null && !itemComponent.IsHeld() && !itemComponent.IsLocked()) {
+            
+            storedItem = other.gameObject;
+        }
+    }
+
+    public override bool TryDirectStore(Item item)
+    {
+        if (storedItem == null) {
+            storedItem = item.gameObject;
+            return true;
+        } else {
+            return false; 
+        }
+    }
+
     private void Dump() {
         if (base.storedItem != null) {
             Destroy(base.storedItem);
