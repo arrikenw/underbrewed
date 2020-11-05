@@ -135,7 +135,10 @@ A greenish colouration is applied to the screen by retrieving the texture colour
 
 
 ### Fire particle system
-TO DO: add image
+
+<p align="center">
+  <img src="Gifs/FireParticleSystem.gif"  width="300" >
+</p>
 
 The fire of the cauldrons and burning stations were created using Unity’s Particle System API. Each fire consisted of three particle systems of different sizes and colours. Using multiple particle systems helped to create the different “layers” of the fire (red, orange, and yellow).
 
@@ -180,7 +183,7 @@ We used the “Think Aloud” observational method. Participants were invited to
 |-----|--------|--------------------------------|-------------------------------------------------------|
 | X   | Male   | Doctor of Optometry student    | 16                                                    |
 | X   | Male   | 3rd year undergraduate student | 10                                                    |
-| X   | Male   | 2nd year undergraduate student | 40                                                    |
+| X   | Male   | 2nd year undergraduate student | ?                                                     |
 | X   | Male   | 1st year undergraduate student | 40                                                    |
 | X   | Male   | Unemployed                     | 30                                                    |
 
