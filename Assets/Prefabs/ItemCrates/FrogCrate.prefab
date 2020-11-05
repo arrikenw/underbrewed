@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8591583822129614995}
   - component: {fileID: 5574827737358386282}
   - component: {fileID: 2349044356176393142}
+  - component: {fileID: 5222013824674946364}
   m_Layer: 0
   m_Name: FrogCrate
   m_TagString: Untagged
@@ -142,8 +143,21 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2034888, y: 0.85949135, z: 1.1301227}
-  m_Center: {x: -0.020044183, y: 0.42974555, z: 0.0022061912}
+  m_Size: {x: 1.2034888, y: 0.93601334, z: 1.1301227}
+  m_Center: {x: -0.020044183, y: 0.4680065, z: 0.0022061912}
+--- !u!135 &5222013824674946364
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3480618345385585074}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.6017444
+  m_Center: {x: -0.020044655, y: 0.30356488, z: 0.0022062063}
 --- !u!1 &4329753988898869348
 GameObject:
   m_ObjectHideFlags: 0

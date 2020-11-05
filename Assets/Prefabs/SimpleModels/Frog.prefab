@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 5513177319077228819}
   - component: {fileID: 2155286350413799976}
   - component: {fileID: 5553777169775242048}
-  - component: {fileID: 7480421519535604320}
+  - component: {fileID: 1962596864689678820}
   m_Layer: 0
   m_Name: Frog
   m_TagString: Untagged
@@ -192,7 +192,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7480421519535604320
+--- !u!114 &1962596864689678820
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9021964973401448161}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6106e23566faff43aa19a2d863d9325, type: 3}
+  m_Script: {fileID: 11500000, guid: e901e6842d6b4c648a9dd50c43c59b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ingredientType: 10

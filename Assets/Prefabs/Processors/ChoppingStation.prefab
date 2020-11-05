@@ -245,11 +245,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4886192835110648564}
-  - component: {fileID: 5212734003589303928}
   - component: {fileID: 8794603018788942582}
   - component: {fileID: 8724680418105700937}
   - component: {fileID: -2823369317141404425}
   - component: {fileID: 5895970014220082160}
+  - component: {fileID: 595109302796726491}
   m_Layer: 0
   m_Name: ChoppingStation
   m_TagString: Untagged
@@ -276,19 +276,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &5212734003589303928
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6721809882490579788}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 0.12591743, z: 0.7826106}
-  m_Center: {x: 0, y: 0.04721117, z: 0.025896937}
 --- !u!54 &8794603018788942582
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -363,6 +350,7 @@ MonoBehaviour:
   soundEffect: {fileID: 240802366706119974}
   finishedSound: {fileID: 9107006745463382885}
   tutorialController: {fileID: 0}
+  timeUntilComplete: 0
   psysPrefab: {fileID: 0}
   station: 0
   cookEffectsPrefab: {fileID: 0}
@@ -379,6 +367,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.1016288, y: 0.6002632, z: 0.84431607}
   m_Center: {x: -0.017765164, y: 0.28438404, z: 0.02385822}
+--- !u!135 &595109302796726491
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6721809882490579788}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7098222461195349656
 GameObject:
   m_ObjectHideFlags: 0
