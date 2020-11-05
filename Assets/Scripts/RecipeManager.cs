@@ -115,8 +115,6 @@ public class RecipeManager : MonoBehaviour
                 return;
             } 
         }
-        //play failure sound
-        Failure.Play();
     }
 
 
@@ -136,6 +134,9 @@ public class RecipeManager : MonoBehaviour
             //if item will expire
             if (activeOrder.Item3 <= 0.0f)
             {
+                //play failure sound
+                Failure.Play();
+
                 //delete UI element
                 UIObject.deleteOrderUI(activeOrder.Item2);
                 
