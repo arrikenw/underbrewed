@@ -120,7 +120,7 @@ The key code used to create colouring effects is as follows:
 ```Shaderlab
 fixed4 textureCol = tex2D(_MainTex, i.uv);
 
-//gain a hue as it swells
+//cyclically change hue intensity
 fixed4 greenCol = green * abs(sin(_Time.z));
 fixed4 finalCol = 0.6 * textureCol + 0.2 * greenCol + 0.2 * green;
 
