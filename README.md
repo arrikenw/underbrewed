@@ -29,8 +29,22 @@ Undercooked is a third person casual potion brewing simulator(?). During a level
 
 
 ## How to Play
-dot dot dot
+### Basic controls
+- Movement: WASD and arrow keys are both supported
+- Pick up item: Press ‘m’ while facing an item
+- Drop item: Press ‘m’ again while holding an item
+- Throw item: Press ‘.’ While holding an item
+- Interact with station: Press ‘,’ while facing the station
+- Fill potion from cauldron: Press ‘,’ while holding a bottle and facing a cauldron
+- Open pause menu: Press ‘Esc’
 
+### Gameplay
+Throughout a level, orders will continually arrive in the top left of the screen. Each order contains a list of ingredients, a desired output potion, and a time bar that indicates how long the player will have to complete the order. 
+To create a potion, players must place ingredients into cauldrons in the order they appear on the recipe. If an ingredient has an icon beneath it, the player must first process the ingredient in a corresponding station before adding it to a cauldron. 
+To deliver a completed potion, players must fill a bottle with liquid from the cauldron they have brewed the potion in, then must drop or throw the bottled potion through the delivery portal. Each successful delivery will increase the players’ score, which is displayed in the lower right of the screen. The time left until the level ends is displayed below the score.
+If a player places ingredient into the cauldron in a way that does not match any valid potions, the game will trigger a negative effect (eg. apply a distorted screen shader, sends ingredients flying across the stage).
+
+<b> We recommend that new players play our tutorial level before attempting stages, as provides an in-depth overview of the game’s controls and mechanics. </b>
 
 ## Graphics and Camera Motion
 
@@ -183,7 +197,7 @@ We used the “Think Aloud” observational method. Participants were invited to
 |-----|--------|--------------------------------|-------------------------------------------------------|
 | X   | Male   | Doctor of Optometry student    | 16                                                    |
 | X   | Male   | 3rd year undergraduate student | 10                                                    |
-| X   | Male   | 2nd year undergraduate student | ?                                                     |
+| X   | Male   | 2nd year undergraduate student | 40                                                     |
 | X   | Male   | 1st year undergraduate student | 40                                                    |
 | X   | Male   | Unemployed                     | 30                                                    |
 
@@ -192,7 +206,7 @@ We used the “Think Aloud” observational method. Participants were invited to
 The breadth of this demographic research was quite limited – all participants were either university students or planning on undertaking tertiary studies. Furthermore, all participants were male and sat within a similar age range. However, as our game is quite simple and lacks a story, we expect these factors to have little bearing on how the game is played or perceived.
 
 Additionally, all participants had some degree of familiarity with video games. This familiarity could cause our evaluation of our game to be biased; for example, users may have played similar games before and could use their prior knowledge to supplement sections of the game where goals or mechanics were not communicated clearly. On the other hand, this familiarly meant that we could easily identify where our game failed to meet the expectations of a typical “gamer”.
-Another area of weakness of our querying method was that the lack of a dialogue between the participant and examiners meant that feedback was mainly focused on the initial stumbling blocks users faced –in a more open method (TODO GET NAME OR SOMETHING), users could be moved forward, allowing for feedback to be provided across the entire game. However, as our users were given less assistance, their feedback couldn’t extend beyond their points of blockage. As our tutorial was quite lacklustre when we performed our observations, we received limited feedback on later stages of the game. 
+Another area of weakness of our querying method was that the lack of a dialogue between the participant and examiners meant that feedback was mainly focused on the initial stumbling blocks users faced - in more collaborative methods (eg. cooperative evaluation), users can be moved forward, allowing for feedback to be provided across the entire game. However, as our users couldn't seek assistance to overcome areas of confusion, their feedback would often be limited to a subset of the game's mechanics and systems. As our tutorial was quite lacklustre when we performed our observations, we received limited feedback on later stages of the game. 
 
 ## Evaluation and changes implemented
 
@@ -228,6 +242,10 @@ Another area of weakness of our querying method was that the lack of a dialogue 
 	* Participants felt hindered by the need to always press the spacebar to continue to the next tip, and the inability to navigate back to a previous tip
 		* We were unable to remove these challenges with the time given, but would like to have implemented these changes
 		* Players can restart the tutorial at any time by using the pause menu
+<p align="center">
+	<img src="Images/TutorialImproved.png"  width="300" >
+	Pictured: The reworked tutorial now prompts the user to complete certain tasks in order to advance to the next step.
+</p>
 * Many participants also mentioned that they felt the game would be more enjoyable with more music and sound effects, both in game, and for menus and buttons
 	* Additonal sound effects were implemented for different stations and actions
 	* Music was also added to the main menu and level select scenes, and sound effects were added to UI buttons
@@ -254,7 +272,6 @@ Models:
 https://poly.google.com/user/4aEd8rQgKu2
 https://poly.google.com/user/6WNlPxHAo7o
 https://poly.google.com/user/a4-Oxy9dNsF
-
 
 
 Icons for scroll and ingredients:
@@ -287,79 +304,6 @@ dot dot dot
 
 ### Iris Li
 dot dot dot
-
-## References:
-Game background music: https://www.youtube.com/watch?v=iX6ex5fYT7o
-
-Screen effect sound: https://www.youtube.com/watch?v=vJz54_quoow
-
-Menu background music: https://www.youtube.com/watch?v=rsEeiIrJy4E
-
-Pick up sound: https://freesound.org/people/pogmothoin/sounds/401722/
-
-Bad effect sound: https://freesound.org/people/GabrielAraujo/sounds/242503/
-
-Missed order sound: https://freesound.org/people/themusicalnomad/sounds/253886/
-
-Tutorial complete sound: https://freesound.org/people/deleted_user_877451/sounds/76426/
-
-Menu buttons sound: https://freesound.org/people/Christopherderp/sounds/342200/
-
-Order complete sound: https://freesound.org/search/?q=bwg2020+correct
-
-Cauldron bubbling: https://freesound.org/people/lonemonk/sounds/108746/
-
-Station finish sound: https://www.youtube.com/watch?v=QDKBDduuJ_0
-
-Level dings: https://www.youtube.com/watch?v=R6F0ysJIeHQ
-
-Mortar and pestle sound: https://www.youtube.com/watch?v=PJo5yIPhFSM
-
-Chopping sound: https://www.youtube.com/watch?v=BrDkL5Y7kCs
-
-Game trailer music: https://www.youtube.com/watch?v=v4pTPigj0Gk
-
-Flower model: https://free3d.com/3d-model/hinduismlotus-flower-v1--463468.html
-
-Outside decoration: https://assetstore.unity.com/packages/3d/environments/fantasy/free-cartoon-halloween-pack-mobile-vr-45896
-
-Outside decoration: https://assetstore.unity.com/packages/3d/environments/fantasy/halloween-cemetery-set-19125
-
-Cheese model: https://www.cgtrader.com/items/258230/download-page
-
-Eye model: https://www.cgtrader.com/items/44082/download-page
-
-Bone model: https://poly.google.com/view/9KOTx3n2lfm
-
-Potion model: https://poly.google.com/view/dOREefQfDQu
-
-Knife model: https://poly.google.com/view/0X5xcxjszwI
-
-Cauldron design reference: https://www.youtube.com/watch?v=x-6cvNjUuAI
-
-Bubbles design reference: https://www.youtube.com/watch?v=ajsA6vWBhKI
-
-Pick up script design reference: https://www.youtube.com/watch?v=90OiysC4j5Y
-
-Bin model: https://www.turbosquid.com/3d-models/free-c4d-mode-m%C3%BClleimer-bin/483718
-
-Squashed eye model: https://www.turbosquid.com/3d-models/3d-rectangle-flow-splash-model-1213683
-
-Chopped cheese model: https://www.turbosquid.com/3d-models/free-max-mode/1033609
-
-Crushed rock model: https://www.turbosquid.com/3d-models/rock-pile-obj-free/813686
-
-Chopping board model: https://www.turbosquid.com/3d-models/free-chopping-board-3d-model/538266
-
-Frog model: https://www.turbosquid.com/FullPreview/Index.cfm/ID/753743
-
-Fire station model: https://www.turbosquid.com/3d-models/pit-firepit-3ds/701220
-
-Witch hat: https://free3d.com/3d-model/witchhat-v4--231135.html
-
-Wood texture: https://www.pinterest.com.au/pin/14496030030351650/
-
-
 	
 ## Technologies
 Project is created with:
