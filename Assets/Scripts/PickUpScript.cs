@@ -55,7 +55,8 @@ public class PickUpScript : MonoBehaviour
                     animator.Play("PickUp");
                     pickUpSound.Play();
                     heldItem = interactableObject;
-                    heldItem.GetComponent<Rigidbody>().useGravity = false;
+                    // heldItem.GetComponent<Rigidbody>().useGravity = false;
+                    heldItem.GetComponent<Rigidbody>().isKinematic = true;
 
                     heldItem.GetComponent<Item>().OnPickup();
                     interactableObject = null;
@@ -70,14 +71,18 @@ public class PickUpScript : MonoBehaviour
                     {
                         animator.Play("PickUp");
                         pickUpSound.Play();
-                        heldItem.GetComponent<Rigidbody>().useGravity = false;
+                        // heldItem.GetComponent<Rigidbody>().useGravity = false;
+                        heldItem.GetComponent<Rigidbody>().isKinematic = true;
                     }
                 }
             }
+
+            // Dropping
             else if (heldItem != null)
             {
                 animator.Play("PutDown");
-                heldItem.GetComponent<Rigidbody>().useGravity = true;
+                // heldItem.GetComponent<Rigidbody>().useGravity = true;
+                heldItem.GetComponent<Rigidbody>().isKinematic = false;
                 putDownSound.Play();
                 //pickUpSound.Play();
 
@@ -123,10 +128,10 @@ public class PickUpScript : MonoBehaviour
             // Set Position via Rigidbody
 
             // For isKinematic = true...
-            // heldItem.transform.position = transform.position + new Vector3(0f, 0.25f, 0f);
+            heldItem.transform.position = transform.position + new Vector3(0f, 0.5f, 0f);
 
             // For useGravity = false...
-            heldItem.GetComponent<Rigidbody>().MovePosition(transform.position + new Vector3(0f, 0.5f, 0f));
+            // heldItem.GetComponent<Rigidbody>().MovePosition(transform.position + new Vector3(0f, 0.5f, 0f));
         }
     }
 
@@ -139,7 +144,8 @@ public class PickUpScript : MonoBehaviour
 
                 animator.Play("PutDown");
                 putDownSound.Play();
-                heldItem.GetComponent<Rigidbody>().useGravity = true;
+                // heldItem.GetComponent<Rigidbody>().useGravity = true;
+                heldItem.GetComponent<Rigidbody>().isKinematic = false;
                 heldItem.GetComponent<Rigidbody>().AddForce(transform.forward.normalized * throwMagnitude, ForceMode.Impulse);
                 heldItem.GetComponent<Rigidbody>().AddForce(transform.up.normalized * 1.5f, ForceMode.Impulse);
                 heldItem.GetComponent<Item>().OnDrop();
