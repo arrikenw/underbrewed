@@ -102,8 +102,33 @@ fixed4 fragColor = tex2D(_MainTex, uv) * _Color;
 return fragColor;
 ```
 
-### Screen Distortion Shader
-dot dot dot
+## Screen Distortion Shader
+
+This shader has two main aspects, a screen shake and distortion effect and a colouring effect. 
+
+The core of the code used to create the screen motion effects is presented below:
+
+```Shaderlab
+X = (0.05 * sin(v.vertex.x + 1.5 * sin(_Time.z)) + v.vertex.x
+Y = (0.05 * sin(v.vertex.y + 2.5 * cos(_Time.z)) + v.vertex.y
+```
+
+The internal trig functions ```sin(_Time.z)``` and ```cos(_Time.z)``` are used to create a screen shake effect. The choice of using different trig functions on each axis was to ensure the screen shake didn't simply slide along a line (which would occur if the same trig functions were used on both axes). The outermost sin function was used to create a stretching / warping effect across the entire image, producing a mild sense of disorientation. Finally, to ensure the final image largely remains centred and intelligible, the distortion effect is scaled down significantly before being added to the original vertex information, causing the effect to only have a moderate effect on the final image.  
+
+The key code used to create colouring effects is as follows:
+```
+
+```
+A greenish colouration is applied to the screen by retrieving the texture colour of the final image and then mixing it with a static green colour and a green colour whose strength varies with sin of the current time, resulting in a green hued image with an intensity that varies over time. The formula for this colouration is as follows: 
+
+```Shaderlab
+fixed4 textureCol = tex2D(_MainTex, i.uv);
+
+//gain a hue as it swells
+fixed4 greenCol = green * abs(sin(_Time.z));
+fixed4 finalCol = 0.6 * textureCol + 0.2 * greenCol + 0.2 * green;
+
+```
 
 ### Fire particle system
 
