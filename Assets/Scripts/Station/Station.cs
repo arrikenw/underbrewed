@@ -29,6 +29,10 @@ public class Station : Interactable
      */
 
     protected virtual void OnTriggerStay(Collider other) {
+        if (other.gameObject.GetComponent<Potion>()) {
+            return;
+        }
+
         Item itemComponent = other.gameObject.GetComponent<Item>();
         if (storedItem == null && itemComponent != null && !itemComponent.IsHeld() && !itemComponent.IsLocked()) {
             
@@ -93,7 +97,11 @@ public class Station : Interactable
         }
     }
 
-    public bool TryDirectStore(Item item) {
+    public virtual bool TryDirectStore(Item item) {
+        if (item.gameObject.GetComponent<Potion>()) {
+            return false;
+        }
+
         if (storedItem == null) {
             
             storedItem = item.gameObject;
