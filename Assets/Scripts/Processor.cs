@@ -41,7 +41,7 @@ public class Processor : Station
 
     // cooking logic
     protected bool interacting = false;
-    protected float timeUntilComplete = 0;
+    public float timeUntilComplete = 0;
     protected IngType currentIngredient;
 
     // particle effects

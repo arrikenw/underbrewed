@@ -1,61 +1,134 @@
 **The University of Melbourne**
 # COMP30019 – Graphics and Interaction
 
-Final Electronic Submission (project): **4pm, Fri. 6 November**
-
-Do not forget **One member** of your group must submit a text file to the LMS (Canvas) by the due date which includes the commit ID of your final submission.
-
-You can add a link to your Gameplay Video here but you must have already submit it by **4pm, Sun. 25 October**
-
-# Project-2 README
-
-You must modify this `README.md` that describes your application, specifically what it does, how to use it, and how you evaluated and improved it.
-
-Remember that _"this document"_ should be `well written` and formatted **appropriately**. This is just an example of different formating tools available for you. For help with the format you can find a guide [here](https://docs.github.com/en/github/writing-on-github).
-
-
-**Get ready to complete all the tasks:**
-
-- [x] Read the handout for Project-2 carefully
-
-- [ ] Brief explanation of the game
-
-- [ ] How to use it (especially the user interface aspects)
-
-- [ ] How you modelled objects and entities
-
-- [ ] How you handled the graphics pipeline and camera motion
-
-- [ ] Descriptions of how the shaders work
-
-- [ ] Description of the querying and observational methods used, including: description of the participants (how many, demographics), description of the methodology (which techniques did you use, what did you have participants do, how did you record the data), and feedback gathered.
-
-- [ ] Document the changes made to your game based on the information collected during the evaluation.
-
-- [ ] A statement about any code/APIs you have sourced/used from the internet that is not your own.
-
-- [ ] A description of the contributions made by each member of the group.
 
 ## Table of contents
 * [Team Members](#team-members)
-* [Explanation of the game](#explanation-of-the-game)
-* [Technologies](#technologies)
-* [Using Images](#using-images)
-* [Code Snipets ](#code-snippets)
+* [Introduction](#introduction)
+* [How to Play](#how-to-play)
+* [Graphics and Camera Motion](#using-images)
+* [Shaders](#shaders)
+* [Evaluation Methods](#evaluation-methods)
+* [Feedback Changes](#feedback-changes)
+* [Resource References](#resource-references)
+* [Individual Contributions](#individual-contributions)
+
 
 ## Team Members
 
 | Name | Task | State |
 | :---         |     :---:      |          ---: |
-| Student Name 1  | MainScene     |  Done |
-| Student Name 2    | Shader      |  Testing |
-| Student Name 3    | README Format      |  Amazing! |
+| Arriken Worsley  | Scenes/Models     |  Done |
+| Joel Kenna    | Game Logic      |  Done |
+| Simon Tran  | Game Logic      |  Done |
+| Iris Li  | UI      |  Done |
 
-## Explanation of the game
-Our game is a first person shooter (FPS) that....
 
-You can use emojis :+1: but do not over use it, we are looking for professional work. If you would not add them in your job, do not use them here! :shipit:
+## Introduction
+Undercooked is a third person casual potion brewing simulator(?). During a level, the player must run around the game, preparing different potions in order to deliver orders on time. Points are given for every order delivered on time with the aim being to get the highest score possible. When an incorrect potion is brewed bad effects can occur, changing the gameplay. The entire game is played with a static camera from a third person perspective high above the level. (bad writing please change entirely) (images needed)
 
+
+## How to Play
+dot dot dot
+
+
+## Graphics and Camera Motion
+
+### Graphics
+
+### Camera Motion
+#### Third Person Static Camera
+The game is primarily played with a static camera. The camera is placed high above the level, similar to a bird's eye view, allowing the player to see everything as the play the game. This camera position was chosen as it made the entire level viewable for the player while not issues of traditional cameras, such as occlusion. (image needed)
+
+#### Action Replay Camera
+When a level finishes an "action replay" occurs, with the camera moving down towards the player to produce the end game screen. The camera's movements will always to the opposite quarter of the level that the player is on in order to avoid occlusion from the level's walls. (image needed)
+
+
+## Shaders
+
+### Fire Shader
+dot dot dot
+
+## Potion Liquid Shader
+The potion liquid shader, produces a swirling liquid, with the liquid slowly falling towards the center. This shader was used for the cauldron liquid, the portal center, as well as the backgrounds for the menus. The shader was produced with help from an online tutorial found [here](http://enemyhideout.com/2016/08/creating-a-whirlpool-shader/). 
+
+The first part of the shader is the function rotate, which rotates a point around the center by `rotationAmount` radians. This was done by coverting the initial cartesian point into a polar co-ordinates, increasing the angle by `rotationAmount` radians, and returning the point converted back into a cartesian point.
+```Shaderlab
+// rotates a point
+float2 rotate( float rotationAmount, float2 p)
+{
+	float a = atan2(p.y, p.x);
+	float r = length(p);
+
+	a += rotationAmount;
+
+	return float2(cos(a) * r, sin(a) * r);
+}
+```
+The input uv point is first converted to be relative to the center of the uv texture, then rotated twice with the rotation function. The first rotation rotates all points by a fixed amount, while the latter rotates the points based off a mask called `motion`. This mask increases the rotation speed based of the alpha value of the mask, making the further out points rotate faster.
+```Shaderlab
+// find point position relative to middle of uv
+float2 p = i.uv - float2(0.5, 0.5);
+
+// if point is outside the circle, render it transparent
+if (length(p) > 0.5)
+{
+	return fixed4(0, 0, 0, 0);
+}
+
+// For rotation
+
+// _Swirl is general swirl amount, motion.r increases swirl amount the further out it is
+p = rotate(_Rotation * _Time * _Speed, p);
+p = rotate(_Swirl * (motion.a * _Time), p);
+```
+Finally, the rotated point is used to calculate the uv point, which is multiplied by the colour to find the final colour output. The x value of the uv is based of time offset by the inverse of the radius of the rotated point. This produces the effect the liquid falling into the center. The y value of the uv is based of the angle of the rotated point. This gives the shader the circlular texture from the initial straight vertical texture.
+```Shaderlab
+// For texture moving towards center
+float2 uv;
+        
+uv.x = (_Time[0] * _Speed) - (1 / (length(p) + _Swirliness));
+// angle of new point
+float a = atan2(p.y, p.x);
+// divide angle by two pi to get angle in radians scaled to between 0-1
+uv.y = a/(3.1416 * 2);
+
+// Now we can get our color.
+fixed4 fragColor = tex2D(_MainTex, uv) * _Color;
+
+return fragColor;
+```
+
+## Screen Distortion Shader
+dot dot dot
+
+## Evaluation Methods
+
+### Querying Method
+dot dot dot
+
+### Observational Method
+dot dot dot
+
+## Feedback Changes
+dot dot dot
+
+## Resource References
+dot dot dot
+
+## Individual Contributions
+
+### Arriken Worsley
+dot dot dot
+
+### Joel Kenna
+dot dot dot
+
+### Simon Tran
+dot dot dot
+
+### Iris Li
+dot dot dot
 	
 ## Technologies
 Project is created with:

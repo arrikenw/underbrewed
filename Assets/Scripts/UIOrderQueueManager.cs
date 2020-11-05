@@ -69,8 +69,10 @@ public class UIOrderQueueManager : MonoBehaviour
     public void addPotion(Image potionImage, Color targetColor)
     {
         //change potion image depending on targetColor
+
         if (targetColor == new Color(1, 0.922f, 0.016f, 1))
         {
+            // yellow
             potionImage.sprite = Resources.Load<Sprite>("potionYellow");
         } else if (targetColor == Color.red)
         {
@@ -88,12 +90,14 @@ public class UIOrderQueueManager : MonoBehaviour
         } else if (targetColor == Color.white)
         {
             potionImage.sprite = Resources.Load<Sprite>("potionWhite");
-        } else if (targetColor == Color.grey)
+        } else if (targetColor == new Color(0.95f, 0.61f, 0.73f, 1.00f))
         {
-            potionImage.sprite = Resources.Load<Sprite>("potionGrey");
-        } else if (targetColor == Color.black)
+            // pink
+            potionImage.sprite = Resources.Load<Sprite>("potionPink");
+        } else if (targetColor == new Color(0.69f, 0.75f, 0.10f, 1.00f))
         {
-            potionImage.sprite = Resources.Load<Sprite>("potionBlack");
+            // light green
+            potionImage.sprite = Resources.Load<Sprite>("potionLightGreen");
         } else if (targetColor == new Color(0.59f, 0.29f, 0.00f, 1.00f))
         {
             // brown

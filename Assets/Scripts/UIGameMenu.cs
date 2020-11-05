@@ -5,12 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class UIGameMenu : MonoBehaviour
 {
+    public bool pauseEnabled;
+
     GameObject[] pauseObjects;
     GameObject[] endObjects;
     GameObject[] playObjects;
 
     void Start()
     {
+        pauseEnabled = false;
+
         pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
 
         hidePaused();
@@ -32,16 +36,20 @@ public class UIGameMenu : MonoBehaviour
 
     public void pauseGame()
     {
-        if (Time.timeScale == 1)
+        if (pauseEnabled)
         {
-            Time.timeScale = 0;
-            showPaused();
+            if (Time.timeScale == 1)
+            {
+                Time.timeScale = 0;
+                showPaused();
+            }
+            else if (Time.timeScale == 0)
+            {
+                Time.timeScale = 1;
+                hidePaused();
+            }
         }
-        else if (Time.timeScale == 0)
-        {
-            Time.timeScale = 1;
-            hidePaused();
-        }
+
     }
 
     public void showPaused()
@@ -67,9 +75,9 @@ public class UIGameMenu : MonoBehaviour
             g.SetActive(true);
         }
 
-        foreach (GameObject g in playObjects)
+        foreach (GameObject o in playObjects)
         {
-            g.SetActive(false);
+            o.SetActive(false);
         }
     }
 
@@ -81,16 +89,21 @@ public class UIGameMenu : MonoBehaviour
             g.SetActive(false);
         }
 
-        foreach (GameObject g in playObjects)
+        foreach (GameObject o in playObjects)
         {
-            g.SetActive(true);
+            o.SetActive(true);
         }
+    }
+
+    public void NextLevel()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void restartGame()
     {
-        Scene activeScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
-        UnityEngine.SceneManagement.SceneManager.LoadScene(activeScene.name);
+        Time.timeScale = 1;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void Quit()
