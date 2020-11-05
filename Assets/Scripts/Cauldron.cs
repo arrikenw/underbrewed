@@ -148,4 +148,14 @@ public class Cauldron : Station
         }
     }
 
+    public override bool TryDirectStore(Item item) {
+        // Don't collected potions
+        // Can refactor to ONLY collect ingredients
+        if (item.gameObject.GetComponent<Potion>()) {
+            return false;
+        } else {
+            return base.TryDirectStore(item);
+        }
+    }
+
 }

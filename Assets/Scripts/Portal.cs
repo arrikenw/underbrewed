@@ -16,6 +16,25 @@ public class Portal : Station
         Deliver();
     }
 
+    protected override void OnTriggerStay(Collider other)
+    {
+        Item potionComponent = other.gameObject.GetComponent<Potion>();
+        if (storedItem == null && potionComponent != null && !potionComponent.IsHeld() && !potionComponent.IsLocked()) {
+            
+            storedItem = other.gameObject;
+        }
+    }
+
+    public override bool TryDirectStore(Item item)
+    {
+        if (storedItem == null && item.gameObject.GetComponent<Potion>()) {
+            storedItem = item.gameObject;
+            return true;
+        } else {
+            return false; 
+        }
+    }
+
     private void Deliver() {
         // ACTUAL CODE
         if (base.storedItem) {
