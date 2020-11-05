@@ -213,7 +213,7 @@ Another area of weakness of our querying method was that the lack of a dialogue 
 ### Gameplay
 * Overall, participants stated that they found the game enjoyable and relatively bug-free, with instructions clearly stating the objective of the game, and controls working as expected
 * While this was mentioned in the tutorial, the majority of participants were not aware that ingredients had to be added to the cauldron in a particular order to be considered “correct”. Additionally, they were unaware that certain special effects (such as ingredients exploding) were the result of adding “incorrect” ingredients to the cauldron
-	* The tutorial was reworked so that tips were less dense, and the instructions were more clear
+	* The tutorial was reworked so that tips were clearer and more precise
 	* An additional stage was added to the tutorial, in which players are instructed to make an “incorrect” potion to observe the special effects
 * Some participants felt confused by the different cauldron colours, as one of the potions was very similar in colour to the colour used to represent an “incorrect” potion
 	* Potion colours were changed so that a black potion represented an “incorrect” potion
