@@ -53,17 +53,26 @@ If a player places an ingredient into the cauldron that does not match any valid
 
 ## Graphics and Camera Motion
 
-### Graphics
-* Unity’s default lighting shaders are applied across most objects to provide realistic lighting. 
-* Custom fragment shaders are used to add interesting graphical effects, for example by creating a swirl effect for portals and providing colouring for fire particles.
-* After the initial render is complete, a custom fragment shader is applied to the initial render texture to provide post-processing effects and generate the final render texture.
-
 ### Camera Motion
 #### Third Person Static Camera
 The game is primarily played with a static camera. The camera is placed high above the level, similar to a bird's eye view, allowing the player to see everything as the play they game. This camera position was chosen as it made the entire level viewable for the player while not issues of traditional cameras, such as occlusion. (image needed)
 
 #### Action Replay Camera
 When a level finishes, an "action replay" occurs, with the camera moving down towards the player to produce the end game screen. The camera's movements will always to the opposite quarter of the level that the player is on in order to avoid occlusion from the level's walls. (image needed)
+
+### Graphics Pipeline
+#### Vertex shader stage
+
+#### Geometry shader stage
+* While our system doesn't contain any custom geometry shaders, the particle systems that create our flame and smoke effects are built Unity's particle system logic, which makes heavy use of geometry shaders to construct quads from particle vertices.
+
+#### Fragment / Pixel shader stage
+* Unity’s lighting fragment shaders are used in most objects in our scenes in order to provide realistic lighting. 
+* A custom fragment shader is used to creating a rich swirling effect for our menu backgrounds and cauldron contents.
+* A custom fragment shader is used to provide interesting colouring for our flame effects.
+
+#### Post-processing
+* After the initial render is complete, a custom fragment shader is applied to the initial render texture to provide post-processing effects and generate the final render texture.
 
 
 ## Shaders and Particle Systems
