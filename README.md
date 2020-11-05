@@ -7,9 +7,9 @@
 * [Introduction](#introduction)
 * [How to Play](#how-to-play)
 * [Graphics and Camera Motion](#using-images)
-* [Shaders](#shaders)
+* [Shaders](#shaders-and-particle-systems)
 * [Evaluation Methods](#evaluation-methods)
-* [Feedback Changes](#feedback-changes)
+* [Feedback Changes](#evaluation-and-changes-implemented-changes)
 * [Resource References](#resource-references)
 * [Individual Contributions](#individual-contributions)
 
@@ -55,13 +55,13 @@ If a player places ingredient into the cauldron in a way that does not match any
 
 ### Camera Motion
 #### Third Person Static Camera
-The game is primarily played with a static camera. The camera is placed high above the level, similar to a bird's eye view, allowing the player to see everything as the play the game. This camera position was chosen as it made the entire level viewable for the player while not issues of traditional cameras, such as occlusion. (image needed)
+The game is primarily played with a static camera. The camera is placed high above the level, similar to a bird's eye view, allowing the player to see everything as the play they game. This camera position was chosen as it made the entire level viewable for the player while not issues of traditional cameras, such as occlusion. (image needed)
 
 #### Action Replay Camera
-When a level finishes an "action replay" occurs, with the camera moving down towards the player to produce the end game screen. The camera's movements will always to the opposite quarter of the level that the player is on in order to avoid occlusion from the level's walls. (image needed)
+When a level finishes, an "action replay" occurs, with the camera moving down towards the player to produce the end game screen. The camera's movements will always to the opposite quarter of the level that the player is on in order to avoid occlusion from the level's walls. (image needed)
 
 
-## Shaders
+## Shaders and Particle Systems
 
 ### Potion Liquid Shader
 The potion liquid shader, produces a swirling liquid, with the liquid slowly falling towards the center. This shader was used for the cauldron liquid, the portal center, as well as the backgrounds for the menus. The shader was produced with help from an online tutorial found [here](http://enemyhideout.com/2016/08/creating-a-whirlpool-shader/). 
