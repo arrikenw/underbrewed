@@ -12093,11 +12093,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3243548015438761101, guid: 837c1872e4149c748970c2625be03b10,
-        type: 3}
-      propertyPath: throwMagnitude
-      value: 13
-      objectReference: {fileID: 0}
     - target: {fileID: 3243548015464409476, guid: 837c1872e4149c748970c2625be03b10,
         type: 3}
       propertyPath: m_RootOrder

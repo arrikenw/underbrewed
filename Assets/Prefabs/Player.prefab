@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2feb71b8c90b4e44c8fbf046a1cf6c4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwMagnitude: 10
+  throwMagnitude: 13
   animator: {fileID: 3243548015792276872}
   pickUpSound: {fileID: 4022747757366196609}
   putDownSound: {fileID: 7302829544272275939}
