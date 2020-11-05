@@ -221,7 +221,7 @@ Another area of weakness of our querying method was that the lack of a dialogue 
 <p align="center">
 	<img src="Images/Cauldrons.PNG"  width="500" >
 	
-	Pictured: A potion with one ingredient added and a black "incorrect" potion.
+	Pictured: A cauldron with one ingredient added and a black "incorrect" potion.
 </p>
 * In general, participants felt there was a lack of feedback when playing the main level, and were unsure if they had submitted a “correct” potion. Participants suggested using sound effects or visual cues to indicate to indicate if players made a mistake or submitted a “correct” potion
 	* Additional sound effects were implemented, such as when an ingredient is finished processing at a station, when an incorrect ingredient is added to a cauldron, and when a potion is delivered into the portal.
@@ -252,7 +252,6 @@ Another area of weakness of our querying method was that the lack of a dialogue 
 	
 	Pictured: The reworked tutorial now prompts the user to complete certain tasks in order to advance to the next step.
 </p>
-
 * Many participants also mentioned that they felt the game would be more enjoyable with more music and sound effects, both in game, and for menus and buttons
 	* Additonal sound effects were implemented for different stations and actions
 	* Music was also added to the main menu and level select scenes, and sound effects were added to UI buttons
