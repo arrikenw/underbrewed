@@ -1,6 +1,6 @@
-**The University of Melbourne – COMP30019 – Graphics and Interaction**
+**The University of Melbourne**
 
-# Underbrewed
+#COMP30019 – Graphics and Interaction
 
 ## Table of contents
 * [Team Members](#team-members)
@@ -26,9 +26,9 @@
 
 ## Introduction
 
-Underbrewed is a cooking simulator game, in which players must brew potions according to incoming orders. Players must collect and prepare ingredients, then add them to their cauldron in the correct order. Players must follow each recipe carefully - adding the wrong ingredient to a cauldron triggers special effects and obstacles to distract players! To earn points, players must bottle up and deliver each potion before the order expires. 
+Underbrewed is a single-player cooking simulator game in which players brew potions according to incoming orders. Players must collect and prepare ingredients, then add them to a cauldron in the correct order. Players should follow each recipe carefully - adding the wrong ingredient to a cauldron or delivering an invalid potion triggers special effects and obstacles to distract players. To earn points, players must bottle up and deliver each potion before the order expires. Players should aim to improve their high score by completing as many orders as possible within the level's time limit.
 
-Underbrewed uses a static camera and third person perspective, and is designed to be played with a keyboard. 
+Underbrewed uses a static camera and third person perspective, and is designed to be played with a keyboard.
 
 ## How to Play
 ### Basic controls
@@ -41,9 +41,9 @@ Underbrewed uses a static camera and third person perspective, and is designed t
 - Open pause menu: Press ‘Esc’
 
 ### Gameplay
-Throughout a level, orders will continually arrive in the top left of the screen. Each order contains a potion, the ingredients needed to brew the potion, and a timer that indicates how long the player will have to complete the order. 
+Throughout a level, orders will continually arrive in the top left of the screen. Each order contains a potion, the ingredients needed to brew the potion, and a timer that indicates how long the player will have to complete the order.
 
-To create a potion, players must place ingredients into cauldrons in the order they appear on the recipe. If an ingredient has an icon beneath it, the player must first process the ingredient at a corresponding station before adding it to a cauldron. 
+To create a potion, players must place ingredients into cauldrons in the order they appear on the recipe. If an ingredient has an icon beneath it, the player must first process the ingredient at a corresponding station before adding it to a cauldron.
 
 To deliver a completed potion, players must fill a bottle with liquid from the cauldron they have brewed the potion in, then must drop or throw the bottled potion through the delivery portal. Each successful delivery will increase the players’ score, which is displayed in the lower right of the screen. The time left until the level ends is displayed below the score.
 
@@ -65,11 +65,42 @@ The game is primarily played with a static camera. The camera is placed high abo
 #### Action Replay Camera
 When a level finishes, an "action replay" occurs, with the camera moving down towards the player to produce the end game screen. The camera's movements will always to the opposite quarter of the level that the player is on in order to avoid occlusion from the level's walls. (image needed)
 
+<<<<<<< Updated upstream
+=======
+### Graphics Pipeline
+#### Vertex shader stage
+
+#### Geometry shader stage
+* While our system doesn't contain any custom geometry shaders, the particle systems that create our flame and smoke effects are built Unity's particle system logic, which makes heavy use of geometry shaders to construct quads from particle vertices.
+
+#### Fragment / Pixel shader stage
+* Unity’s lighting fragment shaders are used in most objects in our scenes in order to provide realistic lighting.
+* A custom fragment shader is used to creating a rich swirling effect for our menu backgrounds and cauldron contents.
+* A custom fragment shader is used to provide interesting colouring for our flame effects.
+
+#### Post-processing
+* After the initial render is complete, a custom fragment shader is applied to the initial render texture to provide post-processing effects and generate the final render texture, with this post-processing is handled through Unity's ```OnRenderImage()``` functionality. We have provided a sample of our code for applying post-processing shaders below:
+
+```C#
+    void OnRenderImage(RenderTexture source, RenderTexture destination)
+    {
+        if (applyAffect)
+        {
+            Graphics.Blit(source, destination, material);
+        }
+        else
+        {
+            Graphics.Blit(source, destination);
+        }
+    }
+```
+
+>>>>>>> Stashed changes
 
 ## Shaders and Particle Systems
 
 ### Potion Liquid Shader
-The potion liquid shader, produces a swirling liquid, with the liquid slowly falling towards the center. This shader was used for the cauldron liquid, the portal center, as well as the backgrounds for the menus. The shader was produced with help from an online tutorial found [here](http://enemyhideout.com/2016/08/creating-a-whirlpool-shader/). 
+The potion liquid shader, produces a swirling liquid, with the liquid slowly falling towards the center. This shader was used for the cauldron liquid, the portal center, as well as the backgrounds for the menus. The shader was produced with help from an online tutorial found [here](http://enemyhideout.com/2016/08/creating-a-whirlpool-shader/).
 <p align="center">
   <img src="Images/CauldronLiquid.gif"  width="300" >
 </p>
@@ -104,11 +135,11 @@ if (length(p) > 0.5)
 p = rotate(_Rotation * _Time * _Speed, p);
 p = rotate(_Swirl * (motion.a * _Time), p);
 ```
-Finally, the rotated point is used to calculate the uv point, which is multiplied by the colour to find the final colour output. The x value of the uv is based of time offset by the inverse of the radius of the rotated point. This produces the effect the liquid falling into the center. The y value of the uv is based of the angle of the rotated point. This gives the shader the circlular texture from the initial straight vertical texture.
+Finally, the rotated point is used to calculate the uv point, which is multiplied by the colour to find the final colour output. The x value of the uv is based of time offset by the inverse of the radius of the rotated point. This produces the effect the liquid falling into the center. The y value of the uv is based of the angle of the rotated point. This gives the shader the circular texture from the initial straight vertical texture.
 ```Shaderlab
 // For texture moving towards center
 float2 uv;
-        
+
 uv.x = (_Time[0] * _Speed) - (1 / (length(p) + _Swirliness));
 // angle of new point
 float a = atan2(p.y, p.x);
@@ -129,7 +160,7 @@ TODO GENERAL FLAVOUR DESC
   <img src="Images/ScreenEffect.gif"  width="300" >
 </p>
 
-This shader has two main aspects, a screen shake and distortion effect and a colouring effect. 
+This shader has two main aspects, a screen shake and distortion effect and a colouring effect.
 
 The core of the code used to create the screen motion effects is presented below:
 
@@ -159,11 +190,11 @@ A greenish colouration is applied to the screen by retrieving the texture colour
   <img src="Gifs/FireParticleSystem.gif"  width="300" >
 </p>
 
-The fire of the cauldrons and burning stations were created using Unity’s Particle System API. 
+The fire of the cauldrons and burning stations were created using Unity’s Particle System API.
 
-Each fire consisted of three particle systems of different sizes and colours (red, orange, and yellow sections). Using multiple particle systems helped to create the different “layers” of the fire. 
+Each fire consisted of three particle systems of different sizes and colours. Using multiple particle systems helps to create the different “layers” of the fire (red, orange, and yellow sections).
 
-The texture used in the particle system was created by [Evgeny Starostin](https://80.lv/articles/breakdown-magic-fire-effect-in-unity/)
+The texture used for the fire particle system was created by [Evgeny Starostin](https://80.lv/articles/breakdown-magic-fire-effect-in-unity/)
 
 
 ## Evaluation Methods
@@ -173,7 +204,7 @@ The texture used in the particle system was created by [Evgeny Starostin](https:
 #### Methodology
 We used the interview querying method. Participants were sent an early version of the game, and instructed to play through a tutorial level and a game level on their own, without observation or input from the developer team. Players were invited to repeat either level as many times as they liked before taking part in an interview conducted over Zoom. The interview was recorded for future reference.
 
-The interview consisted of open-ended questions surrounding the gameplay, graphics, and user experience. Participants were encouraged to form their own opinions of the game and discuss their feedback with the interviewer in a conversational style. Dot points and pre-prepared questions were used to guide the discussion. The interviewers took typed notes during the interviews, and reviewed audio recordings of the interviews when necessary. 
+The interview consisted of open-ended questions surrounding the gameplay, graphics, and user experience. Participants were encouraged to form their own opinions of the game and discuss their feedback with the interviewer in a conversational style. Dot points and questions prepared by the interviewers were used to guide the discussion. The interviewers took typed notes during the interviews, and reviewed audio recordings of the interviews when necessary.
 
 #### Participant demographic information
 | Age | Gender    | Occupation                     | Self-estimate of hours of video games played per week |
@@ -186,6 +217,7 @@ The interview consisted of open-ended questions surrounding the gameplay, graphi
 
 #### Strengths and weaknesses of methodology
 
+<<<<<<< Updated upstream
 TO DO: comment on demographic
 
 This querying method allowed participants to experience the game at their own pace and without influence from others.
@@ -193,10 +225,16 @@ This querying method allowed participants to experience the game at their own pa
 This method allowed particpants time to reflect on their experience and concisely share their thoughts. Some participants had even collated their own notes and thoughts on the game, and presented them during the interview. 
 
 TO DO: more discussion
+=======
+The demographic of participants was quite narrow, with all participants being between ages 18 and 20, and undertaking tertiary education. While levels of gaming experience varied between participants, all participants had some familiarity with gaming. Participants reported playing between 2 and 14 hours of games per week. While a broader demographic in participants is generally desirable, we felt that the participants interviewed were able to use their previous gaming experience and expectations to provide relevant and insightful feedback.
+
+This querying method allowed participants to experience the game at their own pace and without influence from others. This method also gave participants time to reflect on their experience and concisely share their opinions. Some participants had even collated their own notes on their experience, and presented them during the interview. Participants feedback was useful in determining which aspects of the game were well-understood, and which aspects were considered pain points. However, some participants gave generic answers and struggled to recall or comment on certain elements of the game in detail when prompted. As interviewers were not present when participants were testing the game, interviewers were not able to fully capture or observe the participants' experience, or prompt participants to interact with certain elements of the game.
+
+>>>>>>> Stashed changes
 
 ### Observational Method
 #### Methodology
-We used the “Think Aloud” observational method. Participants were invited to individually live-stream their playthrough of the tutorial and first stage to the examiners through a Discord channel. Examiners remained muted during the playthrough and did not communicate with the participants. Each playthroughs was observed in real time by the examiners and was recorded for future reference and evaluation. 
+We used the “Think Aloud” observational method. Participants were invited to individually live-stream their playthrough of the tutorial and first stage to the examiners through a Discord channel. Examiners remained muted during the playthrough and did not communicate with the participants. Each playthroughs was observed in real time by the examiners and was recorded for future reference and evaluation.
 
 #### Participant demographic information
 | Age | Gender | Occupation                     | Self-estimate of hours of video games played per week |
@@ -212,7 +250,7 @@ We used the “Think Aloud” observational method. Participants were invited to
 The breadth of this demographic research was quite limited – all participants were either university students or planning on undertaking tertiary studies. Furthermore, all participants were male and sat within a similar age range. However, as our game is quite simple and lacks a story, we expect these factors to have little bearing on how the game is played or perceived.
 
 Additionally, all participants had some degree of familiarity with video games. This familiarity could cause our evaluation of our game to be biased; for example, users may have played similar games before and could use their prior knowledge to supplement sections of the game where goals or mechanics were not communicated clearly. On the other hand, this familiarly meant that we could easily identify where our game failed to meet the expectations of a typical “gamer”.
-Another area of weakness of our querying method was that the lack of a dialogue between the participant and examiners meant that feedback was mainly focused on the initial stumbling blocks users faced - in more collaborative methods (eg. cooperative evaluation), users can be moved forward, allowing for feedback to be provided across the entire game. However, as our users couldn't seek assistance to overcome areas of confusion, their feedback would often be limited to a subset of the game's mechanics and systems. As our tutorial was quite lacklustre when we performed our observations, we received limited feedback on later stages of the game. 
+Another area of weakness of our querying method was that the lack of a dialogue between the participant and examiners meant that feedback was mainly focused on the initial stumbling blocks users faced - in more collaborative methods (eg. cooperative evaluation), users can be moved forward, allowing for feedback to be provided across the entire game. However, as our users couldn't seek assistance to overcome areas of confusion, their feedback would often be limited to a subset of the game's mechanics and systems. As our tutorial was quite lacklustre when we performed our observations, we received limited feedback on later stages of the game.
 
 ## Evaluation and changes implemented
 
@@ -227,18 +265,23 @@ Another area of weakness of our querying method was that the lack of a dialogue 
 * While this was mentioned in the tutorial, the majority of participants were not aware that ingredients had to be added to the cauldron in a particular order to be considered “correct”. Additionally, they were unaware that certain special effects (such as ingredients exploding) were the result of adding “incorrect” ingredients to the cauldron
 	* The tutorial was reworked so that tips were clearer and more precise
 	* An additional stage was added to the tutorial, in which players are instructed to make an “incorrect” potion to observe the special effects
-* Participants reported mixed feelings about the tutorial level. 
+* Participants reported mixed feelings about the tutorial level.
 	* While the tutorial clearly explained the basic concepts of the game, participants felt that progression in the tutorial should be based on task completion, both to provide a sense of achievement for learning controls, and confirm that users were completing the task properly
 		* The tutorial was reworked to progress based on task completion
 	* Participants felt hindered by the need to always press the spacebar to continue to the next tip, and the inability to navigate back to a previous tip
 		* We were unable to remove these challenges with the time given, but would like to have implemented these changes
 		* Players can restart the tutorial at any time by using the pause menu
 <p align="center">
+<<<<<<< Updated upstream
 	<img src="Images/TutorialImproved.PNG"  width="300" >
 	
+=======
+	<img src="Images/TutorialImproved.PNG"  width="600" >
+
+>>>>>>> Stashed changes
 	Pictured: The reworked tutorial now prompts the user to complete certain tasks in order to advance to the next step.
 </p>
-	
+
 ### User experience
 * Some participants felt confused by the different cauldron colours, as one of the potions was very similar in colour to the colour used to represent an “incorrect” potion
 	* Potion colours were changed so that a black potion represented an “incorrect” potion
@@ -251,7 +294,7 @@ Another area of weakness of our querying method was that the lack of a dialogue 
 	* To reduce the chance of this happening, we spaced out stations and ingredients
 	* We also realigned some objects that were not properly aligned with the benches
 * Many participants also mentioned that they felt the game would be more enjoyable with more music and sound effects, both in game, and for menus and buttons
-	* Additonal sound effects were implemented for different stations and actions
+	* Additional sound effects were implemented for different stations and actions
 	* Music was also added to the main menu and level select scenes, and sound effects were added to UI buttons
 * The majority of participants felt that the main level was difficult to play, and stated that they needed more time to complete each order
 	* The timing of orders were adjusted, so that more time was allowed to complete each order
@@ -266,7 +309,7 @@ Another area of weakness of our querying method was that the lack of a dialogue 
 ### Other comments
 * Some participants also suggested extra features that might suit the game such as:
 	* Introducing different characters with different abilities, e.g. being able to hold multiple items at a time, or dash to move quicker
-	* Have potion bottles break when dropped to increase the difficulty of the game	
+	* Have potion bottles break when dropped to increase the difficulty of the game
 		* Due to time constraints, these were not implemented, but we feel they could be implemented in a future build
 
 
@@ -286,8 +329,14 @@ dot dot dot
 dot dot dot
 
 ### Iris Li
+<<<<<<< Updated upstream
 dot dot dot
 	
+=======
+Designed and implemented most UI elements, including the main menu, level select scene, pause menu, end screen, and in-game elements such as text, including game score and timer, order queue, and progress bars for stations. Assisted with linking UI elements to the game controller. Sourced sprites, and assisted with sourcing models and textures for the interior of the scene. Created the fire particle system. Interviewed 3 participants for evaluation purposes and contributed to team discussion and report-writing.
+
+
+>>>>>>> Stashed changes
 ## References
 
 Texture for fire particle system: https://80.lv/articles/breakdown-magic-fire-effect-in-unity/ 
@@ -308,7 +357,11 @@ https://poly.google.com/user/a4-Oxy9dNsF
 
 https://clipartmax.com/ 
 
+<<<<<<< Updated upstream
 https://clipart-library.com/ 
+=======
+Fire particle system: https://80.lv/articles/breakdown-magic-fire-effect-in-unity/
+>>>>>>> Stashed changes
 
 https://www.clipartkey.com/
 
@@ -397,6 +450,11 @@ Chopping board model: https://www.turbosquid.com/3d-models/free-chopping-board-3
 
 Frog model: https://www.turbosquid.com/FullPreview/Index.cfm/ID/753743
 
+<<<<<<< Updated upstream
+=======
+Fire particle system texture: https://80.lv/articles/breakdown-magic-fire-effect-in-unity/
+
+>>>>>>> Stashed changes
 Fire station model: https://www.turbosquid.com/3d-models/pit-firepit-3ds/701220
 
 Witch hat: https://free3d.com/3d-model/witchhat-v4--231135.html
@@ -404,6 +462,22 @@ Witch hat: https://free3d.com/3d-model/witchhat-v4--231135.html
 Wood texture: https://www.pinterest.com.au/pin/14496030030351650/
 
 
+<<<<<<< Updated upstream
+=======
+### Sprites
+
+Ingredients: https://clipartmax.com/
+
+Potions: Benjamin Czapla (student work)
+
+Scroll: https://www.clipartkey.com/
+
+Stations: https://clipart-library.com/
+
+
+
+
+>>>>>>> Stashed changes
 ## Technologies
 Project is created with:
 * Unity 2019.4.3f1
@@ -420,9 +494,9 @@ You can use images/gif by adding them to a folder in your repo:
 
 To create a gif from a video you can follow this [link](https://ezgif.com/video-to-gif/ezgif-6-55f4b3b086d4.mov).
 
-## Code Snippets 
+## Code Snippets
 
-You can include a code snippet here, but make sure to explain it! 
+You can include a code snippet here, but make sure to explain it!
 Do not just copy all your code, only explain the important parts.
 
 ```c#
@@ -435,7 +509,3 @@ public class firstPersonController : MonoBehaviour
     }
 }
 ```
-
-
-
-
