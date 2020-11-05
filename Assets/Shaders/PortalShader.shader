@@ -1,6 +1,6 @@
 // Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 // http://enemyhideout.com/2016/08/creating-a-whirlpool-shader/
-Shader "Chill/WhirlPool"
+Shader "Chill/PortalShader"
 {
   Properties
   {
