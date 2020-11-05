@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: CauldronLiquidMat
-  m_Shader: {fileID: 4800000, guid: 93d1f711d6f953b40bc77ea2e1a82ed5, type: 3}
+  m_Shader: {fileID: 4800000, guid: 6afe00fc3df06f7409300cd6bb6f46c0, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
