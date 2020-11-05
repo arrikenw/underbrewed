@@ -350,7 +350,7 @@ TO DO: Statement here
 dot dot dot
 
 ### Joel Kenna
-dot dot dot
+Implemented ingredient processors and their subclasses. Implemented game controller that handled core game logic including timing, scoring, order completion, and order management. Implemented tutorial controller and and designed an interactive tutorial level. Implemented and designed post-processing shaders. Wrote parser for level config files. Worked with Iris to integrate UI elements with the game controller. Conducted "Think Aloud" observational sessions with Arriken. Worked on final report.
 
 ### Simon Tran
 dot dot dot
