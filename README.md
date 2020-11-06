@@ -156,7 +156,7 @@ return fragColor;
 
 ### Screen Distortion Shader
 
-The screen distortion shader produces a distorted, green hued image. The shader is used to apply post-processing effects which are triggered by the user failing to correctly brew a potion.
+The screen distortion shader produces a distorted, green hued image. The shader is used as a post-processing effect and is triggered by the player incorrectly brewing a potion.
 
 <p align="center">
   <img src="Images/ScreenEffect.gif"  width="600" >
