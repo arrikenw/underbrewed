@@ -249,7 +249,7 @@ All participants had a high level of familiarity with video games, and this has 
 #### Strengths and weaknesses of methodology
 An area of weakness of our method was that the lack of a dialogue between the participant and examiners meant that feedback was mainly focused on the initial stumbling blocks users faced - in more collaborative methods (eg. cooperative evaluation), users can be moved forward, allowing for feedback to be provided across the entire game. However, as our users couldn't seek assistance to overcome areas of confusion, their feedback would often be limited to a subset of the game's mechanics and systems. As our tutorial was quite lacklustre when we performed our observations, we received limited feedback on later stages of the game.
 
-However, a benefit of our method was that we could gain a better idea of the "blind" experience of a user, revealing how the game would actually be played by a brand new player. This provided significant insight into the failings of our tutorial system, and helped us identify common user errors and misinterpreted/underutilized mechanics.
+However, a benefit of our method was that we were able to gain a better idea of the "blind" experience of a user, giving us insight into how the game would actually be played by a brand new player. This provided significant insight into the failings of our tutorial system, and helped us identify common user errors and misinterpreted/underutilized mechanics. The method was also simple to carry out, allowing us to allocate more time to development work.
 
 ## Evaluation and changes implemented
 
