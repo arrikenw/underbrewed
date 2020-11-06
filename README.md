@@ -404,6 +404,7 @@ However, a benefit of our method was that we were able to gain a better idea of 
 * The cauldron liquid shader was produced with help from an online tutorial found [here](http://enemyhideout.com/2016/08/creating-a-whirlpool-shader/).
 * The bubbles particle system was produced with help from an online tutorial found [here](https://www.youtube.com/watch?v=ajsA6vWBhKI).
 * The pick up logic was initially inspired by a youtube video found [here](https://www.youtube.com/watch?v=90OiysC4j5Y).
+* The menu background music was created with help from this forum post [here](https://answers.unity.com/questions/1260393/make-music-continue-playing-through-scenes.html).
 
 ## Individual Contributions
 
@@ -431,6 +432,14 @@ Pause menu and end screen: https://www.sitepoint.com/adding-pause-main-menu-and-
 Fire particle system: https://80.lv/articles/breakdown-magic-fire-effect-in-unity/ 
 
 Button animation: https://www.youtube.com/watch?v=CJ8FKjYtrT4
+
+Background menu music logic: https://answers.unity.com/questions/1260393/make-music-continue-playing-through-scenes.html
+
+Bubbles design reference: https://www.youtube.com/watch?v=ajsA6vWBhKI
+
+Pick up script design reference: https://www.youtube.com/watch?v=90OiysC4j5Y
+
+Liquid swirl shader reference: http://enemyhideout.com/2016/08/creating-a-whirlpool-shader/
 
 ### Sound effects
 
@@ -486,10 +495,6 @@ Potion model: https://poly.google.com/view/dOREefQfDQu
 Knife model: https://poly.google.com/view/0X5xcxjszwI
 
 Cauldron design reference: https://www.youtube.com/watch?v=x-6cvNjUuAI
-
-Bubbles design reference: https://www.youtube.com/watch?v=ajsA6vWBhKI
-
-Pick up script design reference: https://www.youtube.com/watch?v=90OiysC4j5Y
 
 Bin model: https://www.turbosquid.com/3d-models/free-c4d-mode-m%C3%BClleimer-bin/483718
 
