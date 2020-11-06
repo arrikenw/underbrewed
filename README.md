@@ -99,34 +99,6 @@ After the initial render is complete, a custom fragment shader is applied to the
     }
 ```
 
-### Graphics Pipeline
-#### Vertex shader stage
-
-#### Geometry shader stage
-* While our system doesn't contain any custom geometry shaders, the particle systems that create our flame and smoke effects are built Unity's particle system logic, which makes heavy use of geometry shaders to construct quads from particle vertices.
-
-#### Fragment / Pixel shader stage
-* Unity’s lighting fragment shaders are used in most objects in our scenes in order to provide realistic lighting.
-* A custom fragment shader is used to creating a rich swirling effect for our menu backgrounds and cauldron contents.
-* A custom fragment shader is used to provide interesting colouring for our flame effects.
-
-#### Post-processing
-* After the initial render is complete, a custom fragment shader is applied to the initial render texture to provide post-processing effects and generate the final render texture, with this post-processing is handled through Unity's ```OnRenderImage()``` functionality. We have provided a sample of our code for applying post-processing shaders below:
-
-```C#
-    void OnRenderImage(RenderTexture source, RenderTexture destination)
-    {
-        if (applyAffect)
-        {
-            Graphics.Blit(source, destination, material);
-        }
-        else
-        {
-            Graphics.Blit(source, destination);
-        }
-    }
-```
-
 ## Shaders and Particle Systems
 
 ### Potion Liquid Shader
