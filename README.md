@@ -30,6 +30,8 @@ Underbrewed is a single-player cooking simulator game in which players brew poti
 
 Underbrewed uses a static camera and third person perspective, and is designed to be played with a keyboard.
 
+Watch the gameplay trailer [here](https://www.youtube.com/watch?v=fE1b38sGNSU&feature=youtu.be).
+
 ## How to Play
 ### Basic controls
 - Movement: WASD and arrow keys are both supported
