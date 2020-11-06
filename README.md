@@ -6,6 +6,7 @@
 * [Team Members](#team-members)
 * [Introduction](#introduction)
 * [How to Play](#how-to-play)
+* [Modelling of Objects and Entities](#modelling-of-objects-and-entities)
 * [Camera Motion and Graphics Pipeline](#camera-motion-and-graphics-pipeline)
 * [Shaders and Particle Systems](#shaders-and-particle-systems)
 * [Evaluation Methods](#evaluation-methods)
@@ -274,13 +275,17 @@ We used the interview querying method. Participants were sent an early version o
 The interview consisted of open-ended questions surrounding the gameplay, graphics, and user experience. Participants were encouraged to form their own opinions of the game and discuss their feedback with the interviewer in a conversational style. Dot points and questions prepared by the interviewers were used to guide the discussion. The interviewers took typed notes during the interviews, and reviewed audio recordings of the interviews when necessary.
 
 #### Participant demographic information
-| Age | Gender    | Occupation                     | Self-estimate of hours of video games played per week |
-|-----|--------   |--------------------------------|-------------------------------------------------------|
-| 20   | Male     | 3rd year undergraduate student | 10                                                    |
-| 20   | Female   | 3rd year undergraduate student | 2                                                     |
-| 20   | Female   | 2nd year undergraduate student | 14                                                    |
-| X   | Male   | 1st year undergraduate student | 40                                                       |
-| X   | Male   | Unemployed                     | 30                                                     |
+| Age | Gender   | Occupation                     | Self-estimate of hours of video games played per week |
+|-----|--------  |--------------------------------|-------------------------------------------------------|
+| 20  | Male     | 3rd year undergraduate student | 10                                                    |
+| 20  | Female   | 3rd year undergraduate student | 2                                                     |
+| 20  | Female   | 2nd year undergraduate student | 14                                                    |
+| 19  | Male     | 1st year undergraduate student | 12                                                    |
+| 18  | Female   | 1st year undergraduate student | 45                                                    |
+| 18  | Male     | 1st year undergraduate student | 15                                                    |
+| 18  | Female   | 1st year undergraduate student | --                                                    |
+| 19  | Female   | 1st year undergraduate student | 4                                                     |
+| 20  | Female   | 2nd year undergraduate student | 2                                                     |
 
 The demographic of participants was quite narrow, with all participants being between ages 18 and 20, and undertaking tertiary education. While levels of gaming experience varied between participants, all participants had some familiarity with gaming. Participants reported playing between 2 and 14 hours of games per week. While a broader demographic in participants is generally desirable, we felt that the participants interviewed were able to use their previous gaming experience and expectations to provide relevant and insightful feedback.
 
@@ -394,7 +399,7 @@ Collected or created the majority of the models used. Implemented sound effects,
 Implemented ingredient processors and their subclasses. Implemented game controller that handled core game logic including timing, scoring, order completion, and order management. Implemented tutorial controller and and designed an interactive tutorial level. Implemented and designed post-processing shaders. Wrote parser for level config files. Worked with Iris to integrate UI elements with the game controller. Conducted "Think Aloud" observational sessions with Arriken. Worked on final report.
 
 ### Simon Tran
-dot dot dot
+Designed and implemented the architecture of C# Script Classes for Game Objects that could be interacted with by the player. Used an Inheritance model to improve readability and decrease development times. A list of these classes can be found [here](#interactable-objects). Handled all bugs that arose in relation to these classes, and took on requests to extend to them. Also implemented movement of the Player Object, and the logic for picking up, dropping, throwing, and moving held objects held by the player. Interviewed 6 participants for evaluation purposes and contributed to team discussion and report-writing.
 
 ### Iris Li
 
