@@ -257,7 +257,7 @@ However, a benefit of our method was that we were able to gain a better idea of 
 ### Gameplay
 * Overall, participants stated that they found the game enjoyable and relatively bug-free, with instructions clearly stating the objective of the game, and controls working as expected
 * Some participants found that the game ran at a very low frame rate (20 to 30 fps)
-	* We found that certain models had a very high number of vertices. These were switched to alternate models with less vertices
+	* We found that certain models had a extremely high vertex counts. These models were switched to alternate models with fewer vertices, yielding significant improvements to frame rate.
 * The evaluation brought attention to several minor bugs, such as players glitching through certain benches and walls, player movement being disabled after restarting the game, and the ability to generate excessive amounts of ingredients by picking items from the crate in succession
 	* These bugs were fixed for the final build of the game
 
