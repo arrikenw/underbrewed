@@ -47,6 +47,25 @@ Watch the gameplay trailer [here](https://www.youtube.com/watch?v=fE1b38sGNSU&fe
 ### Loading the Game
 To load the game, navigate to the `MainMenu` scene which can found at the path: `Assets\Scenes\EvaluationBuild\MainMenu.unity`. Open the scene and press play to play the game.
 
+### Menus
+#### Main Menu
+* The `Tutorial` button loads the tutorial level for the game
+* The `Play Game` button opens the level select scene for the game
+* The `Quit` button closes the game
+#### Level Select Menu
+Click on a level thumbnail to load a specific level. Highscores for levels are displayed below the level's thumbnail.
+* The `Go Back` buttons loads the main menu scene for the game.
+#### Pause Menu
+The pause menu can be accessed by pressing the 'Esc' key during a level.
+* The `Resume` button resume the level from the point it was paused.
+* The `Restart` button loads the current level from start.
+* The `Quit` button loads the main menu scene for the game.
+#### End Game Menu
+The end game menu is displayed once a player finishes a leve. In the middle it displays if the player passed or failed the level, with more details on the right hand side. These details include the player's score on this level, their grade for this level as well as the current high score for this level.
+* The `Next Level` button loads the next level of the game.
+* The `Retry` button loads the current level from the start.
+* The `Quit` button loads the main menu scene for the game.
+
 ### Gameplay
 Throughout a level, orders will continually arrive in the top left of the screen. Each order contains a potion, the ingredients needed to brew the potion, and a timer that indicates how long the player will have to complete the order.
 
