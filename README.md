@@ -216,10 +216,9 @@ The interview consisted of open-ended questions surrounding the gameplay, graphi
 | X   | Male   | 1st year undergraduate student | 40                                                       |
 | X   | Male   | Unemployed                     | 30                                                     |
 
-#### Strengths and weaknesses of methodology
-
 The demographic of participants was quite narrow, with all participants being between ages 18 and 20, and undertaking tertiary education. While levels of gaming experience varied between participants, all participants had some familiarity with gaming. Participants reported playing between 2 and 14 hours of games per week. While a broader demographic in participants is generally desirable, we felt that the participants interviewed were able to use their previous gaming experience and expectations to provide relevant and insightful feedback.
 
+#### Strengths and weaknesses of methodology
 This querying method allowed participants to experience the game at their own pace and without influence from others. This method also gave participants time to reflect on their experience and concisely share their opinions. Some participants had even collated their own notes on their experience, and presented them during the interview. Participants feedback was useful in determining which aspects of the game were well-understood, and which aspects were considered pain points. However, some participants gave generic answers and struggled to recall or comment on certain elements of the game in detail when prompted. As interviewers were not present when participants were testing the game, interviewers were not able to fully capture or observe the participants' experience, or prompt participants to interact with certain elements of the game.
 
 
@@ -243,11 +242,14 @@ We used the “Think Aloud” observational method. Participants were invited to
 | X   | Male   | Unemployed                     | 30                                                    |
 
 
-#### Strengths and weaknesses of methodology
-The breadth of this demographic research was quite limited – all participants were either university students or planning on undertaking tertiary studies. Furthermore, all participants were male and sat within a similar age range. However, as our game is quite simple and lacks a story, we expect these factors to have little bearing on how the game is played or perceived.
+As with our interviews, the demographic breadth of participants for our "Think Aloud" evaluation was quite limited – all participants were male, were of similar ages, and were either university students or planning on undertaking tertiary studies, and this homogenity could limit our ability to accurately assess aspects of our game. However, as our game lacks a story or complex characters and is firmly grounded within a fantasy world, we expect these factors to have little bearing on how the game is played or perceived.
 
-Additionally, all participants had some degree of familiarity with video games. This familiarity could cause our evaluation of our game to be biased; for example, users may have played similar games before and could use their prior knowledge to supplement sections of the game where goals or mechanics were not communicated clearly. On the other hand, this familiarly meant that we could easily identify where our game failed to meet the expectations of a typical “gamer”.
-Another area of weakness of our querying method was that the lack of a dialogue between the participant and examiners meant that feedback was mainly focused on the initial stumbling blocks users faced - in more collaborative methods (eg. cooperative evaluation), users can be moved forward, allowing for feedback to be provided across the entire game. However, as our users couldn't seek assistance to overcome areas of confusion, their feedback would often be limited to a subset of the game's mechanics and systems. As our tutorial was quite lacklustre when we performed our observations, we received limited feedback on later stages of the game.
+All participants had a high level of familiarity with video games, and this has both benefits and drawbacks - on one hand, this familiarity could cause our evaluation of our game to be biased, as users may have played similar games before and could use their prior knowledge to supplement sections of the game where goals or mechanics were not communicated clearly. On the other hand, this familiarly meant that we could easily identify where our game failed to meet the expectations of a typical “gamer” and target such areas for improvement.
+
+#### Strengths and weaknesses of methodology
+An area of weakness of our method was that the lack of a dialogue between the participant and examiners meant that feedback was mainly focused on the initial stumbling blocks users faced - in more collaborative methods (eg. cooperative evaluation), users can be moved forward, allowing for feedback to be provided across the entire game. However, as our users couldn't seek assistance to overcome areas of confusion, their feedback would often be limited to a subset of the game's mechanics and systems. As our tutorial was quite lacklustre when we performed our observations, we received limited feedback on later stages of the game.
+
+However, a benefit of our method was that we could gain a better idea of the "blind" experience of a user, revealing how the game would actually be played by a brand new player. This provided significant insight into the failings of our tutorial system, and helped us identify common user errors and misinterpreted/underutilized mechanics.
 
 ## Evaluation and changes implemented
 
