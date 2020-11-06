@@ -331,7 +331,7 @@ However, a benefit of our method was that we were able to gain a better idea of 
 ## Individual Contributions
 
 ### Arriken Worsley
-dot dot dot
+Collected or created the majority of the models used. Implemented sound effects, animations and music for the game. This included sound and animations for picking up items, chopping, crushing, etc. Created the liquid swirl shader and bubble particles system for cauldron and menus. Designed and constructed the three levels and created the designed the level files using Joel's parser. Planned, recordered and edited the game trailer. Implemented some code logic, such as the bad effects and camera animation. Conducted "Think Aloud" observational sessions with Joel.
 
 ### Joel Kenna
 Implemented ingredient processors and their subclasses. Implemented game controller that handled core game logic including timing, scoring, order completion, and order management. Implemented tutorial controller and and designed an interactive tutorial level. Implemented and designed post-processing shaders. Wrote parser for level config files. Worked with Iris to integrate UI elements with the game controller. Conducted "Think Aloud" observational sessions with Arriken. Worked on final report.
@@ -418,7 +418,7 @@ Bubbles design reference: https://www.youtube.com/watch?v=ajsA6vWBhKI
 Pick up script design reference: https://www.youtube.com/watch?v=90OiysC4j5Y
 
 Bin model: https://www.turbosquid.com/3d-models/free-c4d-mode-m%C3%BClleimer-bin/483718
- 
+
 Squashed eye model: https://www.turbosquid.com/3d-models/3d-rectangle-flow-splash-model-1213683
 
 Chopped cheese model: https://www.turbosquid.com/3d-models/free-max-mode/1033609
