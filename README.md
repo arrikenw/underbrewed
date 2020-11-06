@@ -76,13 +76,14 @@ While our game doesn't contain any custom geometry shaders, the particle systems
 * Smoke particle systems
 
 #### Fragment shaders
-Our game makes heavy use of custom and Unity-provided fragment shaders to handle lighting and effects. Our uses of fragment shaders are listed below:
+Our game makes heavy use of custom and Unity-provided fragment shaders to handle lighting and effects. Our choice to use shaders to create these effects was based on their ability to exploit the GPU's ability to efficiently perform simple parallel tasks, which allows us to quickly compute effects across our objects. Furthermore, as our effects lack branching and complex logical flow, we have little need of the CPU's specialized features like branch prediction or speculative execution.
+
 * Unity’s lighting fragment shaders are used throughout our scenes in order to provide realistic lighting. 
 * A custom fragment shader is used to creating a rich swirling effect for our menu backgrounds and cauldron contents.
 * A custom fragment shader is used to provide interesting colouring for our flame effects.
 
 #### Post-processing
-After the initial render is complete, a custom fragment shader is applied to the initial render texture to provide post-processing effects and generate the final render texture, with this post-processing is handled through Unity's ```OnRenderImage()``` functionality. We have provided a sample of our code for applying post-processing shaders below:
+After the initial render is complete, a custom fragment shader is applied to the initial render texture to provide post-processing effects and generate the final render texture, with this post-processing is handled through Unity's ```OnRenderImage()``` functionality. Once again, our motivation for using a shader to apply this effect is rooted in the GPU's ability to efficiently perform parellelized processing - as a simple effect is applied across the entire screen, a GPU based approach yields great performance improvements over a CPU based approach. We have provided a sample of our code for applying post-processing shaders below:
 
 ```C#
     void OnRenderImage(RenderTexture source, RenderTexture destination)
@@ -212,6 +213,7 @@ fixed4 finalCol = 0.6 * textureCol + 0.2 * greenCol + 0.2 * green;
 ```
 A greenish colouration is applied to the screen by retrieving the texture colour of the final image and then mixing it with a static green colour and a green colour whose strength varies with sin of the current time, resulting in a green hued image with an intensity that varies over time.
 
+Implementing this effect using a shader is more performant than a CPU based approach. This is because the effect is applied uniformly across the render texture without significant logical branching, allowing it to take advantage of the GPU's ability to effciently parallelise simple operations.  
 
 ### Fire particle system
 
