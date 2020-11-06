@@ -6,10 +6,10 @@
 * [Team Members](#team-members)
 * [Introduction](#introduction)
 * [How to Play](#how-to-play)
-* [Graphics and Camera Motion](#using-images)
-* [Shaders](#shaders-and-particle-systems)
+* [Camera Motion and Graphics Pipeline](#camera-motion-and-graphics-pipeline)
+* [Shaders and Particle Systems](#shaders-and-particle-systems)
 * [Evaluation Methods](#evaluation-methods)
-* [Feedback Changes](#evaluation-and-changes-implemented)
+* [Evaluation and Changes Implemented](#evaluation-and-changes-implemented)
 * [Resource References](#resource-references)
 * [Individual Contributions](#individual-contributions)
 
