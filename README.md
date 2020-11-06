@@ -122,7 +122,10 @@ Game Managers refer to Game Objects that are present in the scene only to hold a
 - The main UI controller, which organises and manages the placement, reordering, and display of UI elements
 
 ### Decorative Objects
-Decorative Objects refer to the Game Objects with a tangible form within in our scene that do not have any C# Scripts and are primarly used for decorative purposes. Where necessary, these would have colliders to prevent the Player Object and Interactable Objects from moving past them. Some examples of these are: Tables, Walls, Broomsticks, Flower Pots, and all the Objects outside of the grid.
+Decorative Objects refer to the Game Objects with a tangible form within in our scene that do not have any C# Scripts and are primarly used for decorative purposes. Where necessary, these would have colliders to prevent the Player Object and Interactable Objects from moving past them. Some examples of these are: 
+- Tables, Walls, and other objects that compose the boundaries of the playable space
+- Decorative elements like Broomsticks, Flower Pots
+- All objects that lie outside of the playable area
 
 ### UI Elements
 UI Elements refer to the 2D Game Objects that appear im the Player Camera's field of view. These provide a visual interpretation of the state of the game logic. Some examples of these are: Score Board, Time Remaining, Orders, and Pause Menu.
