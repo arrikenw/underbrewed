@@ -300,11 +300,13 @@ The screen distortion shader produces a distorted, green hued image. The shader 
   <img src="Images/ScreenEffect.gif"  width="600" >
 </p>
 
-The core of the code used to create the screen motion / distortion effects is presented below:
+The core section of code used to create the screen motion / distortion effects is presented below. It has been split into more lines to improve readability. Default transformations like UnityObjectToClipPos are applied after this core logic.
 
 ```Shaderlab
-X = (0.05 * sin(v.vertex.x + 1.5 * sin(_Time.z)) + v.vertex.x
-Y = (0.05 * sin(v.vertex.y + 2.5 * cos(_Time.z)) + v.vertex.y
+//main effect
+newX = (0.05 * sin(v.vertex.x + 1.5 * sin(_Time.z)) + v.vertex.x;
+newY = (0.05 * sin(v.vertex.y + 2.5 * cos(_Time.z)) + v.vertex.y;
+newVertex = (newX, newY, v.vertex.z, 1);
 ```
 
 The internal trig functions ```sin(_Time.z)``` and ```cos(_Time.z)``` are used to create a screen shake effect. The choice of using different trig functions on each axis was to ensure the screen shake didn't simply slide along a line (which would occur if the same trig functions were used on both axes). The outermost sin function was used to create a stretching / warping effect across the entire image, producing a mild sense of disorientation. Finally, to ensure the final image largely remains centred and intelligible, the distortion effect is scaled down significantly before being added to the original vertex information, causing the effect to only have a moderate impact on the final image.  
