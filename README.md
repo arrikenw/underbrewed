@@ -43,6 +43,9 @@ Watch the gameplay trailer [here](https://www.youtube.com/watch?v=fE1b38sGNSU&fe
 - Open pause menu: Press ‘Esc’
 - The optional key sets "O", "P", "[" and "Z", "X", "C" can be used instead of the default "M", ",", "."
 
+### Loading the Game
+To load the game, navigate to the `MainMenu` scene which can found in path `Assets\Scenes\EvaluationBuild\MainMenu.scene`. Open the scene and press play to play the game. Alternatively, you play the game through a built executable, found in `Build\Underbrewed.exe`.
+
 ### Gameplay
 Throughout a level, orders will continually arrive in the top left of the screen. Each order contains a potion, the ingredients needed to brew the potion, and a timer that indicates how long the player will have to complete the order.
 
