@@ -359,7 +359,7 @@ The interview consisted of open-ended questions surrounding the gameplay, graphi
 | 19  | Male     | 1st year undergraduate student | 12                                                    |
 | 18  | Female   | 1st year undergraduate student | 45                                                    |
 | 18  | Male     | 1st year undergraduate student | 15                                                    |
-| 18  | Female   | 1st year undergraduate student | --                                                    |
+| 18  | Female   | 1st year undergraduate student | 7                                                     |
 | 19  | Female   | 1st year undergraduate student | 4                                                     |
 | 20  | Female   | 2nd year undergraduate student | 2                                                     |
 
@@ -403,7 +403,7 @@ However, a benefit of our method was that we were able to gain a better idea of 
 ### Gameplay
 * Overall, participants stated that they found the game enjoyable and relatively bug-free, with instructions clearly stating the objective of the game, and controls working as expected
 * Some participants found that the game ran at a very low frame rate (20 to 30 fps)
-	* We found that certain models had a extremely high vertex counts. These models were switched to alternate models with fewer vertices, yielding significant improvements to frame rate.
+	* We found that certain models had a extremely high vertex counts and shadow usage. These models were switched to alternate models with fewer vertices and shadows, yielding significant improvements to frame rate. One of our team members found that their fps doubled with this change. 
 * The evaluation brought attention to several minor bugs, such as players glitching through certain benches and walls, player movement being disabled after restarting the game, and the ability to generate excessive amounts of ingredients by picking items from the crate in succession
 	* These bugs were fixed for the final build of the game
 
@@ -415,7 +415,7 @@ However, a benefit of our method was that we were able to gain a better idea of 
 	* While the tutorial clearly explained the basic concepts of the game, participants felt that progression in the tutorial should be based on task completion, both to provide a sense of achievement for learning controls, and confirm that users were completing the task properly
 		* The tutorial was reworked to progress based on task completion
 	* Participants felt hindered by the need to always press the spacebar to continue to the next tip, and the inability to navigate back to a previous tip
-		* We were unable to remove these challenges with the time given, but would like to have implemented these changes
+		* We were unable to remove these challenges with the time given, but would like to have implemented these changes. However, due to much of the tutorial progression now being based on task completion, the need to press spacebar has been reduced. 
 		* Players can restart the tutorial at any time by using the pause menu
 <p align="center">
 	<img src="Images/TutorialImproved.PNG"  width="600" >
@@ -426,7 +426,8 @@ However, a benefit of our method was that we were able to gain a better idea of 
 ### User experience
 * Some participants felt confused by the different cauldron colours, as one of the potions was very similar in colour to the colour used to represent an “incorrect” potion
 	* Potion colours were changed so that a black potion represented an “incorrect” potion
-	* Grey colours were used to represent different stages of the potion in the cauldron, and bright colours were used to represent the final potions
+	* Grey colours were used to represent different stages of the potion in the cauldron, and a set of unique bright colours were used to represent each of the complete potions.
+		* e.g. For recipes requiring three ingredients, placing the first ingredient would yield a light grey colour, placing the second ingredient would then yield a dark grey colour, and finally, placing the final ingredient would then yield the unique bright colour representing the potion.
 <p align="center">
 	<img src="Images/Cauldrons.PNG"  width="600" >
 
@@ -457,8 +458,7 @@ However, a benefit of our method was that we were able to gain a better idea of 
 * Some participants also suggested extra features that might suit the game such as:
 	* Introducing different characters with different abilities, e.g. being able to hold multiple items at a time, or dash to move quicker
 	* Have potion bottles break when dropped to increase the difficulty of the game
-		* Due to time constraints, these were not implemented, but we feel they could be implemented in a future build
-
+	* Due to time constraints, these were not implemented, but we feel they may potentially be good additions to the game for future builds.
 
 ## Sources used
 
