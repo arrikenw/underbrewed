@@ -237,14 +237,6 @@ fixed4 fragColor = tex2D(_MainTex, uv) * _Color;
 
 return fragColor;
 ```
-### Bubbles Particle System
-The bubbles produced by the cauldron is comprised of two differnet particle systems: The first produces the intial bubble, and the latter produces the popped bubble particles. The particle system was produced with help from a tutorial found [here](https://www.youtube.com/watch?v=ajsA6vWBhKI).
-
-<p align="center">
-  <img src="Images/Bubbles.gif"  width="600" >
-</p>
-
-The bubbles are emitted upwards from the cauldron's liquid surface, with their velocities changing over time, giving the bubbles a wavy effect as they rise up. When the bubbles expire after a certain lifetime, they emit the next particle system, representing the burst bubble. These burst bubble particles are affected by gravity are emitted in all directions from the expired bubble. This helps acheive the effect of a burst bubble.
 
 ### Screen Distortion Shader
 
@@ -276,6 +268,15 @@ fixed4 finalCol = 0.6 * textureCol + 0.2 * greenCol + 0.2 * green;
 A greenish colouration is applied to the screen by retrieving the texture colour of the final image and then mixing it with a static green colour and a green colour whose strength varies with sine of the current time, resulting in a green hued image with an intensity that varies over time.
 
 Implementing this effect using a shader is more performant than a CPU based approach. This is because the effect is applied uniformly across the render texture without significant logical branching, allowing it to take advantage of the GPU's ability to effciently parallelise simple operations.  
+
+### Bubbles Particle System
+The bubble effect produced by the cauldron is comprised of two different particle systems: Once that produces the intial bubble, and another that produces the popped bubble particles. The particle system was produced with help from a tutorial found [here](https://www.youtube.com/watch?v=ajsA6vWBhKI).
+
+<p align="center">
+  <img src="Images/Bubbles.gif"  width="600" >
+</p>
+
+The bubbles are emitted upwards from the cauldron's liquid surface, with their velocities changing over time, giving the bubbles a wavy effect as they rise up. When the bubbles expire after a certain lifetime, they emit the next particle system, representing the burst bubble. These burst bubble particles are affected by gravity are emitted in all directions from the expired bubble. This helps acheive the effect of a burst bubble.
 
 ### Fire particle system
 
