@@ -11,8 +11,9 @@
 * [Shaders and Particle Systems](#shaders-and-particle-systems)
 * [Evaluation Methods](#evaluation-methods)
 * [Evaluation and Changes Implemented](#evaluation-and-changes-implemented)
-* [Resource References](#resource-references)
+* [Sources used](#sources-used)
 * [Individual Contributions](#individual-contributions)
+* [Useful references](#useful-references)
 
 
 ## Team Members
@@ -613,31 +614,3 @@ Stations: https://clipart-library.com/
 ## Technologies
 Project is created with:
 * Unity 2019.4.3f1
-* Ipsum version: 2.33
-* Ament library version: 999
-
-## Using Images
-
-You can use images/gif by adding them to a folder in your repo:
-
-<p align="center">
-  <img src="Gifs/Q1-1.gif"  width="300" >
-</p>
-
-To create a gif from a video you can follow this [link](https://ezgif.com/video-to-gif/ezgif-6-55f4b3b086d4.mov).
-
-## Code Snippets
-
-You can include a code snippet here, but make sure to explain it!
-Do not just copy all your code, only explain the important parts.
-
-```c#
-public class firstPersonController : MonoBehaviour
-{
-    //This function run once when Unity is in Play
-     void Start ()
-    {
-      standMotion();
-    }
-}
-```
