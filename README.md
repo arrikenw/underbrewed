@@ -68,7 +68,7 @@ To deliver a completed potion, players must fill a bottle with liquid from the c
 
 <p align="center">
   <img src="Images/CollectingPotion.gif"  width="600" >
-	
+
 	Pictured: A potion is collected from a cauldron using the interact button while holding a potion
 </p>
 
@@ -78,7 +78,7 @@ To deliver a completed potion, players must fill a bottle with liquid from the c
 	Pictured: A potion is delivered using the portal
 </p>
 
-If a player places an ingredient into the cauldron that does not match any valid potions, the game will trigger a special effect to distract players, such as a shader to distort the screen, or an explosion that sends ingredients flying across the scene. 
+If a player places an ingredient into the cauldron that does not match any valid potions, the game will trigger a special effect to distract players, such as a shader to distort the screen, or an explosion that sends ingredients flying across the scene.
 
 Later levels become more difficult and the player must rely on multitasking and item throwing to complete order on time.
 
@@ -140,7 +140,7 @@ Game Managers refer to Game Objects that are present in the scene only to hold a
 - The Tutorial Controller, which carries out the interactive progression of tutorial stages. The tutorial:
 	- Handles logic for automatic advancement on the successful completion of actions
 	- Manages the the display and repositioning of tutorial messages and captions
-- The Recipe Tree, which holds stores our recipe tree as a tree data structure, and has methods for checking the validity of ordered lists of ingredients. It acts as the source of truth for our recipes. 
+- The Recipe Tree, which holds stores our recipe tree as a tree data structure, and has methods for checking the validity of ordered lists of ingredients. It acts as the source of truth for our recipes.
 
 ### Decorative Objects
 Decorative Objects refer to the Game Objects with a tangible form within in our scene that do not have any C# Scripts and are primarly used for decorative purposes. Where necessary, these objects have colliders to prevent the Player Object and Interactable Objects from moving past them. Some examples of these are:
@@ -154,36 +154,23 @@ UI Elements refer to the 2D Game Objects that appear in the Player Camera's fiel
 - Score and time remaining indicators
 - The various menu elements that compose our level select, main menu, and pause menu screens.
 
-A canvas prefab, UIMain, contained the game objects and scripts for all UI elements within each level, including OrderQueue, ProgressBarManager, UIPauseMenu, UIEndScreen, GameTimer, GameScore, and GameText.
-
-#### Orders and order queue
-
-> Orders were used to display tasks that needed to be completed by the player. Each order consisted of a timer bar, a potion sprite, and up to six sprites which detailed the recipe (up to 3 ingredients and methods). The UIOrderQueueManager.cs script contained functions for adding and deleting active orders, and updating the position of each order based on its position in the scene hierarchy. Orders were instantiated from a prefab (UIOrderTemplate) as a child of the OrderQueue game objects, with order sprites changed according to the ingredients and potion colour specified by RecipeManager.cs. The UIOrderController.cs script was included in each order template, and was used to update the timer bar on each order as specified by RecipeManager.cs
-
-
-#### Progress bar manager and progress bars
-
-> Progress bars were implemented to show the progression of processing by a station, such as the burning station or chopping station. Each progress bar was stored as a child of the ProgressBarManager and assigned to a specific station. Each progress bar was transformed according to station's position, the time required for processing an ingredient, and if the ingredient was actively being processed at the station. UIProgressManager.cs was responsible for updating the bar's progress, setting the active state of each progress bar in the scene, and hiding the progress bar if the station was not in use.
-
-
-#### Pause menu and end screen
-
-> A pause menu was implemented to allow players to pause, restart, or quit the level whenever the game timer is active. An end screen was also implemented to display the final score at the end of the level, as well as a grade value and the highest score acheived for that level. It also allows the player to restart the level, progress to the next level, or quit to the main menu. UIGameMenu.cs was used to pause the game, manage the active state of the pause menu (UIPauseMenu) and end screen (UIEndScreen), and store relevant button functions.
-
-
-#### Game timer and score
-
-> The game timer and game score elements display the time remaining in the level, and the current score. The game timer and game score were updated by RecipeManager.cs by functions held in UIGameTimer.cs and UIGameScore.cs respectively.
-
-
-#### Game text
-
-> UIGameText.cs contains the script for a co-routine which displays "3, 2, 1, go!". It is called by RecipeManager.cs at the start of each level.
-
-
-#### Main menu and level selection
-
-> UIMainMenu.cs and UILevelSelect.cs contained button functions for UIMainMenu and UILevelSelect canvasses respectively. UILevelSelect.cs also contained code to retrieve and display the highest score achieved for each level.
+A canvas prefab, UIMain, contained the game objects and scripts for all UI elements within each level, including
+- OrderQueue
+  - Orders were used to display tasks that needed to be completed by the player. Each order consisted of a timer bar, a potion sprite, and up to six sprites which detailed the recipe (up to 3 ingredients and methods)
+  - Separate scripts were used to manage the addition and deletion of active orders from a queue, and update the individual timer of each order
+- ProgressBarManager
+  - Progress bars were implemented to show the progression of processing by a station, such as the burning station or chopping station
+  - Each progress bar was transformed according to a station's position, the time required for processing an ingredient, and if the ingredient was actively being processed at the station
+  - A script was used to manage the active state of the progress bar
+- UIPauseMenu
+  - A pause menu was implemented to allow players to pause, restart, or quit the level whenever the game timer is active
+- UIEndScreen
+  - An end screen was also implemented to display the final score at the end of the level, as well as a grade value and the highest score achieved for that level
+  - It also allows the player to restart the level, progress to the next level, or quit to the main menu
+- GameTimer and GameScore
+  - The game timer and game score elements display the time remaining in the level, and the current score
+- GameText
+  - Displays "3, 2, 1, go!" at the start of each level
 
 
 
@@ -300,11 +287,13 @@ The screen distortion shader produces a distorted, green hued image. The shader 
   <img src="Images/ScreenEffect.gif"  width="600" >
 </p>
 
-The core of the code used to create the screen motion / distortion effects is presented below:
+The core section of code used to create the screen motion / distortion effects is presented below. It has been split into more lines to improve readability. Default transformations like UnityObjectToClipPos are applied after this core logic.
 
 ```Shaderlab
-X = (0.05 * sin(v.vertex.x + 1.5 * sin(_Time.z)) + v.vertex.x
-Y = (0.05 * sin(v.vertex.y + 2.5 * cos(_Time.z)) + v.vertex.y
+//main effect
+newX = (0.05 * sin(v.vertex.x + 1.5 * sin(_Time.z)) + v.vertex.x;
+newY = (0.05 * sin(v.vertex.y + 2.5 * cos(_Time.z)) + v.vertex.y;
+newVertex = (newX, newY, v.vertex.z, 1);
 ```
 
 The internal trig functions ```sin(_Time.z)``` and ```cos(_Time.z)``` are used to create a screen shake effect. The choice of using different trig functions on each axis was to ensure the screen shake didn't simply slide along a line (which would occur if the same trig functions were used on both axes). The outermost sin function was used to create a stretching / warping effect across the entire image, producing a mild sense of disorientation. Finally, to ensure the final image largely remains centred and intelligible, the distortion effect is scaled down significantly before being added to the original vertex information, causing the effect to only have a moderate impact on the final image.  
@@ -369,7 +358,7 @@ The interview consisted of open-ended questions surrounding the gameplay, graphi
 | 19  | Female   | 1st year undergraduate student | 4                                                     |
 | 20  | Female   | 2nd year undergraduate student | 2                                                     |
 
-The demographic of participants was quite narrow, with all participants being between ages 18 and 20, and undertaking tertiary education. While levels of gaming experience varied between participants, all participants had some familiarity with gaming. Participants reported playing between 2 and 14 hours of games per week. While a broader demographic in participants is generally desirable, we felt that the participants interviewed were able to use their previous gaming experience and expectations to provide relevant and insightful feedback.
+The demographic of participants was quite narrow, with all participants being between ages 18 and 20, and undertaking tertiary education. While levels of gaming experience varied between participants, all participants had some familiarity with gaming. The majority of participants reported playing between 0 and 15 hours of games per week. While a broader demographic in participants is generally desirable, we felt that the participants interviewed were able to use their previous gaming experience and expectations to provide relevant and insightful feedback.
 
 #### Strengths and weaknesses of methodology
 This querying method allowed participants to experience the game at their own pace and without influence from others. This method also gave participants time to reflect on their experience and concisely share their opinions. Some participants had even collated their own notes on their experience, and presented them during the interview. Participants feedback was useful in determining which aspects of the game were well-understood, and which aspects were considered pain points. However, some participants gave generic answers and struggled to recall or comment on certain elements of the game in detail when prompted. As interviewers were not present when participants were testing the game, interviewers were not able to fully capture or observe the participants' experience, or prompt participants to interact with certain elements of the game.
