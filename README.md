@@ -52,10 +52,11 @@ If a player places an ingredient into the cauldron that does not match any valid
 
 <b> We recommend that new players play our tutorial level before attempting stages, as it provides an in-depth overview of the game’s controls and mechanics. </b>
 
-## Graphics and Camera Motion
+## Camera Motion and Graphics Pipeline
 
 ### Camera Motion
 
+#### Static Camera
 The game is primarily played with a static camera. The camera is placed high above the level, similar to a bird's eye view, allowing the player to see everything as the play they game. This camera position was chosen as it made the entire level viewable for the player while avoiding the issues of traditional cameras, such as occlusion.
 <p align="center">
   <img src="Images/StaticCamera.png"  width="600" >
@@ -271,7 +272,6 @@ However, a benefit of our method was that we were able to gain a better idea of 
 		* We were unable to remove these challenges with the time given, but would like to have implemented these changes
 		* Players can restart the tutorial at any time by using the pause menu
 <p align="center">
-
 	<img src="Images/TutorialImproved.PNG"  width="600" >
 
 	Pictured: The reworked tutorial now prompts the user to complete certain tasks in order to advance to the next step.
