@@ -15,26 +15,6 @@ public class PickUpScript : MonoBehaviour
     public GameObject tutorialController;
     private int tutorialCount = 3;
 
-    private int pollGap = 10; //testing, smoother than getkeydown, which was sometimes quite rough
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    /*void FixedUpdate()
-    {   
-        UpdateThrow();
-        UpdateInteract();
-        UpdatePickup();
-
-        if (pollGap > 0)
-        {
-            pollGap -= 1;
-        }
-    }*/
 
     void Update()
     {
