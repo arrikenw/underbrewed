@@ -104,12 +104,6 @@ Later levels become more difficult and the player must rely on multitasking and 
 <b> We recommend that new players play our tutorial level before attempting stages, as it provides an in-depth overview of the game’s controls and mechanics. </b>
 
 
-
-
-
-
-## Camera Motion and Graphics Pipeline
-
 ## Modelling of Objects and Entities
 We split our Unity Game Objects within our scenes into five distinct categories: Player Object, Interactable Objects, Decorative Objects, UI Elements, and Game Managers.
 
