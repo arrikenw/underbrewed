@@ -29,17 +29,7 @@ public class Player : MonoBehaviour
     // float speedDecay = 0.98f;
     Vector3 speedVector = new Vector3(0, 0, 0);
 
-    int framesUntilComplete = 0;
-
     public Rigidbody rb;
-
-    private int invert = 1;
-    private float invertCountdown = 0.0f;
-    public void InvertMovement()
-    {
-        invert = -1;
-        invertCountdown = 10.0f;
-    }
 
     // Start is called before the first frame update
     void Start()
