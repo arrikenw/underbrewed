@@ -125,8 +125,14 @@ A further explanation of what functionality each class provides/represents is as
 ### Game Managers
 Game Managers refer to Game Objects that are present in the scene only to hold and instantiate C# Scripts that are attached to them. These objects do not have a physical form (i.e. No mesh, no renderer, no collider, etc) and are used to direct and control gameplay and UI flow. Examples used within our system include:
 - The game controller, which handles game time, player score, and recipe management
+	- Manages and stores active and enqueued orders
+	- Handles logic for processing delivered orders
+	- Stores and updates game time and scores
+	- Triggers start and end level events.
 - The tutorial controller, which carries out the interactive progression of tutorial stages
-- The main UI controller, which organises and manages the placement, reordering, and display of UI elements
+	- Handled logic for automatic advancement on the successful completion of actions
+	- Handed the display and repositioning of tutorial messages and captions
+- The main UI controller, which organises and manages the placement, reordering, and display of UI elements ??? 
 
 ### Decorative Objects
 Decorative Objects refer to the Game Objects with a tangible form within in our scene that do not have any C# Scripts and are primarly used for decorative purposes. Where necessary, these objects have colliders to prevent the Player Object and Interactable Objects from moving past them. Some examples of these are: 
