@@ -71,10 +71,10 @@ When a level finishes, an "action replay" occurs, with the camera moving down to
 
 ### Graphics Pipeline
 
-The majority of the graphical work within our game is carried out by the GPU, which handles our lighting, special effects, and texture mapping. While the CPU plays a less significant role, it is still highly important, as it is used by Unity to provide vertices, textures, and commands to the GPU. 
+The majority of the graphical work within our game is carried out by the GPU, which handles our lighting, special effects, and texture mapping. While the CPU plays a less significant role, it is still highly important, as it is used by Unity to provide vertices, textures, and commands to the GPU.
 
 #### Geometry shaders
-While our game doesn't contain any custom geometry shaders, the particle systems we use to create in-game effects are built using Unity's particle system functionality, which makes heavy use of geometry shaders to construct quads based on particle vertices. In our game, these systems include:	
+While our game doesn't contain any custom geometry shaders, the particle systems we use to create in-game effects are built using Unity's particle system functionality, which makes heavy use of geometry shaders to construct quads based on particle vertices. In our game, these systems include:
 * Bubble particle systems
 * Flame particle systems
 * Smoke particle systems
@@ -82,7 +82,7 @@ While our game doesn't contain any custom geometry shaders, the particle systems
 #### Fragment shaders
 Our game makes heavy use of custom and Unity-provided fragment shaders to handle lighting and effects. Our choice to use shaders to create these effects was based on their ability to exploit the GPU's ability to efficiently perform simple tasks in parallel, which allows us to efficiently compute effects across our scene. Furthermore, as our effects lack branching and complex logical flow, we have little need of the CPU's specialized features like branch prediction or speculative execution. Some examples of our uses of fragment shaders include:
 
-* Unity’s lighting shaders are used throughout our scenes in order to provide realistic lighting. 
+* Unity’s lighting shaders are used throughout our scenes in order to provide realistic lighting.
 * A custom fragment shader is used to creating a rich swirling effect for our menu backgrounds and cauldron contents.
 * A custom fragment shader is used to provide interesting colouring for our flame effects.
 
@@ -199,7 +199,9 @@ The fire of the cauldrons and burning stations were created using Unity’s Part
 
 Each fire consisted of three particle systems of different sizes and colours. Using multiple particle systems helps to create the different “layers” of the fire (red, orange, and yellow sections).
 
-The texture used for the fire particle system was created by [Evgeny Starostin](https://80.lv/articles/breakdown-magic-fire-effect-in-unity/)
+The texture used for the fire particle system was created by [Evgeny Starostin](https://80.lv/articles/breakdown-magic-fire-effect-in-unity/). The texture was implemented using a custom shader and a texture sheet animation.
+
+By default, Unity's built-in Particle Systems are applied by the CPU. This allows particle systems to interact with colliders within the scene. This was useful to ensure that the fire would not appear to pass through the cauldron or benches, and overall look more natural.
 
 
 ## Evaluation Methods
@@ -232,7 +234,7 @@ We used the “Think Aloud” observational method. Participants were invited to
 
 <p align="center">
 	<img src="Images/Observation.gif"  width="600" >
-	
+
 	Pictured: A screen capture from a "Think Aloud" observation session showing a user struggling to use a station.
 </p>
 
@@ -346,7 +348,7 @@ https://answers.unity.com/questions/644911/how-do-i-store-highscore-locally-c-si
 
 Pause menu and end screen: https://www.sitepoint.com/adding-pause-main-menu-and-game-over-screens-in-unity/
 
-Fire particle system: https://80.lv/articles/breakdown-magic-fire-effect-in-unity/ 
+Fire particle system: https://80.lv/articles/breakdown-magic-fire-effect-in-unity/
 
 Button animation: https://www.youtube.com/watch?v=CJ8FKjYtrT4
 
@@ -424,7 +426,7 @@ Chopping board model: https://www.turbosquid.com/3d-models/free-chopping-board-3
 
 Frog model: https://www.turbosquid.com/FullPreview/Index.cfm/ID/753743
 
-Fire particle system texture: https://80.lv/articles/breakdown-magic-fire-effect-in-unity/ 
+Fire particle system texture: https://80.lv/articles/breakdown-magic-fire-effect-in-unity/
 
 Fire station model: https://www.turbosquid.com/3d-models/pit-firepit-3ds/701220
 
@@ -446,7 +448,7 @@ Potions: Benjamin Czapla (student work)
 
 Scroll: https://www.clipartkey.com/
 
-Stations: https://clipart-library.com/ 
+Stations: https://clipart-library.com/
 
 
 ## Technologies
