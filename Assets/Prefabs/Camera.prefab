@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8939158151161880029}
   - component: {fileID: 8939158151161880028}
   - component: {fileID: 8939158151161880027}
-  - component: {fileID: 8939158151161880025}
   - component: {fileID: 8939158151161879846}
   m_Layer: 0
   m_Name: Camera
@@ -101,24 +100,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 1f6af4d9b0bc8ca4e9c2a4bf8a62bfae, type: 2}
   screenEffectSound: {fileID: 8939158151655177544}
---- !u!114 &8939158151161880025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8939158151161880031}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f56635b5c248e12479afef161ade67e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duration: 0
-  cam: {fileID: 0}
-  target: {fileID: 0}
-  forwardVelocity: 15
-  rotateVelocity: 0.1
-  minDistance: 20
 --- !u!114 &8939158151161879846
 MonoBehaviour:
   m_ObjectHideFlags: 0
