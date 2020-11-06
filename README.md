@@ -56,30 +56,36 @@ If a player places an ingredient into the cauldron that does not match any valid
 
 ## UI
 
+A canvas prefab, UIMain, contained the game objects and scripts for all UI elements within each level, including OrderQueue, ProgressBarManager, UIPauseMenu, UIEndScreen, GameTimer, GameScore, and GameText.
+
 ### Orders and order queue
 
-Orders were used to display tasks that needed to be completed by the player. Each order consisted of a timer bar, a potion sprite, and up to six sprites which detailed the recipe (up to 3 ingredients and methods). The UIOrderQueueManager.cs script contained functions for adding and deleting active orders, and updating the position of each order based on its position in the scene hierarchy. Orders were instantiated from a prefab (UIOrderTemplate), with sprites changed according to the ingredients and potion colour specified by RecipeManager.cs
-
-The UIOrderController.cs script was included in each order template, and was used to update the timer bar on each order as specified by RecipeManager.cs
+Orders were used to display tasks that needed to be completed by the player. Each order consisted of a timer bar, a potion sprite, and up to six sprites which detailed the recipe (up to 3 ingredients and methods). The UIOrderQueueManager.cs script contained functions for adding and deleting active orders, and updating the position of each order based on its position in the scene hierarchy. Orders were instantiated from a prefab (UIOrderTemplate) as a child of the OrderQueue game objects, with order sprites changed according to the ingredients and potion colour specified by RecipeManager.cs. The UIOrderController.cs script was included in each order template, and was used to update the timer bar on each order as specified by RecipeManager.cs
 
 
-### Progress bars
+### Progress bar manager and progress bars
 
-Progress bars were implemented to show the progression of processing by a station, such as the burning station or chopping station. UIProgressManager.cs was responsible for setting the active state of each progress bar in the scene, and hiding the progress bar if the station was not in use.
+Progress bars were implemented to show the progression of processing by a station, such as the burning station or chopping station. Each progress bar was stored as a child of the ProgressBarManager and assigned to a specific station. Each progress bar was transformed according to station's position, the time required for processing an ingredient, and if the ingredient was actively being processed at the station. UIProgressManager.cs was responsible for updating the bar's progress, setting the active state of each progress bar in the scene, and hiding the progress bar if the station was not in use.
 
 
 ### Pause menu and end screen
 
-A pause menu was implemented to allow players to pause, restart, or quit the level whenever the game timer is active. An end screen was also implemented to display the final score at the end of the level, and allow the player to restart the level, progress to the next level, or quite. UIGameMenu.cs was used to pause the game, manage the active state of the pause menu (UIPauseMenu) and end screen (UIEndScreen), and store relevant button functions. This was necessary to ensure that music, player movement and game logic could be disabled and enabled when appropriate, and also hide objects at the end of the level (e.g. the game timer and score).
+A pause menu was implemented to allow players to pause, restart, or quit the level whenever the game timer is active. An end screen was also implemented to display the final score at the end of the level, as well as a grade value and the highest score acheived for that level. It also allows the player to restart the level, progress to the next level, or quite. UIGameMenu.cs was used to pause the game, manage the active state of the pause menu (UIPauseMenu) and end screen (UIEndScreen), and store relevant button functions.
 
 
 ### Game timer and score
 
-The game timer and game score were updated by RecipeManager.cs by functions held in UIGameTimer.cs and UIGameScore.cs respectively.
+The game timer and game score elements display the time remaining in the level, and the current score. The game timer and game score were updated by RecipeManager.cs by functions held in UIGameTimer.cs and UIGameScore.cs respectively.
+
 
 ### Game text
 
 UIGameText.cs contains the script for a co-routine which displays "3, 2, 1, go!". It is called by RecipeManager.cs at the start of each level.
+
+
+### Main menu and level selection
+
+UIMainMenu.cs and UILevelSelect.cs contained button functions for UIMainMenu and UILevelSelect canvasses respectively. UILevelSelect.cs also contained code to retrieve and display the highest score achieved for each level.
 
 
 ## Camera Motion and Graphics Pipeline
