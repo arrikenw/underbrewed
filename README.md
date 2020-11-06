@@ -76,6 +76,13 @@ If a player places an ingredient into the cauldron that does not match any valid
 
 <b> We recommend that new players play our tutorial level before attempting stages, as it provides an in-depth overview of the game’s controls and mechanics. </b>
 
+
+
+
+
+
+## Camera Motion and Graphics Pipeline
+
 ## Modelling of Objects and Entities
 We split our Unity Game Objects within our scenes into five distinct categories: Player Object, Interactable Objects, Decorative Objects, UI Elements, and Game Managers. 
 
@@ -133,6 +140,39 @@ UI Elements refer to the 2D Game Objects that appear in the Player Camera's fiel
 - Score and time remaining indicators
 - The various menu elements that compose our level select, main menu, and pause menu screens.
 
+A canvas prefab, UIMain, contained the game objects and scripts for all UI elements within each level, including OrderQueue, ProgressBarManager, UIPauseMenu, UIEndScreen, GameTimer, GameScore, and GameText.
+
+### Orders and order queue
+
+Orders were used to display tasks that needed to be completed by the player. Each order consisted of a timer bar, a potion sprite, and up to six sprites which detailed the recipe (up to 3 ingredients and methods). The UIOrderQueueManager.cs script contained functions for adding and deleting active orders, and updating the position of each order based on its position in the scene hierarchy. Orders were instantiated from a prefab (UIOrderTemplate) as a child of the OrderQueue game objects, with order sprites changed according to the ingredients and potion colour specified by RecipeManager.cs. The UIOrderController.cs script was included in each order template, and was used to update the timer bar on each order as specified by RecipeManager.cs
+
+
+### Progress bar manager and progress bars
+
+Progress bars were implemented to show the progression of processing by a station, such as the burning station or chopping station. Each progress bar was stored as a child of the ProgressBarManager and assigned to a specific station. Each progress bar was transformed according to station's position, the time required for processing an ingredient, and if the ingredient was actively being processed at the station. UIProgressManager.cs was responsible for updating the bar's progress, setting the active state of each progress bar in the scene, and hiding the progress bar if the station was not in use.
+
+
+### Pause menu and end screen
+
+A pause menu was implemented to allow players to pause, restart, or quit the level whenever the game timer is active. An end screen was also implemented to display the final score at the end of the level, as well as a grade value and the highest score acheived for that level. It also allows the player to restart the level, progress to the next level, or quite. UIGameMenu.cs was used to pause the game, manage the active state of the pause menu (UIPauseMenu) and end screen (UIEndScreen), and store relevant button functions.
+
+
+### Game timer and score
+
+The game timer and game score elements display the time remaining in the level, and the current score. The game timer and game score were updated by RecipeManager.cs by functions held in UIGameTimer.cs and UIGameScore.cs respectively.
+
+
+### Game text
+
+UIGameText.cs contains the script for a co-routine which displays "3, 2, 1, go!". It is called by RecipeManager.cs at the start of each level.
+
+
+### Main menu and level selection
+
+UIMainMenu.cs and UILevelSelect.cs contained button functions for UIMainMenu and UILevelSelect canvasses respectively. UILevelSelect.cs also contained code to retrieve and display the highest score achieved for each level.
+
+
+
 ## Camera Motion and Graphics Pipeline
 ### Camera Motion
 
@@ -151,10 +191,10 @@ When a level finishes, an "action replay" occurs, with the camera moving down to
 
 ### Graphics Pipeline
 
-The majority of the graphical work within our game is carried out by the GPU, which handles our lighting, special effects, and texture mapping. While the CPU plays a less significant role, it is still highly important, as it is used by Unity to provide vertices, textures, and commands to the GPU. 
+The majority of the graphical work within our game is carried out by the GPU, which handles our lighting, special effects, and texture mapping. While the CPU plays a less significant role, it is still highly important, as it is used by Unity to provide vertices, textures, and commands to the GPU.
 
 #### Geometry shaders
-While our game doesn't contain any custom geometry shaders, the particle systems we use to create in-game effects are built using Unity's particle system functionality, which makes heavy use of geometry shaders to construct quads based on particle vertices. In our game, these systems include:	
+While our game doesn't contain any custom geometry shaders, the particle systems we use to create in-game effects are built using Unity's particle system functionality, which makes heavy use of geometry shaders to construct quads based on particle vertices. In our game, these systems include:
 * Bubble particle systems
 * Flame particle systems
 * Smoke particle systems
@@ -162,7 +202,7 @@ While our game doesn't contain any custom geometry shaders, the particle systems
 #### Fragment shaders
 Our game makes heavy use of custom and Unity-provided fragment shaders to handle lighting and effects. Our choice to use shaders to create these effects was based on their ability to exploit the GPU's ability to efficiently perform simple tasks in parallel, which allows us to efficiently compute effects across our scene. Furthermore, as our effects lack branching and complex logical flow, we have little need of the CPU's specialized features like branch prediction or speculative execution. Some examples of our uses of fragment shaders include:
 
-* Unity’s lighting shaders are used throughout our scenes in order to provide realistic lighting. 
+* Unity’s lighting shaders are used throughout our scenes in order to provide realistic lighting.
 * A custom fragment shader is used to creating a rich swirling effect for our menu backgrounds and cauldron contents.
 * A custom fragment shader is used to provide interesting colouring for our flame effects.
 
@@ -288,7 +328,9 @@ The fire of the cauldrons and burning stations were created using Unity’s Part
 
 Each fire consisted of three particle systems of different sizes and colours. Using multiple particle systems helps to create the different “layers” of the fire (red, orange, and yellow sections).
 
-The texture used for the fire particle system was created by [Evgeny Starostin](https://80.lv/articles/breakdown-magic-fire-effect-in-unity/)
+The texture used for the fire particle system was created by [Evgeny Starostin](https://80.lv/articles/breakdown-magic-fire-effect-in-unity/). The texture was implemented using a custom shader and a texture sheet animation.
+
+By default, Unity's built-in Particle Systems are applied by the CPU. This allows particle systems to interact with colliders within the scene. This was useful to ensure that the fire would not appear to pass through the cauldron or benches, and overall look more natural.
 
 
 ## Evaluation Methods
@@ -321,7 +363,7 @@ We used the “Think Aloud” observational method. Participants were invited to
 
 <p align="center">
 	<img src="Images/Observation.gif"  width="600" >
-	
+
 	Pictured: A screen capture from a "Think Aloud" observation session showing a user struggling to use a station.
 </p>
 
@@ -435,7 +477,7 @@ Logic for storing highscores locally was retrieved from the following url: https
 
 Pause menu and end screen: https://www.sitepoint.com/adding-pause-main-menu-and-game-over-screens-in-unity/
 
-Fire particle system: https://80.lv/articles/breakdown-magic-fire-effect-in-unity/ 
+Fire particle system: https://80.lv/articles/breakdown-magic-fire-effect-in-unity/
 
 Button animation: https://www.youtube.com/watch?v=CJ8FKjYtrT4
 
@@ -512,7 +554,7 @@ Chopping board model: https://www.turbosquid.com/3d-models/free-chopping-board-3
 
 Frog model: https://www.turbosquid.com/FullPreview/Index.cfm/ID/753743
 
-Fire particle system texture: https://80.lv/articles/breakdown-magic-fire-effect-in-unity/ 
+Fire particle system texture: https://80.lv/articles/breakdown-magic-fire-effect-in-unity/
 
 Fire station model: https://www.turbosquid.com/3d-models/pit-firepit-3ds/701220
 
@@ -534,7 +576,7 @@ Potions: Benjamin Czapla (student work)
 
 Scroll: https://www.clipartkey.com/
 
-Stations: https://clipart-library.com/ 
+Stations: https://clipart-library.com/
 
 
 ## Technologies
