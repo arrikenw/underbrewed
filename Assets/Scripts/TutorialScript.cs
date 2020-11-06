@@ -30,6 +30,16 @@ public class TutorialScript : MonoBehaviour
     public GameObject UIObject;
     public GameObject MRCAULDRON;
 
+    // private bool potionComplete = false;
+    private bool deliveryComplete = false;
+    private int messageCount = 0;
+    private int curMessage = 0;
+
+    void Start()
+    {
+        messageCount = UIObject.transform.childCount;
+    }
+
     void Update()
     {
         if (UIObject.transform.childCount == 0)
@@ -71,10 +81,22 @@ public class TutorialScript : MonoBehaviour
     {
         if (UIObject.activeSelf)
         {
-            if (UIObject.transform.childCount >= 2)
+            /*if (UIObject.transform.childCount >= 2)
             {
                 UIObject.transform.GetChild(1).gameObject.SetActive(true);
                 Destroy(UIObject.transform.GetChild(0).gameObject);
+            }*/
+            print("next message called");
+            print(curMessage);
+            print(messageCount);
+            if (curMessage < messageCount)
+            {
+                UIObject.transform.GetChild(curMessage).gameObject.SetActive(false);
+                curMessage++;
+                if (curMessage != messageCount)
+                {
+                    UIObject.transform.GetChild(curMessage).gameObject.SetActive(true);
+                }
             }
         }
         soundEffect.Play();
@@ -174,6 +196,18 @@ public class TutorialScript : MonoBehaviour
             curState = TutorialState.MakeGood;
             nextMessage();
             print("moving to make potion");
+            /*if (potionComplete)
+            {
+                curState = TutorialState.UsePotionGood;
+                nextMessage();
+                nextMessage();
+                print("moving to fill potion");
+            }
+            else
+            {
+                
+            }*/
+
         }
     }
 
@@ -181,6 +215,7 @@ public class TutorialScript : MonoBehaviour
     //dealing with good recipe
     public void OnGoodRecipeCreated()  //implemented
     {
+        //potionComplete = true;
         if (curState == TutorialState.MakeGood)
         {
             curState = TutorialState.UsePotionGood;
@@ -193,14 +228,26 @@ public class TutorialScript : MonoBehaviour
     {
         if (curState == TutorialState.UsePotionGood)
         {
-            curState = TutorialState.UsePortal;
-            nextMessage();
-            print("moving to use portal");
+            if (deliveryComplete)
+            {
+                curState = TutorialState.MakeDud;
+                nextMessage();
+                nextMessage();
+                print("moving to fill potion bad");
+            } 
+            else
+            {
+                curState = TutorialState.UsePortal;
+                nextMessage();
+                print("moving to use portal");
+            }
+            
         }
     }
 
     public void OnUsePortal() //implemented
     {
+        deliveryComplete = true;
         if (curState == TutorialState.UsePortal)
         {
             curState = TutorialState.MakeDud;
