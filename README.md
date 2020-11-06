@@ -1,6 +1,6 @@
 **The University of Melbourne**
 
-#COMP30019 – Graphics and Interaction
+# COMP30019 – Graphics and Interaction
 
 ## Table of contents
 * [Team Members](#team-members)
@@ -30,6 +30,8 @@ Underbrewed is a single-player cooking simulator game in which players brew poti
 
 Underbrewed uses a static camera and third person perspective, and is designed to be played with a keyboard.
 
+Watch the gameplay trailer [here](https://www.youtube.com/watch?v=fE1b38sGNSU&feature=youtu.be).
+
 ## How to Play
 ### Basic controls
 - Movement: WASD and arrow keys are both supported
@@ -40,6 +42,9 @@ Underbrewed uses a static camera and third person perspective, and is designed t
 - Fill potion from cauldron: Press ‘,’ while holding a bottle and facing a cauldron
 - Open pause menu: Press ‘Esc’
 - The optional key sets "O", "P", "[" and "Z", "X", "C" can be used instead of the default "M", ",", "."
+
+### Loading the Game
+To load the game, navigate to the `MainMenu` scene which can found in path `Assets\Scenes\EvaluationBuild\MainMenu.scene`. Open the scene and press play to play the game. Alternatively, you play the game through a built executable, found in `Build\Underbrewed.exe`.
 
 ### Gameplay
 Throughout a level, orders will continually arrive in the top left of the screen. Each order contains a potion, the ingredients needed to brew the potion, and a timer that indicates how long the player will have to complete the order.
@@ -55,24 +60,26 @@ In the image of an order above, the timer is represented by the horizontal green
 <p align="center">
   <img src="Images/AddingIngredient.gif"  width="600" >
 
-  Pictured: The final ingredient is added to a potion, triggering a colour change
+	Pictured: The final ingredient is added to a potion, triggering a colour change
 </p>
 
 To deliver a completed potion, players must fill a bottle with liquid from the cauldron they have brewed the potion in, then must drop or throw the bottled potion through the delivery portal. Each successful delivery will increase the players’ score, which is displayed in the lower right of the screen. The time left until the level ends is displayed below the score.
 
 <p align="center">
   <img src="Images/CollectingPotion.gif"  width="600" >
-
-  Pictured: A potion is collected from a cauldron
+	
+	Pictured: A potion is collected from a cauldron using the interact button while holding a potion
 </p>
 
 <p align="center">
   <img src="Images/DeliveringPotion.gif"  width="600" >
 
-  Pictured: A potion is delivered using the portal
+	Pictured: A potion is delivered using the portal
 </p>
 
-If a player places an ingredient into the cauldron that does not match any valid potions, the game will trigger a special effect to distract players, such as a shader to distort the screen, or an explosion that sends ingredients flying across the scene.
+If a player places an ingredient into the cauldron that does not match any valid potions, the game will trigger a special effect to distract players, such as a shader to distort the screen, or an explosion that sends ingredients flying across the scene. 
+
+Later levels become more difficult and the player must rely on multitasking and item throwing to complete order on time.
 
 <b> We recommend that new players play our tutorial level before attempting stages, as it provides an in-depth overview of the game’s controls and mechanics. </b>
 
@@ -200,7 +207,7 @@ While our game doesn't contain any custom geometry shaders, the particle systems
 * Smoke particle systems
 
 #### Fragment shaders
-Our game makes heavy use of custom and Unity-provided fragment shaders to handle lighting and effects. Our choice to use shaders to create these effects was based on their ability to exploit the GPU's ability to efficiently perform simple tasks in parallel, which allows us to efficiently compute effects across our scene. Furthermore, as our effects lack branching and complex logical flow, we have little need of the CPU's specialized features like branch prediction or speculative execution. Some examples of our uses of fragment shaders include:
+Our game makes heavy use of custom and Unity-provided fragment shaders to handle lighting and effects. Our choice to use shaders to create these effects was based on their ability to exploit the GPU's ability to efficiently perform simple tasks in parallel, which allows us to efficiently compute effects across our scene. As our fragment shaders apply simple functions on a per pixel basis every frame, there possibly millions of simple calculation which must be done every frame. Because of this, it is much quicker to do these calculations in parallel on the gpu. Although our shaders are implementable on the cpu via scripts, the lack of parallelisation would drastically affect the frame rate of our game. Some examples of our uses of fragment shaders include:
 
 * Unity’s lighting shaders are used throughout our scenes in order to provide realistic lighting.
 * A custom fragment shader is used to creating a rich swirling effect for our menu backgrounds and cauldron contents.
@@ -453,6 +460,7 @@ However, a benefit of our method was that we were able to gain a better idea of 
 * The cauldron liquid shader was produced with help from an online tutorial found [here](http://enemyhideout.com/2016/08/creating-a-whirlpool-shader/).
 * The bubbles particle system was produced with help from an online tutorial found [here](https://www.youtube.com/watch?v=ajsA6vWBhKI).
 * The pick up logic was initially inspired by a youtube video found [here](https://www.youtube.com/watch?v=90OiysC4j5Y).
+* The menu background music was created with help from this forum post [here](https://answers.unity.com/questions/1260393/make-music-continue-playing-through-scenes.html).
 
 ## Individual Contributions
 
@@ -480,6 +488,14 @@ Pause menu and end screen: https://www.sitepoint.com/adding-pause-main-menu-and-
 Fire particle system: https://80.lv/articles/breakdown-magic-fire-effect-in-unity/
 
 Button animation: https://www.youtube.com/watch?v=CJ8FKjYtrT4
+
+Background menu music logic: https://answers.unity.com/questions/1260393/make-music-continue-playing-through-scenes.html
+
+Bubbles design reference: https://www.youtube.com/watch?v=ajsA6vWBhKI
+
+Pick up script design reference: https://www.youtube.com/watch?v=90OiysC4j5Y
+
+Liquid swirl shader reference: http://enemyhideout.com/2016/08/creating-a-whirlpool-shader/
 
 ### Sound effects
 
@@ -535,10 +551,6 @@ Potion model: https://poly.google.com/view/dOREefQfDQu
 Knife model: https://poly.google.com/view/0X5xcxjszwI
 
 Cauldron design reference: https://www.youtube.com/watch?v=x-6cvNjUuAI
-
-Bubbles design reference: https://www.youtube.com/watch?v=ajsA6vWBhKI
-
-Pick up script design reference: https://www.youtube.com/watch?v=90OiysC4j5Y
 
 Bin model: https://www.turbosquid.com/3d-models/free-c4d-mode-m%C3%BClleimer-bin/483718
 
