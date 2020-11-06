@@ -52,7 +52,25 @@ To create a potion, players must place ingredients into cauldrons in the order t
 
 In the image of an order above, the timer is represented by the horizontal green bar at the top of the order. As shown on the left, the final colour of this order is an orange potion. Finally the ingredients for this potion are shown in order from left to right. To create this potion, the player must add a burnt frog, a crush bone and a crushed eye to a cauldron in that order.
 
+<p align="center">
+  <img src="Images/AddingIngredient.gif"  width="600" >
+
+  Pictured: The final ingredient is added to a potion, triggering a colour change
+</p>
+
 To deliver a completed potion, players must fill a bottle with liquid from the cauldron they have brewed the potion in, then must drop or throw the bottled potion through the delivery portal. Each successful delivery will increase the players’ score, which is displayed in the lower right of the screen. The time left until the level ends is displayed below the score.
+
+<p align="center">
+  <img src="Images/CollectingPotion.gif"  width="600" >
+
+  Pictured: A potion is collected from a cauldron
+</p>
+
+<p align="center">
+  <img src="Images/DeliveringPotion.gif"  width="600" >
+
+  Pictured: A potion is delivered using the portal
+</p>
 
 If a player places an ingredient into the cauldron that does not match any valid potions, the game will trigger a special effect to distract players, such as a shader to distort the screen, or an explosion that sends ingredients flying across the scene.
 
