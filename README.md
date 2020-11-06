@@ -52,6 +52,36 @@ If a player places an ingredient into the cauldron that does not match any valid
 
 <b> We recommend that new players play our tutorial level before attempting stages, as it provides an in-depth overview of the game’s controls and mechanics. </b>
 
+
+
+## UI
+
+### Orders and order queue
+
+Orders were used to display tasks that needed to be completed by the player. Each order consisted of a timer bar, a potion sprite, and up to six sprites which detailed the recipe (up to 3 ingredients and methods). The UIOrderQueueManager.cs script contained functions for adding and deleting active orders, and updating the position of each order based on its position in the scene hierarchy. Orders were instantiated from a prefab (UIOrderTemplate), with sprites changed according to the ingredients and potion colour specified by RecipeManager.cs
+
+The UIOrderController.cs script was included in each order template, and was used to update the timer bar on each order as specified by RecipeManager.cs
+
+
+### Progress bars
+
+Progress bars were implemented to show the progression of processing by a station, such as the burning station or chopping station. UIProgressManager.cs was responsible for setting the active state of each progress bar in the scene, and hiding the progress bar if the station was not in use.
+
+
+### Pause menu and end screen
+
+A pause menu was implemented to allow players to pause, restart, or quit the level whenever the game timer is active. An end screen was also implemented to display the final score at the end of the level, and allow the player to restart the level, progress to the next level, or quite. UIGameMenu.cs was used to pause the game, manage the active state of the pause menu (UIPauseMenu) and end screen (UIEndScreen), and store relevant button functions. This was necessary to ensure that music, player movement and game logic could be disabled and enabled when appropriate, and also hide objects at the end of the level (e.g. the game timer and score).
+
+
+### Game timer and score
+
+The game timer and game score were updated by RecipeManager.cs by functions held in UIGameTimer.cs and UIGameScore.cs respectively.
+
+### Game text
+
+UIGameText.cs contains the script for a co-routine which displays "3, 2, 1, go!". It is called by RecipeManager.cs at the start of each level.
+
+
 ## Camera Motion and Graphics Pipeline
 
 ### Camera Motion
