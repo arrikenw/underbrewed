@@ -1,6 +1,6 @@
 **The University of Melbourne**
 
-#COMP30019 – Graphics and Interaction
+# COMP30019 – Graphics and Interaction
 
 ## Table of contents
 * [Team Members](#team-members)
@@ -86,7 +86,7 @@ While our game doesn't contain any custom geometry shaders, the particle systems
 * Smoke particle systems
 
 #### Fragment shaders
-Our game makes heavy use of custom and Unity-provided fragment shaders to handle lighting and effects. Our choice to use shaders to create these effects was based on their ability to exploit the GPU's ability to efficiently perform simple tasks in parallel, which allows us to efficiently compute effects across our scene. As our fragment shaders apply simple functions on a per pixel basis every frame, it is much quicker to do these calculations in parallel on the gpu rather than the cpu. Although our shaders are implementable through scripts to be run on the cpu, the lack of parallelisation would drastically affect frame rate. Some examples of our uses of fragment shaders include:
+Our game makes heavy use of custom and Unity-provided fragment shaders to handle lighting and effects. Our choice to use shaders to create these effects was based on their ability to exploit the GPU's ability to efficiently perform simple tasks in parallel, which allows us to efficiently compute effects across our scene. As our fragment shaders apply simple functions on a per pixel basis every frame, there possibly millions of simple calculation which must be done every frame. Because of this, it is much quicker to do these calculations in parallel on the gpu. Although our shaders are implementable on the cpu via scripts, the lack of parallelisation would drastically affect the frame rate of our game. Some examples of our uses of fragment shaders include:
 
 * Unity’s lighting shaders are used throughout our scenes in order to provide realistic lighting. 
 * A custom fragment shader is used to creating a rich swirling effect for our menu backgrounds and cauldron contents.
