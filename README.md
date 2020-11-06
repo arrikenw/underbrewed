@@ -116,19 +116,19 @@ A further explanation of what functionality each class provides/represents is as
 | Single Material Ingredient | Less computationally expensive alternative to Ingredient for when the Game Object only has one Material (including any child/sibling objects) |
 
 ### Game Managers
-Game Managers refer to Game Objects that are present in the scene only to hold and instantiate C# Scripts that are attached to them. These do not have a physical form (i.e. No mesh, no renderer, no collider, etc) and are used to direct and control gameplay and UI flow. Examples used within our system include:
+Game Managers refer to Game Objects that are present in the scene only to hold and instantiate C# Scripts that are attached to them. These objects do not have a physical form (i.e. No mesh, no renderer, no collider, etc) and are used to direct and control gameplay and UI flow. Examples used within our system include:
 - The game controller, which handles game time, player score, and recipe management
 - The tutorial controller, which carries out the interactive progression of tutorial stages
 - The main UI controller, which organises and manages the placement, reordering, and display of UI elements
 
 ### Decorative Objects
-Decorative Objects refer to the Game Objects with a tangible form within in our scene that do not have any C# Scripts and are primarly used for decorative purposes. Where necessary, these would have colliders to prevent the Player Object and Interactable Objects from moving past them. Some examples of these are: 
+Decorative Objects refer to the Game Objects with a tangible form within in our scene that do not have any C# Scripts and are primarly used for decorative purposes. Where necessary, these objects have colliders to prevent the Player Object and Interactable Objects from moving past them. Some examples of these are: 
 - Tables, Walls, and other objects that compose the boundaries of the playable space
 - Decorative elements like Broomsticks, Flower Pots
 - All objects that lie outside of the playable area
 
 ### UI Elements
-UI Elements refer to the 2D Game Objects that appear im the Player Camera's field of view. These are used to provide the user with a visual interpretation of the state of the game logic. Some examples of these are: 
+UI Elements refer to the 2D Game Objects that appear in the Player Camera's field of view. They are used to provide the user with a visual interpretation of the state of the game logic. Some examples of these are: 
 - Incoming orders
 - Score and time remaining indicators
 - The various menu elements that compose our level select, main menu, and pause menu screens.
