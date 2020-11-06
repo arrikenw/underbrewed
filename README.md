@@ -91,13 +91,13 @@ Later levels become more difficult and the player must rely on multitasking and 
 ## Camera Motion and Graphics Pipeline
 
 ## Modelling of Objects and Entities
-We split our Unity Game Objects within our scenes into five distinct categories: Player Object, Interactable Objects, Decorative Objects, UI Elements, and Game Managers. 
+We split our Unity Game Objects within our scenes into five distinct categories: Player Object, Interactable Objects, Decorative Objects, UI Elements, and Game Managers.
 
 ### Player Object
 Player Object refers to the Game Object with a tangible form that is controlled by the player through controller inputs. These inputs and their subsequent effect are handled by a C# Script. This object has a mesh, collider, and rigidbody to allow for it to interact physically with other objects in the scene through Unity's Physics Engine. Furthermore, this object has multiple child objects to represent physical features of the player as well as to provide additional functionality. Of note is the Pickup Collider object child which handles all the logic of picking up, dropping, throwing, and moving held items via a C# Script.  
 
 ### Interactable Objects
-Interactable Objects refer to the Game Objects with a tangible form within our scenes that have logic provided by a C# Script and could be interacted with in some way by the player. We provided each of these objects with a main script that described the core logic of the object as well as act as an identifier for the type of Interactable this object was. This was modelled with an Inheritance system so that we could make use of polymorphism and reuse code much more seamlessly which made our codebase both easier to read and quicker to develop on. 
+Interactable Objects refer to the Game Objects with a tangible form within our scenes that have logic provided by a C# Script and could be interacted with in some way by the player. We provided each of these objects with a main script that described the core logic of the object as well as act as an identifier for the type of Interactable this object was. This was modelled with an Inheritance system so that we could make use of polymorphism and reuse code much more seamlessly which made our codebase both easier to read and quicker to develop on.
 
 The Inheritance Tree for C# Scripts/Classes assigned to Interactable Objects present in our final build is as follows:
 - Interactable
@@ -141,13 +141,13 @@ Game Managers refer to Game Objects that are present in the scene only to hold a
 	- Manages the the display and repositioning of tutorial messages and captions
 
 ### Decorative Objects
-Decorative Objects refer to the Game Objects with a tangible form within in our scene that do not have any C# Scripts and are primarly used for decorative purposes. Where necessary, these objects have colliders to prevent the Player Object and Interactable Objects from moving past them. Some examples of these are: 
+Decorative Objects refer to the Game Objects with a tangible form within in our scene that do not have any C# Scripts and are primarly used for decorative purposes. Where necessary, these objects have colliders to prevent the Player Object and Interactable Objects from moving past them. Some examples of these are:
 - Tables, Walls, and other objects that compose the boundaries of the playable space
 - Decorative elements like Broomsticks, Flower Pots
 - All objects that lie outside of the playable area
 
 ### UI Elements
-UI Elements refer to the 2D Game Objects that appear in the Player Camera's field of view. They are used to provide the user with a visual interpretation of the state of the game logic. Some examples of these are: 
+UI Elements refer to the 2D Game Objects that appear in the Player Camera's field of view. They are used to provide the user with a visual interpretation of the state of the game logic. Some examples of these are:
 - Incoming orders
 - Score and time remaining indicators
 - The various menu elements that compose our level select, main menu, and pause menu screens.
@@ -166,7 +166,7 @@ Progress bars were implemented to show the progression of processing by a statio
 
 ### Pause menu and end screen
 
-A pause menu was implemented to allow players to pause, restart, or quit the level whenever the game timer is active. An end screen was also implemented to display the final score at the end of the level, as well as a grade value and the highest score acheived for that level. It also allows the player to restart the level, progress to the next level, or quite. UIGameMenu.cs was used to pause the game, manage the active state of the pause menu (UIPauseMenu) and end screen (UIEndScreen), and store relevant button functions.
+A pause menu was implemented to allow players to pause, restart, or quit the level whenever the game timer is active. An end screen was also implemented to display the final score at the end of the level, as well as a grade value and the highest score acheived for that level. It also allows the player to restart the level, progress to the next level, or quit to the main menu. UIGameMenu.cs was used to pause the game, manage the active state of the pause menu (UIPauseMenu) and end screen (UIEndScreen), and store relevant button functions.
 
 
 ### Game timer and score
@@ -340,7 +340,7 @@ The fire of the cauldrons and burning stations were created using Unity’s Part
 
 Each fire consisted of three particle systems of different sizes and colours. Using multiple particle systems helps to create the different “layers” of the fire (red, orange, and yellow sections).
 
-The texture used for the fire particle system was created by [Evgeny Starostin](https://80.lv/articles/breakdown-magic-fire-effect-in-unity/). The texture was implemented using a custom shader and a texture sheet animation.
+The texture used for the fire particle system was created by Evgeny Starostin. The texture was implemented using a custom shader, based on Starostin's tutorial [here]((https://80.lv/articles/breakdown-magic-fire-effect-in-unity/),  and a texture sheet animation.
 
 By default, Unity's built-in Particle Systems are applied by the CPU. This allows particle systems to interact with colliders within the scene. This was useful to ensure that the fire would not appear to pass through the cauldron or benches, and overall look more natural.
 
@@ -460,10 +460,12 @@ However, a benefit of our method was that we were able to gain a better idea of 
 		* Due to time constraints, these were not implemented, but we feel they could be implemented in a future build
 
 
-## Resource References
+## Sources used
 
 * The cauldron liquid shader was produced with help from an online tutorial found [here](http://enemyhideout.com/2016/08/creating-a-whirlpool-shader/).
 * The bubbles particle system was produced with help from an online tutorial found [here](https://www.youtube.com/watch?v=ajsA6vWBhKI).
+* The fire particle system was produced with help from an online tutorial found [here](https://80.lv/articles/breakdown-magic-fire-effect-in-unity/)
+* The pause menu and end screen was implemented with help from an online tutorial found [here](https://www.sitepoint.com/adding-pause-main-menu-and-game-over-screens-in-unity/)
 * The pick up logic was initially inspired by a youtube video found [here](https://www.youtube.com/watch?v=90OiysC4j5Y).
 * The menu background music was created with help from this forum post [here](https://answers.unity.com/questions/1260393/make-music-continue-playing-through-scenes.html).
 
@@ -482,15 +484,11 @@ dot dot dot
 
 Designed and implemented most UI elements, including the main menu, level select scene, pause menu, end screen, and in-game elements such as text, including game score and timer, order queue, and progress bars for stations. Assisted with linking UI elements to the game controller. Sourced sprites, and assisted with sourcing models and textures for the interior of the scene. Created the fire particle system. Interviewed 3 participants for evaluation purposes and contributed to team discussion and report-writing.
 
-## References
+## Useful references
 
 Unity API Script Reference: https://docs.unity3d.com/ScriptReference/
 
 Logic for storing highscores locally was retrieved from the following url: https://answers.unity.com/questions/644911/how-do-i-store-highscore-locally-c-simple.html
-
-Pause menu and end screen: https://www.sitepoint.com/adding-pause-main-menu-and-game-over-screens-in-unity/
-
-Fire particle system: https://80.lv/articles/breakdown-magic-fire-effect-in-unity/
 
 Button animation: https://www.youtube.com/watch?v=CJ8FKjYtrT4
 

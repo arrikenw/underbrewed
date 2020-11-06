@@ -1,4 +1,4 @@
-﻿// Texture by Evgeny Starostin - https://80.lv/articles/breakdown-magic-fire-effect-in-unity/
+﻿// Texture and tutorial by Evgeny Starostin - https://80.lv/articles/breakdown-magic-fire-effect-in-unity/
 
 Shader "Custom/FireShader"
 {
