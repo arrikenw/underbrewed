@@ -52,11 +52,77 @@ To create a potion, players must place ingredients into cauldrons in the order t
 
 In the image of an order above, the timer is represented by the horizontal green bar at the top of the order. As shown on the left, the final colour of this order is an orange potion. Finally the ingredients for this potion are shown in order from left to right. To create this potion, the player must add a burnt frog, a crush bone and a crushed eye to a cauldron in that order.
 
+<p align="center">
+  <img src="Images/AddingIngredient.gif"  width="600" >
+
+  Pictured: The final ingredient is added to a potion, triggering a colour change
+</p>
+
 To deliver a completed potion, players must fill a bottle with liquid from the cauldron they have brewed the potion in, then must drop or throw the bottled potion through the delivery portal. Each successful delivery will increase the players’ score, which is displayed in the lower right of the screen. The time left until the level ends is displayed below the score.
+
+<p align="center">
+  <img src="Images/CollectingPotion.gif"  width="600" >
+
+  Pictured: A potion is collected from a cauldron
+</p>
+
+<p align="center">
+  <img src="Images/DeliveringPotion.gif"  width="600" >
+
+  Pictured: A potion is delivered using the portal
+</p>
 
 If a player places an ingredient into the cauldron that does not match any valid potions, the game will trigger a special effect to distract players, such as a shader to distort the screen, or an explosion that sends ingredients flying across the scene.
 
 <b> We recommend that new players play our tutorial level before attempting stages, as it provides an in-depth overview of the game’s controls and mechanics. </b>
+
+## Modelling of Objects and Entities
+We split our Unity Game Objects within our scenes into five distinct categories: Player Object, Interactable Objects, Decorative Objects, UI Elements, and Game Managers. 
+
+### Player Object
+Player Object refers to the Game Object with a tangible form that is controlled by the player through controller inputs. These inputs and their subsequent effect are handled by a C# Script. This object has a mesh, collider, and rigidbody to allow for it to interact physically with other objects in the scene through Unity's Physics Engine. Furthermore, this object has multiple child objects to represent physical features of the player as well as to provide additional functionality. Of note is the Pickup Collider object child which handles all the logic of picking up, dropping, throwing, and moving held items via a C# Script.  
+
+### Interactable Objects
+Interactable Objects refer to the Game Objects with a tangible form within our scenes that have logic provided by a C# Script and could be interacted with in some way by the player. We provided each of these objects with a main script that described the core logic of the object as well as act as an identifier for the type of Interactable this object was. This was modelled with an Inheritance system so that we could make use of polymorphism and reuse code much more seamlessly which made our codebase both easier to read and quicker to develop on. 
+
+The Inheritance Tree for C# Scripts/Classes assigned to Interactable Objects present in our final build is as follows:
+- Interactable
+	- Item
+		- Ingredient
+			- Single Material Ingredient
+		- Potion
+	- Station
+		- Cauldron
+		- Bin
+		- Portal
+		- Processor
+			- Toggle Processor
+			- Hold Processor
+
+A further explanation of what functionality each class provides/represents is as follows:
+|          C# Class          | Functionality given to Game Object                                                                                                            |
+|:--------------------------:|-----------------------------------------------------------------------------------------------------------------------------------------------|
+| Interactable               | Gets highlighted when focused on by the Player Object. Has a Collider for Physics and a Renderer.                                                                                    |
+| Item                       | Can be picked up, dropped, thrown, and stored by other objects including the Player Object. Has a Rigidbody.       |
+| Station                    | Can retrieve and store nearby. Has a second Collider for Triggers Items                                                                                                           |
+| Ingredient                 | Holds an ingredient type for identification by other objects                                                                                  |
+| Potion                     | Can collect Cauldron contents and has unique interactions with various Stations                                                               |
+| Cauldron                   | Records retrieved Ingredients and refers to Game Managers to output a state                                                                   |
+| Bin                        | Destroys retrieved Items                                                                                                                      |
+| Portal                     | Retrieves Potions and passes information to Game Managers                                                                                     |
+| Processor                  | Transforms an Ingredient into another Ingredient variant                                                                                      |
+| Toggle Processor           | Transforms Ingredients over time via a toggle                                                                                                 |
+| Hold Processor             | Transforms Ingredients over time via holding down a button                                                                                    |
+| Single Material Ingredient | Less computationally expensive alternative to Ingredient for when the Game Object only has one Material (including any child/sibling objects) |
+
+### Decorative Objects
+Decorative Objects refer to the Game Objects with a tangible form within in our scene that do not have any C# Scripts and are primarly used for decorative purposes. Where necessary, these would have colliders to prevent the Player Object and Interactable Objects from moving past them. Some examples of these are: Tables, Walls, Broomsticks, Flower Pots, and all the Objects outside of the grid.
+
+### UI Elements
+UI Elements refer to the 2D Game Objects that appear im the Player Camera's field of view. These provide a visual interpretation of the state of the game logic. Some examples of these are: Score Board, Time Remaining, Orders, and Pause Menu.
+
+### Game Managers
+Game Managers refer to Game Objects that are present in the scene only to hold and instantiate C# Scripts that are attached to them. These do not have a physical form (i.e. No mesh, no renderer, no collider, etc) and are typically referenced by other Game Objects to access the held C# Scripts. Some exmaples of these include: ........
 
 ## Camera Motion and Graphics Pipeline
 
@@ -354,18 +420,15 @@ Designed and implemented most UI elements, including the main menu, level select
 
 ## References
 
-### Logic for highscores
+Unity API Script Reference: https://docs.unity3d.com/ScriptReference/
 
-Logic for storing highscores locally was retrieved from the following url:
-
-https://answers.unity.com/questions/644911/how-do-i-store-highscore-locally-c-simple.html
+Logic for storing highscores locally was retrieved from the following url: https://answers.unity.com/questions/644911/how-do-i-store-highscore-locally-c-simple.html
 
 Pause menu and end screen: https://www.sitepoint.com/adding-pause-main-menu-and-game-over-screens-in-unity/
 
 Fire particle system: https://80.lv/articles/breakdown-magic-fire-effect-in-unity/ 
 
 Button animation: https://www.youtube.com/watch?v=CJ8FKjYtrT4
-
 
 ### Sound effects
 
