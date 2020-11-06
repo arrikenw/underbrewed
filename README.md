@@ -70,6 +70,9 @@ When a level finishes, an "action replay" occurs, with the camera moving down to
 
 
 ### Graphics Pipeline
+
+The majority of the graphical work within our game is carried out by the GPU, which handles our lighting, special effects, and texture mapping. While the CPU plays a less significant role, it is still highly important, as it is used by Unity to provide vertices, textures, and commands to the GPU. 
+
 #### Geometry shaders
 While our game doesn't contain any custom geometry shaders, the particle systems we use to create in-game effects are built using Unity's particle system functionality, which makes heavy use of geometry shaders to construct quads based on particle vertices. In our game, these systems include:	
 * Bubble particle systems
@@ -178,7 +181,7 @@ X = (0.05 * sin(v.vertex.x + 1.5 * sin(_Time.z)) + v.vertex.x
 Y = (0.05 * sin(v.vertex.y + 2.5 * cos(_Time.z)) + v.vertex.y
 ```
 
-The internal trig functions ```sin(_Time.z)``` and ```cos(_Time.z)``` are used to create a screen shake effect. The choice of using different trig functions on each axis was to ensure the screen shake didn't simply slide along a line (which would occur if the same trig functions were used on both axes). The outermost sin function was used to create a stretching / warping effect across the entire image, producing a mild sense of disorientation. Finally, to ensure the final image largely remains centred and intelligible, the distortion effect is scaled down significantly before being added to the original vertex information, causing the effect to only have a moderate effect on the final image.  
+The internal trig functions ```sin(_Time.z)``` and ```cos(_Time.z)``` are used to create a screen shake effect. The choice of using different trig functions on each axis was to ensure the screen shake didn't simply slide along a line (which would occur if the same trig functions were used on both axes). The outermost sin function was used to create a stretching / warping effect across the entire image, producing a mild sense of disorientation. Finally, to ensure the final image largely remains centred and intelligible, the distortion effect is scaled down significantly before being added to the original vertex information, causing the effect to only have a moderate impact on the final image.  
 
 The critical code for selecting the final colouring of the image is provided below:
 
