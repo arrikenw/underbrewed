@@ -27,7 +27,7 @@
 
 ## Introduction
 
-Underbrewed is a single-player cooking simulator game in which players brew potions according to incoming orders. Players must collect and prepare ingredients, then add them to a cauldron in the correct order. Players should follow each recipe carefully - adding the wrong ingredient to a cauldron or delivering an invalid potion triggers special effects and obstacles to distract players. To earn points, players must bottle up and deliver each potion before the order expires. Players should aim to improve their high score by completing as many orders as possible within the level's time limit.
+Underbrewed is a single-player cooking simulator game in which players brew potions according to incoming orders. Players must collect and prepare ingredients, then add them to a cauldron in a sequence specified in each order. Players should follow each recipe carefully - adding the wrong ingredient to a cauldron or delivering an invalid potion triggers special effects and obstacles to distract players. To earn points, players must bottle up and deliver each potion before the order expires. Players should aim to improve their high score by completing as many orders as possible within the level's time limit.
 
 Underbrewed uses a static camera and third person perspective, and is designed to be played with a keyboard.
 
