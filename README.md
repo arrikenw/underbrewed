@@ -70,6 +70,9 @@ When a level finishes, an "action replay" occurs, with the camera moving down to
 
 
 ### Graphics Pipeline
+
+The majority of the graphical work within our game is carried out by the GPU, which handles our lighting, special effects, and texture mapping. While the CPU plays a less significant role, it is still highly important, as it is used by Unity to provide vertices, textures, and commands to the GPU. 
+
 #### Geometry shaders
 While our game doesn't contain any custom geometry shaders, the particle systems we use to create in-game effects are built using Unity's particle system functionality, which makes heavy use of geometry shaders to construct quads based on particle vertices. In our game, these systems include:	
 * Bubble particle systems
