@@ -27,7 +27,7 @@
 
 ## Introduction
 
-Underbrewed is a single-player cooking simulator game in which players brew potions according to incoming orders. Players must collect and prepare ingredients, then add them to a cauldron in the correct order. Players should follow each recipe carefully - adding the wrong ingredient to a cauldron or delivering an invalid potion triggers special effects and obstacles to distract players. To earn points, players must bottle up and deliver each potion before the order expires. Players should aim to improve their high score by completing as many orders as possible within the level's time limit.
+Underbrewed is a single-player cooking simulator game in which players brew potions according to incoming orders. Players must collect and prepare ingredients, then add them to a cauldron in a sequence specified in each order. Players should follow each recipe carefully - adding the wrong ingredient to a cauldron or delivering an invalid potion triggers special effects and obstacles to distract players. To earn points, players must bottle up and deliver each potion before the order expires. Players should aim to improve their high score by completing as many orders as possible within the level's time limit.
 
 Underbrewed uses a static camera and third person perspective, and is designed to be played with a keyboard.
 
@@ -45,7 +45,7 @@ Watch the gameplay trailer [here](https://www.youtube.com/watch?v=fE1b38sGNSU&fe
 - The optional key sets "O", "P", "[" and "Z", "X", "C" can be used instead of the default "M", ",", "."
 
 ### Loading the Game
-To load the game, navigate to the `MainMenu` scene which can found in path `Assets\Scenes\EvaluationBuild\MainMenu.scene`. Open the scene and press play to play the game. Alternatively, you play the game through a built executable, found in `Build\Underbrewed.exe`.
+To load the game, navigate to the `MainMenu` scene which can found at the path: `Assets\Scenes\EvaluationBuild\MainMenu.unity`. Open the scene and press play to play the game.
 
 ### Gameplay
 Throughout a level, orders will continually arrive in the top left of the screen. Each order contains a potion, the ingredients needed to brew the potion, and a timer that indicates how long the player will have to complete the order.
