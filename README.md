@@ -55,7 +55,7 @@ If a player places an ingredient into the cauldron that does not match any valid
 ## Graphics and Camera Motion
 
 ### Camera Motion
-#### Third Person Static Camera
+
 The game is primarily played with a static camera. The camera is placed high above the level, similar to a bird's eye view, allowing the player to see everything as the play they game. This camera position was chosen as it made the entire level viewable for the player while avoiding the issues of traditional cameras, such as occlusion.
 <p align="center">
   <img src="Images/StaticCamera.png"  width="600" >
@@ -66,6 +66,7 @@ When a level finishes, an "action replay" occurs, with the camera moving down to
 <p align="center">
   <img src="Images/ActionReplay.gif"  width="600" >
 </p>
+
 
 ### Graphics Pipeline
 #### Geometry shaders
@@ -103,7 +104,7 @@ After the initial render is complete, a custom fragment shader is applied to the
 ### Potion Liquid Shader
 The potion liquid shader, produces a swirling liquid, with the liquid slowly falling towards the center. This shader was used for the cauldron liquid, the portal center, as well as the backgrounds for the menus. The shader was produced with help from an online tutorial found [here](http://enemyhideout.com/2016/08/creating-a-whirlpool-shader/). 
 <p align="center">
-  <img src="Images/CauldronLiquid.gif"  width="300" >
+  <img src="Images/CauldronLiquid.gif"  width="600" >
 </p>
 
 The first part of the shader is the function rotate, which rotates a point around the center by `rotationAmount` radians. This was done by coverting the initial cartesian point into a polar co-ordinates, increasing the angle by `rotationAmount` radians, and returning the point converted back into a cartesian point.
@@ -158,7 +159,7 @@ return fragColor;
 TODO GENERAL FLAVOUR DESC
 
 <p align="center">
-  <img src="Images/ScreenEffect.gif"  width="300" >
+  <img src="Images/ScreenEffect.gif"  width="600" >
 </p>
 
 This shader has two main aspects, a screen shake and distortion effect and a colouring effect. 
@@ -188,7 +189,7 @@ A greenish colouration is applied to the screen by retrieving the texture colour
 ### Fire particle system
 
 <p align="center">
-  <img src="Gifs/FireParticleSystem.gif"  width="300" >
+  <img src="Gifs/FireParticleSystem.gif"  width="600" >
 </p>
 
 The fire of the cauldrons and burning stations were created using Unity’s Particle System API. 
@@ -273,6 +274,7 @@ Another area of weakness of our querying method was that the lack of a dialogue 
 	* Grey colours were used to represent different stages of the potion in the cauldron, and bright colours were used to represent the final potions
 <p align="center">
 	<img src="Images/Cauldrons.PNG"  width="600" >
+	
 	Pictured: A cauldron with one ingredient added and a black "incorrect" potion.
 </p>
 
