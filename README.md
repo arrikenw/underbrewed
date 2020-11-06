@@ -133,9 +133,9 @@ The Inheritance Tree for C# Scripts/Classes assigned to Interactable Objects pre
 A further explanation of what functionality each class provides/represents is as follows:
 |          C# Class          | Functionality given to Game Object                                                                                                            |
 |:--------------------------:|-----------------------------------------------------------------------------------------------------------------------------------------------|
-| Interactable               | Gets highlighted when focused on by the Player Object. Has a Collider for Physics and a Renderer.                                                                                    |
-| Item                       | Can be picked up, dropped, thrown, and stored by other objects including the Player Object. Has a Rigidbody.       |
-| Station                    | Can retrieve and store nearby. Has a second Collider for Triggers Items                                                                                                           |
+| Interactable               | Gets highlighted when focused on by the Player Object; Has a Collider for Physics and a Renderer                                                                                    |
+| Item                       | Can be picked up, dropped, thrown, and stored by other objects including the Player Object; Has a Rigidbody       |
+| Station                    | Can retrieve and store nearby Items; Has a second Collider for Triggers                                                                                                            |
 | Ingredient                 | Holds an ingredient type for identification by other objects                                                                                  |
 | Potion                     | Can collect Cauldron contents and has unique interactions with various Stations                                                               |
 | Cauldron                   | Records retrieved Ingredients and refers to Game Managers to output a state                                                                   |
@@ -199,7 +199,7 @@ A canvas prefab, UIMain, contained the game objects and scripts for all UI eleme
 ### Camera Motion
 
 #### Static Camera
-The game is primarily played with a static camera. The camera is placed high above the level, similar to a bird's eye view, allowing the player to see everything as the play they game. This camera position was chosen as it made the entire level viewable for the player while avoiding the issues of traditional cameras, such as occlusion.
+The game is primarily played with a static camera. The camera is placed high above the level, similar to a bird's eye view, allowing the player to see everything as they play the game. This camera position was chosen as it made the entire level viewable for the player while avoiding the issues of traditional cameras, such as occlusion.
 <p align="center">
   <img src="Images/StaticCamera.png"  width="600" >
 </p>
@@ -222,7 +222,7 @@ While our game doesn't contain any custom geometry shaders, the particle systems
 * Smoke particle systems
 
 #### Fragment shaders
-Our game makes heavy use of custom and Unity-provided fragment shaders to handle lighting and effects. Our choice to use shaders to create these effects was based on their ability to exploit the GPU's ability to efficiently perform simple tasks in parallel, which allows us to efficiently compute effects across our scene. As our fragment shaders apply simple functions on a per pixel basis every frame, there possibly millions of simple calculation which must be done every frame. Because of this, it is much quicker to do these calculations in parallel on the gpu. Although our shaders are implementable on the cpu via scripts, the lack of parallelisation would drastically affect the frame rate of our game. Some examples of our uses of fragment shaders include:
+Our game makes heavy use of custom and Unity-provided fragment shaders to handle lighting and effects. Our choice to use shaders to create these effects was based on their ability to exploit the GPU's capacity to efficiently perform simple tasks in parallel, which allows us to efficiently compute effects across our scene. As our fragment shaders apply simple functions on a per pixel basis every frame, there are possibly millions of simple calculations which must be done every frame. Because of this, it is much quicker to do these calculations in parallel on the GPU. Although our shaders could be implemented on the CPU via scripts, the lack of parallelisation would drastically affect the frame rate of our game. Some examples of our uses of fragment shaders include:
 
 * Unity’s lighting shaders are used throughout our scenes in order to provide realistic lighting.
 * A custom fragment shader is used to creating a rich swirling effect for our menu backgrounds and cauldron contents.
