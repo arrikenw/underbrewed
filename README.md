@@ -1,11 +1,12 @@
 **The University of Melbourne**
 
-#COMP30019 – Graphics and Interaction
+# COMP30019 – Graphics and Interaction
 
 ## Table of contents
 * [Team Members](#team-members)
 * [Introduction](#introduction)
 * [How to Play](#how-to-play)
+* [Modelling of Objects and Entities](#modelling-of-objects-and-entities)
 * [Camera Motion and Graphics Pipeline](#camera-motion-and-graphics-pipeline)
 * [Shaders and Particle Systems](#shaders-and-particle-systems)
 * [Evaluation Methods](#evaluation-methods)
@@ -30,6 +31,8 @@ Underbrewed is a single-player cooking simulator game in which players brew poti
 
 Underbrewed uses a static camera and third person perspective, and is designed to be played with a keyboard.
 
+Watch the gameplay trailer [here](https://www.youtube.com/watch?v=fE1b38sGNSU&feature=youtu.be).
+
 ## How to Play
 ### Basic controls
 - Movement: WASD and arrow keys are both supported
@@ -40,6 +43,9 @@ Underbrewed uses a static camera and third person perspective, and is designed t
 - Fill potion from cauldron: Press ‘,’ while holding a bottle and facing a cauldron
 - Open pause menu: Press ‘Esc’
 - The optional key sets "O", "P", "[" and "Z", "X", "C" can be used instead of the default "M", ",", "."
+
+### Loading the Game
+To load the game, navigate to the `MainMenu` scene which can found in path `Assets\Scenes\EvaluationBuild\MainMenu.scene`. Open the scene and press play to play the game. Alternatively, you play the game through a built executable, found in `Build\Underbrewed.exe`.
 
 ### Gameplay
 Throughout a level, orders will continually arrive in the top left of the screen. Each order contains a potion, the ingredients needed to brew the potion, and a timer that indicates how long the player will have to complete the order.
@@ -55,24 +61,26 @@ In the image of an order above, the timer is represented by the horizontal green
 <p align="center">
   <img src="Images/AddingIngredient.gif"  width="600" >
 
-  Pictured: The final ingredient is added to a potion, triggering a colour change
+	Pictured: The final ingredient is added to a potion, triggering a colour change
 </p>
 
 To deliver a completed potion, players must fill a bottle with liquid from the cauldron they have brewed the potion in, then must drop or throw the bottled potion through the delivery portal. Each successful delivery will increase the players’ score, which is displayed in the lower right of the screen. The time left until the level ends is displayed below the score.
 
 <p align="center">
   <img src="Images/CollectingPotion.gif"  width="600" >
-
-  Pictured: A potion is collected from a cauldron
+	
+	Pictured: A potion is collected from a cauldron using the interact button while holding a potion
 </p>
 
 <p align="center">
   <img src="Images/DeliveringPotion.gif"  width="600" >
 
-  Pictured: A potion is delivered using the portal
+	Pictured: A potion is delivered using the portal
 </p>
 
-If a player places an ingredient into the cauldron that does not match any valid potions, the game will trigger a special effect to distract players, such as a shader to distort the screen, or an explosion that sends ingredients flying across the scene.
+If a player places an ingredient into the cauldron that does not match any valid potions, the game will trigger a special effect to distract players, such as a shader to distort the screen, or an explosion that sends ingredients flying across the scene. 
+
+Later levels become more difficult and the player must rely on multitasking and item throwing to complete order on time.
 
 <b> We recommend that new players play our tutorial level before attempting stages, as it provides an in-depth overview of the game’s controls and mechanics. </b>
 
@@ -84,13 +92,13 @@ If a player places an ingredient into the cauldron that does not match any valid
 ## Camera Motion and Graphics Pipeline
 
 ## Modelling of Objects and Entities
-We split our Unity Game Objects within our scenes into five distinct categories: Player Object, Interactable Objects, Decorative Objects, UI Elements, and Game Managers. 
+We split our Unity Game Objects within our scenes into five distinct categories: Player Object, Interactable Objects, Decorative Objects, UI Elements, and Game Managers.
 
 ### Player Object
-Player Object refers to the Game Object with a tangible form that is controlled by the player through controller inputs. These inputs and their subsequent effect are handled by a C# Script. This object has a mesh, collider, and rigidbody to allow for it to interact physically with other objects in the scene through Unity's Physics Engine. Furthermore, this object has multiple child objects to represent physical features of the player as well as to provide additional functionality. Of note is the Pickup Collider object child which handles all the logic of picking up, dropping, throwing, and moving held items via a C# Script.  
+Player Object refers to the Game Object with a tangible form that is controlled by the player through controller inputs. These inputs and their subsequent effect are handled by a C# Script. This object has a mesh, collider, and rigidbody to allow for it to interact physically with other objects in the scene through Unity's Physics Engine. Furthermore, this object has multiple child objects to represent physical features of the player as well as to provide additional functionality. Of note is the Pickup Collider object child which handles all the logic of picking up, dropping, throwing, and moving held items via a C# Script. It defines the space where the player will search for objects to interact with.  
 
 ### Interactable Objects
-Interactable Objects refer to the Game Objects with a tangible form within our scenes that have logic provided by a C# Script and could be interacted with in some way by the player. We provided each of these objects with a main script that described the core logic of the object as well as act as an identifier for the type of Interactable this object was. This was modelled with an Inheritance system so that we could make use of polymorphism and reuse code much more seamlessly which made our codebase both easier to read and quicker to develop on. 
+Interactable Objects refer to the Game Objects with a tangible form within our scenes that have logic provided by a C# Script and could be interacted with in some way by the player. We provided each of these objects with a main script that described the core logic of the object as well as act as an identifier for the type of Interactable this object was. This was modelled with an Inheritance system so that we could make use of polymorphism and reuse code much more seamlessly which made our codebase both easier to read and quicker to develop on.
 
 The Inheritance Tree for C# Scripts/Classes assigned to Interactable Objects present in our final build is as follows:
 - Interactable
@@ -124,52 +132,58 @@ A further explanation of what functionality each class provides/represents is as
 
 ### Game Managers
 Game Managers refer to Game Objects that are present in the scene only to hold and instantiate C# Scripts that are attached to them. These objects do not have a physical form (i.e. No mesh, no renderer, no collider, etc) and are used to direct and control gameplay and UI flow. Examples used within our system include:
-- The game controller, which handles game time, player score, and recipe management
-- The tutorial controller, which carries out the interactive progression of tutorial stages
-- The main UI controller, which organises and manages the placement, reordering, and display of UI elements
+- The Game Controller, which handles the core game logic. The controller:
+	- Manages and stores active and enqueued orders
+	- Handles logic for processing delivered orders
+	- Stores and updates game time and scores
+	- Triggers start and end level events.
+- The Tutorial Controller, which carries out the interactive progression of tutorial stages. The tutorial:
+	- Handles logic for automatic advancement on the successful completion of actions
+	- Manages the the display and repositioning of tutorial messages and captions
+- The Recipe Tree, which holds stores our recipe tree as a tree data structure, and has methods for checking the validity of ordered lists of ingredients. It acts as the source of truth for our recipes. 
 
 ### Decorative Objects
-Decorative Objects refer to the Game Objects with a tangible form within in our scene that do not have any C# Scripts and are primarly used for decorative purposes. Where necessary, these objects have colliders to prevent the Player Object and Interactable Objects from moving past them. Some examples of these are: 
+Decorative Objects refer to the Game Objects with a tangible form within in our scene that do not have any C# Scripts and are primarly used for decorative purposes. Where necessary, these objects have colliders to prevent the Player Object and Interactable Objects from moving past them. Some examples of these are:
 - Tables, Walls, and other objects that compose the boundaries of the playable space
 - Decorative elements like Broomsticks, Flower Pots
 - All objects that lie outside of the playable area
 
 ### UI Elements
-UI Elements refer to the 2D Game Objects that appear in the Player Camera's field of view. They are used to provide the user with a visual interpretation of the state of the game logic. Some examples of these are: 
+UI Elements refer to the 2D Game Objects that appear in the Player Camera's field of view. They are used to provide the user with a visual interpretation of the state of the game logic. Some examples of these are:
 - Incoming orders
 - Score and time remaining indicators
 - The various menu elements that compose our level select, main menu, and pause menu screens.
 
 A canvas prefab, UIMain, contained the game objects and scripts for all UI elements within each level, including OrderQueue, ProgressBarManager, UIPauseMenu, UIEndScreen, GameTimer, GameScore, and GameText.
 
-### Orders and order queue
+#### Orders and order queue
 
-Orders were used to display tasks that needed to be completed by the player. Each order consisted of a timer bar, a potion sprite, and up to six sprites which detailed the recipe (up to 3 ingredients and methods). The UIOrderQueueManager.cs script contained functions for adding and deleting active orders, and updating the position of each order based on its position in the scene hierarchy. Orders were instantiated from a prefab (UIOrderTemplate) as a child of the OrderQueue game objects, with order sprites changed according to the ingredients and potion colour specified by RecipeManager.cs. The UIOrderController.cs script was included in each order template, and was used to update the timer bar on each order as specified by RecipeManager.cs
-
-
-### Progress bar manager and progress bars
-
-Progress bars were implemented to show the progression of processing by a station, such as the burning station or chopping station. Each progress bar was stored as a child of the ProgressBarManager and assigned to a specific station. Each progress bar was transformed according to station's position, the time required for processing an ingredient, and if the ingredient was actively being processed at the station. UIProgressManager.cs was responsible for updating the bar's progress, setting the active state of each progress bar in the scene, and hiding the progress bar if the station was not in use.
+> Orders were used to display tasks that needed to be completed by the player. Each order consisted of a timer bar, a potion sprite, and up to six sprites which detailed the recipe (up to 3 ingredients and methods). The UIOrderQueueManager.cs script contained functions for adding and deleting active orders, and updating the position of each order based on its position in the scene hierarchy. Orders were instantiated from a prefab (UIOrderTemplate) as a child of the OrderQueue game objects, with order sprites changed according to the ingredients and potion colour specified by RecipeManager.cs. The UIOrderController.cs script was included in each order template, and was used to update the timer bar on each order as specified by RecipeManager.cs
 
 
-### Pause menu and end screen
+#### Progress bar manager and progress bars
 
-A pause menu was implemented to allow players to pause, restart, or quit the level whenever the game timer is active. An end screen was also implemented to display the final score at the end of the level, as well as a grade value and the highest score acheived for that level. It also allows the player to restart the level, progress to the next level, or quite. UIGameMenu.cs was used to pause the game, manage the active state of the pause menu (UIPauseMenu) and end screen (UIEndScreen), and store relevant button functions.
-
-
-### Game timer and score
-
-The game timer and game score elements display the time remaining in the level, and the current score. The game timer and game score were updated by RecipeManager.cs by functions held in UIGameTimer.cs and UIGameScore.cs respectively.
+> Progress bars were implemented to show the progression of processing by a station, such as the burning station or chopping station. Each progress bar was stored as a child of the ProgressBarManager and assigned to a specific station. Each progress bar was transformed according to station's position, the time required for processing an ingredient, and if the ingredient was actively being processed at the station. UIProgressManager.cs was responsible for updating the bar's progress, setting the active state of each progress bar in the scene, and hiding the progress bar if the station was not in use.
 
 
-### Game text
+#### Pause menu and end screen
 
-UIGameText.cs contains the script for a co-routine which displays "3, 2, 1, go!". It is called by RecipeManager.cs at the start of each level.
+> A pause menu was implemented to allow players to pause, restart, or quit the level whenever the game timer is active. An end screen was also implemented to display the final score at the end of the level, as well as a grade value and the highest score acheived for that level. It also allows the player to restart the level, progress to the next level, or quit to the main menu. UIGameMenu.cs was used to pause the game, manage the active state of the pause menu (UIPauseMenu) and end screen (UIEndScreen), and store relevant button functions.
 
 
-### Main menu and level selection
+#### Game timer and score
 
-UIMainMenu.cs and UILevelSelect.cs contained button functions for UIMainMenu and UILevelSelect canvasses respectively. UILevelSelect.cs also contained code to retrieve and display the highest score achieved for each level.
+> The game timer and game score elements display the time remaining in the level, and the current score. The game timer and game score were updated by RecipeManager.cs by functions held in UIGameTimer.cs and UIGameScore.cs respectively.
+
+
+#### Game text
+
+> UIGameText.cs contains the script for a co-routine which displays "3, 2, 1, go!". It is called by RecipeManager.cs at the start of each level.
+
+
+#### Main menu and level selection
+
+> UIMainMenu.cs and UILevelSelect.cs contained button functions for UIMainMenu and UILevelSelect canvasses respectively. UILevelSelect.cs also contained code to retrieve and display the highest score achieved for each level.
 
 
 
@@ -200,7 +214,7 @@ While our game doesn't contain any custom geometry shaders, the particle systems
 * Smoke particle systems
 
 #### Fragment shaders
-Our game makes heavy use of custom and Unity-provided fragment shaders to handle lighting and effects. Our choice to use shaders to create these effects was based on their ability to exploit the GPU's ability to efficiently perform simple tasks in parallel, which allows us to efficiently compute effects across our scene. Furthermore, as our effects lack branching and complex logical flow, we have little need of the CPU's specialized features like branch prediction or speculative execution. Some examples of our uses of fragment shaders include:
+Our game makes heavy use of custom and Unity-provided fragment shaders to handle lighting and effects. Our choice to use shaders to create these effects was based on their ability to exploit the GPU's ability to efficiently perform simple tasks in parallel, which allows us to efficiently compute effects across our scene. As our fragment shaders apply simple functions on a per pixel basis every frame, there possibly millions of simple calculation which must be done every frame. Because of this, it is much quicker to do these calculations in parallel on the gpu. Although our shaders are implementable on the cpu via scripts, the lack of parallelisation would drastically affect the frame rate of our game. Some examples of our uses of fragment shaders include:
 
 * Unity’s lighting shaders are used throughout our scenes in order to provide realistic lighting.
 * A custom fragment shader is used to creating a rich swirling effect for our menu backgrounds and cauldron contents.
@@ -328,7 +342,7 @@ The fire of the cauldrons and burning stations were created using Unity’s Part
 
 Each fire consisted of three particle systems of different sizes and colours. Using multiple particle systems helps to create the different “layers” of the fire (red, orange, and yellow sections).
 
-The texture used for the fire particle system was created by [Evgeny Starostin](https://80.lv/articles/breakdown-magic-fire-effect-in-unity/). The texture was implemented using a custom shader and a texture sheet animation.
+The texture used for the fire particle system was created by Evgeny Starostin. The texture was implemented using a custom shader, based on Starostin's tutorial [here]((https://80.lv/articles/breakdown-magic-fire-effect-in-unity/),  and a texture sheet animation.
 
 By default, Unity's built-in Particle Systems are applied by the CPU. This allows particle systems to interact with colliders within the scene. This was useful to ensure that the fire would not appear to pass through the cauldron or benches, and overall look more natural.
 
@@ -343,13 +357,17 @@ We used the interview querying method. Participants were sent an early version o
 The interview consisted of open-ended questions surrounding the gameplay, graphics, and user experience. Participants were encouraged to form their own opinions of the game and discuss their feedback with the interviewer in a conversational style. Dot points and questions prepared by the interviewers were used to guide the discussion. The interviewers took typed notes during the interviews, and reviewed audio recordings of the interviews when necessary.
 
 #### Participant demographic information
-| Age | Gender    | Occupation                     | Self-estimate of hours of video games played per week |
-|-----|--------   |--------------------------------|-------------------------------------------------------|
-| 20   | Male     | 3rd year undergraduate student | 10                                                    |
-| 20   | Female   | 3rd year undergraduate student | 2                                                     |
-| 20   | Female   | 2nd year undergraduate student | 14                                                    |
-| X   | Male   | 1st year undergraduate student | 40                                                       |
-| X   | Male   | Unemployed                     | 30                                                     |
+| Age | Gender   | Occupation                     | Self-estimate of hours of video games played per week |
+|-----|--------  |--------------------------------|-------------------------------------------------------|
+| 20  | Male     | 3rd year undergraduate student | 10                                                    |
+| 20  | Female   | 3rd year undergraduate student | 2                                                     |
+| 20  | Female   | 2nd year undergraduate student | 14                                                    |
+| 19  | Male     | 1st year undergraduate student | 12                                                    |
+| 18  | Female   | 1st year undergraduate student | 45                                                    |
+| 18  | Male     | 1st year undergraduate student | 15                                                    |
+| 18  | Female   | 1st year undergraduate student | --                                                    |
+| 19  | Female   | 1st year undergraduate student | 4                                                     |
+| 20  | Female   | 2nd year undergraduate student | 2                                                     |
 
 The demographic of participants was quite narrow, with all participants being between ages 18 and 20, and undertaking tertiary education. While levels of gaming experience varied between participants, all participants had some familiarity with gaming. Participants reported playing between 2 and 14 hours of games per week. While a broader demographic in participants is generally desirable, we felt that the participants interviewed were able to use their previous gaming experience and expectations to provide relevant and insightful feedback.
 
@@ -448,11 +466,14 @@ However, a benefit of our method was that we were able to gain a better idea of 
 		* Due to time constraints, these were not implemented, but we feel they could be implemented in a future build
 
 
-## Resource References
+## Sources used
 
 * The cauldron liquid shader was produced with help from an online tutorial found [here](http://enemyhideout.com/2016/08/creating-a-whirlpool-shader/).
 * The bubbles particle system was produced with help from an online tutorial found [here](https://www.youtube.com/watch?v=ajsA6vWBhKI).
+* The fire particle system was produced with help from an online tutorial found [here](https://80.lv/articles/breakdown-magic-fire-effect-in-unity/)
+* The pause menu and end screen was implemented with help from an online tutorial found [here](https://www.sitepoint.com/adding-pause-main-menu-and-game-over-screens-in-unity/)
 * The pick up logic was initially inspired by a youtube video found [here](https://www.youtube.com/watch?v=90OiysC4j5Y).
+* The menu background music was created with help from this forum post [here](https://answers.unity.com/questions/1260393/make-music-continue-playing-through-scenes.html).
 
 ## Individual Contributions
 
@@ -463,23 +484,27 @@ Collected or created the majority of the models used. Implemented sound effects,
 Implemented ingredient processors and their subclasses. Implemented game controller that handled core game logic including timing, scoring, order completion, and order management. Implemented tutorial controller and and designed an interactive tutorial level. Implemented and designed post-processing shaders. Wrote parser for level config files. Worked with Iris to integrate UI elements with the game controller. Conducted "Think Aloud" observational sessions with Arriken. Worked on final report.
 
 ### Simon Tran
-dot dot dot
+Designed and implemented the architecture of C# Script Classes for Game Objects that could be interacted with by the player. Used an Inheritance model to improve readability and decrease development times. A list of these classes can be found [here](#interactable-objects). Handled all bugs that arose in relation to these classes, and took on requests to extend to them. Also implemented movement of the Player Object, and the logic for picking up, dropping, throwing, and moving held objects held by the player. Interviewed 6 participants for evaluation purposes and contributed to team discussion and report-writing.
 
 ### Iris Li
 
 Designed and implemented most UI elements, including the main menu, level select scene, pause menu, end screen, and in-game elements such as text, including game score and timer, order queue, and progress bars for stations. Assisted with linking UI elements to the game controller. Sourced sprites, and assisted with sourcing models and textures for the interior of the scene. Created the fire particle system. Interviewed 3 participants for evaluation purposes and contributed to team discussion and report-writing.
 
-## References
+## Useful references
 
 Unity API Script Reference: https://docs.unity3d.com/ScriptReference/
 
 Logic for storing highscores locally was retrieved from the following url: https://answers.unity.com/questions/644911/how-do-i-store-highscore-locally-c-simple.html
 
-Pause menu and end screen: https://www.sitepoint.com/adding-pause-main-menu-and-game-over-screens-in-unity/
-
-Fire particle system: https://80.lv/articles/breakdown-magic-fire-effect-in-unity/
-
 Button animation: https://www.youtube.com/watch?v=CJ8FKjYtrT4
+
+Background menu music logic: https://answers.unity.com/questions/1260393/make-music-continue-playing-through-scenes.html
+
+Bubbles design reference: https://www.youtube.com/watch?v=ajsA6vWBhKI
+
+Pick up script design reference: https://www.youtube.com/watch?v=90OiysC4j5Y
+
+Liquid swirl shader reference: http://enemyhideout.com/2016/08/creating-a-whirlpool-shader/
 
 ### Sound effects
 
@@ -535,10 +560,6 @@ Potion model: https://poly.google.com/view/dOREefQfDQu
 Knife model: https://poly.google.com/view/0X5xcxjszwI
 
 Cauldron design reference: https://www.youtube.com/watch?v=x-6cvNjUuAI
-
-Bubbles design reference: https://www.youtube.com/watch?v=ajsA6vWBhKI
-
-Pick up script design reference: https://www.youtube.com/watch?v=90OiysC4j5Y
 
 Bin model: https://www.turbosquid.com/3d-models/free-c4d-mode-m%C3%BClleimer-bin/483718
 
