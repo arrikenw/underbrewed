@@ -142,7 +142,7 @@ Game Managers refer to Game Objects that are present in the scene only to hold a
 	- Manages the the display and repositioning of tutorial messages and captions
 - The Recipe Tree, which holds stores our recipe tree as a tree data structure, and has methods for checking the validity of ordered lists of ingredients. It acts as the source of truth for our recipes.
 <p align="center">
-  <img src="Images/RecipeTree.gif"  width="600" >
+  <img src="Images/RecipeTree.png"  width="600" >
 
 	Pictured: An early design plan for our recipe tree
 </p>
