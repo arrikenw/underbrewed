@@ -6,10 +6,10 @@
 * [Team Members](#team-members)
 * [Introduction](#introduction)
 * [How to Play](#how-to-play)
-* [Graphics and Camera Motion](#using-images)
-* [Shaders](#shaders-and-particle-systems)
+* [Camera Motion and Graphics Pipeline](#camera-motion-and-graphics-pipeline)
+* [Shaders and Particle Systems](#shaders-and-particle-systems)
 * [Evaluation Methods](#evaluation-methods)
-* [Feedback Changes](#evaluation-and-changes-implemented-changes)
+* [Evaluation and Changes Implemented](#evaluation-and-changes-implemented)
 * [Resource References](#resource-references)
 * [Individual Contributions](#individual-contributions)
 
@@ -45,6 +45,12 @@ Underbrewed uses a static camera and third person perspective, and is designed t
 Throughout a level, orders will continually arrive in the top left of the screen. Each order contains a potion, the ingredients needed to brew the potion, and a timer that indicates how long the player will have to complete the order.
 
 To create a potion, players must place ingredients into cauldrons in the order they appear on the recipe. If an ingredient has an icon beneath it, the player must first process the ingredient at a corresponding station before adding it to a cauldron.
+
+<p align="center">
+  <img src="Images/Order.png"  width="600" >
+</p>
+
+In the image of an order above, the timer is represented by the horizontal green bar at the top of the order. As shown on the left, the final colour of this order is an orange potion. Finally the ingredients for this potion are shown in order from left to right. To create this potion, the player must add a burnt frog, a crush bone and a crushed eye to a cauldron in that order.
 
 To deliver a completed potion, players must fill a bottle with liquid from the cauldron they have brewed the potion in, then must drop or throw the bottled potion through the delivery portal. Each successful delivery will increase the players’ score, which is displayed in the lower right of the screen. The time left until the level ends is displayed below the score.
 
@@ -157,6 +163,14 @@ fixed4 fragColor = tex2D(_MainTex, uv) * _Color;
 
 return fragColor;
 ```
+### Bubbles Particle System
+The bubbles produced by the cauldron is comprised of two differnet particle systems: The first produces the intial bubble, and the latter produces the popped bubble particles. The particle system was produced with help from a tutorial found [here](https://www.youtube.com/watch?v=ajsA6vWBhKI).
+
+<p align="center">
+  <img src="Images/Bubbles.gif"  width="600" >
+</p>
+
+The bubbles are emitted upwards from the cauldron's liquid surface, with their velocities changing over time, giving the bubbles a wavy effect as they rise up. When the bubbles expire after a certain lifetime, they emit the next particle system, representing the burst bubble. These burst bubble particles are affected by gravity are emitted in all directions from the expired bubble. This helps acheive the effect of a burst bubble.
 
 ### Screen Distortion Shader
 
@@ -239,11 +253,11 @@ We used the “Think Aloud” observational method. Participants were invited to
 #### Participant demographic information
 | Age | Gender | Occupation                     | Self-estimate of hours of video games played per week |
 |-----|--------|--------------------------------|-------------------------------------------------------|
-| X   | Male   | Doctor of Optometry student    | 16                                                    |
-| X   | Male   | 3rd year undergraduate student | 10                                                    |
-| X   | Male   | 2nd year undergraduate student | 40                                                    |
-| X   | Male   | 1st year undergraduate student | 40                                                    |
-| X   | Male   | Unemployed                     | 30                                                    |
+| 21  | Male   | Doctor of Optometry student    | 16                                                    |
+| 21  | Male   | 3rd year undergraduate student | 10                                                    |
+| 20  | Male   | 2nd year undergraduate student | 40                                                    |
+| 20  | Male   | 3rd year undergraduate student | 40                                                    |
+| 21  | Male   | Unemployed                     | 30                                                    |
 
 
 As with our interviews, the demographic breadth of participants for our "Think Aloud" evaluation was quite limited – all participants were male, were of similar ages, and were either university students or planning on undertaking tertiary studies, and this homogenity could limit our ability to accurately assess aspects of our game. However, as our game lacks a story or complex characters and is firmly grounded within a fantasy world, we expect these factors to have little bearing on how the game is played or perceived.
@@ -319,12 +333,14 @@ However, a benefit of our method was that we were able to gain a better idea of 
 
 ## Resource References
 
-TO DO: Statement here
+* The cauldron liquid shader was produced with help from an online tutorial found [here](http://enemyhideout.com/2016/08/creating-a-whirlpool-shader/).
+* The bubbles particle system was produced with help from an online tutorial found [here](https://www.youtube.com/watch?v=ajsA6vWBhKI).
+* The pick up logic was initially inspired by a youtube video found [here](https://www.youtube.com/watch?v=90OiysC4j5Y).
 
 ## Individual Contributions
 
 ### Arriken Worsley
-dot dot dot
+Collected or created the majority of the models used. Implemented sound effects, animations and music for the game. This included sound and animations for picking up items, chopping, crushing, etc. Created the liquid swirl shader and bubble particles system for cauldron and menus. Designed and constructed the three levels and created the designed the level files using Joel's parser. Planned, recordered and edited the game trailer. Implemented some code logic, such as the bad effects and camera animation. Conducted "Think Aloud" observational sessions with Joel.
 
 ### Joel Kenna
 Implemented ingredient processors and their subclasses. Implemented game controller that handled core game logic including timing, scoring, order completion, and order management. Implemented tutorial controller and and designed an interactive tutorial level. Implemented and designed post-processing shaders. Wrote parser for level config files. Worked with Iris to integrate UI elements with the game controller. Conducted "Think Aloud" observational sessions with Arriken. Worked on final report.
@@ -411,7 +427,7 @@ Bubbles design reference: https://www.youtube.com/watch?v=ajsA6vWBhKI
 Pick up script design reference: https://www.youtube.com/watch?v=90OiysC4j5Y
 
 Bin model: https://www.turbosquid.com/3d-models/free-c4d-mode-m%C3%BClleimer-bin/483718
- 
+
 Squashed eye model: https://www.turbosquid.com/3d-models/3d-rectangle-flow-splash-model-1213683
 
 Chopped cheese model: https://www.turbosquid.com/3d-models/free-max-mode/1033609
