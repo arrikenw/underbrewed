@@ -76,9 +76,9 @@ While our game doesn't contain any custom geometry shaders, the particle systems
 * Smoke particle systems
 
 #### Fragment shaders
-Our game makes heavy use of custom and Unity-provided fragment shaders to handle lighting and effects. Our choice to use shaders to create these effects was based on their ability to exploit the GPU's ability to efficiently perform simple parallel tasks, which allows us to quickly compute effects across our objects. Furthermore, as our effects lack branching and complex logical flow, we have little need of the CPU's specialized features like branch prediction or speculative execution.
+Our game makes heavy use of custom and Unity-provided fragment shaders to handle lighting and effects. Our choice to use shaders to create these effects was based on their ability to exploit the GPU's ability to efficiently perform simple tasks in parallel, which allows us to efficiently compute effects across our scene. Furthermore, as our effects lack branching and complex logical flow, we have little need of the CPU's specialized features like branch prediction or speculative execution. Some examples of our uses of fragment shaders include:
 
-* Unity’s lighting fragment shaders are used throughout our scenes in order to provide realistic lighting. 
+* Unity’s lighting shaders are used throughout our scenes in order to provide realistic lighting. 
 * A custom fragment shader is used to creating a rich swirling effect for our menu backgrounds and cauldron contents.
 * A custom fragment shader is used to provide interesting colouring for our flame effects.
 
