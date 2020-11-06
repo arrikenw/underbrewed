@@ -95,7 +95,7 @@ Later levels become more difficult and the player must rely on multitasking and 
 We split our Unity Game Objects within our scenes into five distinct categories: Player Object, Interactable Objects, Decorative Objects, UI Elements, and Game Managers.
 
 ### Player Object
-Player Object refers to the Game Object with a tangible form that is controlled by the player through controller inputs. These inputs and their subsequent effect are handled by a C# Script. This object has a mesh, collider, and rigidbody to allow for it to interact physically with other objects in the scene through Unity's Physics Engine. Furthermore, this object has multiple child objects to represent physical features of the player as well as to provide additional functionality. Of note is the Pickup Collider object child which handles all the logic of picking up, dropping, throwing, and moving held items via a C# Script.  
+Player Object refers to the Game Object with a tangible form that is controlled by the player through controller inputs. These inputs and their subsequent effect are handled by a C# Script. This object has a mesh, collider, and rigidbody to allow for it to interact physically with other objects in the scene through Unity's Physics Engine. Furthermore, this object has multiple child objects to represent physical features of the player as well as to provide additional functionality. Of note is the Pickup Collider object child which handles all the logic of picking up, dropping, throwing, and moving held items via a C# Script. It defines the space where the player will search for objects to interact with.  
 
 ### Interactable Objects
 Interactable Objects refer to the Game Objects with a tangible form within our scenes that have logic provided by a C# Script and could be interacted with in some way by the player. We provided each of these objects with a main script that described the core logic of the object as well as act as an identifier for the type of Interactable this object was. This was modelled with an Inheritance system so that we could make use of polymorphism and reuse code much more seamlessly which made our codebase both easier to read and quicker to develop on.
@@ -132,14 +132,15 @@ A further explanation of what functionality each class provides/represents is as
 
 ### Game Managers
 Game Managers refer to Game Objects that are present in the scene only to hold and instantiate C# Scripts that are attached to them. These objects do not have a physical form (i.e. No mesh, no renderer, no collider, etc) and are used to direct and control gameplay and UI flow. Examples used within our system include:
-- The game controller, which handles the core game logic. The controller:
+- The Game Controller, which handles the core game logic. The controller:
 	- Manages and stores active and enqueued orders
 	- Handles logic for processing delivered orders
 	- Stores and updates game time and scores
 	- Triggers start and end level events.
-- The tutorial controller, which carries out the interactive progression of tutorial stages. The tutorial:
+- The Tutorial Controller, which carries out the interactive progression of tutorial stages. The tutorial:
 	- Handles logic for automatic advancement on the successful completion of actions
 	- Manages the the display and repositioning of tutorial messages and captions
+- The Recipe Tree, which holds stores our recipe tree as a tree data structure, and has methods for checking the validity of ordered lists of ingredients. It acts as the source of truth for our recipes. 
 
 ### Decorative Objects
 Decorative Objects refer to the Game Objects with a tangible form within in our scene that do not have any C# Scripts and are primarly used for decorative purposes. Where necessary, these objects have colliders to prevent the Player Object and Interactable Objects from moving past them. Some examples of these are:
@@ -155,34 +156,34 @@ UI Elements refer to the 2D Game Objects that appear in the Player Camera's fiel
 
 A canvas prefab, UIMain, contained the game objects and scripts for all UI elements within each level, including OrderQueue, ProgressBarManager, UIPauseMenu, UIEndScreen, GameTimer, GameScore, and GameText.
 
-### Orders and order queue
+#### Orders and order queue
 
-Orders were used to display tasks that needed to be completed by the player. Each order consisted of a timer bar, a potion sprite, and up to six sprites which detailed the recipe (up to 3 ingredients and methods). The UIOrderQueueManager.cs script contained functions for adding and deleting active orders, and updating the position of each order based on its position in the scene hierarchy. Orders were instantiated from a prefab (UIOrderTemplate) as a child of the OrderQueue game objects, with order sprites changed according to the ingredients and potion colour specified by RecipeManager.cs. The UIOrderController.cs script was included in each order template, and was used to update the timer bar on each order as specified by RecipeManager.cs
-
-
-### Progress bar manager and progress bars
-
-Progress bars were implemented to show the progression of processing by a station, such as the burning station or chopping station. Each progress bar was stored as a child of the ProgressBarManager and assigned to a specific station. Each progress bar was transformed according to station's position, the time required for processing an ingredient, and if the ingredient was actively being processed at the station. UIProgressManager.cs was responsible for updating the bar's progress, setting the active state of each progress bar in the scene, and hiding the progress bar if the station was not in use.
+> Orders were used to display tasks that needed to be completed by the player. Each order consisted of a timer bar, a potion sprite, and up to six sprites which detailed the recipe (up to 3 ingredients and methods). The UIOrderQueueManager.cs script contained functions for adding and deleting active orders, and updating the position of each order based on its position in the scene hierarchy. Orders were instantiated from a prefab (UIOrderTemplate) as a child of the OrderQueue game objects, with order sprites changed according to the ingredients and potion colour specified by RecipeManager.cs. The UIOrderController.cs script was included in each order template, and was used to update the timer bar on each order as specified by RecipeManager.cs
 
 
-### Pause menu and end screen
+#### Progress bar manager and progress bars
 
-A pause menu was implemented to allow players to pause, restart, or quit the level whenever the game timer is active. An end screen was also implemented to display the final score at the end of the level, as well as a grade value and the highest score acheived for that level. It also allows the player to restart the level, progress to the next level, or quit to the main menu. UIGameMenu.cs was used to pause the game, manage the active state of the pause menu (UIPauseMenu) and end screen (UIEndScreen), and store relevant button functions.
-
-
-### Game timer and score
-
-The game timer and game score elements display the time remaining in the level, and the current score. The game timer and game score were updated by RecipeManager.cs by functions held in UIGameTimer.cs and UIGameScore.cs respectively.
+> Progress bars were implemented to show the progression of processing by a station, such as the burning station or chopping station. Each progress bar was stored as a child of the ProgressBarManager and assigned to a specific station. Each progress bar was transformed according to station's position, the time required for processing an ingredient, and if the ingredient was actively being processed at the station. UIProgressManager.cs was responsible for updating the bar's progress, setting the active state of each progress bar in the scene, and hiding the progress bar if the station was not in use.
 
 
-### Game text
+#### Pause menu and end screen
 
-UIGameText.cs contains the script for a co-routine which displays "3, 2, 1, go!". It is called by RecipeManager.cs at the start of each level.
+> A pause menu was implemented to allow players to pause, restart, or quit the level whenever the game timer is active. An end screen was also implemented to display the final score at the end of the level, as well as a grade value and the highest score acheived for that level. It also allows the player to restart the level, progress to the next level, or quit to the main menu. UIGameMenu.cs was used to pause the game, manage the active state of the pause menu (UIPauseMenu) and end screen (UIEndScreen), and store relevant button functions.
 
 
-### Main menu and level selection
+#### Game timer and score
 
-UIMainMenu.cs and UILevelSelect.cs contained button functions for UIMainMenu and UILevelSelect canvasses respectively. UILevelSelect.cs also contained code to retrieve and display the highest score achieved for each level.
+> The game timer and game score elements display the time remaining in the level, and the current score. The game timer and game score were updated by RecipeManager.cs by functions held in UIGameTimer.cs and UIGameScore.cs respectively.
+
+
+#### Game text
+
+> UIGameText.cs contains the script for a co-routine which displays "3, 2, 1, go!". It is called by RecipeManager.cs at the start of each level.
+
+
+#### Main menu and level selection
+
+> UIMainMenu.cs and UILevelSelect.cs contained button functions for UIMainMenu and UILevelSelect canvasses respectively. UILevelSelect.cs also contained code to retrieve and display the highest score achieved for each level.
 
 
 
