@@ -11,7 +11,6 @@ public class Ingredient : Item
     [SerializeField] public IngType ingredientType = IngType.Null;
 
     private bool usesCombinedMesh = false;
-    private int lifetime = 30; // lifetime before despawn in seconds
 
     // [SerializeField] private bool canHighlight = true;
     
