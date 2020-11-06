@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿// Code adapted from Sitepoint: https://www.sitepoint.com/adding-pause-main-menu-and-game-over-screens-in-unity/
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;

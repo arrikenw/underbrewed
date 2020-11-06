@@ -1,6 +1,6 @@
 **The University of Melbourne**
 
-#COMP30019 – Graphics and Interaction
+# COMP30019 – Graphics and Interaction
 
 ## Table of contents
 * [Team Members](#team-members)
@@ -31,6 +31,8 @@ Underbrewed is a single-player cooking simulator game in which players brew poti
 
 Underbrewed uses a static camera and third person perspective, and is designed to be played with a keyboard.
 
+Watch the gameplay trailer [here](https://www.youtube.com/watch?v=fE1b38sGNSU&feature=youtu.be).
+
 ## How to Play
 ### Basic controls
 - Movement: WASD and arrow keys are both supported
@@ -41,6 +43,9 @@ Underbrewed uses a static camera and third person perspective, and is designed t
 - Fill potion from cauldron: Press ‘,’ while holding a bottle and facing a cauldron
 - Open pause menu: Press ‘Esc’
 - The optional key sets "O", "P", "[" and "Z", "X", "C" can be used instead of the default "M", ",", "."
+
+### Loading the Game
+To load the game, navigate to the `MainMenu` scene which can found in path `Assets\Scenes\EvaluationBuild\MainMenu.scene`. Open the scene and press play to play the game. Alternatively, you play the game through a built executable, found in `Build\Underbrewed.exe`.
 
 ### Gameplay
 Throughout a level, orders will continually arrive in the top left of the screen. Each order contains a potion, the ingredients needed to brew the potion, and a timer that indicates how long the player will have to complete the order.
@@ -53,20 +58,47 @@ To create a potion, players must place ingredients into cauldrons in the order t
 
 In the image of an order above, the timer is represented by the horizontal green bar at the top of the order. As shown on the left, the final colour of this order is an orange potion. Finally the ingredients for this potion are shown in order from left to right. To create this potion, the player must add a burnt frog, a crush bone and a crushed eye to a cauldron in that order.
 
+<p align="center">
+  <img src="Images/AddingIngredient.gif"  width="600" >
+
+	Pictured: The final ingredient is added to a potion, triggering a colour change
+</p>
+
 To deliver a completed potion, players must fill a bottle with liquid from the cauldron they have brewed the potion in, then must drop or throw the bottled potion through the delivery portal. Each successful delivery will increase the players’ score, which is displayed in the lower right of the screen. The time left until the level ends is displayed below the score.
 
-If a player places an ingredient into the cauldron that does not match any valid potions, the game will trigger a special effect to distract players, such as a shader to distort the screen, or an explosion that sends ingredients flying across the scene.
+<p align="center">
+  <img src="Images/CollectingPotion.gif"  width="600" >
+	
+	Pictured: A potion is collected from a cauldron using the interact button while holding a potion
+</p>
+
+<p align="center">
+  <img src="Images/DeliveringPotion.gif"  width="600" >
+
+	Pictured: A potion is delivered using the portal
+</p>
+
+If a player places an ingredient into the cauldron that does not match any valid potions, the game will trigger a special effect to distract players, such as a shader to distort the screen, or an explosion that sends ingredients flying across the scene. 
+
+Later levels become more difficult and the player must rely on multitasking and item throwing to complete order on time.
 
 <b> We recommend that new players play our tutorial level before attempting stages, as it provides an in-depth overview of the game’s controls and mechanics. </b>
 
+
+
+
+
+
+## Camera Motion and Graphics Pipeline
+
 ## Modelling of Objects and Entities
-We split our Unity Game Objects within our scenes into five distinct categories: Player Object, Interactable Objects, Decorative Objects, UI Elements, and Game Managers. 
+We split our Unity Game Objects within our scenes into five distinct categories: Player Object, Interactable Objects, Decorative Objects, UI Elements, and Game Managers.
 
 ### Player Object
 Player Object refers to the Game Object with a tangible form that is controlled by the player through controller inputs. These inputs and their subsequent effect are handled by a C# Script. This object has a mesh, collider, and rigidbody to allow for it to interact physically with other objects in the scene through Unity's Physics Engine. Furthermore, this object has multiple child objects to represent physical features of the player as well as to provide additional functionality. Of note is the Pickup Collider object child which handles all the logic of picking up, dropping, throwing, and moving held items via a C# Script.  
 
 ### Interactable Objects
-Interactable Objects refer to the Game Objects with a tangible form within our scenes that have logic provided by a C# Script and could be interacted with in some way by the player. We provided each of these objects with a main script that described the core logic of the object as well as act as an identifier for the type of Interactable this object was. This was modelled with an Inheritance system so that we could make use of polymorphism and reuse code much more seamlessly which made our codebase both easier to read and quicker to develop on. 
+Interactable Objects refer to the Game Objects with a tangible form within our scenes that have logic provided by a C# Script and could be interacted with in some way by the player. We provided each of these objects with a main script that described the core logic of the object as well as act as an identifier for the type of Interactable this object was. This was modelled with an Inheritance system so that we could make use of polymorphism and reuse code much more seamlessly which made our codebase both easier to read and quicker to develop on.
 
 The Inheritance Tree for C# Scripts/Classes assigned to Interactable Objects present in our final build is as follows:
 - Interactable
@@ -98,17 +130,63 @@ A further explanation of what functionality each class provides/represents is as
 | Hold Processor             | Transforms Ingredients over time via holding down a button                                                                                    |
 | Single Material Ingredient | Less computationally expensive alternative to Ingredient for when the Game Object only has one Material (including any child/sibling objects) |
 
+### Game Managers
+Game Managers refer to Game Objects that are present in the scene only to hold and instantiate C# Scripts that are attached to them. These objects do not have a physical form (i.e. No mesh, no renderer, no collider, etc) and are used to direct and control gameplay and UI flow. Examples used within our system include:
+- The game controller, which handles the core game logic. The controller:
+	- Manages and stores active and enqueued orders
+	- Handles logic for processing delivered orders
+	- Stores and updates game time and scores
+	- Triggers start and end level events.
+- The tutorial controller, which carries out the interactive progression of tutorial stages. The tutorial:
+	- Handles logic for automatic advancement on the successful completion of actions
+	- Manages the the display and repositioning of tutorial messages and captions
+
 ### Decorative Objects
-Decorative Objects refer to the Game Objects with a tangible form within in our scene that do not have any C# Scripts and are primarly used for decorative purposes. Where necessary, these would have colliders to prevent the Player Object and Interactable Objects from moving past them. Some examples of these are: Tables, Walls, Broomsticks, Flower Pots, and all the Objects outside of the grid.
+Decorative Objects refer to the Game Objects with a tangible form within in our scene that do not have any C# Scripts and are primarly used for decorative purposes. Where necessary, these objects have colliders to prevent the Player Object and Interactable Objects from moving past them. Some examples of these are:
+- Tables, Walls, and other objects that compose the boundaries of the playable space
+- Decorative elements like Broomsticks, Flower Pots
+- All objects that lie outside of the playable area
 
 ### UI Elements
-UI Elements refer to the 2D Game Objects that appear im the Player Camera's field of view. These provide a visual interpretation of the state of the game logic. Some examples of these are: Score Board, Time Remaining, Orders, and Pause Menu.
+UI Elements refer to the 2D Game Objects that appear in the Player Camera's field of view. They are used to provide the user with a visual interpretation of the state of the game logic. Some examples of these are:
+- Incoming orders
+- Score and time remaining indicators
+- The various menu elements that compose our level select, main menu, and pause menu screens.
 
-### Game Managers
-Game Managers refer to Game Objects that are present in the scene only to hold and instantiate C# Scripts that are attached to them. These do not have a physical form (i.e. No mesh, no renderer, no collider, etc) and are typically referenced by other Game Objects to access the held C# Scripts. Some exmaples of these include: ........
+A canvas prefab, UIMain, contained the game objects and scripts for all UI elements within each level, including OrderQueue, ProgressBarManager, UIPauseMenu, UIEndScreen, GameTimer, GameScore, and GameText.
+
+### Orders and order queue
+
+Orders were used to display tasks that needed to be completed by the player. Each order consisted of a timer bar, a potion sprite, and up to six sprites which detailed the recipe (up to 3 ingredients and methods). The UIOrderQueueManager.cs script contained functions for adding and deleting active orders, and updating the position of each order based on its position in the scene hierarchy. Orders were instantiated from a prefab (UIOrderTemplate) as a child of the OrderQueue game objects, with order sprites changed according to the ingredients and potion colour specified by RecipeManager.cs. The UIOrderController.cs script was included in each order template, and was used to update the timer bar on each order as specified by RecipeManager.cs
+
+
+### Progress bar manager and progress bars
+
+Progress bars were implemented to show the progression of processing by a station, such as the burning station or chopping station. Each progress bar was stored as a child of the ProgressBarManager and assigned to a specific station. Each progress bar was transformed according to station's position, the time required for processing an ingredient, and if the ingredient was actively being processed at the station. UIProgressManager.cs was responsible for updating the bar's progress, setting the active state of each progress bar in the scene, and hiding the progress bar if the station was not in use.
+
+
+### Pause menu and end screen
+
+A pause menu was implemented to allow players to pause, restart, or quit the level whenever the game timer is active. An end screen was also implemented to display the final score at the end of the level, as well as a grade value and the highest score acheived for that level. It also allows the player to restart the level, progress to the next level, or quit to the main menu. UIGameMenu.cs was used to pause the game, manage the active state of the pause menu (UIPauseMenu) and end screen (UIEndScreen), and store relevant button functions.
+
+
+### Game timer and score
+
+The game timer and game score elements display the time remaining in the level, and the current score. The game timer and game score were updated by RecipeManager.cs by functions held in UIGameTimer.cs and UIGameScore.cs respectively.
+
+
+### Game text
+
+UIGameText.cs contains the script for a co-routine which displays "3, 2, 1, go!". It is called by RecipeManager.cs at the start of each level.
+
+
+### Main menu and level selection
+
+UIMainMenu.cs and UILevelSelect.cs contained button functions for UIMainMenu and UILevelSelect canvasses respectively. UILevelSelect.cs also contained code to retrieve and display the highest score achieved for each level.
+
+
 
 ## Camera Motion and Graphics Pipeline
-
 ### Camera Motion
 
 #### Static Camera
@@ -126,23 +204,23 @@ When a level finishes, an "action replay" occurs, with the camera moving down to
 
 ### Graphics Pipeline
 
-The majority of the graphical work within our game is carried out by the GPU, which handles our lighting, special effects, and texture mapping. While the CPU plays a less significant role, it is still highly important, as it is used by Unity to provide vertices, textures, and commands to the GPU. 
+The majority of the graphical work within our game is carried out by the GPU, which handles our lighting, special effects, and texture mapping. While the CPU plays a less significant role, it is still highly important, as it is used by Unity to provide vertices, textures, and commands to the GPU.
 
 #### Geometry shaders
-While our game doesn't contain any custom geometry shaders, the particle systems we use to create in-game effects are built using Unity's particle system functionality, which makes heavy use of geometry shaders to construct quads based on particle vertices. In our game, these systems include:	
+While our game doesn't contain any custom geometry shaders, the particle systems we use to create in-game effects are built using Unity's particle system functionality, which makes heavy use of geometry shaders to construct quads based on particle vertices. In our game, these systems include:
 * Bubble particle systems
 * Flame particle systems
 * Smoke particle systems
 
 #### Fragment shaders
-Our game makes heavy use of custom and Unity-provided fragment shaders to handle lighting and effects. Our choice to use shaders to create these effects was based on their ability to exploit the GPU's ability to efficiently perform simple tasks in parallel, which allows us to efficiently compute effects across our scene. Furthermore, as our effects lack branching and complex logical flow, we have little need of the CPU's specialized features like branch prediction or speculative execution. Some examples of our uses of fragment shaders include:
+Our game makes heavy use of custom and Unity-provided fragment shaders to handle lighting and effects. Our choice to use shaders to create these effects was based on their ability to exploit the GPU's ability to efficiently perform simple tasks in parallel, which allows us to efficiently compute effects across our scene. As our fragment shaders apply simple functions on a per pixel basis every frame, there possibly millions of simple calculation which must be done every frame. Because of this, it is much quicker to do these calculations in parallel on the gpu. Although our shaders are implementable on the cpu via scripts, the lack of parallelisation would drastically affect the frame rate of our game. Some examples of our uses of fragment shaders include:
 
-* Unity’s lighting shaders are used throughout our scenes in order to provide realistic lighting. 
+* Unity’s lighting shaders are used throughout our scenes in order to provide realistic lighting.
 * A custom fragment shader is used to creating a rich swirling effect for our menu backgrounds and cauldron contents.
 * A custom fragment shader is used to provide interesting colouring for our flame effects.
 
 #### Post-processing
-After the initial render is complete, a custom fragment shader is applied to the initial render texture to provide post-processing effects and generate the final render texture, with this post-processing is handled through Unity's ```OnRenderImage()``` functionality. Once again, our motivation for using a shader to apply this effect is rooted in the GPU's ability to efficiently perform parellelized processing - as a simple effect is applied across the entire screen, a GPU based approach yields great performance improvements over a CPU based approach. We have provided a sample of our code for applying post-processing shaders below:
+After the initial render is complete, a custom fragment shader is applied to the initial render texture to provide post-processing effects and generate the final render texture, with this post-processing being triggered using Unity's ```OnRenderImage()``` functionality. Once again, our motivation for using a shader to apply this effect is rooted in the GPU's ability to efficiently perform parellelized processing - as a simple effect is applied across the entire screen, a GPU based approach yields great performance improvements over a CPU based approach. We have provided a sample of our code for applying post-processing shaders below:
 
 ```C#
     void OnRenderImage(RenderTexture source, RenderTexture destination)
@@ -212,14 +290,6 @@ fixed4 fragColor = tex2D(_MainTex, uv) * _Color;
 
 return fragColor;
 ```
-### Bubbles Particle System
-The bubbles produced by the cauldron is comprised of two differnet particle systems: The first produces the intial bubble, and the latter produces the popped bubble particles. The particle system was produced with help from a tutorial found [here](https://www.youtube.com/watch?v=ajsA6vWBhKI).
-
-<p align="center">
-  <img src="Images/Bubbles.gif"  width="600" >
-</p>
-
-The bubbles are emitted upwards from the cauldron's liquid surface, with their velocities changing over time, giving the bubbles a wavy effect as they rise up. When the bubbles expire after a certain lifetime, they emit the next particle system, representing the burst bubble. These burst bubble particles are affected by gravity are emitted in all directions from the expired bubble. This helps acheive the effect of a burst bubble.
 
 ### Screen Distortion Shader
 
@@ -252,6 +322,15 @@ A greenish colouration is applied to the screen by retrieving the texture colour
 
 Implementing this effect using a shader is more performant than a CPU based approach. This is because the effect is applied uniformly across the render texture without significant logical branching, allowing it to take advantage of the GPU's ability to effciently parallelise simple operations.  
 
+### Bubbles Particle System
+The bubble effect produced by the cauldron is comprised of two different particle systems: Once that produces the intial bubble, and another that produces the popped bubble particles. The particle system was produced with help from a tutorial found [here](https://www.youtube.com/watch?v=ajsA6vWBhKI).
+
+<p align="center">
+  <img src="Images/Bubbles.gif"  width="600" >
+</p>
+
+The bubbles are emitted upwards from the cauldron's liquid surface, with their velocities changing over time, giving the bubbles a wavy effect as they rise up. When the bubbles expire after a certain lifetime, they emit the next particle system, representing the burst bubble. These burst bubble particles are affected by gravity are emitted in all directions from the expired bubble. This helps acheive the effect of a burst bubble.
+
 ### Fire particle system
 
 <p align="center">
@@ -262,7 +341,9 @@ The fire of the cauldrons and burning stations were created using Unity’s Part
 
 Each fire consisted of three particle systems of different sizes and colours. Using multiple particle systems helps to create the different “layers” of the fire (red, orange, and yellow sections).
 
-The texture used for the fire particle system was created by [Evgeny Starostin](https://80.lv/articles/breakdown-magic-fire-effect-in-unity/)
+The texture used for the fire particle system was created by Evgeny Starostin. The texture was implemented using a custom shader, based on Starostin's tutorial [here]((https://80.lv/articles/breakdown-magic-fire-effect-in-unity/),  and a texture sheet animation.
+
+By default, Unity's built-in Particle Systems are applied by the CPU. This allows particle systems to interact with colliders within the scene. This was useful to ensure that the fire would not appear to pass through the cauldron or benches, and overall look more natural.
 
 
 ## Evaluation Methods
@@ -299,7 +380,7 @@ We used the “Think Aloud” observational method. Participants were invited to
 
 <p align="center">
 	<img src="Images/Observation.gif"  width="600" >
-	
+
 	Pictured: A screen capture from a "Think Aloud" observation session showing a user struggling to use a station.
 </p>
 
@@ -384,11 +465,14 @@ However, a benefit of our method was that we were able to gain a better idea of 
 		* Due to time constraints, these were not implemented, but we feel they could be implemented in a future build
 
 
-## Resource References
+## Sources used
 
 * The cauldron liquid shader was produced with help from an online tutorial found [here](http://enemyhideout.com/2016/08/creating-a-whirlpool-shader/).
 * The bubbles particle system was produced with help from an online tutorial found [here](https://www.youtube.com/watch?v=ajsA6vWBhKI).
+* The fire particle system was produced with help from an online tutorial found [here](https://80.lv/articles/breakdown-magic-fire-effect-in-unity/)
+* The pause menu and end screen was implemented with help from an online tutorial found [here](https://www.sitepoint.com/adding-pause-main-menu-and-game-over-screens-in-unity/)
 * The pick up logic was initially inspired by a youtube video found [here](https://www.youtube.com/watch?v=90OiysC4j5Y).
+* The menu background music was created with help from this forum post [here](https://answers.unity.com/questions/1260393/make-music-continue-playing-through-scenes.html).
 
 ## Individual Contributions
 
@@ -405,17 +489,21 @@ Designed and implemented the architecture of C# Script Classes for Game Objects 
 
 Designed and implemented most UI elements, including the main menu, level select scene, pause menu, end screen, and in-game elements such as text, including game score and timer, order queue, and progress bars for stations. Assisted with linking UI elements to the game controller. Sourced sprites, and assisted with sourcing models and textures for the interior of the scene. Created the fire particle system. Interviewed 3 participants for evaluation purposes and contributed to team discussion and report-writing.
 
-## References
+## Useful references
 
 Unity API Script Reference: https://docs.unity3d.com/ScriptReference/
 
 Logic for storing highscores locally was retrieved from the following url: https://answers.unity.com/questions/644911/how-do-i-store-highscore-locally-c-simple.html
 
-Pause menu and end screen: https://www.sitepoint.com/adding-pause-main-menu-and-game-over-screens-in-unity/
-
-Fire particle system: https://80.lv/articles/breakdown-magic-fire-effect-in-unity/ 
-
 Button animation: https://www.youtube.com/watch?v=CJ8FKjYtrT4
+
+Background menu music logic: https://answers.unity.com/questions/1260393/make-music-continue-playing-through-scenes.html
+
+Bubbles design reference: https://www.youtube.com/watch?v=ajsA6vWBhKI
+
+Pick up script design reference: https://www.youtube.com/watch?v=90OiysC4j5Y
+
+Liquid swirl shader reference: http://enemyhideout.com/2016/08/creating-a-whirlpool-shader/
 
 ### Sound effects
 
@@ -472,10 +560,6 @@ Knife model: https://poly.google.com/view/0X5xcxjszwI
 
 Cauldron design reference: https://www.youtube.com/watch?v=x-6cvNjUuAI
 
-Bubbles design reference: https://www.youtube.com/watch?v=ajsA6vWBhKI
-
-Pick up script design reference: https://www.youtube.com/watch?v=90OiysC4j5Y
-
 Bin model: https://www.turbosquid.com/3d-models/free-c4d-mode-m%C3%BClleimer-bin/483718
 
 Squashed eye model: https://www.turbosquid.com/3d-models/3d-rectangle-flow-splash-model-1213683
@@ -490,7 +574,7 @@ Chopping board model: https://www.turbosquid.com/3d-models/free-chopping-board-3
 
 Frog model: https://www.turbosquid.com/FullPreview/Index.cfm/ID/753743
 
-Fire particle system texture: https://80.lv/articles/breakdown-magic-fire-effect-in-unity/ 
+Fire particle system texture: https://80.lv/articles/breakdown-magic-fire-effect-in-unity/
 
 Fire station model: https://www.turbosquid.com/3d-models/pit-firepit-3ds/701220
 
@@ -512,7 +596,7 @@ Potions: Benjamin Czapla (student work)
 
 Scroll: https://www.clipartkey.com/
 
-Stations: https://clipart-library.com/ 
+Stations: https://clipart-library.com/
 
 
 ## Technologies
