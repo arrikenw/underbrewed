@@ -55,24 +55,26 @@ In the image of an order above, the timer is represented by the horizontal green
 <p align="center">
   <img src="Images/AddingIngredient.gif"  width="600" >
 
-  Pictured: The final ingredient is added to a potion, triggering a colour change
+	Pictured: The final ingredient is added to a potion, triggering a colour change
 </p>
 
 To deliver a completed potion, players must fill a bottle with liquid from the cauldron they have brewed the potion in, then must drop or throw the bottled potion through the delivery portal. Each successful delivery will increase the players’ score, which is displayed in the lower right of the screen. The time left until the level ends is displayed below the score.
 
 <p align="center">
   <img src="Images/CollectingPotion.gif"  width="600" >
-
-  Pictured: A potion is collected from a cauldron
+	
+	Pictured: A potion is collected from a cauldron using the interact button while holding a potion
 </p>
 
 <p align="center">
   <img src="Images/DeliveringPotion.gif"  width="600" >
 
-  Pictured: A potion is delivered using the portal
+	Pictured: A potion is delivered using the portal
 </p>
 
-If a player places an ingredient into the cauldron that does not match any valid potions, the game will trigger a special effect to distract players, such as a shader to distort the screen, or an explosion that sends ingredients flying across the scene.
+If a player places an ingredient into the cauldron that does not match any valid potions, the game will trigger a special effect to distract players, such as a shader to distort the screen, or an explosion that sends ingredients flying across the scene. 
+
+Later levels become more difficult and the player must rely on multitasking and item throwing to complete order on time.
 
 <b> We recommend that new players play our tutorial level before attempting stages, as it provides an in-depth overview of the game’s controls and mechanics. </b>
 
